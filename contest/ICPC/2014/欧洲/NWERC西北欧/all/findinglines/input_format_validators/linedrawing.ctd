@@ -1,0 +1,6 @@
+INT(1, 10^5, n) NEWLINE
+INT(20, 100, p) NEWLINE
+REPI(i, n)
+		INT(0, 10^9, x[i]) SPACE INT(0, 10^9, y[i]) NEWLINE
+END
+ASSERT(UNIQUE(x,y))

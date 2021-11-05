@@ -1,0 +1,5 @@
+INT(2,10000,n) NEWLINE
+REP(n-1)
+  INT(1,n,i) SPACE INT(1,n,j) NEWLINE
+  ASSERT(i != j)
+END

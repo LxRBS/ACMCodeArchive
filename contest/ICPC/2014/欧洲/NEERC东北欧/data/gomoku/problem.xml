@@ -1,0 +1,40 @@
+<!--================================================================-->
+<!-- ACM ICPC 2014-2015                                             -->
+<!-- Northeastern European Regional Contest                         -->
+<!-- St Petersburg - Barnaul - Tbilisi - Tashkent, December 7, 2014 -->
+<!--================================================================-->
+<!-- Problem G. Gomoku                                              -->
+<!--                                                                -->
+<!-- Original idea         Petr Mitrichev                           -->
+<!-- Problem statement     Petr Mitrichev                           -->
+<!-- Test set              Pavel Mavrin                             -->
+<!--================================================================-->
+
+
+<problem
+    id      = "neerc.2014.main.gomoku"
+    version = "1.0"
+>
+    <judging>
+        <script type = "%icpc">
+            <testset
+                test-count   = "100"
+                input-href   = "tests/###"
+                answer-href  = "tests/###.a"
+                input-name   = "gomoku.in"
+                output-name  = "gomoku.out"
+                time-limit   = "3s"
+                memory-limit = "268435456"
+            />
+            <verifier type = "%testlib">
+                <binary executable-id = "java.check" file = "Check.jar"/>
+            </verifier>
+            
+            <interactor type = "%simple">
+                <binary executable-id = "java.jar" file = "Interact.jar"/>
+            </interactor>
+        
+        </script>
+    </judging>
+</problem>
+

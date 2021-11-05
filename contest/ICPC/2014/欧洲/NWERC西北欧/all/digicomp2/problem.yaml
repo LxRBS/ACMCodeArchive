@@ -1,0 +1,8 @@
+source: NWERC 2014
+source_url: http://2014.nwerc.eu
+author: Jan Kuipers
+license: cc by-sa
+
+limits:
+  time_multiplier: 2.1
+  time_safety_margin: 1.75

@@ -1,0 +1,7 @@
+INT(1,10^5,n) NEWLINE
+REP(n)
+  REGEX("[a-z]{5,15}") NEWLINE
+END
+REP(n)
+  REGEX("[a-z]{5,15}") NEWLINE
+END

@@ -1,0 +1,1 @@
+loop(2,c(range(N,3,223),t(c,loop(N))))

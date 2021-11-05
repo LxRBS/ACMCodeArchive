@@ -1,0 +1,1 @@
+loop(range(S,15,7),t(c(S),t(range(T,10,S),c(T,loop(S)))))

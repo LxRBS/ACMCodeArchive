@@ -1,0 +1,1 @@
+loop(range(I,10,20),t(c,loop(I)))

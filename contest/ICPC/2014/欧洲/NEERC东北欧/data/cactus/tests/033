@@ -1,0 +1,1 @@
+c(range(M,5,13),t(range(N,17,12),loop(M,c(N))))

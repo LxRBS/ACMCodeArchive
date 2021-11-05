@@ -1,0 +1,1 @@
+t(range(W,11,5),c(range(X,8,W),t(range(Y,W,X),c(range(Z,X,Y),loop(t(W),t(X),t(Y),t(Z))))))

@@ -1,0 +1,22 @@
+
+<challenge
+    id              = "neerc-2014.main"
+    name            = "ACM ICPC 2014-2015, Northeastern European Regional Contest"
+    scoring-model   = "%icpc"
+    length          = "5h"
+
+    problem-id      = "neerc.2014.main"
+    xmlai-process   = "http://neerc.ifmo.ru/develop/pcms2/xmlai/default-rules.xml"
+>
+    <problem-ref id = "a" alias = "A" problem-id = "alter" name = "Alter Board"/>
+    <problem-ref id = "b" alias = "B" problem-id = "burrito" name = "Burrito King"/>
+    <problem-ref id = "c" alias = "C" problem-id = "cactus" name = "Cactus Generator"/>
+    <problem-ref id = "d" alias = "D" problem-id = "damage" name = "Damage Assessment"/>
+    <problem-ref id = "e" alias = "E" problem-id = "epic" name = "Epic Win!"/>
+    <problem-ref id = "f" alias = "F" problem-id = "filter" name = "Filter"/>
+    <problem-ref id = "g" alias = "G" problem-id = "gomoku" name = "Gomoku"/>
+    <problem-ref id = "h" alias = "H" problem-id = "hidden" name = "Hidden Maze"/>
+    <problem-ref id = "i" alias = "I" problem-id = "improvements" name = "Improvements"/>
+    <problem-ref id = "j" alias = "J" problem-id = "joke" name = "Jokewithpermutation"/>
+    <problem-ref id = "k" alias = "K" problem-id = "knockout" name = "Knockout Racing"/>
+</challenge>

@@ -1,0 +1,1 @@
+loop(range(N,1,37),c(range(M,2,35),t(c,loop(c(N),t(c(M),c)))))

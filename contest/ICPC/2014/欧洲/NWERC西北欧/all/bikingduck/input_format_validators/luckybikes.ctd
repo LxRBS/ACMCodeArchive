@@ -1,0 +1,14 @@
+INT(1, 1000, walk) SPACE INT(walk+1, 1000, bike) NEWLINE
+
+INT(-10^6, 10^6, x1) SPACE INT(-10^6, 10^6, y1) SPACE
+INT(x1+1, 10^6, x2) SPACE INT(y1+1, 10^6, y2) NEWLINE
+
+INT(x1, x2, xstart) SPACE INT(y1, y2, ystart) NEWLINE
+
+INT(x1, x2, xdest) SPACE INT(y1, y2, ydest) NEWLINE
+
+INT(0, 1000, n) NEWLINE
+
+REPI(i, n)
+		INT(x1, x2, x[i]) SPACE INT(y1, y2, y[i]) NEWLINE
+END

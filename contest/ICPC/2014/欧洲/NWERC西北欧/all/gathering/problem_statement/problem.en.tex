@@ -1,0 +1,30 @@
+\problemname{Gathering}
+
+\illustration{0.3}{gardemoen}{\href{https://en.wikipedia.org/wiki/File:Airport_Oslo_Gardermoen_-_Meeting_point.jpg}{Picture} by Radosław Drożdżewski via Wikimedia Commons, cc by-sa}%
+\noindent
+The citizens of Fictitia have had enough! The city keeps getting bigger and bigger, and all the more boring. Fictitia consists of horizontal and vertical streets only. The distance between each pair of neighboring parallel streets is always the same; we take this as the unit distance. Surely some variation could not hurt?
+
+In order to draw more support and make their unhappiness known to the municipality, a group of citizens has agreed to gather at an intersection of the city to protest. The question is: which intersection? Since there is not much difference between them, the idea was raised to select an intersection $(x^*,y^*)$ that minimizes the total distance everyone has to travel. Since everyone lives close to an intersection, the individual distance travelled by someone who lives at $(x,y)$ is given by $|x-x^*|+|y-y^*|$.
+
+However, this could present a problem for the people who live far away, since they might have trouble getting there in time. Therefore it was decided that the intersection should be at most a certain distance $d$ away from everyone. Given that restriction, can you help them identify an intersection that minimizes the total distance everyone has to travel?
+
+% Alternate story, but the input limits seem way too large for this
+
+%The jury members of the NWERC need to meet up in order to discuss how they are going to make the lifes of the contestants as miserable as possible. For that, they need to select a convenient place to meet.
+
+%The jury members all live in a big city that consists of horizontal and vertical streets only. The distance between each pair of neighboring parallel streets is fixed; we take this as the unit distance. They all live at an intersection. They also want to meet at an intersection, so that they have multiple escape routes, should they be spotted by a contestant-to-be. Since they always take the shortest path by road, the distance between a juror's house at $(x_i,y_i)$ and the intersection $(x,y)$ is given by $|x-x_i|+|y-y_i|$.
+
+%Considering their love for optimal solutions, they would like to minimize the total distance that everyone has to travel. However, this may cause trouble because some may have to come from far and end up being late. Therefore, they have put a limit on the distance that each person would have to travel. Where should they meet?
+
+\section*{Input}
+
+The input consists of:
+\begin{itemize}
+  \item one line with one integer $n$ ($2 \leq n \leq 100\,000$), the number of citizens;
+  \item $n$ lines each with two integers $x$ and $y$ ($0 \leq x,y \leq 10^9$), the coordinates of each citizen's house;
+  \item one line with one integer $d$ ($0 \leq d \leq 2 \cdot 10^9$), the maximum distance that each citizen should have to travel.
+\end{itemize}
+It is possible for multiple citizens to live at the same intersection.
+
+\section*{Output}
+Output one line with a single integer: the smallest possible total distance that all citizens need to travel. If there is no intersection that everyone lives within a distance $d$ of, output ``\texttt{impossible}'' instead.

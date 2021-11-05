@@ -1,0 +1,1 @@
+loop(range(E,16,6),t(E))

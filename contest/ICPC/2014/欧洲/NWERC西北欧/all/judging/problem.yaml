@@ -1,0 +1,7 @@
+source: NWERC 2014
+source_url: http://2014.nwerc.eu
+author: Jeroen Bransen
+license: cc by-sa
+
+limits:
+  time_multiplier: 3

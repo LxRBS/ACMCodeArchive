@@ -1,0 +1,1 @@
+loop(range(K,22,12),c(K,t(K)))

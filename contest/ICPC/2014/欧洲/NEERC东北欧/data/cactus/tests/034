@@ -1,0 +1,1 @@
+t(range(O,1,3),loop(range(P,8,4),c(P,t(O))))

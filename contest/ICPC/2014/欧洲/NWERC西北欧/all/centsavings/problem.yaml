@@ -1,0 +1,17 @@
+source: NWERC 2014
+source_url: http://2014.nwerc.eu
+author: Tobias Werth
+# rights_owner:
+license: cc by-sa
+
+limits:
+    time_multiplier: 2.5
+#    time_safety_margin: 2
+#    memory: 4096
+#    output: 16
+#    compilation_time: 240
+#    validation_time: 240
+#    validation_memory: 3072
+#    validation_output: 4
+# validator_flags: float_tolerance 1e-8
+#validation: custom

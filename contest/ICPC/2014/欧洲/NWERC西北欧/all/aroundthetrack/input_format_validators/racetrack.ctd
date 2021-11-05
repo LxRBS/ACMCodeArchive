@@ -1,0 +1,10 @@
+# This does not verify if polygons are correct!
+
+INT(3,50,n) NEWLINE
+REP(n)
+  INT(-5000,5000) SPACE INT(-5000,5000) NEWLINE
+END
+INT(3,50,m) NEWLINE
+REP(m)
+  INT(-5000,5000) SPACE INT(-5000,5000) NEWLINE
+END

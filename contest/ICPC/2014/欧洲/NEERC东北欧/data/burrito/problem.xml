@@ -1,0 +1,36 @@
+<!--================================================================-->
+<!-- ACM ICPC 2014-2015                                             -->
+<!-- Northeastern European Regional Contest                         -->
+<!-- St Petersburg - Barnaul - Tbilisi - Tashkent, December 7, 2014 -->
+<!--================================================================-->
+<!-- Problem B. Burrito King                                        -->
+<!--                                                                -->
+<!-- Original idea         Vitaliy Aksenov                          -->
+<!-- Problem statement     Vitaliy Aksenov                          -->
+<!-- Test set              Vitaliy Aksenov                          -->
+<!--================================================================-->
+
+
+<problem
+    id      = "neerc.2014.main.burrito"
+    version = "1.0"
+>
+    <judging>
+        <script type = "%icpc">
+            <testset
+                test-count   = "57"
+                input-href   = "tests/##"
+                answer-href  = "tests/##.a"
+                input-name   = "burrito.in"
+                output-name  = "burrito.out"
+                time-limit   = "3s"
+                memory-limit = "268435456"
+            />
+            <verifier type = "%testlib">
+                <binary executable-id = "java.check" file = "Check.jar"/>
+            </verifier>
+            
+        </script>
+    </judging>
+</problem>
+

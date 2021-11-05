@@ -1,0 +1,19 @@
+INT(2,14,n) SPACE INT(1,10^15,len) NEWLINE
+REPI(i,n)
+  REPI(j,n,SPACE)
+    IF (i == j)
+	  INT(0,0,d[i+1000*j])
+	ELSE
+	  INT(1,len,d[i+1000*j])
+	END
+  END NEWLINE
+END
+
+REPI(i,n)
+  REPI(j,n)
+    ASSERT(d[i+1000*j] == d[j+1000*i])
+    REPI(k,n)
+      ASSERT(d[i+1000*j] <= d[i+1000*k] + d[k+1000*j])
+    END
+  END
+END

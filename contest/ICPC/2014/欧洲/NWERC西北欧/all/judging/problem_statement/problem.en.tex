@@ -1,0 +1,19 @@
+\problemname{Judging Troubles}
+
+\illustration{.4}{judging.png}{\href {https://open.kattis.com}{Kattis} and \href{http://domjudge.org}{DOMjudge}}%
+\noindent
+The NWERC organisers have decided that they want to improve the automatic grading of the submissions for the contest, so they now use two systems: DOMjudge and Kattis. Each submission is judged by both systems and the grading results are compared to make sure that the systems agree. However, something went wrong in setting up the connection between the systems, and now the jury only knows all results of both systems, but not which result belongs to which submission! You are therefore asked to help them figure out how many results could have been consistent. 
+
+\section*{Input}
+
+The input consists of:
+\begin{itemize}
+   \item one line with one integer $n$ ($1\leq n \leq 10^5$), the number of submissions;
+   \item $n$ lines, each with a result of the judging by DOMjudge, in arbitrary order;
+   \item $n$ lines, each with a result of the judging by Kattis, in arbitrary order.
+\end{itemize}
+Each result is a string of length between $5$ and $15$ characters (inclusive) consisting of lowercase letters.
+
+\section*{Output}
+
+Output one line with the maximum number of judging results that could have been the same for both systems.

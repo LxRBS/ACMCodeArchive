@@ -1,0 +1,1 @@
+loop(c(range(N,1,221),t(c,c(c,t(N,c)))),c(range(M,221,1),t(c,c(c,t(M,c)))))
