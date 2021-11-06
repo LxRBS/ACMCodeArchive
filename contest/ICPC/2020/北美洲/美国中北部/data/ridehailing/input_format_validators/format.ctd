@@ -1,0 +1,10 @@
+INT(2,100,n) SPACE INT(1,n*(n-1),m) SPACE INT(1,1000,k) NEWLINE
+REP(m)
+    INT(1,n,u) SPACE INT(1,n,v) SPACE INT(1,479,w) NEWLINE
+    ASSERT(u != v)
+END
+REP(k)
+    INT(1,n,u) SPACE INT(1,n,v) SPACE INT(0,479,t) NEWLINE
+    ASSERT(u != v)
+END
+EOF

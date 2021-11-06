@@ -1,0 +1,8 @@
+INT(2, 500000, n) SPACE INT(1, n-1) SPACE INT(1, n-1, b) NEWLINE
+SET(last = 1)
+REP(b-1)
+  INT(last + 1, n-1, tmp) SPACE
+  SET(last = tmp)
+END
+INT(n, n) NEWLINE
+EOF

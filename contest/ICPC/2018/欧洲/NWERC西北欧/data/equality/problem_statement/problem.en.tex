@@ -1,0 +1,42 @@
+\problemname{Equality Control}
+
+In programming contest circles, one of the most important roles is that of the Chief Equality Officer (CEO).
+This person is responsible for making sure that every team has an equal chance of winning the contest.
+Since last year's NWERC the current CEO, Gregor, has thought at length about how to make the contest even more fair and equal.
+
+His answer is to introduce a new programming language as the only one allowed for submissions.
+This way, no team will be disadvantaged by not having mastered any of the allowed languages.
+This language is called \textsc{Balloon}, short for Building A Long List Of Ordinary Numbers.
+Its only data type is the list of integers.
+To keep the language fast, it contains only four instructions:
+\begin{itemize}
+	\item \texttt{[x$_1$,\ldots,x$_n$]} is the constructor for lists. It returns the integers inside the brackets in their given order.
+	\item \texttt{concat(<Expr$_1$>,<Expr$_2$>)} returns a list of all the integers returned when evaluating the expression \texttt{<Expr$_1$>} followed by all of the integers returned when evaluating \texttt{<Expr$_2$>}.
+  \item \texttt{shuffle(<Expr>)} returns a list of all the integers returned by \texttt{<Expr>}, rearranged according to a uniformly random permutation, i.e., each permutation of the elements is used with equal probability.
+  \item \texttt{sorted(<Expr>)} returns a list of all the integers returned by \texttt{<Expr>}, rearranged into non-decreasing order.
+\end{itemize}
+As an example, consider the first expression of Sample Input 1.
+The two shuffle exressions both take the list \texttt{[1,2]} as input and return one of the lists \texttt{[1,2]} and \texttt{[2,1]}, each with probability $0.5$ (independently of each other).
+The outer concat operator takes the two returned lists as its input and returns their concatenation.
+I.e., it returns one of the lists \texttt{[1,2,1,2]}, \texttt{[1,2,2,1]}, \texttt{[2,1,1,2]}, and \texttt{[2,1,2,1]}, each with probability $0.25$.
+
+Naturally, we cannot use byte-by-byte output comparison any more when teams submit their solutions in \textsc{Balloon}, as its output is probabilistic.
+The judge server instead has to check whether a submitted program is equivalent to the sample solution created by the judges.
+Two programs are equivalent if for any list $L$ of integers, both programs have an equal probability of returning $L$.
+
+It is your task to determine whether two given \textsc{Balloon} programs are equivalent.
+
+\section*{Input}
+The input consists of:
+\begin{itemize}
+  \item One line containing a string \texttt{A}, the first program.
+  \item One line containing a string \texttt{B}, the second program.
+\end{itemize}
+Each program is a syntactically valid \textsc{Balloon} program with between $3$ and $10^6$ characters, and contains neither spacing nor empty lists
+(i.e., the strings ``\texttt{ }'' or ``\texttt{[]}'' do not occur in the input).
+
+Each integer in each program is greater than $0$ and less than $10^{9}$.
+
+\section*{Output}
+
+If the two programs are equivalent, output ``\texttt{equal}'', otherwise output ``\texttt{not equal}''.

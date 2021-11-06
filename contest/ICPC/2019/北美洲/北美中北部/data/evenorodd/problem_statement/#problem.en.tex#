@@ -1,0 +1,19 @@
+\problemname{Even or Odd}
+
+Your friend has secretly picked $N$ consecutive positive
+integers between $1$ and $100$, and wants you to guess if their sum is
+even or odd.
+
+If the sum must be even, output `{\tt Even}'.  If the sum must be
+odd, output `{\tt Odd}'.  If the sum could be even or could be odd,
+output `{\tt Either}.
+
+\section*{Input}
+
+The input is a single integer $N$ with $1 \le N \le 10$.  
+
+\section*{Output}
+
+Output a single word. The word should be `{\tt Even}', `{\tt Odd}', or 
+`{\tt Either}', according to the rules given earlier.
+

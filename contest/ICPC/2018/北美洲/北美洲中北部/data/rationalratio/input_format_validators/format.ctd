@@ -1,0 +1,7 @@
+REGEX("[0-9]{1,3}",intpart) STRING(".") REGEX("[0-9]{1,11}",decpart) SPACE INT(1,11,digits) NEWLINE
+# This line checks that either intpart or decpart are nonzero.
+ASSERT((!(intpart == "0" || intpart == "00" || intpart == "000")) || 
+(!(decpart == "0" || decpart == "00" || decpart == "000" || decpart == "0000" || decpart == "00000" || decpart == "000000" || decpart == "0000000" || decpart == "00000000" || decpart == "000000000" || decpart == "0000000000" || decpart == "00000000000")))
+ASSERT(digits <= STRLEN(decpart))
+
+EOF

@@ -1,0 +1,896 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="34" short-name="interactive-guess" url="https://polygon.codeforces.com/p2Y4KH4/elizarov/interactive-guess">
+        
+    <names>
+                
+        <name language="english" value="Is It Rated?"/>
+            
+    </names>
+        
+    <statements>
+                
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+                
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/problem.html" type="text/html"/>
+                
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+            
+    </statements>
+        
+    <tutorials>
+                
+        <tutorial charset="UTF-8" language="english" mathjax="true" path="statements/english/tutorial.tex" type="application/x-tex"/>
+                
+        <tutorial charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/tutorial.html" type="text/html"/>
+                
+        <tutorial language="english" path="statements/.pdf/english/tutorial.pdf" type="application/pdf"/>
+            
+    </tutorials>
+        
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="">
+                
+        <testset name="tests">
+                        
+            <time-limit>3000</time-limit>
+                        
+            <memory-limit>536870912</memory-limit>
+                        
+            <test-count>200</test-count>
+                        
+            <input-path-pattern>tests/%02d</input-path-pattern>
+                        
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+                        
+            <tests>
+                                
+                <test method="manual" sample="true"/>
+                                
+                <test cmd="gen_full_random 10 10000 0.02 0.2" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.02 0.2" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.0 0.0" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.1 0.3 1" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.01 0.3 1" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.01 0.03 1" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.1 1.0 1" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.01 1.0 1" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.1 0.3 1" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.01 0.3 1" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.01 0.03 1" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.1 1.0 1" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.01 1.0 1" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.1 0.3 1" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.01 0.3 1" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.01 0.03 1" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.1 1.0 1" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.01 1.0 1" method="generated"/>
+                                
+                <test cmd="gen_full_random 1 10000 0.1 0.3 1" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1 0.1 0.3 1" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.0 0.01 1" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 1 0.6 0.1 1.0 1" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 1 0.8 0.1 1.0 1" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 1 0.5 0.1 1.0 1" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.9 10000 0.6 0.1 1.0 1" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.8 10000 0.6 0.1 1.0 1" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.5 10000 0.7 0.1 1.0 1" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 2 0.6 0.1 1.0 1" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 3 0.6 0.1 1.0 1" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 4 0.6 0.1 1.0 1" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 5 0.6 0.1 1.0 1" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 1 0.6 0.1 5.0 1" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.9 10000 0.6 0.1 5.0 1" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.99 10000 0.51 0.1 5.0 1" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.7 10000 0.55 0.1 5.0 1" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 2 0.6 0.1 5.0 1" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 3 0.6 0.1 5.0 1" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 4 0.6 0.1 5.0 1" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 5 0.6 0.1 5.0 1" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 100 10 1" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 100 20 1" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 150 20 1" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 200 10 1" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 400 5 1" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 50 40 1" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 70 40 1" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 30 70 1" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 20 100 1" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 20 150 1" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 10 150 1" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 10 200 1" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 5 400 1" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.1 0.3 2" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.01 0.3 2" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.01 0.03 2" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.1 1.0 2" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.01 1.0 2" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.1 0.3 2" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.01 0.3 2" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.01 0.03 2" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.1 1.0 2" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.01 1.0 2" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.1 0.3 2" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.01 0.3 2" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.01 0.03 2" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.1 1.0 2" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.01 1.0 2" method="generated"/>
+                                
+                <test cmd="gen_full_random 1 10000 0.1 0.3 2" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1 0.1 0.3 2" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.0 0.01 2" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 1 0.6 0.1 1.0 2" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 1 0.8 0.1 1.0 2" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 1 0.5 0.1 1.0 2" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.9 10000 0.6 0.1 1.0 2" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.8 10000 0.6 0.1 1.0 2" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.5 10000 0.7 0.1 1.0 2" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 2 0.6 0.1 1.0 2" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 3 0.6 0.1 1.0 2" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 4 0.6 0.1 1.0 2" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 5 0.6 0.1 1.0 2" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 1 0.6 0.1 5.0 2" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.9 10000 0.6 0.1 5.0 2" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.99 10000 0.51 0.1 5.0 2" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.7 10000 0.55 0.1 5.0 2" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 2 0.6 0.1 5.0 2" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 3 0.6 0.1 5.0 2" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 4 0.6 0.1 5.0 2" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 5 0.6 0.1 5.0 2" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 100 10 2" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 100 20 2" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 150 20 2" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 200 10 2" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 400 5 2" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 50 40 2" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 70 40 2" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 30 70 2" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 20 100 2" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 20 150 2" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 10 150 2" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 10 200 2" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 5 400 2" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.1 0.3 3" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.01 0.3 3" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.01 0.03 3" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.1 1.0 3" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.01 1.0 3" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.1 0.3 3" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.01 0.3 3" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.01 0.03 3" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.1 1.0 3" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.01 1.0 3" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.1 0.3 3" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.01 0.3 3" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.01 0.03 3" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.1 1.0 3" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.01 1.0 3" method="generated"/>
+                                
+                <test cmd="gen_full_random 1 10000 0.1 0.3 3" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1 0.1 0.3 3" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.0 0.01 3" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 1 0.6 0.1 1.0 3" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 1 0.8 0.1 1.0 3" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 1 0.5 0.1 1.0 3" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.9 10000 0.6 0.1 1.0 3" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.8 10000 0.6 0.1 1.0 3" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.5 10000 0.7 0.1 1.0 3" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 2 0.6 0.1 1.0 3" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 3 0.6 0.1 1.0 3" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 4 0.6 0.1 1.0 3" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 5 0.6 0.1 1.0 3" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 1 0.6 0.1 5.0 3" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.9 10000 0.6 0.1 5.0 3" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.99 10000 0.51 0.1 5.0 3" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.7 10000 0.55 0.1 5.0 3" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 2 0.6 0.1 5.0 3" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 3 0.6 0.1 5.0 3" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 4 0.6 0.1 5.0 3" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 5 0.6 0.1 5.0 3" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 100 10 3" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 100 20 3" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 150 20 3" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 200 10 3" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 400 5 3" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 50 40 3" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 70 40 3" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 30 70 3" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 20 100 3" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 20 150 3" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 10 150 3" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 10 200 3" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 5 400 3" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.1 0.3 4" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.01 0.3 4" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.01 0.03 4" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.1 1.0 4" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.01 1.0 4" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.1 0.3 4" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.01 0.3 4" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.01 0.03 4" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.1 1.0 4" method="generated"/>
+                                
+                <test cmd="gen_full_random 100 10000 0.01 1.0 4" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.1 0.3 4" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.01 0.3 4" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.01 0.03 4" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.1 1.0 4" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1000 0.01 1.0 4" method="generated"/>
+                                
+                <test cmd="gen_full_random 1 10000 0.1 0.3 4" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 1 0.1 0.3 4" method="generated"/>
+                                
+                <test cmd="gen_full_random 1000 10000 0.0 0.01 4" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 1 0.6 0.1 1.0 4" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 1 0.8 0.1 1.0 4" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 1 0.5 0.1 1.0 4" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.9 10000 0.6 0.1 1.0 4" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.8 10000 0.6 0.1 1.0 4" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.5 10000 0.7 0.1 1.0 4" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 2 0.6 0.1 1.0 4" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 3 0.6 0.1 1.0 4" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 4 0.6 0.1 1.0 4" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 5 0.6 0.1 1.0 4" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 1 0.6 0.1 5.0 4" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.9 10000 0.6 0.1 5.0 4" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.99 10000 0.51 0.1 5.0 4" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 0.7 10000 0.55 0.1 5.0 4" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 2 0.6 0.1 5.0 4" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 3 0.6 0.1 5.0 4" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 4 0.6 0.1 5.0 4" method="generated"/>
+                                
+                <test cmd="gen_against_bad_randomized 1000 10000 1.0 5 0.6 0.1 5.0 4" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 100 10 4" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 100 20 4" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 150 20 4" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 200 10 4" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 400 5 4" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 50 40 4" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 70 40 4" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 30 70 4" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 20 100 4" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 20 150 4" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 10 150 4" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 10 200 4" method="generated"/>
+                                
+                <test cmd="gen_against_keep_same 1000 10000 5 400 4" method="generated"/>
+                            
+            </tests>
+                    
+        </testset>
+            
+    </judging>
+        
+    <files>
+                
+        <resources>
+                        
+            <file path="files/olymp.sty"/>
+                        
+            <file path="files/problem.tex"/>
+                        
+            <file path="files/statements.ftl"/>
+                        
+            <file path="files/testlib.h" type="h.g++"/>
+                        
+            <file path="files/tutorial.tex"/>
+                    
+        </resources>
+                
+        <executables>
+                        
+            <executable>
+                                
+                <source path="files/check.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/check.exe" type="exe.win32"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/gen_against_bad_randomized.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/gen_against_bad_randomized.exe" type="exe.win32"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/gen_against_keep_same.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/gen_against_keep_same.exe" type="exe.win32"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/gen_full_random.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/gen_full_random.exe" type="exe.win32"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/interactor.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/interactor.exe" type="exe.win32"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/validate.exe" type="exe.win32"/>
+                            
+            </executable>
+                    
+        </executables>
+            
+    </files>
+        
+    <assets>
+                
+        <checker type="testlib">
+                        
+            <source path="files/check.cpp" type="cpp.g++17"/>
+                        
+            <binary path="check.exe" type="exe.win32"/>
+                        
+            <copy path="check.cpp" type="cpp.g++17"/>
+                        
+            <testset>
+                                
+                <test-count>8</test-count>
+                                
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                                
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                                
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                                
+                <tests>
+                                        
+                    <test verdict="ok"/>
+                                        
+                    <test verdict="ok"/>
+                                        
+                    <test verdict="wrong-answer"/>
+                                        
+                    <test verdict="ok"/>
+                                        
+                    <test verdict="wrong-answer"/>
+                                        
+                    <test verdict="wrong-answer"/>
+                                        
+                    <test verdict="ok"/>
+                                        
+                    <test verdict="wrong-answer"/>
+                                    
+                </tests>
+                            
+            </testset>
+                    
+        </checker>
+                
+        <interactor>
+                        
+            <source path="files/interactor.cpp" type="cpp.g++17"/>
+                        
+            <binary path="files/interactor.exe" type="exe.win32"/>
+                    
+        </interactor>
+                
+        <validators>
+                        
+            <validator>
+                                
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/validate.exe" type="exe.win32"/>
+                                
+                <testset>
+                                        
+                    <test-count>6</test-count>
+                                        
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                                        
+                    <tests>
+                                                
+                        <test verdict="valid"/>
+                                                
+                        <test verdict="invalid"/>
+                                                
+                        <test verdict="invalid"/>
+                                                
+                        <test verdict="invalid"/>
+                                                
+                        <test verdict="invalid"/>
+                                                
+                        <test verdict="invalid"/>
+                                            
+                    </tests>
+                                    
+                </testset>
+                            
+            </validator>
+                    
+        </validators>
+                
+        <solutions>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/i_rndbest_re.kt" type="kotlin"/>
+                                
+                <binary path="solutions/i_rndbest_re.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/i_rndwlin_re.kt" type="kotlin"/>
+                                
+                <binary path="solutions/i_rndwlin_re.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/i_rndwma01_re.kt" type="kotlin"/>
+                                
+                <binary path="solutions/i_rndwma01_re.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/i_rndwma04_re.kt" type="kotlin"/>
+                                
+                <binary path="solutions/i_rndwma04_re.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/i_rndwma05_re.kt" type="kotlin"/>
+                                
+                <binary path="solutions/i_rndwma05_re.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/i_rndwma09_re.kt" type="kotlin"/>
+                                
+                <binary path="solutions/i_rndwma09_re.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/i_rndwma_int_re.kt" type="kotlin"/>
+                                
+                <binary path="solutions/i_rndwma_int_re.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/interactive_petr.java" type="java11"/>
+                                
+                <binary path="solutions/interactive_petr.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_deterministic_1_10.cpp" type="cpp.g++14"/>
+                                
+                <binary path="solutions/sol_deterministic_1_10.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_deterministic_1_2.cpp" type="cpp.g++14"/>
+                                
+                <binary path="solutions/sol_deterministic_1_2.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_deterministic_3_4.cpp" type="cpp.g++14"/>
+                                
+                <binary path="solutions/sol_deterministic_3_4.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_deterministic_99_100.cpp" type="cpp.g++14"/>
+                                
+                <binary path="solutions/sol_deterministic_99_100.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_deterministic_top1.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/sol_deterministic_top1.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_deterministic_top2.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/sol_deterministic_top2.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_deterministic_top5.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/sol_deterministic_top5.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_deterministic_top50.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/sol_deterministic_top50.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_keep_many_until_its_bad_10.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/sol_keep_many_until_its_bad_10.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_keep_many_until_its_bad_20.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/sol_keep_many_until_its_bad_20.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_keep_many_until_its_bad_200.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/sol_keep_many_until_its_bad_200.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_keep_many_until_its_bad_50.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/sol_keep_many_until_its_bad_50.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_keep_same_until_its_bad_100.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/sol_keep_same_until_its_bad_100.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_keep_same_until_its_bad_20.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/sol_keep_same_until_its_bad_20.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_keep_same_until_its_bad_5.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/sol_keep_same_until_its_bad_5.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_randomized_1_10.cpp" type="cpp.g++14"/>
+                                
+                <binary path="solutions/sol_randomized_1_10.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/sol_randomized_1_2.cpp" type="cpp.g++14"/>
+                                
+                <binary path="solutions/sol_randomized_1_2.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="main">
+                                
+                <source path="solutions/sol_randomized_3_4.cpp" type="cpp.g++14"/>
+                                
+                <binary path="solutions/sol_randomized_3_4.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="time-limit-exceeded">
+                                
+                <source path="solutions/sol_randomized_3_4_tle.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/sol_randomized_3_4_tle.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_randomized_99_100.cpp" type="cpp.g++14"/>
+                                
+                <binary path="solutions/sol_randomized_99_100.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_randomized_top1.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/sol_randomized_top1.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_randomized_top2.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/sol_randomized_top2.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_randomized_top5.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/sol_randomized_top5.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/sol_randomized_top50.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/sol_randomized_top50.exe" type="exe.win32"/>
+                            
+            </solution>
+                    
+        </solutions>
+            
+    </assets>
+        
+    <properties>
+                
+        <property name="tests-wellformed" value="true"/>
+            
+    </properties>
+        
+    <stresses>
+                
+        <stress-count>0</stress-count>
+                
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+                
+        <list/>
+            
+    </stresses>
+        
+    <tags>
+                
+        <tag value="interactive"/>
+                
+        <tag value="randomized algorithms"/>
+            
+    </tags>
+    
+</problem>

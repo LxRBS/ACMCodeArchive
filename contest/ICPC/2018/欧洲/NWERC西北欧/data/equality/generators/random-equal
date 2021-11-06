@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Generates test cases between (inclusive):
+#   095 and 110
+#   123 and 140
+
+set -e
+set -o pipefail
+
+g++ -o /tmp/gen.equality -std=c++14 -O2 ../generators/random-equal.gen/rgl.cc
+g++ -o /tmp/gen.inequality -std=c++14 -O2 ../generators/random-equal.gen/rgl-notequal.cc
+
+# Generate cases 095..110
+/tmp/gen.equality 10 1 > secret/095.in
+/tmp/gen.equality 100 2 > secret/096.in
+/tmp/gen.equality 1000 3 > secret/097.in
+/tmp/gen.equality 10000 4 > secret/098.in
+/tmp/gen.equality 40000 5 > secret/099.in
+/tmp/gen.equality 200 6 > secret/100.in
+/tmp/gen.equality 200 7 > secret/101.in
+/tmp/gen.equality 200 8 > secret/102.in
+/tmp/gen.equality 200 9 > secret/103.in
+/tmp/gen.equality 200 10 > secret/104.in
+/tmp/gen.equality 200 11 > secret/105.in
+/tmp/gen.equality 200 12 > secret/106.in
+/tmp/gen.equality 200 13 > secret/107.in
+/tmp/gen.equality 200 14 > secret/108.in
+/tmp/gen.equality 200 15 > secret/109.in
+/tmp/gen.equality 200 16 > secret/110.in
+
+# Cases from 111 to 122 are hand-generated.
+
+# Generate cases 123..135 (numbers in [1,9909])
+for i in {123..140}
+  do
+    /tmp/gen.inequality $((i+500)) ${i} 9909 > secret/${i}.in
+  done
+
+# Generate cases 136..145 (numbers in [1,3])
+for i in {136..145}; do /tmp/gen.inequality $((i+500)) ${i} 3 > secret/${i}.in; done
+
+# Generate cases 146..150 (numbers in [1,5])
+for i in {146..150}; do /tmp/gen.inequality $((i+500)) ${i} 5 > secret/${i}.in; done
+
+for i in secret/{095..110} secret/{123..150}
+  do
+    pypy ../submissions/accepted/rgl-sorting.py < $i.in > $i.ans
+  done

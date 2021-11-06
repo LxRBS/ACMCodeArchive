@@ -1,0 +1,5 @@
+\begin{tutorial}{Guide}
+
+Suppose for a moment that we have to visit exactly $k$ vertices and return to the capital. In this case, it can be proven that the minimal length of the traversed path should be $2 (k - 1)$. However, in our problem we do not have to return to the capital: thus, the best way is to stop the traversal at the deepest vertex possible. So, we have to find a vertex $v$ which is the deepest and which path does not exceed $k$. Then, we have to simply restore some such path. To do that, for example, we count the number of vertices on the path to $v$ and run a depth-first search from the vertices on the path until we visit $k$ vertices.
+
+\end{tutorial}

@@ -1,0 +1,10 @@
+REGEX("0?.[0-9]5") NEWLINE
+REGEX("0?.[0-9]5") NEWLINE  # tf < tr checked in c++ format checker
+INT(0,0) NEWLINE
+SET(len = 0)
+WHILEI(i,!ISEOF)
+    REGEX("[0-9]{0,3}(\\.[0-9])?") NEWLINE # bounds checked in c++
+    SET(len = i+1)
+END
+ASSERT(len <= 1000)
+EOF

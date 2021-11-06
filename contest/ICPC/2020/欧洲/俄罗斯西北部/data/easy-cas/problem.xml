@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="20" short-name="easy-cas" url="https://polygon.codeforces.com/p6aQ6k9/svem/easy-cas">
+    <names>
+        <name language="english" value="Easy Compare-and-Set"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/problem.html" type="text/html"/>
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+    </statements>
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="">
+        <testset name="tests">
+            <time-limit>2000</time-limit>
+            <memory-limit>536870912</memory-limit>
+            <test-count>42</test-count>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test method="manual" sample="true"/>
+                <test method="manual" sample="true"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test cmd="gen_rand -n 10 -maxc 10 -successes 5" method="generated"/>
+                <test cmd="gen_linear -n 10 -successes 10" method="generated"/>
+                <test cmd="gen_rand -n 100 -maxc 100 -successes 0" method="generated"/>
+                <test cmd="gen_rand -n 100 -maxc 100 -successes 1" method="generated"/>
+                <test cmd="gen_rand -n 100 -maxc 100 -successes 2" method="generated"/>
+                <test cmd="gen_rand -n 100 -maxc 100 -successes 3" method="generated"/>
+                <test cmd="gen_rand -n 100 -maxc 100 -successes 50" method="generated"/>
+                <test cmd="gen_rand2 -n 100 -maxc 100 -successes 90 -bad 1" method="generated"/>
+                <test cmd="gen_rand2 -n 100 -maxc 100 -successes 90 -bad 3" method="generated"/>
+                <test cmd="gen_rand2 -n 100 -maxc 100 -successes 90 -bad 5" method="generated"/>
+                <test cmd="gen_rand -n 100 -maxc 100 -successes 99" method="generated"/>
+                <test cmd="gen_rand -n 100 -maxc 100 -successes 100" method="generated"/>
+                <test cmd="gen_rand_zero -n 100 -maxc 100 -bad 0" method="generated"/>
+                <test cmd="gen_rand_zero -n 100 -maxc 100 -bad 3" method="generated"/>
+                <test cmd="gen_rand -n 100000 -maxc 3 -successes 0" method="generated"/>
+                <test cmd="gen_rand -n 100000 -maxc 1 -successes 90000" method="generated"/>
+                <test cmd="gen_rand -n 100000 -maxc 2 -successes 90000" method="generated"/>
+                <test cmd="gen_rand -n 100000 -maxc 3 -successes 90000" method="generated"/>
+                <test cmd="gen_rand -n 100000 -maxc 5 -successes 90000" method="generated"/>
+                <test cmd="gen_rand -n 100000 -maxc 1000000000 -successes 0" method="generated"/>
+                <test cmd="gen_rand -n 100000 -maxc 1000000000 -successes 2" method="generated"/>
+                <test cmd="gen_rand -n 100000 -maxc 1000000000 -successes 3" method="generated"/>
+                <test cmd="gen_rand -n 100000 -maxc 1000000000 -successes 50000" method="generated"/>
+                <test cmd="gen_rand -n 100000 -maxc 1000000000 -successes 99999" method="generated"/>
+                <test cmd="gen_rand -n 100000 -maxc 1000000000 -successes 100000" method="generated"/>
+                <test cmd="gen_rand2 -n 100000 -maxc 1000000000 -successes 95000 -bad 1" method="generated"/>
+                <test cmd="gen_rand2 -n 100000 -maxc 1000000000 -successes 95000 -bad 10" method="generated"/>
+                <test cmd="gen_rand2 -n 100000 -maxc 1000000000 -successes 95000 -bad 100" method="generated"/>
+                <test cmd="gen_rand2 -n 100000 -maxc 1000000000 -successes 95000 -bad 5000" method="generated"/>
+                <test cmd="gen_linear -n 100000 -successes 10" method="generated"/>
+                <test cmd="gen_linear -n 100000 -successes 30000" method="generated"/>
+                <test cmd="gen_linear -n 100000 -successes 100000" method="generated"/>
+                <test cmd="gen_rand_zero -n 100000 -maxc 1000000000 -bad 0" method="generated"/>
+                <test cmd="gen_rand_zero -n 100000 -maxc 1000000000 -bad 1" method="generated"/>
+                <test cmd="gen_rand_zero -n 100000 -maxc 1000000000 -bad 100" method="generated"/>
+            </tests>
+        </testset>
+    </judging>
+    <files>
+        <resources>
+            <file path="files/olymp.sty"/>
+            <file path="files/problem.tex"/>
+            <file path="files/statements.ftl"/>
+            <file path="files/testlib.h" type="h.g++"/>
+        </resources>
+        <executables>
+            <executable>
+                <source path="files/checker.cpp" type="cpp.g++17"/>
+                <binary path="files/checker.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/gen_linear.cpp" type="cpp.g++17"/>
+                <binary path="files/gen_linear.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/gen_rand.cpp" type="cpp.g++17"/>
+                <binary path="files/gen_rand.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/gen_rand2.cpp" type="cpp.g++17"/>
+                <binary path="files/gen_rand2.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/gen_rand_zero.cpp" type="cpp.g++17"/>
+                <binary path="files/gen_rand_zero.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                <binary path="files/validate.exe" type="exe.win32"/>
+            </executable>
+        </executables>
+    </files>
+    <assets>
+        <checker type="testlib">
+            <source path="files/checker.cpp" type="cpp.g++17"/>
+            <binary path="check.exe" type="exe.win32"/>
+            <copy path="check.cpp" type="cpp.g++17"/>
+            <testset>
+                <test-count>5</test-count>
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                <tests>
+                    <test verdict="wrong-answer"/>
+                    <test verdict="wrong-answer"/>
+                    <test verdict="wrong-answer"/>
+                    <test verdict="ok"/>
+                    <test verdict="crashed"/>
+                </tests>
+            </testset>
+        </checker>
+        <validators>
+            <validator>
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                <binary path="files/validate.exe" type="exe.win32"/>
+                <testset>
+                    <test-count>4</test-count>
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                    <tests>
+                        <test verdict="valid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                    </tests>
+                </testset>
+            </validator>
+        </validators>
+        <solutions>
+            <solution tag="presentation-error">
+                <source path="solutions/easy-tourist-wa.py" type="python.3"/>
+                <binary path="solutions/easy-tourist-wa.pys3" type="pythonx.3"/>
+            </solution>
+            <solution tag="accepted">
+                <source path="solutions/easy-tourist.py" type="python.3"/>
+                <binary path="solutions/easy-tourist.pys3" type="pythonx.3"/>
+            </solution>
+            <solution tag="main">
+                <source path="solutions/solution_sm.java" type="java8"/>
+                <binary path="solutions/solution_sm.jar" type="jar"/>
+            </solution>
+            <solution tag="wrong-answer">
+                <source path="solutions/solution_sm_wa.java" type="java8"/>
+                <binary path="solutions/solution_sm_wa.jar" type="jar"/>
+            </solution>
+        </solutions>
+    </assets>
+    <properties>
+        <property name="tests-wellformed" value="true"/>
+    </properties>
+    <stresses>
+        <stress-count>0</stress-count>
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+        <list/>
+    </stresses>
+    <tags>
+        <tag value="eulerian paths"/>
+    </tags>
+</problem>

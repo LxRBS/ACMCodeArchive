@@ -1,0 +1,8 @@
+name: Kleptography
+source: Northwestern Europe Regional Contest (NWERC) 2018
+# source_url:
+# rights_owner:
+license: cc by-sa
+
+limits:
+   time_multiplier: 7

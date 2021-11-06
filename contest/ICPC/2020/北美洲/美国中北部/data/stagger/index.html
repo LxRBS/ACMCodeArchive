@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+  <meta content="text/html; charset=utf-8" http-equiv=
+  "content-type">
+
+  <title></title>
+  <link rel="stylesheet" href="problem.css" type="text/css">
+  <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: { 
+    ignoreClass: ".*",
+    inlineMath: [['$','$'], ['\\(','\\)']]
+        },
+  MMLorHTML: {
+    prefer: {Firefox: "HTML"}
+    }
+  });
+  </script>
+  <script type="text/javascript" src=
+  "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+
+<body>
+  <div class="problembody">
+    <div class="problemheader">
+      <h1>Staggering to the Finish</h1>
+
+      <h3>Problem ID: stagger</h3>
+    </div>
+
+    <p>An oval track and field racing track consists of two
+    parallel straightaway sections connected by two semicircles,
+    depicted in Figure&nbsp;1. Footraces run in the
+    counterclockwise direction, ending at a common finish line
+    located along the lower straightaway. For races that exceed the
+    length of a single straightaway, starting lines must be
+    staggered backwards, in the clockwise direction, from the
+    finish line. The staggered starting lines must account for the
+    curve of the semicircles and the widths of each running
+    lane.</p>
+
+    <div class="figure">
+      <center>
+        <img src="img-0001.png" alt=
+        "\includegraphics[width=.75\textwidth ]{Figure1cropped.png}"
+        style="width:75.00%">
+      </center>
+    </div>
+
+    <div class="figure">
+      <center>
+        <img src="img-0002.png" alt=
+        "\includegraphics[width=.75\textwidth ]{Figure2cropped.png}"
+        style="width:75.00%">
+      </center>
+    </div>
+
+    <p>There are international standards for oval track dimensions.
+    Unfortunately, the available area for a track doesn’t always
+    hold a standard track. Given the dimensions of the track and
+    the length of the race, your team is to write a program to
+    ensure equal race lengths by computing the staggered starting
+    line positions.</p>
+
+    <p>The total distance of a race for any given lane is computed
+    from the <i class="sl">line of running</i>. The line of running
+    is an unmarked line to the right of the lane’s inside marker
+    (as seen from the counterclockwise direction). See
+    Figure&nbsp;2. For the innermost lane (lane 1) the line of
+    running is usually farther from the lane marker than for the
+    remaining lanes.</p>
+
+    <p>The track is mapped to an <span class="tex2jax_process">$(x,
+    y)$</span> coordinate system with <span class=
+    "tex2jax_process">$(0, 0)$</span> at the center of the track.
+    See Figure 1.</p>
+
+    <h2>Input</h2>
+
+    <p>The first line of input to your program contains seven
+    values, <span class="tex2jax_process">$N$</span> <span class=
+    "tex2jax_process">$R$</span> <span class=
+    "tex2jax_process">$S$</span> <span class=
+    "tex2jax_process">$W$</span> <span class=
+    "tex2jax_process">$F$</span> <span class=
+    "tex2jax_process">$L_1$</span> <span class=
+    "tex2jax_process">$L_2$</span>, separated by whitespace,
+    describing the geometry of a track, where:</p>
+
+    <ul class="itemize">
+      <li>
+        <p><span class="tex2jax_process">$N$</span> is the integer
+        number of lanes. (<span class="tex2jax_process">$1 \le N
+        \le 9$</span>)</p>
+      </li>
+
+      <li>
+        <p><span class="tex2jax_process">$R$</span> is the inner
+        radius of lane 1, a real number in meters. See
+        Figure&nbsp;1. (<span class="tex2jax_process">$1.0 \le R
+        \le 100.0$</span>)</p>
+      </li>
+
+      <li>
+        <p><span class="tex2jax_process">$S$</span> is the length
+        of the straightaway, a real number in meters. See
+        Figure&nbsp;1. (<span class="tex2jax_process">$1.0 \le S
+        \le 200.0$</span>)</p>
+      </li>
+
+      <li>
+        <p><span class="tex2jax_process">$W$</span> is the width of
+        each lane, a real number in meters. See Figure&nbsp;2.
+        (<span class="tex2jax_process">$0.5 \le W \le
+        3.0$</span>)</p>
+      </li>
+
+      <li>
+        <p><span class="tex2jax_process">$F$</span> is the
+        <span class="tex2jax_process">$x$</span>-coordinate of the
+        finish line, measured from the centerline in Figure&nbsp;1,
+        a real value in meters. The finish line will always be in
+        the lower (negative <span class=
+        "tex2jax_process">$y$</span>) half of the track.
+        (<span class="tex2jax_process">$\vert F\vert \le S /
+        2$</span>)</p>
+      </li>
+
+      <li>
+        <p><span class="tex2jax_process">$L_1$</span> is the offset
+        from the inner radius of lane&nbsp;1 to the line of running
+        for lane&nbsp;1, a real number in meters. See
+        Figure&nbsp;2. (<span class="tex2jax_process">$0 \le L_1
+        &lt; W$</span>)</p>
+      </li>
+
+      <li>
+        <p><span class="tex2jax_process">$L_2$</span> is the offset
+        from the inner radius to the lines of running for
+        lanes&nbsp;2 and higher. See Figure&nbsp;2. (<span class=
+        "tex2jax_process">$0 \le L_2 &lt; W$</span>)</p>
+      </li>
+    </ul>
+
+    <p>The remaining lines until end-of-file specify <span class=
+    "tex2jax_process">$D$</span>, the distance of a race, one race
+    per line, a real number in meters. (<span class=
+    "tex2jax_process">$1.0 \le D &lt; 410.0$</span>)</p>
+
+    <h2>Output</h2>
+
+    <p>Your program is to print a series of values for each race
+    distance, separated from each other by spaces and/or newlines.
+    Print the race distance first, followed by the <span class=
+    "tex2jax_process">$(x, y)$</span> coordinates of the staggered
+    starting line locations in lane number order. Express all
+    values in meters. The <span class="tex2jax_process">$(x,
+    y)$</span> coordinate is the innermost point of a lane, NOT the
+    line of running. Treat each lane <i class="sl">marker</i>
+    (straightaway or radius) as a zero-width line. International
+    standards require that the values be within <span class=
+    "tex2jax_process">$0.001$</span> meters of the exact
+    answer.</p>
+
+    <table class="sample" summary="sample data">
+      <tr>
+        <th>Sample Input 1</th>
+
+        <th>Sample Output 1</th>
+      </tr>
+
+      <tr>
+        <td>
+          <pre>
+4 36.5 84.39 1.22 40.0 0.30 0.20
+200.0
+400
+</pre>
+        </td>
+
+        <td>
+          <pre>
+200.000 -40.0006 36.5000 -43.5119 37.6970 -47.3108 38.6025 -51.0664 39.1679
+400.000 40.0012 -36.5000 46.9998 -37.4127 54.4292 -36.9682 61.4438 -35.2464
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

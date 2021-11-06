@@ -1,0 +1,5 @@
+#eofstyle="linux" eolnstyle="linux"#
+n (2<=n<=24, n%2=0);
+{[*n]
+    s:string (s%%"[BW]+", length(s)=n);
+}

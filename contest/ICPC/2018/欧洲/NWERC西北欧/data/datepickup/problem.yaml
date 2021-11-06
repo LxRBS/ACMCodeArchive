@@ -1,0 +1,7 @@
+name: Date Pickup
+author: Bjarki Ágúst Guðmundsson
+source: Northwestern Europe Regional Contest (NWERC) 2018
+source_url: https://2018.nwerc.eu/
+license: cc by-sa
+limits:
+  time_multiplier: 1.5

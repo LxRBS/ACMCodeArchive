@@ -1,0 +1,8 @@
+name: Brexit Negotiations
+author: Gregor Behnke
+source: Northwestern Europe Regional Contest (NWERC) 2018
+source_url: https://2018.nwerc.eu
+license: cc by-sa
+
+limits:
+   time_multiplier: 2.5

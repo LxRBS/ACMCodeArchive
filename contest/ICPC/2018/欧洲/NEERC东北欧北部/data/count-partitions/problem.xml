@@ -1,0 +1,81 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+<problem
+	version = "1.0"
+	id = "qf.2018.main.count-partitions"
+>
+	<judging>
+		<script type = "%icpc">
+			<testset
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+				test-count = "31"
+			>
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+		<script type = "%ioi">
+			<testset
+				name = "preliminary"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test comment = "manual" />
+			</testset>
+			<testset
+				name = "main"
+				feedback = "outcome"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test points = "0" comment = "manual" />
+				<test points = "0" comment = "generated cmd: 'range 1 10'" />
+				<test points = "0" comment = "generated cmd: 'range 1 100'" />
+				<test points = "0" comment = "generated cmd: 'range 1 1000'" />
+				<test points = "0" comment = "generated cmd: 'range 1 10000'" />
+				<test points = "0" comment = "generated cmd: 'range 100001 110000'" />
+				<test points = "0" comment = "generated cmd: 'range 190001 200000'" />
+				<test points = "0" comment = "generated cmd: 'range 1 1'" />
+				<test points = "0" comment = "generated cmd: 'range 200000 200000'" />
+				<test points = "0" comment = "generated cmd: 'repeat 1 10000'" />
+				<test points = "0" comment = "generated cmd: 'repeat 200000 10000'" />
+				<test points = "0" comment = "generated cmd: 'range 10001 20000'" />
+				<test points = "0" comment = "generated cmd: 'range 20001 30000'" />
+				<test points = "0" comment = "generated cmd: 'range 30001 40000'" />
+				<test points = "0" comment = "generated cmd: 'range 40001 50000'" />
+				<test points = "0" comment = "generated cmd: 'range 50001 60000'" />
+				<test points = "0" comment = "generated cmd: 'range 60001 70000'" />
+				<test points = "0" comment = "generated cmd: 'range 70001 80000'" />
+				<test points = "0" comment = "generated cmd: 'range 80001 90000'" />
+				<test points = "0" comment = "generated cmd: 'range 90001 100000'" />
+				<test points = "0" comment = "generated cmd: 'range 110001 120000'" />
+				<test points = "0" comment = "generated cmd: 'range 120001 130000'" />
+				<test points = "0" comment = "generated cmd: 'range 130001 140000'" />
+				<test points = "0" comment = "generated cmd: 'range 140001 150000'" />
+				<test points = "0" comment = "generated cmd: 'range 150001 160000'" />
+				<test points = "0" comment = "generated cmd: 'range 160001 170000'" />
+				<test points = "0" comment = "generated cmd: 'range 170001 180000'" />
+				<test points = "0" comment = "generated cmd: 'range 180001 190000'" />
+				<test points = "0" comment = "generated cmd: 'random 10000 1000'" />
+				<test points = "0" comment = "generated cmd: 'random 10000 50000'" />
+				<test points = "0" comment = "generated cmd: 'random 10000 200000'" />
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+	</judging>
+</problem>

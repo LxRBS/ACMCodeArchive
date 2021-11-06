@@ -1,0 +1,9 @@
+\begin{tutorial}{Hard Optimization}
+
+A \emph{laminar} set of segments clearly forms a forest-like structure: outer segments (not contained in any other ones) are the roots of the trees, segments that are only contained in outer segments are their children, and so on, recursively.
+
+Recovering the tree structure can be done with sorting and stack. Go through all segments in increasing order of $L_i$, and keep a stack which describes the current rightmost path in the tree. For each segment, pop the segments that are fully on the left of it from the stack. After that, we know that the top of the stack is the parent of this segment (if the stack is empty, this segment is the root of a new tree), and we push the segment onto the stack.
+
+On these trees, we are going to use dynamic programming. Suppose we have found the optimal choice of subsegments for the children $s_1, s_2, \ldots, s_k$ of a particular segment $i$. Then we can greedily pick the longest empty
+
+\end{tutorial}

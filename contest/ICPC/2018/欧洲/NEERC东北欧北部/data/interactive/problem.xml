@@ -1,0 +1,108 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+<problem
+	version = "1.0"
+	id = "qf.2018.main.interactive"
+>
+	<judging>
+		<script type = "%icpc">
+			<testset
+				input-name = "interactive.in"
+				output-name = "interactive.out"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+				test-count = "52"
+			>
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+			<interactor type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "files/interactor.exe" />
+			</interactor>
+		</script>
+		<script type = "%ioi">
+			<testset
+				name = "preliminary"
+				input-name = "interactive.in"
+				output-name = "interactive.out"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test comment = "manual" />
+			</testset>
+			<testset
+				name = "main"
+				feedback = "outcome"
+				input-name = "interactive.in"
+				output-name = "interactive.out"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test points = "0" comment = "manual" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 3 10 4 random 1234'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 3 10 4 random 12341'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 3 10 4 random 12342'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 3 10 4 random 12343'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 3 10 4 random 12344'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 3 10 4 random 12345'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 3 10 4 random 12346'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 3 10 4 random 12347'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 3 10 4 random 12348'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 10 4 random 1234'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 10 4 random 12341'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 10 4 random 12342'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 10 4 random 12343'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1 10 1000 not_random 774'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1 1 1000 not_random 771'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1 2 1000 not_random 773'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 100 10 4 random 123415'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 100 10 4 random 123424'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 100 10 4 random 123433'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 100 10 4 random 123442'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 100 10 4 random 123451'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 4 random 1112341'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 4 random 1112342'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 4 random 1112343'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 4 random 1112344'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 4 random 1112345'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 1000 random 13331'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 1000 random 13332'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 1000 random 13333'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 1000 random 13334'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 1000 random 13335'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 1000 not_random 1333551'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 1000 not_random 1333552'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 1000 not_random 1333553'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 1000 not_random 1333554'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 1 not_random 2133355'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 2 not_random 3133355'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 3 not_random 4133355'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 4 not_random 5133355'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 20 not_random alotof=[1] 2342423'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 20 not_random alotof=[1] 23424231'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 20 not_random alotof=[1] 23424232'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 20 not_random alotof=[1] 23424233'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 20 not_random alotof=[1] 23424234'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 2 not_random alotof=[2,1] 2331'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 2 not_random alotof=[2,1] 23312'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 2 not_random alotof=[2,1] 23313'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 2 not_random alotof=[2,1] 23314'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 2 not_random alotof=[1] 332331'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 2 not_random alotof=[1] 3323312'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1000 10 2 not_random alotof=[1] 3323313'" />
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+			<interactor type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "files/interactor.exe" />
+			</interactor>
+		</script>
+	</judging>
+</problem>

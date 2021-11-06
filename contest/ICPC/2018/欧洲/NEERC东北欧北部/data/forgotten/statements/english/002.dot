@@ -1,0 +1,14 @@
+graph G {
+    rankdir="LR";
+    1 [shape=circle]
+    2 [shape=triangle]
+    3 [shape=circle]
+    4 [shape=square]
+    5 [shape=pentagon]
+    6 [shape=triangle]
+    1 -- 2 [color=black]
+    2 -- 3 [color=black]
+    3 -- 5 [color=black]
+    3 -- 4 [color=black]
+    2 -- 6 [color=black]
+}

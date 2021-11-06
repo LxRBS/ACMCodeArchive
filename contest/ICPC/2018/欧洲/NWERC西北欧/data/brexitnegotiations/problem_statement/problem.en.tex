@@ -1,0 +1,52 @@
+\problemname{Brexit Negotiations}
+As we all know, Brexit negotiations are on their way---but we still do not know
+whether they will actually finish in time.
+
+The negotiations will take place topic-by-topic. To organise the negotiations
+in the most effective way, the topics will all be discussed and finalised in
+separate meetings, one meeting at a time.
+
+This system exists partly because there are (non-cyclic) dependencies between
+some topics: for example, one cannot have a meaningful talk about tariffs
+before deciding upon the customs union.
+The EU can decide on any order in which to negotiate the topics, as long as the
+mentioned dependencies are respected and all topics are covered.
+
+Each of the topics will be discussed at length using every available piece of
+data, including key results from past meetings. At the start of each meeting,
+the delegates will take one extra minute for each of the meetings that has already
+happened by that point, even unrelated ones, to recap the discussions and
+understand how their conclusions were reached. See Figure~\ref{fig:brexit} for an example.
+
+Nobody likes long meetings. The EU would like you to help order the meetings in
+a way such that the longest meeting takes as little time as possible.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.9\textwidth]{sample1}
+  \caption{Illustration of how time is spent in each meeting in a solution to Sample Input 2.}
+  \label{fig:brexit}
+\end{figure}
+
+\section*{Input}
+
+The input consists of:
+
+\begin{itemize}
+\item One line containing an integer $n$ ($1 \leq n \leq 4 \cdot 10^5$), the number of topics to be discussed.
+      The topics are numbered from $1$ to $n$.
+
+\item $n$ lines, describing the negotiation topics.
+
+      The $i$th such line starts with two integers $e_i$ and $d_i$ ($1 \leq e_i \leq
+10^6$, $0 \leq d_i < n$), the number of minutes needed to reach a conclusion on
+topic $i$ and the number of other specific topics that must be dealt with before
+topic $i$ can be discussed.
+
+      The remainder of the line has $d_i$ distinct integers $b_{i,1}, \ldots, b_{i,d_{i}}$ ($1 \le b_{i,j} \le n$ and $b_{i,j} \ne i$ for each $j$), the list of topics that need to be completed before topic $i$.
+\end{itemize}
+It is guaranteed that there are no cycles in the topic dependencies, and that the sum of $d_i$ over all topics is at most $4 \cdot 10^5$.
+
+\section*{Output}
+Output the minimum possible length of the longest of all meetings, if meetings
+are arranged optimally according to the above rules.

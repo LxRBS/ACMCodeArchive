@@ -1,0 +1,5 @@
+#eofstyle="linux" eolnstyle="linux"#
+n k (1<=k<=n<=200000);
+{[*n]
+    x (1<=x<=k);
+}

@@ -1,0 +1,106 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<problem
+	version = "1.0"
+	id = "nef.2020.main.digits"
+>
+	<judging>
+		<script type = "%icpc">
+			<testset
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+				test-count = "52"
+			>
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+		<script type = "%ioi">
+			<testset
+				name = "preliminary"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test comment = "manual cmd: ''" />
+				<test comment = "manual cmd: ''" />
+				<test comment = "manual cmd: ''" />
+				<test comment = "manual cmd: ''" />
+				<test comment = "manual cmd: ''" />
+			</testset>
+			<testset
+				name = "main"
+				feedback = "outcome"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test points = "0" comment = "manual cmd: ''" />
+				<test points = "0" comment = "manual cmd: ''" />
+				<test points = "0" comment = "manual cmd: ''" />
+				<test points = "0" comment = "manual cmd: ''" />
+				<test points = "0" comment = "manual cmd: ''" />
+				<test points = "0" comment = "generated cmd: 'gen 10 0 10'" />
+				<test points = "0" comment = "generated cmd: 'gen 10 1 10'" />
+				<test points = "0" comment = "generated cmd: 'gen 10 2 10'" />
+				<test points = "0" comment = "generated cmd: 'gen 10 3 10'" />
+				<test points = "0" comment = "generated cmd: 'gen 10 4 10'" />
+				<test points = "0" comment = "generated cmd: 'gen 10 5 10'" />
+				<test points = "0" comment = "generated cmd: 'gen 10 6 10'" />
+				<test points = "0" comment = "generated cmd: 'gen 10 7 10'" />
+				<test points = "0" comment = "generated cmd: 'gen 10 8 10'" />
+				<test points = "0" comment = "generated cmd: 'gen 10 9 10'" />
+				<test points = "0" comment = "generated cmd: 'gen 100000 0 1000'" />
+				<test points = "0" comment = "generated cmd: 'gen 100000 1 1000'" />
+				<test points = "0" comment = "generated cmd: 'gen 100000 2 1000'" />
+				<test points = "0" comment = "generated cmd: 'gen 100000 3 1000'" />
+				<test points = "0" comment = "generated cmd: 'gen 100000 4 1000'" />
+				<test points = "0" comment = "generated cmd: 'gen 100000 5 1000'" />
+				<test points = "0" comment = "generated cmd: 'gen 100000 6 1000'" />
+				<test points = "0" comment = "generated cmd: 'gen 100000 7 1000'" />
+				<test points = "0" comment = "generated cmd: 'gen 100000 8 1000'" />
+				<test points = "0" comment = "generated cmd: 'gen 100000 9 1000'" />
+				<test points = "0" comment = "manual cmd: ''" />
+				<test points = "0" comment = "generated cmd: 'gen_same 100000 999 0'" />
+				<test points = "0" comment = "generated cmd: 'gen_same 100000 999 1'" />
+				<test points = "0" comment = "generated cmd: 'gen_same 100000 997 0'" />
+				<test points = "0" comment = "generated cmd: 'gen_same 100000 997 1'" />
+				<test points = "0" comment = "generated cmd: 'gen_same 100000 997 2'" />
+				<test points = "0" comment = "generated cmd: 'gen_same 100000 997 3'" />
+				<test points = "0" comment = "manual cmd: ''" />
+				<test points = "0" comment = "manual cmd: ''" />
+				<test points = "0" comment = "generated cmd: 'gen2 100000 1000 0 0'" />
+				<test points = "0" comment = "generated cmd: 'gen2 100000 1000 0 1'" />
+				<test points = "0" comment = "generated cmd: 'gen2 100000 1000 0 2'" />
+				<test points = "0" comment = "generated cmd: 'gen2 100000 1000 1 0'" />
+				<test points = "0" comment = "generated cmd: 'gen2 100000 1000 1 1'" />
+				<test points = "0" comment = "generated cmd: 'gen2 100000 1000 1 2'" />
+				<test points = "0" comment = "generated cmd: 'gen2 100000 1000 2 0'" />
+				<test points = "0" comment = "generated cmd: 'gen2 100000 1000 2 1'" />
+				<test points = "0" comment = "generated cmd: 'gen2 100000 1000 2 2'" />
+				<test points = "0" comment = "generated cmd: 'gen3 100000 1000 0 0'" />
+				<test points = "0" comment = "generated cmd: 'gen3 100000 1000 0 1'" />
+				<test points = "0" comment = "generated cmd: 'gen3 100000 1000 0 2'" />
+				<test points = "0" comment = "generated cmd: 'gen3 100000 1000 1 0'" />
+				<test points = "0" comment = "generated cmd: 'gen3 100000 1000 1 1'" />
+				<test points = "0" comment = "generated cmd: 'gen3 100000 1000 1 2'" />
+				<test points = "0" comment = "generated cmd: 'gen3 100000 1000 2 0'" />
+				<test points = "0" comment = "generated cmd: 'gen3 100000 1000 2 1'" />
+				<test points = "0" comment = "generated cmd: 'gen3 100000 1000 2 2'" />
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+	</judging>
+</problem>

@@ -1,0 +1,9 @@
+INT(2,9) SPACE INT(5,30) SPACE INT(10,50) SPACE INT(0,4) SPACE INT(0,2000,fmin) SPACE INT(0,2000,fmax) NEWLINE
+ASSERT(fmin <= fmax)
+SET(linecount = 0)
+WHILEI(i, !ISEOF)
+    INT(200,2000) NEWLINE
+    SET(linecount = i+1)
+END
+ASSERT(linecount >= 1 && linecount <= 100)
+EOF

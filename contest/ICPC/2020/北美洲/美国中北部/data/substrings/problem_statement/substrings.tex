@@ -1,0 +1,61 @@
+\input problem.tex
+\def\probname{Substring Characters}
+\def\probno{?}
+\def\headeryear{2020/2021}
+\fullheader
+\par
+The set of distinct characters in a string is referred to as the
+generalized period of the string.  As an example, the generalized period
+of the string ``{\tt aabbabb}'' is $\{\hbox {\rm `{\tt a}', `{\tt b}'}\}$.
+\par
+A proper substring is a contiguous substring that is contained in
+a string and is not the string itself. So ``{\tt aabbabb}'' is not a
+proper substring of the above example.
+\par
+A minimal proper substring is one that can have no character removed from
+either end and still have the same generalized period. ``{\tt aabb}''
+is a proper substring of the example, but it is not minimal. ``{\tt ab}''
+is minimal.
+\par
+Unique means that multiple occurrences of the same minimal proper
+substring in a string are only to be counted once. In the example,
+``{\tt ab}'' appears twice, but is counted once---hence the number of
+proper minimal unique substrings with the same generalized period of
+the entire string is two: ``{\tt ab}'' and ``{\tt ba}''.
+\par
+Your team is to write a program to count the number of proper minimal
+unique substrings of a given string that have the same generalized
+period as the string itself.  Input to your program is a series of lines
+terminated by end-of-file. Each line is a test case consisting of
+alphanumeric characters (a--z, A--Z, 0--9).  Upper-case and lower-case
+letters are distinct.  The new line character is not part of the test
+case string.  No test case string will exceed 80 characters.
+\par
+For each input line print a line containing the number of proper minimal
+unique substrings of the input string with no leading or trailing
+whitespace and no extra leading signs or zeros.
+\vskip 22 pt
+\centerline{\it Sample Input}
+\vskip 14 pt
+\:aabbabb
+\:abAB34aB3ba7
+\:104001144
+\:aaabcaaa
+\:a
+\:bb
+\:bd
+\:1234567
+\vskip 22 pt
+\centerline{\it Output for the Sample Input}
+\vskip 14 pt
+\:2
+\:1
+\:3
+\:2
+\:0
+\:1
+\:0
+\:0
+\vfill \eject
+\end
+

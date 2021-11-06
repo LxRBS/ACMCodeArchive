@@ -1,0 +1,7 @@
+name: Game Design
+author: Alexander Dietsch and Tobias Werth and Robin Lee
+source: Northwestern Europe Regional Contest (NWERC) 2018
+validation: custom
+license: cc by-sa
+limits:
+  time_multiplier: 2

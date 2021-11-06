@@ -1,0 +1,10 @@
+INT(1,10,n) NEWLINE
+REP(n)
+  INT(0,36)
+  REP(n-1)
+    SPACE INT(0,36)
+  END
+  NEWLINE
+END
+REGEX("[ A-Z0-9]+") NEWLINE
+EOF

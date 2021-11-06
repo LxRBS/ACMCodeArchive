@@ -1,0 +1,1 @@
+The expression for a single digit of the product needs a "mod 10" at the end (each digit of the product is less than 10).  Also, the input is guaranteed to be positive.

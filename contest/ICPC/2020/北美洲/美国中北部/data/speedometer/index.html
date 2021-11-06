@@ -1,0 +1,359 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+  <meta content="text/html; charset=utf-8" http-equiv=
+  "content-type">
+
+  <title></title>
+  <link rel="stylesheet" href="problem.css" type="text/css">
+  <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: { 
+    ignoreClass: ".*",
+    inlineMath: [['$','$'], ['\\(','\\)']]
+        },
+  MMLorHTML: {
+    prefer: {Firefox: "HTML"}
+    }
+  });
+  </script>
+  <script type="text/javascript" src=
+  "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+
+<body>
+  <div class="problembody">
+    <div class="problemheader">
+      <h1>Digital Speedometer</h1>
+
+      <h3>Problem ID: speedometer</h3>
+    </div>
+
+    <p>A digital speedometer shows a vehicle’s speed as integer
+    miles per hour. There are occasions when the sensed speed
+    varies between two integer values, such as during cruise
+    control. Using a single threshold to round between adjacent
+    integers often makes the display toggle rapidly between the two
+    integers, which is distracting to the driver.</p>
+
+    <p>Your team must implement a smoothing technique for the
+    display using separate rising and falling thresholds
+    (<span class="tex2jax_process">$t_ r$</span> and <span class=
+    "tex2jax_process">$t_ f$</span>, <span class=
+    "tex2jax_process">$t_ r &lt; t_ f$</span>, respectively). See
+    Figure&nbsp;1 for a graphical depiction of the Sample Input for
+    use with the following rules.</p>
+
+    <div class="figure">
+      <center>
+        <img src="img-0001.png" alt=
+        "\includegraphics[width=0.9\textwidth ]{speedometer-Figure-1.png}"
+        style="width:90.00%">
+      </center>
+    </div>
+
+    <p>Each sensed speed, <span class="tex2jax_process">$s$</span>,
+    falls between two adjacent integers <span class=
+    "tex2jax_process">$i$</span> and <span class=
+    "tex2jax_process">$j$</span>, <span class="tex2jax_process">$i
+    \le s &lt; j$</span>, where <span class="tex2jax_process">$j =
+    i + 1$</span>. When displaying the sensed speed <span class=
+    "tex2jax_process">$s$</span> as an integer:</p>
+
+    <ul class="itemize">
+      <li>
+        <p>When <span class="tex2jax_process">$s$</span> falls
+        between <span class="tex2jax_process">$i$</span> and
+        <span class="tex2jax_process">$i+t_ f$</span>, <span class=
+        "tex2jax_process">$s$</span> is displayed as <span class=
+        "tex2jax_process">$i$</span>.</p>
+      </li>
+
+      <li>
+        <p>When <span class="tex2jax_process">$s$</span> falls
+        between <span class="tex2jax_process">$i+t_ r$</span> and
+        <span class="tex2jax_process">$j$</span>, <span class=
+        "tex2jax_process">$s$</span> is displayed as <span class=
+        "tex2jax_process">$j$</span>.</p>
+      </li>
+
+      <li>
+        <p>When <span class="tex2jax_process">$s$</span> falls
+        between <span class="tex2jax_process">$i+t_ f$</span> and
+        <span class="tex2jax_process">$i+t_ r$</span>, <span class=
+        "tex2jax_process">$s$</span> is displayed as <span class=
+        "tex2jax_process">$i$</span> if the most recent preceding
+        value for <span class="tex2jax_process">$s$</span> outside
+        of range <span class="tex2jax_process">$[i+t_ f, i+t_
+        r]$</span> is less than <span class="tex2jax_process">$i+t_
+        r$</span>, and <span class="tex2jax_process">$s$</span> is
+        displayed as <span class="tex2jax_process">$j$</span> if
+        the most recent preceding value for <span class=
+        "tex2jax_process">$s$</span> outside of range <span class=
+        "tex2jax_process">$[i+t_ f, i+t_ r]$</span> is greater than
+        <span class="tex2jax_process">$i+t_ r$</span>.</p>
+      </li>
+
+      <li>
+        <p>Any sensed speed, <span class="tex2jax_process">$0 &lt;
+        s &lt; 1$</span>, must display as <span class=
+        "tex2jax_process">$1$</span> because any non-zero speed, no
+        matter how small, must display as non-zero to indicate that
+        the vehicle is in motion.</p>
+      </li>
+    </ul>
+
+    <h2>Input</h2>
+
+    <p>The first line of input contains <span class=
+    "tex2jax_process">$t_ f$</span>, the falling threshold. The
+    second line of input contains <span class="tex2jax_process">$t_
+    r$</span>, the rising threshold. The speed sensor reports
+    <span class="tex2jax_process">$s$</span> in increments of
+    <span class="tex2jax_process">$0.1$</span> mph. The thresholds
+    are always set halfway between speed increments. All remaining
+    lines until end-of-file are successive decimal speeds,
+    <span class="tex2jax_process">$s$</span>, in miles per hour,
+    one speed per line. The third line of input, which is the first
+    measured speed, will always be <span class=
+    "tex2jax_process">$0$</span>.</p><span class=
+    "tex2jax_process">\[ 0 &lt; t_ f,t_ r &lt; 1; \ \ \ \ t_ f &lt;
+    t_ r; \ \ \ \ 0 \le s \le 120 \]</span>
+
+    <h2>Output</h2>
+
+    <p>Output is the list of speeds, one speed per line, smoothed
+    to integer values appropriate to <span class=
+    "tex2jax_process">$t_ f$</span> and <span class=
+    "tex2jax_process">$t_ r$</span>.</p>
+
+    <h2>Sample Explanation</h2>
+
+    <table cellspacing="0" class="tabular">
+      <tr>
+        <td style="text-align:left">
+          <p>Input</p>
+        </td>
+
+        <td style="text-align:left">
+          <p>Output</p>
+        </td>
+
+        <td style="text-align:left">
+          <p>Explanation</p>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="text-align:left">
+          <p><tt class="tt">0.25</tt></p>
+        </td>
+
+        <td style="text-align:left">&nbsp;</td>
+
+        <td style="text-align:left">
+          <p>Value of <span class="tex2jax_process">$t_
+          f$</span>.</p>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="text-align:left">
+          <p><tt class="tt">0.75</tt></p>
+        </td>
+
+        <td style="text-align:left">&nbsp;</td>
+
+        <td style="text-align:left">
+          <p>Value of <span class="tex2jax_process">$t_
+          r$</span>.</p>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="text-align:left">
+          <p><tt class="tt">0</tt></p>
+        </td>
+
+        <td style="text-align:left">
+          <p><tt class="tt">0</tt></p>
+        </td>
+
+        <td style="text-align:left">
+          <p>Initial input.</p>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="text-align:left">
+          <p><tt class="tt">2.0</tt></p>
+        </td>
+
+        <td style="text-align:left">
+          <p><tt class="tt">2</tt></p>
+        </td>
+
+        <td style="text-align:left">
+          <p>Input greater than <span class=
+          "tex2jax_process">$0$</span>, below threshold of
+          <span class="tex2jax_process">$2.25$</span>.</p>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="text-align:left">
+          <p><tt class="tt">5.7</tt></p>
+        </td>
+
+        <td style="text-align:left">
+          <p><tt class="tt">5</tt></p>
+        </td>
+
+        <td style="text-align:left">
+          <p>Input greater than <span class=
+          "tex2jax_process">$2.0$</span>, in threshold range.</p>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="text-align:left">
+          <p><tt class="tt">5.8</tt></p>
+        </td>
+
+        <td style="text-align:left">
+          <p><tt class="tt">6</tt></p>
+        </td>
+
+        <td style="text-align:left">
+          <p>Input greater than <span class=
+          "tex2jax_process">$2.0$</span>, exceeds upper threshold
+          of <span class="tex2jax_process">$5.75$</span>.</p>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="text-align:left">
+          <p><tt class="tt">5.7</tt></p>
+        </td>
+
+        <td style="text-align:left">
+          <p><tt class="tt">6</tt></p>
+        </td>
+
+        <td style="text-align:left">
+          <p>Input less than <span class=
+          "tex2jax_process">$5.8$</span>, in threshold range.</p>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="text-align:left">
+          <p><tt class="tt">5.2</tt></p>
+        </td>
+
+        <td style="text-align:left">
+          <p><tt class="tt">5</tt></p>
+        </td>
+
+        <td style="text-align:left">
+          <p>Input less than <span class=
+          "tex2jax_process">$5.8$</span>, below threshold of
+          <span class="tex2jax_process">$5.25$</span>.</p>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="text-align:left">
+          <p><tt class="tt">5.7</tt></p>
+        </td>
+
+        <td style="text-align:left">
+          <p><tt class="tt">5</tt></p>
+        </td>
+
+        <td style="text-align:left">
+          <p>Input greater than <span class=
+          "tex2jax_process">$5.2$</span>, in threshold range.</p>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="text-align:left">
+          <p><tt class="tt">0.8</tt></p>
+        </td>
+
+        <td style="text-align:left">
+          <p><tt class="tt">1</tt></p>
+        </td>
+
+        <td style="text-align:left">
+          <p>Input greater than <span class=
+          "tex2jax_process">$0$</span> and less than <span class=
+          "tex2jax_process">$1$</span>.</p>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="text-align:left">
+          <p><tt class="tt">0.2</tt></p>
+        </td>
+
+        <td style="text-align:left">
+          <p><tt class="tt">1</tt></p>
+        </td>
+
+        <td style="text-align:left">
+          <p>Input greater than <span class=
+          "tex2jax_process">$0$</span> and less than <span class=
+          "tex2jax_process">$1$</span>.</p>
+        </td>
+      </tr>
+    </table>
+
+    <table class="sample" summary="sample data">
+      <tr>
+        <th>Sample Input 1</th>
+
+        <th>Sample Output 1</th>
+      </tr>
+
+      <tr>
+        <td>
+          <pre>
+0.25
+0.75
+0
+2.0
+5.7
+5.8
+5.7
+5.2
+5.7
+0.8
+0.2
+</pre>
+        </td>
+
+        <td>
+          <pre>
+0
+2
+5
+6
+6
+5
+5
+1
+1
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

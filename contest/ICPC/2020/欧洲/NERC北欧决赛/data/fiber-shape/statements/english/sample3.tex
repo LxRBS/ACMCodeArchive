@@ -1,0 +1,33 @@
+\documentclass{standalone}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.12}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[grid=both,trig format plots=rad, axis equal, xtick distance=1, ytick distance=1]
+\draw[thick] (0.0, 0.0)
+-- (2.0, -1.0)
+-- (3.0, 0.0)
+-- (4.0, 3.0)
+-- (-1.0, 4.0)
+-- cycle;
+\node [circle, fill=black, inner sep=2pt] at (0.0, 0.0) {};
+\node [circle, fill=black, inner sep=2pt] at (2.0, -1.0) {};
+\node [circle, fill=black, inner sep=2pt] at (3.0, 0.0) {};
+\node [circle, fill=black, inner sep=2pt] at (4.0, 3.0) {};
+\node [circle, fill=black, inner sep=2pt] at (-1.0, 4.0) {};
+\addplot [domain=1.48327325:2.08357881,samples=50]({1.00000000 + -1.43170229*cos(\x) + -0.51229177 * sin(\x)},{-0.50000000 + 0.71585114*cos(\x) + -1.02458354 * sin(\x)}); 
+\addplot [domain=1.46486826:2.00433666,samples=50]({1.50000000 + -2.30779860*cos(\x) + -0.00000000 * sin(\x)},{0.00000000 + 0.00000000*cos(\x) + -1.75383419 * sin(\x)}); 
+\addplot [domain=1.18056345:1.29265108,samples=50]({2.00000000 + -3.11114994*cos(\x) + 1.78733891 * sin(\x)},{1.50000000 + -2.33336246*cos(\x) + -2.38311854 * sin(\x)}); 
+\addplot [domain=0.63177321:2.21987419,samples=50]({3.00000000 + -1.23918569*cos(\x) + 1.46366824 * sin(\x)},{1.00000000 + -2.47837138*cos(\x) + -0.73183412 * sin(\x)}); 
+\addplot [domain=1.99063232:2.51993966,samples=50]({3.50000000 + -0.65262981*cos(\x) + 1.25830481 * sin(\x)},{1.50000000 + -1.95788942*cos(\x) + -0.41943494 * sin(\x)}); 
+\addplot [domain=1.10743954:1.34020280,samples=50]({1.00000000 + 3.26210025*cos(\x) + 2.57707160 * sin(\x)},{2.00000000 + -3.26210025*cos(\x) + 2.57707160 * sin(\x)}); 
+\addplot [domain=0.50797125:2.77361979,samples=50]({1.50000000 + 2.97328494*cos(\x) + 0.32189584 * sin(\x)},{3.50000000 + -0.59465699*cos(\x) + 1.60947921 * sin(\x)}); 
+\addplot [domain=1.69805508:1.83548591,samples=50]({2.00000000 + 4.07497632*cos(\x) + -2.66280970 * sin(\x)},{1.50000000 + 3.05623224*cos(\x) + 3.55041293 * sin(\x)}); 
+\addplot [domain=0.40412820:1.91499884,samples=50]({-0.50000000 + -0.61706172*cos(\x) + -1.44645865 * sin(\x)},{2.00000000 + 2.46824687*cos(\x) + -0.36161466 * sin(\x)}); 
+\addplot [domain=1.42541263:2.30984631,samples=50]({0.50000000 + -1.88420932*cos(\x) + -1.90047125 * sin(\x)},{1.50000000 + 3.14034886*cos(\x) + -1.14028275 * sin(\x)}); 
+\end{axis}
+\end{tikzpicture}
+\end{document}

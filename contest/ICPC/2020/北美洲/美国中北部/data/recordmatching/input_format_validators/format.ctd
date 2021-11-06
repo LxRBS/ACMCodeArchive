@@ -1,0 +1,27 @@
+SET(len = 0)
+WHILEI(i, !MATCH("\n"))
+    REGEX("[a-zA-Z][a-zA-Z\-]*", fname[i]) REGEX("\\t+") REGEX("[a-zA-Z][a-zA-Z\-]*", lname[i]) REGEX("\\t+") REGEX("[a-zA-Z0-9][a-zA-Z0-9@_\\.\\-]*", email[i]) NEWLINE
+    ASSERT(STRLEN(fname[i]) <= 24)
+    ASSERT(STRLEN(lname[i]) <= 24)
+    ASSERT(STRLEN(email[i]) <= 64)
+    SET(len = i+1)
+END
+ASSERT(len <= 2000)
+ASSERT(len > 0)
+ASSERT(UNIQUE(email))
+ASSERT(UNIQUE(fname, lname))
+NEWLINE
+UNSET(fname, lname, email)
+SET(len = 0)
+WHILEI(i, !ISEOF)
+    REGEX("[a-zA-Z][a-zA-Z\-]*", fname[i]) REGEX("\\t+") REGEX("[a-zA-Z][a-zA-Z\-]*", lname[i]) REGEX("\\t+") REGEX("[a-zA-Z0-9][a-zA-Z0-9@_\\.\\-]*", email[i]) NEWLINE
+    ASSERT(STRLEN(fname[i]) <= 24)
+    ASSERT(STRLEN(lname[i]) <= 24)
+    ASSERT(STRLEN(email[i]) <= 64)
+    SET(len = i+1)
+END
+ASSERT(len <= 2000)
+ASSERT(len > 0)
+ASSERT(UNIQUE(email))
+ASSERT(UNIQUE(fname, lname))
+EOF

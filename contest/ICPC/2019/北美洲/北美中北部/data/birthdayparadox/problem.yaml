@@ -1,0 +1,7 @@
+author: Greg Hamerly
+source: 2019 ICPC South Central USA Regional Contest
+license: cc by-sa
+keywords: birthday paradox, probability
+validator_flags: float_tolerance 1e-6
+limits:
+    time_multiplier: 2

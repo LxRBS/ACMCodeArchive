@@ -1,0 +1,139 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+<problem
+	version = "1.0"
+	id = "qf.2018.main.german-quotes"
+>
+	<judging>
+		<script type = "%icpc">
+			<testset
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+				test-count = "87"
+			>
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+		<script type = "%ioi">
+			<testset
+				name = "preliminary"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test comment = "manual" />
+				<test comment = "manual" />
+				<test comment = "manual" />
+			</testset>
+			<testset
+				name = "main"
+				feedback = "outcome"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test points = "0" comment = "manual" />
+				<test points = "0" comment = "manual" />
+				<test points = "0" comment = "manual" />
+				<test points = "0" comment = "manual" />
+				<test points = "0" comment = "manual" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 0 1 no_shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 1 0 no_shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 127 0 no_shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 0 127 no_shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 63 63 no_shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 1 1 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 3 3 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 5 5 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 7 7 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 12 12 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 17 17 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 24 24 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 25 25 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 27 27 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 30 30 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 34 34 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 37 37 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 40 40 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 45 45 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 48 48 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 51 51 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 53 53 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 19 19 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 19 20 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 19 21 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 19 22 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 19 23 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 20 19 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 20 20 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 20 21 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 20 22 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 20 23 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 21 19 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 21 20 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 21 21 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 21 22 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 21 23 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 22 19 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 22 20 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 22 21 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 22 22 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 22 23 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 23 19 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 23 20 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 23 21 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 23 22 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 23 23 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 59 59 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 59 60 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 59 61 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 59 62 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 59 63 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 60 59 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 60 60 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 60 61 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 60 62 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 60 63 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 61 59 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 61 60 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 61 61 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 61 62 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 61 63 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 62 59 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 62 60 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 62 61 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 62 62 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 62 63 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 63 59 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 63 60 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 63 61 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 63 62 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 63 63 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 64 59 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 59 64 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 64 60 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 60 64 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 64 61 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 61 64 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 64 62 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 62 64 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 64 63 shuffle'" />
+				<test points = "0" comment = "generated cmd: 'generalized_gen 63 64 shuffle'" />
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+	</judging>
+</problem>

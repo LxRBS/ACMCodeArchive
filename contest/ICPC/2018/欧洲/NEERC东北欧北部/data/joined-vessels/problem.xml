@@ -1,0 +1,94 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+<problem
+	version = "1.0"
+	id = "qf.2018.main.joined-vessels"
+>
+	<judging>
+		<script type = "%icpc">
+			<testset
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+				test-count = "44"
+			>
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+		<script type = "%ioi">
+			<testset
+				name = "preliminary"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test comment = "manual" />
+			</testset>
+			<testset
+				name = "main"
+				feedback = "outcome"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test points = "0" comment = "manual" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 2 2 2'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 2 20 2'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 2 1000000000 2'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 20 20 380'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 20 200 380'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 20 1000000000 380'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 17 1000000000 380 inc'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 20 1000000000 380 dec'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 200 200 39800'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 200 2000 39800'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 200 1000000000 39800'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 197 1000000000 39800 inc'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 200 1000000000 39800 dec'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 198 1000000000 39800 inc noise 2'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 199 1000000000 39800 dec noise 2'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 447 447 199362'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 447 4470 199362'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 447 1000000000 199362'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 444 1000000000 199362 inc'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 447 1000000000 199362 dec'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 445 1000000000 199362 inc noise 4.47'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 446 1000000000 199362 dec noise 4.47'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 2000 2000 200000'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 2000 20000 200000'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 2000 1000000000 200000'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 1997 1000000000 200000 inc'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 2000 1000000000 200000 dec'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 1998 1000000000 200000 inc noise 20'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 1999 1000000000 200000 dec noise 20'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 20000 20000 200000'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 20000 200000 200000'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 20000 1000000000 200000'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 19997 1000000000 200000 inc'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 20000 1000000000 200000 dec'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 19998 1000000000 200000 inc noise 200'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 19999 1000000000 200000 dec noise 200'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 200000 200000 200000'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 200000 2000000 200000'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 200000 1000000000 200000'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 199997 1000000000 200000 inc'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 200000 1000000000 200000 dec'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 199998 1000000000 200000 inc noise 2000'" />
+				<test points = "0" comment = "generated cmd: 'gen_rand 199999 1000000000 200000 dec noise 2000'" />
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+	</judging>
+</problem>

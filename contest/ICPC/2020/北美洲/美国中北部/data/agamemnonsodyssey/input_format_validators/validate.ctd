@@ -1,0 +1,8 @@
+SET(maxn = 2*10^5)
+SET(maxk = 10^9)
+SET(maxw = 10^9)
+INT(1, maxn, n) SPACE INT(1, maxk, k) NEWLINE
+REP(n-1)
+  INT(1, n, u) SPACE INT(1, n, v) SPACE INT(1, maxw, c) NEWLINE
+END
+EOF

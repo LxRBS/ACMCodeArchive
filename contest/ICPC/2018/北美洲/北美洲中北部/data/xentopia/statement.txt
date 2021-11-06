@@ -1,0 +1,33 @@
+The city of Xentopia has a well-connected railway network. The city has N junctions numbered from 1 to N.
+M pairs of railway tracks exist between the junctions. Trains can travel in both directions on each track.
+Each railway track is either red, blue or white in colour.
+
+Tima, a tourist in the city, wants to travel from junction S to junction T in the minimum possible time.
+Tima has a map of the railway network that she can use to help herself.
+
+The map contains the information of each railway track:
+*U V X C* - denoting that a track exists between junction U and junction V,
+the train covers this track in X seconds and the track has colour C.
+There can be multiple tracks connecting U and V.
+
+Tima, the eccentric woman that she is, has some interesting constraints for her travel:
+- She wants to travel via exactly k1 red tracks, exactly k2 blue tracks and any number of white tracks in any order.
+- She is fine with using a railway track more than once.
+
+Can you tell the minimum time Tima will take to go from S to T ensuring that her constraints are not violated?
+
+Input Format:
+- The first line contains 4 space-separated integers - N, M, k1 and k2.
+- M lines follow. Each line contains 4 space-separated integers: U, V, X, C
+- The last line contains 2 space-separated integers - S, T - the source and the destination of Tima's journey
+
+Output Format:
+Print a single integer on a new line denoting the total time Tima would take.
+If in case she can't travel from S to T without violating the conditions, print -1.
+
+Constraints:
+1 <= N, M, k1, k2 <= 200
+1 <= U, V, S, T <= N (Note: S could be equal to T)
+0 <= X <= 10^9
+0 <= C <= 2
+C=0 denotes a white track, C=1 denotes red track and C=2 denotes blue track

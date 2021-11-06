@@ -1,0 +1,42 @@
+\problemname{All in the Family}
+
+The scientists working at the Family Genetics Institute are tracing the spread of a hereditary disease through family trees.  They have started by listing the family members that have the disease, and the parent who passed the disease on to each child (we will assume that each child gets the disease from only one parent).  However, the scientists are confused about the names of different family relationships.  Parents, grandparents, and siblings they have a handle on.  But a relationship like ``third cousin, twice removed'' has been hard for them to wrap their heads around.   After much discussion they came up with some definitions that cleared things up.
+
+Suppose we have two people conveniently named $A$ and $B$ and their closest common ancestor is named $C$ (what are the odds!).  We say that $A$ is {\em $m$ generations removed from $C$\/} if there are $m$ direct descendants from $C$ ending with $A$.  Thus if $A$ is the daughter of $C$ she is $1$ generation removed; if she is the granddaughter of $C$ she is $2$ generations removed, and so on.  Any person is $0$ generations removed from themselves.
+
+Now let $A$ be $m$ generations removed from $C$ and $B$ be $n$ generations removed from $C$ where $m \leq n$.  We can determine the relationship between $A$ and $B$ using the following rules:
+\begin{enumerate}
+\item if $m = 0$ then $B$ is the child of $A$ if $n=1$ or the $\mbox{great}^{n-2}$ grandchild of $A$ if $n > 1$.
+\item if $0 < m = n$ then $A$ and $B$ are siblings if $n=1$ or $(n-1)$-th cousins if $n > 1$.
+\item if $0 < m < n$ then $A$ and $B$ are $(m-1)$-th cousins $(n-m)$ times removed.
+\end{enumerate}
+Notice that if $m = 1$ and $n = 2$ we get the interestingly named ``$0$th cousins, $1$ time removed'' for the relationships we typically describe as ``aunt/uncle'' or ``niece/nephew''.
+
+Figure~\ref{fig:family1} below shows some examples for two new people named (what else) $D$ and $E$.
+\begin{figure}[!h]
+\centering
+\begin{tabular}{|c|c|l|} \hline
+\multicolumn{2}{|c|}{\# of generations removed} & \\
+\multicolumn{2}{|c|}{from common ancestor} & \\ \cline{1-2}
+$D$ & $E$ & Relationship \\ \hline
+$0$ & $1$ & $E$ is the child of $D$ \\ \hline
+$4$ & $0$ & $D$ is the great great grandchild of $E$ \\ \hline
+$3$ & $3$ & $D$ and $E$ are $2$nd cousins \\ \hline
+$9$ & $8$ & $D$ and $E$ are $7$th cousins, $1$ time removed \\ \hline
+$1$ & $4$ & $D$ and $E$ are $0$th cousins, $3$ times removed \\ \hline
+\end{tabular}
+\caption{Some example relationships}
+\label{fig:family1}
+\end{figure}
+
+The scientists have given you the description of a family tree and pairs of people in the tree and have asked you to determine the relationships between members of each pair.
+
+\section*{Input}
+
+Input begins with a line containing two positive integers $t$ $p$ ($t \leq 100, p \leq 1\,000$) specifying the  number of tree descriptions (described below) and the number of query pairs.  Following these are $t$ lines, each with one tree description.  Each tree description will be of the form $s_0$ $d$ $s_1$ $s_2 \ldots s_d$ indicating that person $s_0$ has $d$ children named $s_1$ through $s_d$.  All names are unique and contain only alphabetic characters.  Tree descriptions may be given in any order (i.e., the root of the entire tree may not necessarily be in the very first tree description).  No name will appear more than once as $s_0$ in the tree descriptions.  All the tree descriptions will combine to form exactly one tree, and the tree will have at least $2$ nodes and at most $100$ nodes.
+
+Following this are $p$ lines of the form $s_i$ $s_j$ where $s_i \neq s_j$ and both names are guaranteed to be in the tree.
+
+\section*{Output}
+
+Output the relationship for each pair of people, one per line, using the formats shown in Figure~\ref{fig:family1}.  Always output $s_i$'s name first for each pair except when $s_j$ is the direct descendant of $s_i$ (as in the first example in Figure~\ref{fig:family1}).  For the $n$-th ordinal number output {\tt $n$th} except for $n=1,2,3,21,22,23,31,32,33,\ldots$  in which case you should output {\tt 1st}, {\tt 2nd}, {\tt 3rd}, {\tt 21st}, {\tt 22nd}, {\tt 23rd}, {\tt 31st}, {\tt 32nd}, {\tt 33rd}, etc.  Also be sure to use {\tt times} for all times removed except one, where you should use the word {\tt time}.

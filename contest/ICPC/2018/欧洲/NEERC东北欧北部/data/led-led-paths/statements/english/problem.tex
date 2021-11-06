@@ -1,0 +1,56 @@
+\begin{problem}{LED-led Paths}{standard input}{standard output}{3 seconds}{512 megabytes}
+
+In a large city there are $n$ junctions and $m$ one-way streets connecting those junctions. It is known that one can't walk along the streets infinitely, as there is no directed cycle of streets in the city.
+
+The tourism department has decided to install colored illumination using the LED (light-emitting diode) technology. Each street is to be illuminated with either red~(\t{R}), green~(\t{G}), or blue~(\t{B}) color.
+
+The official city maps for tourists will indicate the selected colors. All continuous paths illuminated by the same color will be suggested for walking and sightseeing. As LEDs will lead people along beautiful ways, these paths will be called LED-led paths.
+
+The health department says that if there is a very long single-color LED-led path, some tourists might overestimate their strength, walk for too long, get too tired, and dislike the city.
+
+Propose a three-color illumination plan in which no single-color LED-led path consists of more than 42~streets.
+
+\InputFile
+The first line of the input contains two integers $n$ and $m$~--- the number of junctions and streets, respectively ($2 \le n \le 50\,000$; $1 \le m \le 200\,000$).
+
+Each of the following $m$ lines contains two integers $u_i$ and $v_i$, denoting a one-way street from junction $u_i$ to junction $v_i$ ($1 \le u_i, v_i \le n$; $u_i \neq v_i$).
+
+The given city is guaranteed to be acyclic. Each pair of junctions is connected by at most one street.
+
+\OutputFile
+For each street, in the order of input, output its color on a separate line~--- a single letter \t{R}, \t{G}, or \t{B}.
+
+\Example
+
+
+\exmpthreewidinf=0.22\thelinewidth
+\exmpthreewidouf=0.22\thelinewidth
+\exmpthreewidnote=0.46\thelinewidth
+\def\kwExampleNotes{Illustration}
+
+\begin{examplethree}
+\exmp{5 6
+5 3
+3 1
+1 2
+2 4
+5 2
+3 4
+}{B
+R
+G
+R
+B
+G
+}{
+\vspace{1mm}
+\center
+\includegraphics[scale=0.46]{sample-1.eps}
+}%
+\end{examplethree}
+
+\Note
+In this example, all single-color LED-led paths are not longer than one street (and therefore not longer than 42 streets), which is absolutely OK according to the health department.
+
+\end{problem}
+

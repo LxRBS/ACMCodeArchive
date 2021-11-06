@@ -1,0 +1,11 @@
+INT(2,12,k) SPACE INT(1,8,n) SPACE INT(1,k*(k-1)*n,m) NEWLINE
+REPI(i,m)
+    INT(1,k,u[i]) SPACE INT(1,k,v[i]) SPACE INT(1,n,d[i]) SPACE INT(1,30000,z[i]) NEWLINE
+    ASSERT(u[i] != v[i])
+END
+ASSERT(UNIQUE(u, v, d))
+REPI(i,k*n)
+    INT(1,k,a[i]) SPACE INT(1,n,b[i]) SPACE INT(1,30000,c[i]) NEWLINE
+END
+ASSERT(UNIQUE(a, b))
+EOF

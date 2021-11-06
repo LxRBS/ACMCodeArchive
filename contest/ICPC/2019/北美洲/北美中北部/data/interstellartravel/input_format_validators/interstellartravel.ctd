@@ -1,0 +1,10 @@
+INT(1,1000000,n) NEWLINE
+REP(n)
+    FLOATP(0.000001, 1000, 0, 6) # FIXME -- assuming maximum of 6 digits after the decimal point
+    SPACE
+    FLOATP(0, 100, 0, 6) 
+    SPACE
+    FLOATP(0, 6.2831853071795862, 0, 6)
+    NEWLINE
+END
+EOF

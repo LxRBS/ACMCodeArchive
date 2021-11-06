@@ -1,0 +1,69 @@
+\problemname{Travel the Skies}
+\illustration{.4}{airplane}{Wikimedia, cc-by-sa}
+
+One day your boss explains his new planning scheme for your company,
+Fly Away Air. Rather than having customers book tickets between destinations,
+they'll say when they want to leave and from where, and your company will take
+care of the rest. That means you get to generate their flight schedules and destinations for
+them! He has an eye on the books though and wants to make sure all your
+flights are fully booked. He tasks you with the job of determining if a set of
+flight plans in a given flight window is financially optimal in that regard.
+
+You assure him that he put his trust---and his pocket book---in the hands of
+the right employee. Your job is to plan flight schedules for customers so
+that you fill each of the flights scheduled in the given flight window.
+To ensure you don't lose customers due to air sickness,
+you decide that each customer can only take one flight a day. Further,
+since you're sure that all of your customers are gracious folks, you decide
+to help your boss out and let them fly on any day on or after their suggested
+departure date. Finally, to simplify things, you do not worry about ensuring each
+customer return to their original departure airport, though this is allowed to be scheduled.
+If needed, they can book their own return flights!
+
+\section*{Input}
+
+On the first line, you're given three integers: $k$, ($2 \leq k \leq 12$), the number of airports;
+$n$, ($1 \leq n \leq 8$), the number of days of the flight departure window;
+and $m$, ($1 \leq m \leq k\cdot (k-1) \cdot n$); the number of flights
+in the window. Then, $m$ lines follow with four integers each: $u$, ($1 \leq u \leq k$), the flight's starting
+location; $v$, ($1 \leq v \leq k$, $u \neq v$), the flight's ending destination; $d$, ($1 \leq d \leq n$), the day on which the
+flight flies in the window; and $z$, ($1 \leq z \leq 30\,000$), the capacity of the flight.
+It is guaranteed there will be at most one flight in each direction between any two airports on a given day.
+Following are $kn$ lines with three integers each: $a$, ($1 \leq a \leq k$), the airport;
+$b$, ($1 \leq b \leq n$), the day; and $c$, ($1 \leq c \leq 30\,000$), the number of customers
+wishing to begin their travels by leaving their homes to their local airport $a$ on day $b$ (notably,
+this does not include those who may be arriving from other flights, which is for you to decide). 
+Each airport-day pair will appear exactly once.
+
+\section*{Output}
+
+Output only the word \texttt{optimal} if all $m$ flights can be filled to capacity,
+else output only the word \texttt{suboptimal} if it is not possible to fill all $m$
+flights. It is not necessary that each customer arriving at an airport ever be booked
+on a flight.
+
+\section*{Example}
+
+Consider two airports: Chicago and Minneapolis, across two days. There are
+two flights: one from Chicago to Minneapolis on day $1$, with capacity $30$, and one from Minneapolis
+to Chicago on day $2$, with capacity $50$. On day $1$, $10$ people arrive at the airport
+in Minneapolis from their homes and $30$ people arrive at the airport from their homes in Chicago. 
+On day $2$, $10$ people arrive at both the Minneapolis and Chicago airports from their homes.
+We can fill all flights as follows.
+The first flight, on day $1$, can take the $30$ people that arrived in Chicago that day to
+Minneapolis. The second flight, on day $2$, can take the $30$ people that arrived in Minneapolis
+from Chicago in the previous day's flight, plus it can take the $10$ people that arrived at the
+Minneapolis airport on day $1$ and the additional $10$ people that arrived at the Minneapolis airport
+on day $2$. Thus this flight plan is \texttt{optimal}.
+%Consider two airports, \texttt{Chicago} and \texttt{Minneapolis}, across three
+%days. There are two flights: one from Chicago to Minneapolis on day 1 and one
+%on day 2 going the opposite direction, both with capacity 30. If 10 people
+%arrive at each airport on every day, then the first flight cannot be filled
+%because there are only 10 people available for a 30 person flight, and thus
+%this instance is \texttt{suboptimal}. If instead 30 people arrive at Chicago
+%on the first day, this flight can be filled, and so can the return flight,
+%hence it is \texttt{optimal}. If the return flight has capacity 50, then by
+%making the people arriving at Minneapolis on day 1 stay for day 2, the return
+%trip can utilize them, plus the 10 people arriving that day, plus the 30 people
+%arriving from the flight from Chicago on day 1, filling the flight back to
+%Chicago, making that schedule also \texttt{optimal}.

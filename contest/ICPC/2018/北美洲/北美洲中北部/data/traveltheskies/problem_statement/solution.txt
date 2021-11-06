@@ -1,0 +1,5 @@
+We can check the flight schedule by simulating the scenario when all flights are fully filled.
+More specificially, we maintain the supply and demand at each airport for each day.
+For each flight, increase the demand of the source airport on the day by flight capacity, and increase the supply of the destination airport on the next day by flight capacity.
+Passengers arriving at an airport also increases the supply at the airport on that day.
+To check if all flights at an airport on a specific day can be filled, sum up all the supply from the first day to that day, then subtract the value by all the demand from the first day to the day before, and see if the final value is greater than or equal to the demand of that day.

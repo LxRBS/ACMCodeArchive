@@ -1,0 +1,9 @@
+INT(1,100,n) NEWLINE
+REPI(i,n)
+  REGEX("[A-Za-z0-9]+",who) SPACE REGEX("[A-Za-z0-9]+",has) SPACE REGEX("[A-Za-z0-9]+",wants) NEWLINE
+  SET(wholist[i]=who,haslist[i]=has,wantlist[i]=wants)
+END
+ASSERT(UNIQUE(wholist))
+ASSERT(UNIQUE(haslist))
+ASSERT(UNIQUE(wantlist))
+EOF

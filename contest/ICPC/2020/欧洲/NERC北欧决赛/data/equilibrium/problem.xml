@@ -1,0 +1,104 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<problem
+	version = "1.0"
+	id = "nef.2020.main.equilibrium"
+>
+	<judging>
+		<script type = "%icpc">
+			<testset
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+				test-count = "54"
+			>
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "java.check" file = "check.jar" />
+			</verifier>
+		</script>
+		<script type = "%ioi">
+			<testset
+				name = "preliminary"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test comment = "manual cmd: ''" />
+			</testset>
+			<testset
+				name = "main"
+				feedback = "outcome"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test points = "0" comment = "manual cmd: ''" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 1 0'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 2 0'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 2 1'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 3 0'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 3 1'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 3 2'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 3 3'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 3 4'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 4 4'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 5 4'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 6 4'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 7 4'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 8 4'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 9 4'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 10 4'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 11 4'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 12 4'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 13 4'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 14 300'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 15 300'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 15 2000000'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 16 2000000'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 17 2000000'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 18 2000000'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 18 200000000'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 18 477638699'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 18 477638698'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 18 477630700'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 18 477608700'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 18 477038700'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 18 470638700'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 18 407638700'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 18 307638700'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 18 207638700'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 18 107638700'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 18 566'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 18 1'" />
+				<test points = "0" comment = "generated cmd: 'Tests byIndex 18 0'" />
+				<test points = "0" comment = "generated cmd: 'Tests hills 3 3 3 3 3 3'" />
+				<test points = "0" comment = "generated cmd: 'Tests hills 6 6 6'" />
+				<test points = "0" comment = "generated cmd: 'Tests hills 6 12'" />
+				<test points = "0" comment = "generated cmd: 'Tests hills 13 5'" />
+				<test points = "0" comment = "generated cmd: 'Tests hills 1 17'" />
+				<test points = "0" comment = "generated cmd: 'Tests hills 16 2'" />
+				<test points = "0" comment = "generated cmd: 'Tests greedyDegrees 18 0'" />
+				<test points = "0" comment = "generated cmd: 'Tests greedyDegrees 18 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests greedyDegrees 18 30'" />
+				<test points = "0" comment = "generated cmd: 'Tests greedyDegrees 18 45'" />
+				<test points = "0" comment = "generated cmd: 'Tests greedyDegrees 18 70'" />
+				<test points = "0" comment = "generated cmd: 'Tests greedyDegrees 18 89'" />
+				<test points = "0" comment = "generated cmd: 'Tests greedyDegrees 18 92'" />
+				<test points = "0" comment = "generated cmd: 'Tests greedyDegrees 18 111'" />
+				<test points = "0" comment = "generated cmd: 'Tests greedyDegrees 18 163'" />
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "java.check" file = "check.jar" />
+			</verifier>
+		</script>
+	</judging>
+</problem>

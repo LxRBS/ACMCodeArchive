@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="17" short-name="the-mind" url="https://polygon.codeforces.com/p5uPh4J/niyaznigmatul/the-mind">
+    <names>
+        <name language="english" value="Mind the Gap"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/problem.html" type="text/html"/>
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+    </statements>
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="">
+        <testset name="tests">
+            <time-limit>2000</time-limit>
+            <memory-limit>536870912</memory-limit>
+            <test-count>41</test-count>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test method="manual" sample="true"/>
+                <test method="manual" sample="true"/>
+                <test cmd="gen_correct 3 333333333 333333334" method="generated"/>
+                <test cmd="gen_prob_nosol 3 10" method="generated"/>
+                <test cmd="gen_prob_nosol 3 1000000000" method="generated"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test cmd="gen_correct 3 11 20" method="generated"/>
+                <test cmd="gen_correct 3 111 221" method="generated"/>
+                <test cmd="gen_correct 3 6 10" method="generated"/>
+                <test cmd="gen_correct 3 7 9" method="generated"/>
+                <test cmd="gen_correct 4 7 8" method="generated"/>
+                <test cmd="gen_correct 5 8 9" method="generated"/>
+                <test cmd="gen_correct 10 20 30" method="generated"/>
+                <test cmd="gen_correct 10 20 30 | ruin 20" method="generated"/>
+                <test cmd="gen_correct 10 20 30 | ruin 25" method="generated"/>
+                <test cmd="gen_correct 10 20 30 | ruin 200" method="generated"/>
+                <test cmd="gen_correct 10 20 30 | ruin_inc 200" method="generated"/>
+                <test cmd="gen_correct 10 20 30 | ruin_change 1 200" method="generated"/>
+                <test cmd="gen_correct 10 2000 3000" method="generated"/>
+                <test cmd="gen_correct 10 2000 3000 | ruin 2500" method="generated"/>
+                <test cmd="gen_correct 10 2000 3000 | ruin 22500" method="generated"/>
+                <test cmd="gen_correct 10 2000 3000 | ruin 42500" method="generated"/>
+                <test cmd="gen_correct 10 2000 3000 | ruin 142500" method="generated"/>
+                <test cmd="gen_correct 10 2000 3000 | ruin 1542500" method="generated"/>
+                <test cmd="gen_correct 10 2000 3000 | ruin_change 1 10000" method="generated"/>
+                <test cmd="gen_correct 100000 3000 5999" method="generated"/>
+                <test cmd="gen_correct 100000 3000 5999 | ruin 2000000" method="generated"/>
+                <test cmd="gen_prob_nosol 100000 1000000000" method="generated"/>
+                <test cmd="gen_correct 500 200000 300000" method="generated"/>
+                <test cmd="gen_correct 500 2 3" method="generated"/>
+                <test cmd="gen_correct 500 2 2 | ruin_change 1 500" method="generated"/>
+                <test cmd="gen_correct 500 21 22" method="generated"/>
+                <test cmd="gen_prob_nosol 1000 1000000000" method="generated"/>
+                <test cmd="gen_correct 50000 21 22" method="generated"/>
+                <test cmd="gen_correct 50000 100 100" method="generated"/>
+                <test cmd="gen_correct 50000 1000 1234" method="generated"/>
+                <test cmd="gen_correct 100000 10000 10000" method="generated"/>
+                <test cmd="gen_correct 100000 1230 1340" method="generated"/>
+                <test cmd="gen_prob_nosol 100000 200000" method="generated"/>
+            </tests>
+        </testset>
+    </judging>
+    <files>
+        <resources>
+            <file path="files/olymp.sty"/>
+            <file path="files/problem.tex"/>
+            <file path="files/statements.ftl"/>
+            <file path="files/testlib.h" type="h.g++"/>
+        </resources>
+        <executables>
+            <executable>
+                <source path="files/check.cpp" type="cpp.g++17"/>
+                <binary path="files/check.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/gen_correct.cpp" type="cpp.g++17"/>
+                <binary path="files/gen_correct.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/gen_prob_nosol.cpp" type="cpp.g++17"/>
+                <binary path="files/gen_prob_nosol.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/gen_random.cpp" type="cpp.g++17"/>
+                <binary path="files/gen_random.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/ruin.cpp" type="cpp.g++17"/>
+                <binary path="files/ruin.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/ruin_change.cpp" type="cpp.g++17"/>
+                <binary path="files/ruin_change.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/ruin_inc.cpp" type="cpp.g++17"/>
+                <binary path="files/ruin_inc.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                <binary path="files/validate.exe" type="exe.win32"/>
+            </executable>
+        </executables>
+    </files>
+    <assets>
+        <checker type="testlib">
+            <source path="files/check.cpp" type="cpp.g++17"/>
+            <binary path="check.exe" type="exe.win32"/>
+            <copy path="check.cpp" type="cpp.g++17"/>
+            <testset>
+                <test-count>4</test-count>
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                <tests>
+                    <test verdict="ok"/>
+                    <test verdict="ok"/>
+                    <test verdict="wrong-answer"/>
+                    <test verdict="wrong-answer"/>
+                </tests>
+            </testset>
+        </checker>
+        <validators>
+            <validator>
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                <binary path="files/validate.exe" type="exe.win32"/>
+                <testset>
+                    <test-count>3</test-count>
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                    <tests>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                    </tests>
+                </testset>
+            </validator>
+        </validators>
+        <solutions>
+            <solution tag="main">
+                <source path="solutions/a.cpp" type="cpp.g++17"/>
+                <binary path="solutions/a.exe" type="exe.win32"/>
+            </solution>
+            <solution tag="accepted">
+                <source path="solutions/mind-tourist.py" type="python.3"/>
+                <binary path="solutions/mind-tourist.pys3" type="pythonx.3"/>
+            </solution>
+            <solution tag="wrong-answer">
+                <source path="solutions/wrong.cpp" type="cpp.g++17"/>
+                <binary path="solutions/wrong.exe" type="exe.win32"/>
+            </solution>
+            <solution tag="wrong-answer">
+                <source path="solutions/wrong2.cpp" type="cpp.g++17"/>
+                <binary path="solutions/wrong2.exe" type="exe.win32"/>
+            </solution>
+            <solution tag="wrong-answer">
+                <source path="solutions/wrong3.cpp" type="cpp.g++17"/>
+                <binary path="solutions/wrong3.exe" type="exe.win32"/>
+            </solution>
+            <solution tag="wrong-answer">
+                <source path="solutions/wrong4.cpp" type="cpp.g++17"/>
+                <binary path="solutions/wrong4.exe" type="exe.win32"/>
+            </solution>
+            <solution tag="wrong-answer">
+                <source path="solutions/wrong5.cpp" type="cpp.g++17"/>
+                <binary path="solutions/wrong5.exe" type="exe.win32"/>
+            </solution>
+        </solutions>
+    </assets>
+    <properties>
+        <property name="tests-wellformed" value="true"/>
+    </properties>
+    <stresses>
+        <stress-count>0</stress-count>
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+        <list/>
+    </stresses>
+    <tags>
+        <tag value="simple math"/>
+    </tags>
+</problem>

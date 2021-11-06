@@ -1,0 +1,325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+  <meta content="text/html; charset=utf-8" http-equiv=
+  "content-type">
+
+  <title></title>
+  <link rel="stylesheet" href="problem.css" type="text/css">
+  <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: { 
+    ignoreClass: ".*",
+    inlineMath: [['$','$'], ['\\(','\\)']]
+        },
+  MMLorHTML: {
+    prefer: {Firefox: "HTML"}
+    }
+  });
+  </script>
+  <script type="text/javascript" src=
+  "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+
+<body>
+  <div class="problembody">
+    <div class="problemheader">
+      <h1>Safest Taxi</h1>
+
+      <h3>Problem ID: safesttaxi</h3>
+    </div>
+
+    <p>Consider a town whose road network forms an <span class=
+    "tex2jax_process">$N * M$</span> grid, where adjacent
+    intersections are connected by roads. All roads are
+    bi-directional. Each direction has an associated number - the
+    time needed to travel from one end-point to another.</p>
+
+    <p>Each direction of each road consists of one or more lanes. A
+    lane can serve one of the following functions: left-turn,
+    straight, right-turn, or any combination of them. However, a
+    left-turn lane cannot be placed to the right of a straight or
+    right-turn lane, and a straight lane cannot be placed to the
+    right of a right-turn lane. There are no U-turn lanes.</p>
+
+    <center>
+      <img src="img-0001.png" alt=
+      "\includegraphics[width=0.4\textwidth ]{illustration.png}"
+      style="width:40.00%">
+    </center>
+
+    <p>The rules for crossing intersections are illustrated in the
+    above figure (suppose a car enters the intersection from the
+    south). To make a left turn, it must be in one of the
+    <span class="tex2jax_process">$L$</span> left-turn lanes; let’s
+    number them <span class="tex2jax_process">$1$</span> through
+    <span class="tex2jax_process">$L$</span> from left to right.
+    The traffic rule says Lane <span class=
+    "tex2jax_process">$i$</span> must turn into the <span class=
+    "tex2jax_process">$i$</span>-th lane (counting from the left)
+    of the target road, except that Lane <span class=
+    "tex2jax_process">$L$</span> may turn into the <span class=
+    "tex2jax_process">$L$</span>-th lane or any other lanes to its
+    right.</p>
+
+    <p>Similarly, to go straight through an intersection, the car
+    must be in one of the <span class="tex2jax_process">$S$</span>
+    straight lanes; let’s number them <span class=
+    "tex2jax_process">$1$</span> through <span class=
+    "tex2jax_process">$S$</span> from left to right. Lane
+    <span class="tex2jax_process">$i$</span> must go into the
+    <span class="tex2jax_process">$i$</span>-th lane (counting from
+    the left) of the target road, except that Lane <span class=
+    "tex2jax_process">$S$</span> may go into the <span class=
+    "tex2jax_process">$S$</span>-th lane or any other lanes to its
+    right.</p>
+
+    <p>To make a right turn, the car must be in one of the
+    <span class="tex2jax_process">$R$</span> right-turn lanes. For
+    the convenience of discussion, we consider these lanes and
+    those of the target road <i class="it">from right to left</i>.
+    Let’s number the right-turn lanes <span class=
+    "tex2jax_process">$1$</span> through <span class=
+    "tex2jax_process">$R$</span> from right to left. Lane
+    <span class="tex2jax_process">$i$</span> must turn into the
+    <span class="tex2jax_process">$i$</span>-th lane (counting from
+    the right) of the target road, except that Lane <span class=
+    "tex2jax_process">$R$</span> may turn into the <span class=
+    "tex2jax_process">$R$</span>-th lane or any other lanes to its
+    left.</p>
+
+    <p>It is guaranteed that if at least one left-turn / straight /
+    right-turn lane is present, the target road must exist and have
+    enough lanes to accommodate the left turn / straight / right
+    turn, respectively. The time spent on crossing intersections is
+    negligible.</p>
+
+    <p>In addition, a driver may change lanes in the middle of a
+    road. Note that in the above rules for intersections, it
+    doesn’t count as a lane change to drive into any of the legal
+    lanes of the target road. The time spent on lane changes is
+    negligible.</p>
+
+    <p>A trip starts and ends at the rightmost lane of the midpoint
+    of roads. The time needed to travel midpoint-to-endpoint is
+    half of endpoint-to-endpoint.</p>
+
+    <p>You are running a taxi company called “Safest Taxi” in this
+    town, with the slogan “your safety is in your hands”. You let
+    your customers choose the numbers <span class=
+    "tex2jax_process">$X$</span> and <span class=
+    "tex2jax_process">$Y$</span> for their trip, and the driver
+    will make at most <span class="tex2jax_process">$X$</span> left
+    turns and <span class="tex2jax_process">$Y$</span> lane changes
+    to accomplish the trip.</p>
+
+    <p>What is the shortest time to fulfill each trip given the
+    rules?</p>
+
+    <h2>Input</h2>
+
+    <p>The first line consists of three integers <span class=
+    "tex2jax_process">$N$</span> (<span class="tex2jax_process">$2
+    &lt;= N &lt;= 15$</span>), <span class=
+    "tex2jax_process">$M$</span> (<span class="tex2jax_process">$2
+    &lt;= M &lt;= 15$</span>) and <span class=
+    "tex2jax_process">$K$</span> (<span class="tex2jax_process">$1
+    &lt;= K &lt;= 3$</span>), separated by a single space. The
+    town’s road network has <span class=
+    "tex2jax_process">$N$</span> intersections north-south and
+    <span class="tex2jax_process">$M$</span> intersections
+    west-east. Each road has <span class=
+    "tex2jax_process">$K$</span> lanes.</p>
+
+    <p>The second line consists of a single integer <span class=
+    "tex2jax_process">$D$</span>. The town’s road network has
+    <span class="tex2jax_process">$D$</span> road segments. Every
+    adjacent pair of intersections must appear in the list exactly
+    once.</p>
+
+    <p>Each of the next <span class="tex2jax_process">$D$</span>
+    lines describes a road segment with the following
+    format:</p><span class="tex2jax_process">\[ R_0\; C_0\; R_1\;
+    C_1\; T\; L_0\; L_1 ... L_{K-1} \]</span>
+
+    <p>This describes a road segment going from the intersection at
+    row <span class="tex2jax_process">$R_0$</span> column
+    <span class="tex2jax_process">$C_0$</span> to the intersection
+    at row <span class="tex2jax_process">$R_1$</span> column
+    <span class="tex2jax_process">$C_1$</span> (<span class=
+    "tex2jax_process">$0&lt;=R_0,R_1&lt;N$</span>, <span class=
+    "tex2jax_process">$0&lt;=C_0,C_1&lt;M$</span>). Rows are
+    numbered <span class="tex2jax_process">$0$</span> through
+    <span class="tex2jax_process">$N-1$</span> from north to south,
+    and columns are numbered <span class=
+    "tex2jax_process">$0$</span> through <span class=
+    "tex2jax_process">$M-1$</span> from west to east. The segment
+    must connect two adjacent intersections, i.e., <span class=
+    "tex2jax_process">$\mid R_0 - R_1 \mid + \mid C_0 - C_1\mid =
+    1$</span>. The time to travel through the entire segment is
+    <span class="tex2jax_process">$T$</span> (<span class=
+    "tex2jax_process">$2 &lt;= T &lt;= 100$</span>, <span class=
+    "tex2jax_process">$T$</span> must be an even number). The next
+    <span class="tex2jax_process">$K$</span> strings describe the
+    function of each of the <span class=
+    "tex2jax_process">$K$</span> lanes, from left to right, with
+    the following semantics:</p>
+
+    <p>L <span class="tex2jax_process">$\mid $</span> Left-turn
+    only</p>
+
+    <p>S <span class="tex2jax_process">$\mid $</span> Straight
+    only</p>
+
+    <p>R <span class="tex2jax_process">$\mid $</span> Right-turn
+    only</p>
+
+    <p>LR <span class="tex2jax_process">$\mid $</span> Left-turn or
+    right-turn</p>
+
+    <p>LS <span class="tex2jax_process">$\mid $</span> Left-turn or
+    straight</p>
+
+    <p>SR <span class="tex2jax_process">$\mid $</span> Straight or
+    right-turn</p>
+
+    <p>LSR <span class="tex2jax_process">$\mid $</span> Left-turn,
+    straight or right-turn<br></p>
+
+    <p>The next line consists of a single integer <span class=
+    "tex2jax_process">$P$</span> (<span class="tex2jax_process">$1
+    &lt;= P &lt;= 50$</span>), the number of trips to fulfill.</p>
+
+    <p>Each of the next <span class="tex2jax_process">$P$</span>
+    lines describes a trip with the following
+    format:</p><span class="tex2jax_process">\[ R_{S0}\; C_{S0}\;
+    R_{S1}\; C_{S1}\; R_{D0}\; C_{D0}\; R_{D1}\; C_{D1}\; X\; Y
+    \]</span>
+
+    <p>This indicates that the starting point is the midpoint of
+    segment (<span class="tex2jax_process">$R_{S0}, C_{S0}$</span>)
+    <span class="tex2jax_process">$\to $</span> (<span class=
+    "tex2jax_process">$R_{S1}, C_{S1}$</span>), and the destination
+    is the midpoint of segment (<span class=
+    "tex2jax_process">$R_{D0}, C_{D0}$</span>) <span class=
+    "tex2jax_process">$\to $</span> (<span class=
+    "tex2jax_process">$R_{D1}, C_{D1}$</span>). Both segments must
+    appear in the above list. Both the starting point and the
+    destination are on the rightmost lane. The customer requests
+    that at most <span class="tex2jax_process">$X$</span>
+    (<span class="tex2jax_process">$0 &lt;= X &lt;= 4$</span>) left
+    turns and <span class="tex2jax_process">$Y$</span>
+    (<span class="tex2jax_process">$0 &lt;= Y &lt;= 4$</span>) lane
+    changes are allowed for the trip.</p>
+
+    <h2>Output</h2>
+
+    <p>Output <span class="tex2jax_process">$P$</span> lines. The
+    <span class="tex2jax_process">$i$</span>-th line contains a
+    single integer which is the shortest time to fulfill each trip
+    given the rules, or <span class="tex2jax_process">$-1$</span>
+    if no feasible route exists.</p>
+
+    <h2>Sample Explanation</h2>
+
+    <p>The first three lines of the sample output are illustrated
+    in the figure below.</p>
+
+    <center>
+      <img src="img-0002.png" alt=
+      "\includegraphics[width=0.9\textwidth ]{figure.png}" style=
+      "width:90.00%">
+    </center>
+
+    <ul class="itemize">
+      <li>
+        <p>If <span class="tex2jax_process">$X = 1$</span> and
+        <span class="tex2jax_process">$Y = 1$</span>, the shortest
+        path is shown in red: make a lane change before reaching E
+        and make a left turn. The total time is <span class=
+        "tex2jax_process">$8/2+8/2=8$</span>;</p>
+      </li>
+
+      <li>
+        <p>If <span class="tex2jax_process">$X = 1$</span> and
+        <span class="tex2jax_process">$Y = 0$</span>, the shortest
+        path is shown in green: go through E-F-I-H-E and make a
+        left turn. The total time is <span class=
+        "tex2jax_process">$8/2+16+8+8+8+8/2=48$</span>;</p>
+      </li>
+
+      <li>
+        <p>If <span class="tex2jax_process">$X = 0$</span> and
+        <span class="tex2jax_process">$Y = 0$</span>, the shortest
+        path is shown in blue: go through E-B-C-F-E. The total time
+        is <span class=
+        "tex2jax_process">$8/2+16+16+8+18+8/2=66$</span>.</p>
+      </li>
+    </ul>
+
+    <table class="sample" summary="sample data">
+      <tr>
+        <th>Sample Input 1</th>
+
+        <th>Sample Output 1</th>
+      </tr>
+
+      <tr>
+        <td>
+          <pre>
+3 3 2
+24
+0 0 0 1 6 S R
+0 1 0 0 8 L L
+0 1 0 2 16 R R
+0 2 0 1 18 LS S
+0 0 1 0 8 LS S
+1 0 0 0 8 R R
+0 1 1 1 10 LS SR
+1 1 0 1 16 L R
+0 2 1 2 8 S R
+1 2 0 2 8 L L
+1 0 1 1 6 L SR
+1 1 1 0 8 L R
+1 1 1 2 16 L R
+1 2 1 1 18 L SR
+1 0 2 0 8 L L
+2 0 1 0 8 S R
+1 1 2 1 10 L R
+2 1 1 1 8 LS SR
+1 2 2 2 8 R R
+2 2 1 2 8 LS S
+2 0 2 1 10 LS S
+2 1 2 0 12 R R
+2 1 2 2 6 L L
+2 2 2 1 8 S SR
+6
+2 1 1 1 1 1 1 0 1 1
+2 1 1 1 1 1 1 0 1 0
+2 1 1 1 1 1 1 0 0 0
+0 1 0 2 0 2 0 1 2 0
+1 0 0 0 0 0 1 0 2 0
+2 1 2 0 2 0 2 1 2 0
+</pre>
+        </td>
+
+        <td>
+          <pre>
+8
+48
+66
+131
+112
+95
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

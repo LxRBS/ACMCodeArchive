@@ -1,0 +1,82 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+<problem
+	version = "1.0"
+	id = "qf.2018.main.forgotten"
+>
+	<judging>
+		<script type = "%icpc">
+			<testset
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+				test-count = "31"
+			>
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+		<script type = "%ioi">
+			<testset
+				name = "preliminary"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test comment = "manual" />
+				<test comment = "manual" />
+			</testset>
+			<testset
+				name = "main"
+				feedback = "outcome"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test points = "0" comment = "manual" />
+				<test points = "0" comment = "manual" />
+				<test points = "0" comment = "manual" />
+				<test points = "0" comment = "generated cmd: 'gen type=random n=8 coloring=random k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=random n=9 coloring=random k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=random n=10 coloring=random k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=random n=100 coloring=random k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=random n=1000 coloring=random k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=random n=5000 coloring=random k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=random n=5000 w=10 coloring=random k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=random n=5000 w=-10 coloring=random k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=bamboo n=5000 coloring=random k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=bamboo n=5000 coloring=exp k=10 p=0.05'" />
+				<test points = "0" comment = "generated cmd: 'gen type=bamboo n=5000 coloring=exp k=10 p=0.50'" />
+				<test points = "0" comment = "generated cmd: 'gen type=bamboo n=5000 coloring=exp k=10 p=0.95'" />
+				<test points = "0" comment = "generated cmd: 'gen type=LStar n=5000 l=5 coloring=exp k=10 p=0.9'" />
+				<test points = "0" comment = "generated cmd: 'gen type=LStar n=5000 l=15 coloring=random k=2'" />
+				<test points = "0" comment = "generated cmd: 'gen type=JNGen subtype=random n=5000 many-leafs=0 coloring=random k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=JNGen subtype=random n=5000 many-leafs=1 coloring=exp p=0.3 k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=JNGen subtype=randomPrim n=5000 many-leafs=1 coloring=random k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=JNGen subtype=randomPrim n=5000 many-leafs=0 coloring=exp p=0.3 k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=JNGen subtype=randomKruskal n=4935 many-leafs=1 coloring=random k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=JNGen subtype=randomKruskal n=4890 many-leafs=0 coloring=exp p=0.3 k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=JNGen subtype=caterpillar n=5000 len=10 many-leafs=0 coloring=random k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=JNGen subtype=caterpillar n=5000 len=20 many-leafs=1 coloring=exp p=0.5 k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=JNGen subtype=binary n=4096 many-leafs=0 coloring=random k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=JNGen subtype=binary n=5000 coloring=random k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=JNGen subtype=kary n=5000 kary=5 coloring=random k=10'" />
+				<test points = "0" comment = "generated cmd: 'gen type=bamboo n=5000 coloring=thue-morse k=10 shuffle=false'" />
+				<test points = "0" comment = "generated cmd: 'gen type=bamboo n=5000 coloring=random k=10 mask=682'" />
+				<test points = "0" comment = "generated cmd: 'gen type=bamboo n=5000 coloring=random k=10 mask=1'" />
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+	</judging>
+</problem>

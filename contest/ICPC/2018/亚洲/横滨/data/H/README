@@ -1,0 +1,17 @@
+There may be diverse valid output for the problem H.
+The files *.ans in this directory give one of the varieties.
+
+A program is thus provided for judging output validity.
+The source program of the validator is in the file "check_H.cc".
+
+You can compile and run the program specifying the following arguments.
+   # check_H <input file> <judges' answer file> <message directory> < <your answer file>
+The first two arguments should be the file-names in this directory.
+You can specify any directory name as <message directory>.  Your answer
+should be given through the standard input.
+
+When your answer contains incorrect output for the specified input,
+the program writes out messages pointing out the error it found to the
+file <message directory>/judgemessage.txt, and then exits with code 43.
+Otherwise, when the answer is acceptable, it will exit with code 42
+without any message output.

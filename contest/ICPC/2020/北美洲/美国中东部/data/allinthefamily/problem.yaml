@@ -1,0 +1,9 @@
+# Problem configuration
+source: 2020 ICPC East-Central NA Regional Contest
+author: Bob Roos
+license: cc0
+rights_owner: ECNA
+name: All in the Family
+
+limits:
+    time_multiplier: 3

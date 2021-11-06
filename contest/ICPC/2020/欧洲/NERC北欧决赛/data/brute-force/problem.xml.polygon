@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="12" short-name="brute-force" url="https://polygon.codeforces.com/p0MGHo4/elizarov/brute-force">
+        
+    <names>
+                
+        <name language="english" value="Button Lock"/>
+            
+    </names>
+        
+    <statements>
+                
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+                
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/problem.html" type="text/html"/>
+                
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+            
+    </statements>
+        
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="">
+                
+        <testset name="tests">
+                        
+            <time-limit>3000</time-limit>
+                        
+            <memory-limit>536870912</memory-limit>
+                        
+            <test-count>49</test-count>
+                        
+            <input-path-pattern>tests/%02d</input-path-pattern>
+                        
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+                        
+            <tests>
+                                
+                <test method="manual" sample="true"/>
+                                
+                <test method="manual" sample="true"/>
+                                
+                <test cmd="GenRandom 1 1" method="generated"/>
+                                
+                <test cmd="GenRandom 2 1" method="generated"/>
+                                
+                <test cmd="GenRandom 2 2" method="generated"/>
+                                
+                <test cmd="GenRandom 2 3" method="generated"/>
+                                
+                <test cmd="GenRandom 3 1" method="generated"/>
+                                
+                <test cmd="GenRandom 3 3" method="generated"/>
+                                
+                <test cmd="GenRandom 3 7" method="generated"/>
+                                
+                <test cmd="GenRandom 4 2" method="generated"/>
+                                
+                <test cmd="GenRandom 4 7" method="generated"/>
+                                
+                <test cmd="GenRandom 4 14" method="generated"/>
+                                
+                <test cmd="GenRandom 5 1" method="generated"/>
+                                
+                <test cmd="GenRandom 5 15" method="generated"/>
+                                
+                <test cmd="GenRandom 5 30" method="generated"/>
+                                
+                <test cmd="GenRandom 7 30" method="generated"/>
+                                
+                <test cmd="GenRandom 8 100" method="generated"/>
+                                
+                <test cmd="GenRandom 9 300" method="generated"/>
+                                
+                <test cmd="GenRandom 10 1" method="generated"/>
+                                
+                <test cmd="GenRandom 10 5" method="generated"/>
+                                
+                <test cmd="GenRandom 10 15" method="generated"/>
+                                
+                <test cmd="GenRandom 10 40" method="generated"/>
+                                
+                <test cmd="GenRandom 10 70" method="generated"/>
+                                
+                <test cmd="GenRandom 10 200" method="generated"/>
+                                
+                <test cmd="GenRandom 10 400" method="generated"/>
+                                
+                <test cmd="GenRandom 10 600" method="generated"/>
+                                
+                <test cmd="GenRandom 10 800" method="generated"/>
+                                
+                <test cmd="GenRandom 10 900" method="generated"/>
+                                
+                <test cmd="GenRandom 10 990" method="generated"/>
+                                
+                <test cmd="GenRandom 10 1000" method="generated"/>
+                                
+                <test cmd="GenRandom 10 1020" method="generated"/>
+                                
+                <test cmd="GenRandom 10 1022" method="generated"/>
+                                
+                <test cmd="GenRandom 10 1023" method="generated"/>
+                                
+                <test cmd="GenLayers 9 0101010101" method="generated"/>
+                                
+                <test cmd="GenLayers 9 0111011101" method="generated"/>
+                                
+                <test cmd="GenLayers 10 01111111110" method="generated"/>
+                                
+                <test cmd="GenLayers 10 01010101010" method="generated"/>
+                                
+                <test cmd="GenLayers 10 01101010101" method="generated"/>
+                                
+                <test cmd="GenLayers 10 00000100000" method="generated"/>
+                                
+                <test cmd="GenLayers 10 00001110000" method="generated"/>
+                                
+                <test cmd="GenLayers 10 00010111111" method="generated"/>
+                                
+                <test cmd="GenFromRandomWalk 10 500 1.0" method="generated"/>
+                                
+                <test cmd="GenFromRandomWalk 10 300 0.7" method="generated"/>
+                                
+                <test cmd="GenFromRandomWalk 10 200 0.5" method="generated"/>
+                                
+                <test cmd="GenFromRandomWalk 10 250 0.1" method="generated"/>
+                                
+                <test cmd="GenFromRandomWalk 10 500 0.1" method="generated"/>
+                                
+                <test cmd="GenFromRandomWalk 10 800 0.8" method="generated"/>
+                                
+                <test cmd="GenFromRandomWalk 10 900 0.9" method="generated"/>
+                                
+                <test cmd="GenFromRandomWalk 10 1000 0.99" method="generated"/>
+                            
+            </tests>
+                    
+        </testset>
+            
+    </judging>
+        
+    <files>
+                
+        <resources>
+                        
+            <file path="files/olymp.sty"/>
+                        
+            <file path="files/problem.tex"/>
+                        
+            <file path="files/statements.ftl"/>
+                        
+            <file path="files/testlib.h" type="h.g++"/>
+                    
+        </resources>
+                
+        <executables>
+                        
+            <executable>
+                                
+                <source path="files/GenFromRandomWalk.java" type="java8"/>
+                                
+                <binary path="files/GenFromRandomWalk.jar" type="jar"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/GenLayers.java" type="java8"/>
+                                
+                <binary path="files/GenLayers.jar" type="jar"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/GenRandom.java" type="java8"/>
+                                
+                <binary path="files/GenRandom.jar" type="jar"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/checker.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/checker.exe" type="exe.win32"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/validator.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/validator.exe" type="exe.win32"/>
+                            
+            </executable>
+                    
+        </executables>
+            
+    </files>
+        
+    <assets>
+                
+        <checker type="testlib">
+                        
+            <source path="files/checker.cpp" type="cpp.g++17"/>
+                        
+            <binary path="check.exe" type="exe.win32"/>
+                        
+            <copy path="check.cpp" type="cpp.g++17"/>
+                        
+            <testset>
+                                
+                <test-count>0</test-count>
+                                
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                                
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                                
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                                
+                <tests/>
+                            
+            </testset>
+                    
+        </checker>
+                
+        <validators>
+                        
+            <validator>
+                                
+                <source path="files/validator.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/validator.exe" type="exe.win32"/>
+                                
+                <testset>
+                                        
+                    <test-count>0</test-count>
+                                        
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                                        
+                    <tests/>
+                                    
+                </testset>
+                            
+            </validator>
+                    
+        </validators>
+                
+        <solutions>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/b_enot110.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/b_enot110.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/b_fks.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/b_fks.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/b_xz.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/b_xz.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="main">
+                                
+                <source path="solutions/buttonlock_av.java" type="java8"/>
+                                
+                <binary path="solutions/buttonlock_av.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="rejected">
+                                
+                <source path="solutions/buttonlock_av_tsp_tl.java" type="java8"/>
+                                
+                <binary path="solutions/buttonlock_av_tsp_tl.jar" type="jar"/>
+                            
+            </solution>
+                    
+        </solutions>
+            
+    </assets>
+        
+    <properties>
+                
+        <property name="tests-wellformed" value="true"/>
+            
+    </properties>
+        
+    <stresses>
+                
+        <stress-count>1</stress-count>
+                
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+                
+        <list>
+                        
+            <stress index="1" path="stresses/001"/>
+                    
+        </list>
+            
+    </stresses>
+        
+    <tags>
+                
+        <tag value="bipartite-matching"/>
+                
+        <tag value="path-cover"/>
+            
+    </tags>
+    
+</problem>

@@ -1,0 +1,134 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<problem
+	version = "1.0"
+	id = "nef.2020.main.cactus-2021"
+>
+	<judging>
+		<script type = "%icpc">
+			<testset
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+				test-count = "84"
+			>
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+		<script type = "%ioi">
+			<testset
+				name = "preliminary"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test comment = "manual cmd: ''" />
+			</testset>
+			<testset
+				name = "main"
+				feedback = "outcome"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test points = "0" comment = "manual cmd: ''" />
+				<test points = "0" comment = "generated cmd: 'Tests 2'" />
+				<test points = "0" comment = "generated cmd: 'Tests 2'" />
+				<test points = "0" comment = "generated cmd: 'Tests 2'" />
+				<test points = "0" comment = "generated cmd: 'Tests 5'" />
+				<test points = "0" comment = "generated cmd: 'Tests 5'" />
+				<test points = "0" comment = "generated cmd: 'Tests 5'" />
+				<test points = "0" comment = "generated cmd: 'Tests 8'" />
+				<test points = "0" comment = "generated cmd: 'Tests 8'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 10'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 32'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 51'" />
+				<test points = "0" comment = "generated cmd: 'Tests 70'" />
+				<test points = "0" comment = "generated cmd: 'Tests 70'" />
+				<test points = "0" comment = "generated cmd: 'Tests 70'" />
+				<test points = "0" comment = "generated cmd: 'Tests 70'" />
+				<test points = "0" comment = "generated cmd: 'Tests 70'" />
+				<test points = "0" comment = "generated cmd: 'Tests 70'" />
+				<test points = "0" comment = "generated cmd: 'Tests 70'" />
+				<test points = "0" comment = "generated cmd: 'Tests 70'" />
+				<test points = "0" comment = "generated cmd: 'Tests 70'" />
+				<test points = "0" comment = "generated cmd: 'Tests 70'" />
+				<test points = "0" comment = "generated cmd: 'Tests 70'" />
+				<test points = "0" comment = "generated cmd: 'Tests 70'" />
+				<test points = "0" comment = "generated cmd: 'Tests 70'" />
+				<test points = "0" comment = "generated cmd: 'Tests 70'" />
+				<test points = "0" comment = "generated cmd: 'Tests 70'" />
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+	</judging>
+</problem>

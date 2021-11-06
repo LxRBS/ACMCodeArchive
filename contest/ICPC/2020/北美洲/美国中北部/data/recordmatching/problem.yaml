@@ -1,0 +1,5 @@
+name:    'ICPC Record Matching'
+author: 'Southern California Regional ICPC'
+source:  '2020-2021 North Central North America and Southern California ICPC Regional Contest'
+license: 'cc by'
+validator_flags: 'case_sensitive space_change_sensitive'

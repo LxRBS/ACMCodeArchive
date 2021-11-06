@@ -1,0 +1,28 @@
+Date Pickup
+------------
+Proof:
+
+Case 1: d(v,w) >= B.
+  Leaving immediately is optimal.
+
+  <Insert basic argument where any epsilom delay increases the maximum wait by epsilon.>
+
+Case 2: d(v,w) < B.
+  Note that there are two possibilities for the maximum delay. It occurs the first time we arrive at w because we arrive late. Or it occurs after making a cycle starting at w because we arrived too early (and we cannot stop).
+  
+  Case 2a: d(v,w) <= A.
+    In this case we can avoid the first possibility for the maximum delay by arriving at w at time A the first time. Note that it never helps to arrive later at w, all this does is add an option to arrive too late.
+    
+    The second possibility for the maximum delay is bound by the size of the minimum length cycle at w. The argument is as follows.
+    
+    Using the initial delay we can arrive at w at any time A <= t <= B.
+    We are interested in the maximum wait time in the worst case. Note that we cannot stop at w. Thus if we arrive at w at time t, then at time t+epsilon we left again. In the worst case, this is when our date is ready. To minimize the maximum wait time we need to be back at w as fast as possible. The shortest length cycle minimizes this wait time. Let l be the length of the shortest length cycle through w. Then if we arrive at w at time A and follow this cycle from then on, the maximum wait time is l.*
+    Following any other longer cycle can only increase this maximum wait time (same adversarial argument).
+    
+  Case 2b: d(v,w) > A.
+    Assume we arrive at time A < t <= B.
+    Then using the same argument the length l of the shortest length cycle is a lower bound.
+    The maximum wait time is max(t-A, l)
+    
+* Note there is a side-case here where B-A < l. Then the maximum wait time is B-A. Hidden under the carpet for argument clarity.
+Thus if t is the first possible time of arrival in interval [A,B] and l the length of the shortest length cycle including w, we get: max wait time = min(B-A, max(t-A, l))

@@ -1,0 +1,17 @@
+INT(1,50,n) NEWLINE
+REP(n)
+  INT(1,1000,d)
+  REP(2*n-1)
+    SPACE INT(1,1000,d)
+  END
+  NEWLINE
+END
+REP(n)
+  INT(1,1000,d)
+  REP(2*n-1)
+    SPACE INT(1,1000,d)
+  END
+  NEWLINE
+END
+EOF
+

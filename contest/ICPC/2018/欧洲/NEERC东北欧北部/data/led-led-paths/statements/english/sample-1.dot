@@ -1,0 +1,13 @@
+digraph G {
+  graph [autosize=false, size="5,3", resolution=100];
+  graph [bb="-54,-108,0,0"];
+  graph [rankdir=LR];
+  1 -> 2 [label="B"];
+  2 -> 3 [label="R"];
+  3 -> 4 [label="G"];
+  4 -> 5 [label="R"];
+  1 -> 4 [label="B"];
+  2 -> 5 [label="G"];
+}
+
+

@@ -1,0 +1,91 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+<problem
+	version = "1.0"
+	id = "qf.2018.main.build-partition"
+>
+	<judging>
+		<script type = "%icpc">
+			<testset
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+				test-count = "40"
+			>
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+		<script type = "%ioi">
+			<testset
+				name = "preliminary"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test comment = "manual" />
+				<test comment = "manual" />
+			</testset>
+			<testset
+				name = "main"
+				feedback = "outcome"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test points = "0" comment = "manual" />
+				<test points = "0" comment = "manual" />
+				<test points = "0" comment = "generated cmd: 'echo 1'" />
+				<test points = "0" comment = "generated cmd: 'echo 2'" />
+				<test points = "0" comment = "generated cmd: 'echo 4'" />
+				<test points = "0" comment = "generated cmd: 'echo 5'" />
+				<test points = "0" comment = "generated cmd: 'echo 6'" />
+				<test points = "0" comment = "generated cmd: 'echo 7'" />
+				<test points = "0" comment = "generated cmd: 'echo 8'" />
+				<test points = "0" comment = "generated cmd: 'echo 9'" />
+				<test points = "0" comment = "generated cmd: 'echo 10'" />
+				<test points = "0" comment = "generated cmd: 'echo 11'" />
+				<test points = "0" comment = "generated cmd: 'echo 12'" />
+				<test points = "0" comment = "generated cmd: 'echo 13'" />
+				<test points = "0" comment = "generated cmd: 'echo 14'" />
+				<test points = "0" comment = "generated cmd: 'echo 15'" />
+				<test points = "0" comment = "generated cmd: 'echo 16'" />
+				<test points = "0" comment = "generated cmd: 'echo 18'" />
+				<test points = "0" comment = "generated cmd: 'echo 19'" />
+				<test points = "0" comment = "generated cmd: 'echo 20'" />
+				<test points = "0" comment = "generated cmd: 'echo 24'" />
+				<test points = "0" comment = "generated cmd: 'echo 25'" />
+				<test points = "0" comment = "generated cmd: 'echo 26'" />
+				<test points = "0" comment = "generated cmd: 'echo 35'" />
+				<test points = "0" comment = "generated cmd: 'echo 36'" />
+				<test points = "0" comment = "generated cmd: 'echo 37'" />
+				<test points = "0" comment = "generated cmd: 'echo 48'" />
+				<test points = "0" comment = "generated cmd: 'echo 49'" />
+				<test points = "0" comment = "generated cmd: 'echo 50'" />
+				<test points = "0" comment = "generated cmd: 'echo 63'" />
+				<test points = "0" comment = "generated cmd: 'echo 64'" />
+				<test points = "0" comment = "generated cmd: 'echo 65'" />
+				<test points = "0" comment = "generated cmd: 'echo 80'" />
+				<test points = "0" comment = "generated cmd: 'echo 81'" />
+				<test points = "0" comment = "generated cmd: 'echo 82'" />
+				<test points = "0" comment = "generated cmd: 'echo 96'" />
+				<test points = "0" comment = "generated cmd: 'echo 97'" />
+				<test points = "0" comment = "generated cmd: 'echo 98'" />
+				<test points = "0" comment = "generated cmd: 'echo 99'" />
+				<test points = "0" comment = "generated cmd: 'echo 100'" />
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+	</judging>
+</problem>

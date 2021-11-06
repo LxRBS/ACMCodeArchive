@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+USE_ACM=1
+PPATH=$(realpath ..)
+. ${PPATH}/generators/random.gen/gen.sh
+
+use_solution sl.cpp
+
+compile ${PPATH}/generators/random.gen/gen_random.py
+
+sample 1
+
+# Small cases
+tc small1 gen_random n=1  graph=random mat=random
+tc small2 gen_random n=2  graph=random mat=random
+tc small3 gen_random n=3  graph=random mat=fair
+tc small4 gen_random n=5  graph=random mat=random
+tc small5 gen_random n=10 graph=random mat=random
+
+# Mildly-devastating small case.
+tc itsybitsycycles04 gen_random n=10 graph=cycles,4,2 mat=random
+
+# More small cases, but padded to avoid bruteforce
+tc pad-small1 gen_random n=1  graph=random mat=random pad=498,after
+tc pad-small2 gen_random n=2  graph=random mat=fair pad=499,after
+tc pad-small3 gen_random n=3  graph=random mat=random pad=500,after
+tc pad-small4 gen_random n=5  graph=random mat=fair pad=500,after
+tc pad-small5 gen_random n=10 graph=random mat=fair pad=498,after
+
+# Answer is more than 2^32 in all of these testcases
+tc small-maximal gen_random n=40 graph=random mat=maximal
+tc medium-maximal gen_random n=100 graph=random mat=maximal
+tc biggish-maximal gen_random n=400 graph=random mat=maximal
+
+# Largest possible test cases (for TLEing slow solutions fast)
+tc manycycles2k5 gen_random n=2500 graph=cycles,1240,1240 mat=maximal
+tc ones-and-twos1-2k5 gen_random n=2500 graph=cycles,1500,800 mat=random
+tc ones-and-twos2-2k5 gen_random n=2500 graph=cycles,2000,200 mat=random
+
+# Case with max answer
+tc maxanswer gen_random n=2500 graph=cycles,2500,0 mat=maxconst derandomize=1
+
+# Every node points to itself
+tc self1 gen_random n=500 graph=chunks,1 mat=random
+tc self2 gen_random n=500 graph=chunks,1 mat=fair
+
+# Nodes point within small clusters around themselves
+tc chunks1 gen_random n=500 graph=chunks,5 mat=fair
+
+# Graphs with long paths
+tc chain1 gen_random n=500 graph=chain mat=fair
+tc chain2 gen_random n=500 graph=chain mat=random
+tc chain3 gen_random n=500 graph=almost-chain mat=fair
+tc chain4 gen_random n=1000 graph=almost-chain mat=fair
+
+# Graphs with very large components
+tc rand1 gen_random n=500 graph=random mat=random
+tc rand2 gen_random n=500 graph=random mat=fair
+
+# Graphs with large cycles
+tc largecyc1 gen_random n=500 graph=cycles,2,0 mat=fair
+tc largecyc2 gen_random n=500 graph=cycles,3,100 mat=fair
+
+# Graphs with many tiny cycles
+tc manycycles1k gen_random n=1000 graph=cycles,400,400 mat=fair
+tc manycycles2k gen_random n=2000 graph=cycles,990,990 mat=random
+
+# Large versions of various graphs
+tc chain5_2k5 gen_random n=2500 graph=almost-chain mat=fair
+tc rand3_2k5 gen_random n=2500 graph=random mat=fair
+
+# Graph with max size cycle
+tc maxcycle gen_random n=2500 graph=cycles,1,0 mat=fair
+
+# Several little cases (subsets extracted from {00..99})
+for i in 05 11 12 ; do
+  tc itsybitsycycles$i gen_random n=10 graph=cycles,4,2 mat=random
+done
+for i in 01 03 ; do
+  tc particycles$i gen_random n=20 graph=cycles,7,4 mat=random
+done
+for i in 00 01 07 ; do
+  tc tinycycles$i gen_random n=40 graph=cycles,13,7 mat=random
+done
+for i in 03 04 05 ; do
+  tc littlecycles$i gen_random n=200 graph=cycles,85,30 mat=random
+done

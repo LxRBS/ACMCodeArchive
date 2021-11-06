@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="23" short-name="joint-password-storage" url="https://polygon.codeforces.com/p24jmJw/pkunyavskiy/joint-password-storage">
+    <names>
+        <name language="english" value="Joint Password Storage"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+    </statements>
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="">
+        <testset name="tests">
+            <time-limit>2000</time-limit>
+            <memory-limit>536870912</memory-limit>
+            <test-count>40</test-count>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test method="manual" sample="true"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 50 -digits" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 13" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 13 -yes" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 14 -maxl 17" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 14 -maxl 17 -yes" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 18 -maxl 21" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 18 -maxl 21 -yes" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 22 -maxl 25" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 22 -maxl 25 -yes" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 26 -maxl 29" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 26 -maxl 29 -yes" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 30 -maxl 33" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 30 -maxl 33 -yes" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 34 -maxl 37" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 34 -maxl 37 -yes" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 38 -maxl 41" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 38 -maxl 41 -yes" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 42 -maxl 45" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 42 -maxl 45 -yes" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 46 -maxl 49" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 46 -maxl 49 -yes" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 50 -maxl 50" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 50 -maxl 50 -yes" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 50 -seed 0" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 50 -yes -seed 0" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 50 -seed 1" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 50 -yes -seed 1" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 50 -seed 2" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 50 -yes -seed 2" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 50 -seed 3" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 50 -yes -seed 3" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 50 -seed 4" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 50 -yes -seed 4" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 50 -letters" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 50 -lower" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 50 -upper" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 50 -letters -yes" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 50 -lower -yes" method="generated"/>
+                <test cmd="gen_rand -p 50 -minl 10 -maxl 50 -upper -yes" method="generated"/>
+            </tests>
+        </testset>
+    </judging>
+    <files>
+        <resources>
+            <file path="files/olymp.sty"/>
+            <file path="files/problem.tex"/>
+            <file path="files/statements.ftl"/>
+            <file path="files/testlib.h" type="h.g++"/>
+            <file path="files/testlib4j.jar" type="jar"/>
+        </resources>
+        <executables>
+            <executable>
+                <source path="files/Check.java" type="java8"/>
+                <binary path="files/Check.jar" type="jar"/>
+            </executable>
+            <executable>
+                <source path="files/gen_rand.cpp" type="cpp.g++17"/>
+                <binary path="files/gen_rand.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                <binary path="files/validate.exe" type="exe.win32"/>
+            </executable>
+        </executables>
+    </files>
+    <assets>
+        <checker type="testlib">
+            <source path="files/Check.java" type="java8"/>
+            <binary path="check.jar" type="jar"/>
+            <copy path="Check.java" type="java8"/>
+            <testset>
+                <test-count>5</test-count>
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                <tests>
+                    <test verdict="wrong-answer"/>
+                    <test verdict="crashed"/>
+                    <test verdict="wrong-answer"/>
+                    <test verdict="wrong-answer"/>
+                    <test verdict="wrong-answer"/>
+                </tests>
+            </testset>
+        </checker>
+        <validators>
+            <validator>
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                <binary path="files/validate.exe" type="exe.win32"/>
+                <testset>
+                    <test-count>4</test-count>
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                    <tests>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                    </tests>
+                </testset>
+            </validator>
+        </validators>
+        <solutions>
+            <solution tag="accepted">
+                <source path="solutions/98155492_Um_nik_ok.cpp" type="cpp.g++17"/>
+                <binary path="solutions/98155492_Um_nik_ok.exe" type="exe.win32"/>
+            </solution>
+            <solution tag="accepted">
+                <source path="solutions/98200814_amethyst0_AndreySergunin_Golovanov399_ok.cpp" type="cpp.g++17"/>
+                <binary path="solutions/98200814_amethyst0_AndreySergunin_Golovanov399_ok.exe" type="exe.win32"/>
+            </solution>
+            <solution tag="time-limit-exceeded-or-accepted">
+                <source path="solutions/joint_md_slow.kt" type="kotlin"/>
+                <binary path="solutions/joint_md_slow.jar" type="jar"/>
+            </solution>
+            <solution tag="main">
+                <source path="solutions/joint_pkun.cpp" type="cpp.g++17"/>
+                <binary path="solutions/joint_pkun.exe" type="exe.win32"/>
+            </solution>
+        </solutions>
+    </assets>
+    <properties>
+        <property name="tests-wellformed" value="true"/>
+    </properties>
+    <stresses>
+        <stress-count>0</stress-count>
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+        <list/>
+    </stresses>
+    <tags>
+        <tag value="ascii"/>
+        <tag value="constructive"/>
+        <tag value="random"/>
+        <tag value="strange"/>
+    </tags>
+</problem>

@@ -1,0 +1,42 @@
+\begin{problem}{Keys and Locks Boolean Logic}{standard input}{standard output}{2 seconds}{512 megabytes}
+
+Karen and her friends play in a music band in Karen's garage. She has complicated thoughts on which subsets of the band should be allowed to enter the garage. She designed a boolean formula $F$ in which each variable denotes the presence of a certain band member. She wants a group of people to be able to enter the garage if and only if $F$ is true.
+
+You are asked to create a system of wires and locks that will fulfill the formula $F$. Each band member will receive a key that opens all the locks that are denoted by their letter.
+
+For example, suppose that $F = a \lor (b \land c)$ and band members $a$ and $b$ are present. Then they should be able to enter the garage with their keys because $true \lor (true \land false) = true$.
+
+A band member doesn't have to use their key to open all the locks possible. For example, suppose that $F = a \oplus b$. Then band member $a$ alone should be able to enter the garage because $true \oplus false = true$. But if both $a$ and $b$ come to the garage, they can just disregard $b$'s key and open the garage using $a$'s one. However, $true \oplus true = false$, so this formula $F$ is not fulfillable.
+
+The system must be a rectangular grid of size at most $50 \times 50$ containing horizontal wires `\t{-}', vertical wires `\t{|}', wire connections `\t{+}', and locks. The upper leftmost and the upper rightmost cells of the grid must contain wire connections that will be attached to the doors of the garage. The garage doors stay closed as long as there is a path between these two connections via wires and locked locks.
+
+You are to design such a system corresponding to the given formula $F$, or to state that there is no such system.
+
+
+\InputFile
+The input contains a non-empty boolean formula $F$.
+
+The formula can contain letters \t{a}, \ldots, \t{h} denoting the presence of band members, operators ``\t{and}'', ``\t{or}'', ``\t{not}'', and parentheses. The length of the formula does not exceed 2020. The ``\t{not}'' operator has the highest priority. The ``\t{and}'' operator has higher priority than the ``\t{or}'' operator. There are single spaces around each ``\t{and}'', around each ``\t{or}'', and after each ``\t{not}''. There are no spaces other than those.
+
+\OutputFile
+If it is impossible to design the desired system, print one line ``\t{IMPOSSIBLE}''.
+
+Otherwise, output a rectangular grid of characters --- the system corresponding to formula $F$. The system can only contain spaces, `\t{-}', `\t{|}', `\t{+}', and letters corresponding to the band members that are mentioned in the input.
+
+The upper leftmost and the upper rightmost cells should be wire connections.
+The width of the grid should be between 2 and 50, inclusive, the height of the grid should be between 1 and 50, inclusive.
+
+Character `\t{-}' must be used for a wire if and only if it connects something on the left and something on the right with empty cells below and above. Similarly, `\t{|}' must be used for a wire if and only if it connects something below and something above with empty cells on the left and on the right.
+
+\Examples
+
+\begin{example}
+\exmpfile{example.01}{example.01.a}%
+\exmpfile{example.02}{example.02.a}%
+\exmpfile{example.03}{example.03.a}%
+\exmpfile{example.04}{example.04.a}%
+\exmpfile{example.05}{example.05.a}%
+\end{example}
+
+\end{problem}
+

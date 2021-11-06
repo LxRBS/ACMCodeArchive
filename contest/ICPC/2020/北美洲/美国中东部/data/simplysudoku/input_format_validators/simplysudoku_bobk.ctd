@@ -1,0 +1,9 @@
+REP(9)
+  INT(0,9)
+  REP(8)
+    SPACE INT(0,9)
+  END
+  NEWLINE
+END
+EOF
+

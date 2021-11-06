@@ -1,0 +1,7 @@
+name: Weird Flecks, But OK
+source: 2019/20 Mid-Atlantic ICPC
+license: cc by-sa
+rights_owner: 2019/20 Mid-Atlantic ICPC
+
+validation: default
+validator_flags: float_tolerance 1e-4

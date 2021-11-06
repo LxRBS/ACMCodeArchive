@@ -1,0 +1,15 @@
+\begin{tutorial}{Cactus Not Enough}
+
+First of all let's find a condition on being strong cactus. Consider all 2-vertex-connected components of graph. Graph is cactus, so each of them is either cycle or a single edge. If there are two single-edge components, that share a vertex, graph isn't strong cactus, because an edge between other vertices can be added. On the other hand, is there are no such to components, no edge could be added, because path between it's ends would cover at least one edge, which already lies on cycle, and this edge would lie on two cycles, if we add first edge. More convenient form of same statement is ``cactus is strong, iff after removing all edges lying on cycle each connected component has at most one edge. 
+
+Consider a set of edges $e_i$ we add to the graph. Lets $p_i$ be any simple path on initial graph between ends of edge $e_i$. Graph should still be cactus, so none of this path can go through any edge lying on cycle. So, this paths are unique, and problem is independent on each of connected components after removing all cycles. Also, this path must not intersect, or edge lying on two of them will lie on two cycles. So, our problem is splitted to several instances of following problem: given a tree, find minimum number of paths after removing which no two edges would be incident.
+
+This problem could be solved either by dynamic programming, or by greedy algorithm. Dynamic programming, is quite straightforward on state (subtree, prefix of sons already covered, does we cover edge from parent, do we have an not covered edge). But implementing it (especially building answer itself) is quite error-prone, so lets focus on greedy. 
+
+In fact, we need to remove some matching from tree, and after it, cover a tree with paths. Number of paths required to cover a full tree is equal to number of vertices with odd degree divided by two. This can be done by making each edge a single path, and then joining paths in each vertex in any way, until it have at most one end of path. There would be exactly one path end at each odd-degree vertex after that. So, we need to find matching minimizing number of odd-degree vertices. Edges, which have at least one even-degree end can be removed from this matching, because they not decreasing number of odd-degree vertices. So we need just to find maximum matching on vertices with odd degree, which can be done be greedy algorithm, because our graph is a tree. 
+
+In fact, one can just go from bottom to top, joining paths in any way, and creating new path, only when it can't be not created. It can be shown, this greedy algorithm will leave uncovered exactly this greedy-found maximum matching on odd-degree vertices, and some edges between unmatched odd-degree vertices with even-degree, which doesn't change number of paths. 
+
+
+
+\end{tutorial}

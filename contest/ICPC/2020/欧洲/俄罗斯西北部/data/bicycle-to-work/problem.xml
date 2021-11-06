@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="10" short-name="bicycle-to-work" url="https://polygon.codeforces.com/p5UrFZA/Aksenov239/bicycle-to-work">
+    <names>
+        <name language="english" value="Bicycle"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/problem.html" type="text/html"/>
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+    </statements>
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="">
+        <testset name="tests">
+            <time-limit>2000</time-limit>
+            <memory-limit>536870912</memory-limit>
+            <test-count>35</test-count>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test cmd="Tests sample 1" method="generated" sample="true"/>
+                <test cmd="Tests sample 2" method="generated" sample="true"/>
+                <test cmd="Tests sample 3" method="generated" sample="true"/>
+                <test cmd="Tests zero_cost 4" method="generated"/>
+                <test cmd="Tests zero_cost 5" method="generated"/>
+                <test cmd="Tests zero_cost 6" method="generated"/>
+                <test cmd="Tests zero_second 7" method="generated"/>
+                <test cmd="Tests zero_second 8" method="generated"/>
+                <test cmd="Tests zero_second 9" method="generated"/>
+                <test cmd="Tests zero_answer 10" method="generated"/>
+                <test cmd="Tests zero_answer 11" method="generated"/>
+                <test cmd="Tests zero_answer 12" method="generated"/>
+                <test cmd="Tests min_first 13" method="generated"/>
+                <test cmd="Tests min_first 14" method="generated"/>
+                <test cmd="Tests min_first 15" method="generated"/>
+                <test cmd="Tests min_second 16" method="generated"/>
+                <test cmd="Tests min_second 17" method="generated"/>
+                <test cmd="Tests min_second 18" method="generated"/>
+                <test cmd="Tests random 19" method="generated"/>
+                <test cmd="Tests random 20" method="generated"/>
+                <test cmd="Tests random 21" method="generated"/>
+                <test cmd="Tests random 22" method="generated"/>
+                <test cmd="Tests random 23" method="generated"/>
+                <test cmd="Tests random 24" method="generated"/>
+                <test cmd="Tests random 25" method="generated"/>
+                <test cmd="Tests max_test" method="generated"/>
+                <test cmd="Tests fixedT 27 1" method="generated"/>
+                <test cmd="Tests fixedT 28 2" method="generated"/>
+                <test cmd="Tests fixedT 29 29" method="generated"/>
+                <test cmd="Tests fixedT 30 30" method="generated"/>
+                <test cmd="Tests fixedT 31 31" method="generated"/>
+                <test cmd="Tests fixedT 32 32" method="generated"/>
+                <test cmd="Tests fixedT 33 44" method="generated"/>
+                <test cmd="Tests fixedT 34 45" method="generated"/>
+                <test cmd="Tests fixedT 35 46" method="generated"/>
+            </tests>
+        </testset>
+    </judging>
+    <files>
+        <resources>
+            <file path="files/olymp.sty"/>
+            <file path="files/problem.tex"/>
+            <file path="files/statements.ftl"/>
+            <file path="files/testlib.h" type="h.g++"/>
+        </resources>
+        <executables>
+            <executable>
+                <source path="files/Tests.java" type="java8"/>
+                <binary path="files/Tests.jar" type="jar"/>
+            </executable>
+            <executable>
+                <source path="files/validator.cpp" type="cpp.g++17"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+            </executable>
+        </executables>
+    </files>
+    <assets>
+        <checker name="std::ncmp.cpp" type="testlib">
+            <source path="files/check.cpp" type="cpp.g++17"/>
+            <binary path="check.exe" type="exe.win32"/>
+            <copy path="check.cpp"/>
+            <testset>
+                <test-count>0</test-count>
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                <tests/>
+            </testset>
+        </checker>
+        <validators>
+            <validator>
+                <source path="files/validator.cpp" type="cpp.g++17"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+                <testset>
+                    <test-count>4</test-count>
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                    <tests>
+                        <test verdict="invalid"/>
+                        <test verdict="valid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                    </tests>
+                </testset>
+            </validator>
+        </validators>
+        <solutions>
+            <solution tag="accepted">
+                <source path="solutions/bicycle-tourist.py" type="python.3"/>
+                <binary path="solutions/bicycle-tourist.pys3" type="pythonx.3"/>
+            </solution>
+            <solution tag="main">
+                <source path="solutions/bicycle_va.java" type="java8"/>
+                <binary path="solutions/bicycle_va.jar" type="jar"/>
+            </solution>
+        </solutions>
+    </assets>
+    <properties>
+        <property name="tests-wellformed" value="true"/>
+    </properties>
+    <stresses>
+        <stress-count>0</stress-count>
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+        <list/>
+    </stresses>
+    <tags>
+        <tag value="simple math"/>
+    </tags>
+</problem>

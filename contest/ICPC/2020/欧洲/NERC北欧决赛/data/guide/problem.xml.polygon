@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="10" short-name="guide" url="https://polygon.codeforces.com/p7Dm8Q8/elizarov/guide">
+        
+    <names>
+                
+        <name language="english" value="Guide"/>
+            
+    </names>
+        
+    <statements>
+                
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+                
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+            
+    </statements>
+        
+    <tutorials>
+                
+        <tutorial charset="UTF-8" language="english" mathjax="true" path="statements/english/tutorial.tex" type="application/x-tex"/>
+                
+        <tutorial charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/tutorial.html" type="text/html"/>
+                
+        <tutorial language="english" path="statements/.pdf/english/tutorial.pdf" type="application/pdf"/>
+            
+    </tutorials>
+        
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="">
+                
+        <testset name="tests">
+                        
+            <time-limit>3000</time-limit>
+                        
+            <memory-limit>536870912</memory-limit>
+                        
+            <test-count>17</test-count>
+                        
+            <input-path-pattern>tests/%02d</input-path-pattern>
+                        
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+                        
+            <tests>
+                                
+                <test cmd="Tests_guide sample 1" method="generated" sample="true"/>
+                                
+                <test cmd="Tests_guide small 2" method="generated"/>
+                                
+                <test cmd="Tests_guide random 10 3" method="generated"/>
+                                
+                <test cmd="Tests_guide binary 100 4" method="generated"/>
+                                
+                <test cmd="Tests_guide bamboo 100 5" method="generated"/>
+                                
+                <test cmd="Tests_guide vine 100 6" method="generated"/>
+                                
+                <test cmd="Tests_guide star 100 7" method="generated"/>
+                                
+                <test cmd="Tests_guide random 100 8" method="generated"/>
+                                
+                <test cmd="Tests_guide random 100 9" method="generated"/>
+                                
+                <test cmd="Tests_guide random 100 10" method="generated"/>
+                                
+                <test cmd="Tests_guide random 100 11" method="generated"/>
+                                
+                <test cmd="Tests_guide random 100 12" method="generated"/>
+                                
+                <test cmd="Tests_guide all_random 100 100 13" method="generated"/>
+                                
+                <test cmd="Tests_guide all_random 100 100 14" method="generated"/>
+                                
+                <test cmd="Tests_guide all_random 100 100 15" method="generated"/>
+                                
+                <test cmd="Tests_guide all_random 100 100 16" method="generated"/>
+                                
+                <test cmd="Tests_guide all_random 100 100 17" method="generated"/>
+                            
+            </tests>
+                    
+        </testset>
+            
+    </judging>
+        
+    <files>
+                
+        <resources>
+                        
+            <file path="files/olymp.sty"/>
+                        
+            <file path="files/problem.tex"/>
+                        
+            <file path="files/statements.ftl"/>
+                        
+            <file path="files/testlib.h" type="h.g++"/>
+                        
+            <file path="files/tutorial.tex"/>
+                    
+        </resources>
+                
+        <executables>
+                        
+            <executable>
+                                
+                <source path="files/Tests_guide.java" type="java11"/>
+                                
+                <binary path="files/Tests_guide.jar" type="jar"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/checker.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/checker.exe" type="exe.win32"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/validator.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/validator.exe" type="exe.win32"/>
+                            
+            </executable>
+                    
+        </executables>
+            
+    </files>
+        
+    <assets>
+                
+        <checker type="testlib">
+                        
+            <source path="files/checker.cpp" type="cpp.g++17"/>
+                        
+            <binary path="check.exe" type="exe.win32"/>
+                        
+            <copy path="check.cpp" type="cpp.g++17"/>
+                        
+            <testset>
+                                
+                <test-count>4</test-count>
+                                
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                                
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                                
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                                
+                <tests>
+                                        
+                    <test verdict="wrong-answer"/>
+                                        
+                    <test verdict="wrong-answer"/>
+                                        
+                    <test verdict="wrong-answer"/>
+                                        
+                    <test verdict="wrong-answer"/>
+                                    
+                </tests>
+                            
+            </testset>
+                    
+        </checker>
+                
+        <validators>
+                        
+            <validator>
+                                
+                <source path="files/validator.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/validator.exe" type="exe.win32"/>
+                                
+                <testset>
+                                        
+                    <test-count>6</test-count>
+                                        
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                                        
+                    <tests>
+                                                
+                        <test verdict="invalid"/>
+                                                
+                        <test verdict="invalid"/>
+                                                
+                        <test verdict="invalid"/>
+                                                
+                        <test verdict="invalid"/>
+                                                
+                        <test verdict="invalid"/>
+                                                
+                        <test verdict="valid"/>
+                                            
+                    </tests>
+                                    
+                </testset>
+                            
+            </validator>
+                    
+        </validators>
+                
+        <solutions>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/guide-dya.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/guide-dya.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="main">
+                                
+                <source path="solutions/guide_va.java" type="java11"/>
+                                
+                <binary path="solutions/guide_va.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/guide_va_wa.java" type="java11"/>
+                                
+                <binary path="solutions/guide_va_wa.jar" type="jar"/>
+                            
+            </solution>
+                    
+        </solutions>
+            
+    </assets>
+        
+    <properties>
+                
+        <property name="tests-wellformed" value="true"/>
+            
+    </properties>
+        
+    <stresses>
+                
+        <stress-count>0</stress-count>
+                
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+                
+        <list/>
+            
+    </stresses>
+    
+</problem>

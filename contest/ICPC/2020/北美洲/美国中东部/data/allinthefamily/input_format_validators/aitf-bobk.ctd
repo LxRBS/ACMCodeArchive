@@ -1,0 +1,12 @@
+INT(1,99,t) SPACE INT(1,1000,p) NEWLINE
+REP(t)
+  REGEX("[A-Za-z]+") SPACE INT(1,99,d)
+  REP(d)
+    SPACE REGEX("[A-Za-z]+")
+  END
+  NEWLINE
+END
+REP(p)
+  REGEX("[A-Za-z]+") SPACE REGEX("[A-Za-z]+") NEWLINE
+END
+EOF

@@ -1,0 +1,34 @@
+\problemname{Radio Prize}
+
+\noindent
+        You are given a tree with $N$ nodes, where every node has a tax value
+            $t_u$ and each edge has some weight $w_i$. The cost of a path
+            between nodes $u$ and $v$ is equal to $(t_u + t_v) \dist(u, v)$.
+            For each node $u$, compute the sum of the costs of all paths to
+            all other nodes $v$.
+
+        The above expression can be broken up into $t_u \dist(u, v) + t_v \dist(u, v)$. Compute for some arbitrary root
+        in $O(N)$ time. Then computing the answer for a neighboring node can be done in $O(1)$ time.
+
+        Fix some node $u$ as the root, compute two quantities:
+            \[ a_u = \sum_v \dist(u, v) \]
+            \[ b_u = \sum_v t_v \dist(u, v) \]
+
+        Then the answer for node $u$ is just $t_u a_u + b_u$.
+
+        How do we compute $a_{u'}$ and $b_{u'}$ for some neighbor $u'$ of $u$?
+
+        Let $w$ be the length of the edge between $u$ and $u'$. For all
+        nodes in the subtree of $u'$ when the tree is rooted at $u$, their
+        distance to the root decreases by $w$. For all other nodes, the
+        distance increases by $w$. If we let $\size(u)$ be the size of the subtree
+        rooted at $u$, then
+
+        \[ a_{u'} = a_u + w (N - \size(u)) - w \size(u) \]
+
+        Similarly, if we let $\tax(u)$ be the sum of the tax values of all
+        nodes in the subtree rooted at $u$, then
+        \[ b_{u'} = b_u + w (\tax(\text{root}) - \tax(u)) - w \tax(u) \]
+
+        Since these values can be updated in $O(1)$, walking and updating the
+        tree and computing all values takes $O(N)$ time in total.

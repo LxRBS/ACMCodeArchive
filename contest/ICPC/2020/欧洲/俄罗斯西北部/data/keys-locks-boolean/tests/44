@@ -1,0 +1,1 @@
+not ((not f or not d) and not h) and (not (c and a) or not not a or not not b) or not g and (not not (not c or b) or e)

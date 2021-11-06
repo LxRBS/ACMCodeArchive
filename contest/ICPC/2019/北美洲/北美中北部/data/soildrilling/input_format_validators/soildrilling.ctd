@@ -1,0 +1,8 @@
+INT(3,5000,n) NEWLINE
+REPI(i,n)
+    FLOATP(-1000.0, 1000.0, 0, 6, x[i]) SPACE
+    FLOATP(-1000.0, 1000.0, 0, 6, y[i]) SPACE
+    FLOATP(-1000.0, 1000.0, 0, 6, z[i]) NEWLINE
+END
+ASSERT(UNIQUE(x,y,z))
+EOF

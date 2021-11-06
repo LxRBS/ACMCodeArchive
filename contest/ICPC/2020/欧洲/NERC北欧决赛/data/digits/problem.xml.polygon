@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="16" short-name="digits" url="https://polygon.codeforces.com/p06N4cG/elizarov/digits">
+        
+    <names>
+                
+        <name language="english" value="Digits"/>
+            
+    </names>
+        
+    <statements>
+                
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+                
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/problem.html" type="text/html"/>
+                
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+            
+    </statements>
+        
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="">
+                
+        <testset name="tests">
+                        
+            <time-limit>3000</time-limit>
+                        
+            <memory-limit>536870912</memory-limit>
+                        
+            <test-count>52</test-count>
+                        
+            <input-path-pattern>tests/%02d</input-path-pattern>
+                        
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+                        
+            <tests>
+                                
+                <test method="manual" sample="true"/>
+                                
+                <test method="manual" sample="true"/>
+                                
+                <test method="manual" sample="true"/>
+                                
+                <test method="manual" sample="true"/>
+                                
+                <test method="manual" sample="true"/>
+                                
+                <test cmd="gen 10 0 10" method="generated"/>
+                                
+                <test cmd="gen 10 1 10" method="generated"/>
+                                
+                <test cmd="gen 10 2 10" method="generated"/>
+                                
+                <test cmd="gen 10 3 10" method="generated"/>
+                                
+                <test cmd="gen 10 4 10" method="generated"/>
+                                
+                <test cmd="gen 10 5 10" method="generated"/>
+                                
+                <test cmd="gen 10 6 10" method="generated"/>
+                                
+                <test cmd="gen 10 7 10" method="generated"/>
+                                
+                <test cmd="gen 10 8 10" method="generated"/>
+                                
+                <test cmd="gen 10 9 10" method="generated"/>
+                                
+                <test cmd="gen 100000 0 1000" method="generated"/>
+                                
+                <test cmd="gen 100000 1 1000" method="generated"/>
+                                
+                <test cmd="gen 100000 2 1000" method="generated"/>
+                                
+                <test cmd="gen 100000 3 1000" method="generated"/>
+                                
+                <test cmd="gen 100000 4 1000" method="generated"/>
+                                
+                <test cmd="gen 100000 5 1000" method="generated"/>
+                                
+                <test cmd="gen 100000 6 1000" method="generated"/>
+                                
+                <test cmd="gen 100000 7 1000" method="generated"/>
+                                
+                <test cmd="gen 100000 8 1000" method="generated"/>
+                                
+                <test cmd="gen 100000 9 1000" method="generated"/>
+                                
+                <test method="manual"/>
+                                
+                <test cmd="gen_same 100000 999 0" method="generated"/>
+                                
+                <test cmd="gen_same 100000 999 1" method="generated"/>
+                                
+                <test cmd="gen_same 100000 997 0" method="generated"/>
+                                
+                <test cmd="gen_same 100000 997 1" method="generated"/>
+                                
+                <test cmd="gen_same 100000 997 2" method="generated"/>
+                                
+                <test cmd="gen_same 100000 997 3" method="generated"/>
+                                
+                <test method="manual"/>
+                                
+                <test method="manual"/>
+                                
+                <test cmd="gen2 100000 1000 0 0" method="generated"/>
+                                
+                <test cmd="gen2 100000 1000 0 1" method="generated"/>
+                                
+                <test cmd="gen2 100000 1000 0 2" method="generated"/>
+                                
+                <test cmd="gen2 100000 1000 1 0" method="generated"/>
+                                
+                <test cmd="gen2 100000 1000 1 1" method="generated"/>
+                                
+                <test cmd="gen2 100000 1000 1 2" method="generated"/>
+                                
+                <test cmd="gen2 100000 1000 2 0" method="generated"/>
+                                
+                <test cmd="gen2 100000 1000 2 1" method="generated"/>
+                                
+                <test cmd="gen2 100000 1000 2 2" method="generated"/>
+                                
+                <test cmd="gen3 100000 1000 0 0" method="generated"/>
+                                
+                <test cmd="gen3 100000 1000 0 1" method="generated"/>
+                                
+                <test cmd="gen3 100000 1000 0 2" method="generated"/>
+                                
+                <test cmd="gen3 100000 1000 1 0" method="generated"/>
+                                
+                <test cmd="gen3 100000 1000 1 1" method="generated"/>
+                                
+                <test cmd="gen3 100000 1000 1 2" method="generated"/>
+                                
+                <test cmd="gen3 100000 1000 2 0" method="generated"/>
+                                
+                <test cmd="gen3 100000 1000 2 1" method="generated"/>
+                                
+                <test cmd="gen3 100000 1000 2 2" method="generated"/>
+                            
+            </tests>
+                    
+        </testset>
+            
+    </judging>
+        
+    <files>
+                
+        <resources>
+                        
+            <file path="files/olymp.sty"/>
+                        
+            <file path="files/problem.tex"/>
+                        
+            <file path="files/statements.ftl"/>
+                        
+            <file path="files/testlib.h" type="h.g++"/>
+                    
+        </resources>
+                
+        <executables>
+                        
+            <executable>
+                                
+                <source path="files/check.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/check.exe" type="exe.win32"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/gen.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/gen.exe" type="exe.win32"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/gen2.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/gen2.exe" type="exe.win32"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/gen3.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/gen3.exe" type="exe.win32"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/gen_same.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/gen_same.exe" type="exe.win32"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/validate.exe" type="exe.win32"/>
+                            
+            </executable>
+                    
+        </executables>
+            
+    </files>
+        
+    <assets>
+                
+        <checker type="testlib">
+                        
+            <source path="files/check.cpp" type="cpp.g++17"/>
+                        
+            <binary path="check.exe" type="exe.win32"/>
+                        
+            <copy path="check.cpp" type="cpp.g++17"/>
+                        
+            <testset>
+                                
+                <test-count>0</test-count>
+                                
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                                
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                                
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                                
+                <tests/>
+                            
+            </testset>
+                    
+        </checker>
+                
+        <validators>
+                        
+            <validator>
+                                
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/validate.exe" type="exe.win32"/>
+                                
+                <testset>
+                                        
+                    <test-count>0</test-count>
+                                        
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                                        
+                    <tests/>
+                                    
+                </testset>
+                            
+            </validator>
+                    
+        </validators>
+                
+        <solutions>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/digits-dya.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/digits-dya.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/digits_ek_lazha.cpp" type="cpp.msys2-mingw64-9-g++17"/>
+                                
+                <binary path="solutions/digits_ek_lazha.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/digits_godnotent.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/digits_godnotent.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/digits_minaev.java" type="java11"/>
+                                
+                <binary path="solutions/digits_minaev.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/digits_minaev_wa.java" type="java11"/>
+                                
+                <binary path="solutions/digits_minaev_wa.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="main">
+                                
+                <source path="solutions/digits_pm.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/digits_pm.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/digits_pm_double.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/digits_pm_double.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/digits_pm_ll.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/digits_pm_ll.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/digits_re.kt" type="kotlin"/>
+                                
+                <binary path="solutions/digits_re.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/digits_tikhomirov.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/digits_tikhomirov.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/digits_usa.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/digits_usa.exe" type="exe.win32"/>
+                            
+            </solution>
+                    
+        </solutions>
+            
+    </assets>
+        
+    <properties>
+                
+        <property name="tests-wellformed" value="true"/>
+            
+    </properties>
+        
+    <stresses>
+                
+        <stress-count>2</stress-count>
+                
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+                
+        <list>
+                        
+            <stress index="2" path="stresses/002"/>
+                        
+            <stress index="1" path="stresses/001"/>
+                    
+        </list>
+            
+    </stresses>
+    
+</problem>

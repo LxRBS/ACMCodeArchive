@@ -1,0 +1,55 @@
+\begin{problem}{Halves Not Equal}{standard input}{standard output}{3 seconds}{512 megabytes}
+
+The king died and his gold had to be divided among his $n$ wives. He had not left his will about the parts of his wives, so they started arguing. The $i$-th wife claimed that she should get $a_i$ dinars.
+
+However, it turned out that the total property of the king was only $s$ dinars, and $s \le a_1 + a_2 + \ldots + a_n$. A wise man was called to help divide the king's inheritance. But he said that he only knew a fair way to divide gold between two persons.
+
+The \textit{fair way} is the following. Without loss of generality, let the claims of the two persons be $a_1 \le a_2$, and let there be $b$ dinars of gold to be divided, $0 \le b \le a_1 + a_2$. If $b \le a_1$, each of the persons would get $b/2$ dinars. If $a_1 < b < a_2$, the first one would get $a_1/2$ dinars and the second one would get $b - a_1/2$ dinars. Finally, if $a_2 \le b$, the first one would get $a_1/2 + (b - a_2) / 2$ and the second one would get $a_2/2 + (b - a_1) / 2$. Gold can be divided to any fractional part, so the amount one gets can be fractional. Note that the amount each one would get is a monotonic and continuous function of $b$.
+
+Now you have been called as an even wiser person to help divide the gold among the $n$ wives.
+Each wife should get no more than she claims. The division is called fair if for any two wives who claim $a_i$ and $a_j$ dinars of the inheritance and get $c_i$ and $c_j$ dinars, correspondingly, these values are the \textit{fair way} to divide $c_i + c_j$ dinars between them.
+
+Help the wives of the late king divide his inheritance.
+
+\InputFile
+The first line of the input contains $n$~--- the number of wives of the king ($2 \le n \le 5000$).
+
+The second line contains $n$ integers $a_1, a_2, \ldots, a_n$ ($1 \le a_i \le 5000$).
+
+The third line contains an integer $s$ ($0 \le s \le a_1 + a_2 + \ldots + a_n$).
+
+\OutputFile
+Output $n$ floating point numbers $c_1, c_2, \ldots, c_n$~--- the amounts of gold each wife should get in a fair division.
+
+For each pair of wives $i$ and $j$ the absolute or relative difference between their parts and their parts in the \textit{fair way} to divide $c_i + c_j$ between them must not exceed $10^{-9}$. The sum of $c_i$ must be equal to $s$ with an absolute or relative error of at most $10^{-9}$.
+
+It can be proved that a fair division always exists. If there is more than one solution, output any of them.
+
+\Examples
+
+\begin{example}
+\exmp{3
+10 20 30
+10
+}{3.33333333333333
+3.33333333333333
+3.33333333333333
+}%
+\exmp{3
+10 20 30
+20
+}{5
+7.5
+7.5
+}%
+\exmp{3
+10 20 30
+30
+}{5
+10
+15
+}%
+\end{example}
+
+\end{problem}
+

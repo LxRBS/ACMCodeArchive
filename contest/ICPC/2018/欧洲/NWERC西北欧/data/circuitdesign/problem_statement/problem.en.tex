@@ -1,0 +1,66 @@
+\problemname{Circuit Board Design}
+
+% Picture source: https://www.flickr.com/photos/mnsc/433436548/
+\illustration{0.3}{circuitboard}{A circuit board. Public domain.}%
+%
+You have been hired at the \emph{Nano Wiring Efficient Route Company}
+(NWERC) to help with the
+design of their new circuit boards. The circuits themselves have
+already been designed, and your task is to come up with a way to print
+them onto the blank boards that the company has bought.
+
+More specifically, each circuit design consists of a number of
+connection points with some connections between them such that the
+resulting graph is connected and does not have any cycles (i.e., the
+graph is a tree).
+
+You are free to place the connection points anywhere on the circuit board
+and solder the connections between them so that no two connections
+intersect (except at the connection points). The boards you ordered
+are fairly large, so there is no danger of running out of space.
+You can solder so precisely that connections and connection points can be
+considered infinitesimal.
+
+This would all be very easy, however your boss persists that each
+connection needs to be a straight line of length exactly $1\text{ mm}$ (this
+is, so he says, to make sure the electrons do not have to travel
+around corners, which would be detrimental to the efficiency of the
+design).
+
+You soon realise that battling with him will be unsuccessful. Your quickest way
+out of this is to etch a new design according to his specifications.
+
+%You are given a tree. Find a planar embedding for this tree,
+%i.e.~assign points in the plane to the tree vertices so that if the
+%edges are drawn as straight lines betweeen these points,
+%
+%\begin{itemize}
+%  \item each edge has length $1$ (up to an error of $10^{-6}$);
+%  \item no two edges intersect.
+%\end{itemize}
+
+\section*{Input}
+
+The input consists of:
+\begin{itemize}
+  \item One line with one integer $n$ ($2 \le n \le 1\,000$), the number
+    of connection points.  The points are numbered from $1$ to $n$.
+  \item $n-1$ lines, each with two integers $a$ and $b$ ($1 \le a,b \le n$),
+    describing a connection between $a$ and $b$.
+\end{itemize}
+
+It is guaranteed that these edges describe a valid tree.
+
+\section*{Output}
+
+Output $n$ lines, the $i$th of which contains two real numbers $x_i,y_i$, the
+coordinates of point $i$. To make the production feasible, the
+following restrictions apply:
+\begin{itemize}
+\item The distance between each pair of points should be at least $10^{-4}$.
+\item The length of each edge should be $1$, up to an \emph{absolute} error of at
+  most $10^{-6}$.
+\item Edges that are not incident to the same vertex should be at least a distance $10^{-6}$ apart.
+\item The coordinates may not exceed an absolute value of $3\,000$.
+\end{itemize}
+If there are multiple valid solutions, you may output any one of them.

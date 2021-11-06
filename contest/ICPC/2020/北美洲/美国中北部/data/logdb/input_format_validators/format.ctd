@@ -1,0 +1,14 @@
+SET(lines = 0)
+WHILEI(i, !MATCH("\n"))
+    REGEX("((\t| )*[a-zA-Z0-9][a-zA-Z0-9\\_]*(\t| )*\\((\t| )*((\t| )*[a-zA-Z0-9][a-zA-Z0-9\\_]*(\t| )*,(\t| )*)*[a-zA-Z0-9][a-zA-Z0-9\\_]*(\t| )*\\)(\t| )*)+") NEWLINE
+    SET(lines = i+1)
+END
+ASSERT(lines <= 200)
+NEWLINE
+SET(lines = 0)
+WHILEI(i, !ISEOF)
+    REGEX("(\t| )*[a-zA-Z0-9][a-zA-Z0-9\\_]*(\t| )*\\((\t| )*((\t| )*[a-zA-Z0-9\\_]*(\t| )*,(\t| )*)*[a-zA-Z0-9\\_]*(\t| )*\\)(\t| )*") NEWLINE
+    SET(lines = i+1)
+END
+ASSERT(lines <= 200)
+EOF

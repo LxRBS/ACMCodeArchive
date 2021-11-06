@@ -1,0 +1,81 @@
+\documentclass{article}
+
+\usepackage{graphicx, wrapfig}
+\usepackage{amsthm}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{observation}{Observation}
+\newtheorem{theorem}{Theorem}
+
+\graphicspath{{figures/}}
+
+\begin{document}
+\section*{Idea of Proof}
+
+
+\begin{lemma}\label{lem:mean}
+The cost of placing $n$ elements at the same position $m$ is minimized by the mean (under a squared cost function).
+\end{lemma}
+\begin{proof}
+We have the cost function $c(x) = \sum_{i=1}^{n} (e_i - x)^2$. The sum is a squared function having one unique minima.
+We can find the minima by setting the derivative to zero.
+The derivative is $c'(x) = \sum_{i=1}^{n} -2(e_i - x)$. When we set it to zero we get: $\sum_{i=1}^{n} -2(e_i - x)=0$, by splitting the sum and rearranging we obtain $\sum_{i=1}^{n} e_i = \sum_{i=1}^{n} x$, thus $x = \frac{\sum_{i=1}^{n} e_i}{n}$. We conclude that the optimal placement is at the mean of the values.
+\end{proof}
+
+\noindent Any solution (also the optimal) can be represented by a partition in a series of subsequences that together comprise the complete sequence of elements. In the solution all elements in the subsequence are placed at the same location and every subsequence has a unique location. By the above the optimal position for such a subsequence is the mean of the values of the subsequence.\\
+
+\begin{lemma}\label{lem:prepost}
+In an optimal solution prefixes and postfixes of subsequences are respectively larger and smaller than the mean of the complete subsequence.
+\end{lemma}
+\begin{proof}
+Consider a subsequence $[a,\ldots, d]$ in an optimal solution. Let $m([a,\ldots,d])$ be the mean of the elements in the subsequence.
+For any prefix $[a,\ldots, i]$ of $[a,\ldots,d]$ we have $m([a,\ldots,i]) \ge m([a,\ldots,d])$. Assume for contradiction this is not the case, then we could split the subsequence in two parts and place $[a,\ldots,i]$ at $m([a,\ldots,d])-\epsilon$ and $[i+1,\ldots,d]$ at $m([a,\ldots,d])$ to obtain a better solution. Contradiction.\\
+Similarly, for any postfix $[i,\ldots, d]$ of $[a,\ldots,d]$ we have $m([i,\ldots,d]) \le m([a,\ldots,d])$.
+\end{proof}
+
+\noindent Consider that you are given an optimal solution $O_{n-1}$ for the first $n-1$ elements.
+We consider the optimal solution $O_n$ for the first $n$ elements and show that all subsequences are maintained.
+Specifically every subsequence in $O_{n-1}$ is fully contained in one subsequence in $O_n$.
+Note that this does not prevent subsequences from $O_{n-1}$ from merging in $O_n$.\\
+
+\begin{lemma}
+Every subsequence in $O_{n-1}$ is contained in one subsequence in $O_n$.
+\end{lemma}
+\begin{proof}
+Let $[a,\ldots, d]$ be a subsequence in $O_{n-1}$.
+For contradiction assume $[a,\ldots,d]$ is not contained in one subsequence in $O_{n}$.
+Thus assume $[a,\ldots, d]$ with mean $m$ is split across at least two subsequences in $S_n$.
+Consider the parts formed by splitting the sequence across the sequences they are contained in, in the solution $O_{n}$.
+Let the first part be $[a, \ldots,i]$ and the last part be $[j, \ldots, d]$, with $a\le i<j \le d$.
+
+In $O_n$ the first part forms a postfix of some subsequence $s$.
+As a corollary of Lemma~\ref{lem:mean}, $s$ must be placed at the mean $m_s$ of its elements (or we can improve the solution with an $\epsilon$ shift).
+By Lemma~\ref{lem:prepost} in order for the solution to be optimal the mean $m_p$ of the postfix $[a,\ldots,i]$ must smaller or equal to $m_s$.
+And also by Lemma~\ref{lem:prepost} the mean $m_p$ must be larger or equal than $m$ or $O_{n-1}$ was not optimal.
+Thus $m \le m_p \le m_s$.
+
+Similarly the last part forms a prefix $p'$ of some other subsequence $s'$.
+By similar arguing we obtain $m_{s'} \le m_{p'} \le m$.
+As we cannot change the order of the elements we also know that $m_{s'} \ge m_s$.
+But then we must have $m_{s'} = m_s$ and the first and last part are contained in the same subsequence in $O_n$.
+It follows that any parts in between must also be in the same subsequence.
+Thus $[a,\ldots,d]$ is fully contained in a single subsequence in $O_n$. Contradiction.
+\end{proof}
+
+\begin{theorem}
+We can greedily build the optimal solution.
+\end{theorem}
+\begin{proof}
+By Lemma 3 we know that all subsequences in $O_{n-1}$ are completely contained in one subsequence in $O_n$.
+Thus we only need to be concerned about merges.
+Assume (at least) two subsequences $s,t$ from $O_{n-1}$ are merged that both do not include the $n$-th element.
+As the mean of $s$ is strictly smaller than the mean from $t$ the resulting subsequence could be split and one of the parts offset an epsilon amount to improve the solution. Thus such a merge is never in an optimal solution.
+That leaves only merges with the last subsequence (containing the $n$-th element) to be checked.
+
+We can simply check this locally. If the mean of the last subsequence is larger than that of the second-to-last we leave the subsequences split and are finished. Otherwise we combine the last two subsequences and recurse.
+\end{proof}
+
+\section*{Comment}
+Note that the proof is by no means low difficulty.
+Once you know that you can do it in $O(n)$ time though (deducible from the problem constraints) and you know it is possible (deducible from the fact it is an exercise) with some guess work plus knowledge of the mean as optimal you can guess your way to the likely solution.
+\end{document} 

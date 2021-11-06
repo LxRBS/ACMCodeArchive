@@ -1,0 +1,24 @@
+\problemname{Perfect Flush}
+
+\noindent
+
+We sweep over the integers in the list in order and will attempt to construct
+the desired subsequence directly.
+
+There are two cases to consider when considering the $i$th integer in the input
+list.
+
+\begin{enumerate}
+\item The given integer is already present in our subsequence. We do nothing.
+\item The given integer is not present in our subsequence. This is the
+interesting case to consider.
+
+While our tentative subsequence is not empty, we will compare the given integer
+to the last integer in our subsequence. If the given integer is larger than
+the last integer in our subsequence, then append it to the end
+of our subsequence. Otherwise, it is smaller than the last integer. We can
+safely remove this integer if and only if there is another appearance of this
+integer that will be considered later in the sweep. We repeat this removal
+process until we can no longer remove an integer, at which we perform the
+append.
+\end{enumerate}

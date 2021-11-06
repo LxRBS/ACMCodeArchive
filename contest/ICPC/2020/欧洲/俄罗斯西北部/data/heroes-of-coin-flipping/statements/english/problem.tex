@@ -1,0 +1,43 @@
+\begin{problem}{Heroes of Coin Flipping}{standard input}{standard output}{2 seconds}{512 megabytes}
+
+It is year 2030. Professional coin flipping has become the most popular game on the Internet. Latest coin flipping World Championship gathered the record amount of participants from around the world! There are $2^k$ participants, competing in a single-elimination tournament for the title of the Coin Flipping World Champion. For simplicity, we will refer to participants as numbers from $1$ to $2^k$.
+
+In the first stage, participants are split into pairs: 1 against 2, 3 against 4, \ldots $2^k - 1$ against $2^k$. The winner of each match advances to the next stage. Every next stage goes on similarly: remaining participants are sorted by their number, then split into pairs to play their matches. The last $k$-th stage is just one match that crowns the world's best coin flipper. All participants' coin-flipping skills are almost identical to each other: in a match with any two participants, the probability of one of them winning is exactly $\frac 12$.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics{tournament.1}
+\end{center}
+\caption*{An example of a single-elimination tournament with 8 participants. S$X$M$Y$ is a shorthand for the $Y$-th match of the $X$-th stage.}
+\end{figure}
+
+Hedy missed the live broadcast of the tournament, so she's going to watch all the recordings after the fact. She already knows the list of all participants (and their numbers), but doesn't know any match outcomes. Friends suggested Hedy $n$ matches to watch first (without spoiling the result, of course!). First she is going to watch these $n$ matches in a specific order, then watch all the remaining matches in random order.
+
+Hedy considers a match \textit{exciting} if she doesn't know the winner of that match before watching it. For example, after watching the final, both semifinals will not be exciting for her, because she will have already seen the semifinals winners competing in the final. 
+
+Find the expected number of exciting matches, averaged over all possible tournament outcomes and watch orders.
+
+\InputFile
+The first line of the input contains two integers $k$ and $n$ ($1 \le k \le 30$; $0 \le n \le \min(2^k - 1, 10^5)$).
+Next $n$ lines describe the suggested matches in order Hedy is going to watch them. Each line contains two integers $s_i$ and $m_i$, the stage and the number of the match within that stage ($1 \le s_i \le k$; $1 \le m_i \le 2^{k-s_i}$; all pairs $(s_i, m_i)$ are distinct).
+
+
+\OutputFile
+Print a single real number~--- the expected number of exciting matches. The absolute or relative error should not exceed $10^{-9}$.
+
+\Examples
+
+\begin{example}
+\exmpfile{example.01}{example.01.a}%
+\exmpfile{example.02}{example.02.a}%
+\exmpfile{example.03}{example.03.a}%
+\exmpfile{example.04}{example.04.a}%
+\end{example}
+
+\Note
+In the first example, there is no randomness. The first two matches are always exciting, the third one is always not.
+
+In the second example, the first match is exciting. There are two possible orders. In case the semifinal match comes before the final match, both matches are exciting. In the other case, the semifinal will not be exciting as Hedy watches it after the final. The expected value is $1 + \frac 12 (2 + 1) = 2.5$.
+
+\end{problem}
+

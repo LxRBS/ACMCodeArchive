@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="40" short-name="keys-locks-boolean" url="https://polygon.codeforces.com/p09lPcM/dvorkin/keys-locks-boolean">
+    <names>
+        <name language="english" value="Keys and Locks Boolean Logic"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/problem.html" type="text/html"/>
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+    </statements>
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="">
+        <testset name="tests">
+            <time-limit>2000</time-limit>
+            <memory-limit>536870912</memory-limit>
+            <test-count>102</test-count>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test method="manual" sample="true"/>
+                <test method="manual" sample="true"/>
+                <test method="manual" sample="true"/>
+                <test method="manual" sample="true"/>
+                <test method="manual" sample="true"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;01&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;03&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;05&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;06&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;07&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;08&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;09&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;10&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;11&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;12&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;13&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;14&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;15&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;16&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;17&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;18&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;19&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;20&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;21&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;22&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;23&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;24&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;25&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;26&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;27&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;28&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;29&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;30&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;31&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;32&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;33&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;34&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;35&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;36&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;37&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;38&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;39&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;41&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;42&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;45&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;46&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;47&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;48&quot;" method="manual"/>
+                <test description="Archive &quot;formula2007.zip&quot;; file &quot;49&quot;" method="manual"/>
+                <test cmd="Tests veryNested" method="generated"/>
+                <test cmd="Tests veryNestedNonTrivial" method="generated"/>
+                <test cmd="Tests randomMonotoneNF 3 9 1 8" method="generated"/>
+                <test cmd="Tests randomMonotoneNF 3 9 3 6" method="generated"/>
+                <test cmd="Tests randomMonotoneNF 8 100 3 6" method="generated"/>
+                <test cmd="Tests randomMonotoneNF 8 80 1 8" method="generated"/>
+                <test cmd="Tests randomMonotoneNF 8 150 1 5" method="generated"/>
+                <test cmd="Tests randomMonotoneNF 8 500 6 7" method="generated"/>
+                <test cmd="Tests randomMonotoneNested 8 50" method="generated"/>
+                <test cmd="Tests randomMonotoneNested 7 999" method="generated"/>
+                <test cmd="Tests randomMonotoneNested 8 2020" method="generated"/>
+                <test cmd="Tests randomMonotoneNested 1 2020" method="generated"/>
+                <test cmd="Tests linearThreshold 3 50 100" method="generated"/>
+                <test cmd="Tests linearThreshold 4 50 100" method="generated"/>
+                <test cmd="Tests linearThreshold 5 70 100" method="generated"/>
+                <test cmd="Tests linearThreshold 6 20 100" method="generated"/>
+                <test cmd="Tests linearThreshold 7 80 100" method="generated"/>
+                <test cmd="Tests linearThreshold 8 70 100" method="generated"/>
+                <test cmd="Tests linearThreshold 8 40 50" method="generated"/>
+                <test cmd="Tests linearThreshold 6 10 40" method="generated"/>
+                <test cmd="Tests popCountFull 3 1 0" method="generated"/>
+                <test cmd="Tests popCountFull 3 2 0" method="generated"/>
+                <test cmd="Tests popCountFull 3 3 1" method="generated"/>
+                <test cmd="Tests popCountFull 7 5 0" method="generated"/>
+                <test cmd="Tests popCountFull 7 5 1" method="generated"/>
+                <test cmd="Tests popCountFull 8 7 1" method="generated"/>
+                <test cmd="Tests popCount 4 2 0" method="generated"/>
+                <test cmd="Tests popCount 4 3 1" method="generated"/>
+                <test cmd="Tests popCount 8 1 0" method="generated"/>
+                <test cmd="Tests popCount 8 2 0" method="generated"/>
+                <test cmd="Tests popCount 8 3 0" method="generated"/>
+                <test cmd="Tests popCount 8 3 1" method="generated"/>
+                <test cmd="Tests popCount 8 4 0" method="generated"/>
+                <test cmd="Tests popCount 8 4 1" method="generated"/>
+                <test cmd="Tests popCount 8 5 0" method="generated"/>
+                <test cmd="Tests popCount 8 5 1" method="generated"/>
+                <test cmd="Tests popCount 8 6 0" method="generated"/>
+                <test cmd="Tests popCount 8 6 1" method="generated"/>
+                <test cmd="Tests popCount 8 7 0" method="generated"/>
+                <test cmd="Tests popCount 8 7 1" method="generated"/>
+                <test cmd="Tests popCount 8 8 0" method="generated"/>
+                <test cmd="Tests popCount 8 8 1" method="generated"/>
+            </tests>
+        </testset>
+    </judging>
+    <files>
+        <resources>
+            <file path="files/olymp.sty"/>
+            <file path="files/problem.tex"/>
+            <file path="files/statements.ftl"/>
+            <file path="files/testlib.h" type="h.g++"/>
+            <file path="files/testlib4j.jar" type="jar"/>
+        </resources>
+        <executables>
+            <executable>
+                <source path="files/Check.kt" type="kotlin"/>
+                <binary path="files/Check.jar" type="jar"/>
+            </executable>
+            <executable>
+                <source path="files/Tests.kt" type="kotlin"/>
+                <binary path="files/Tests.jar" type="jar"/>
+            </executable>
+            <executable>
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                <binary path="files/validate.exe" type="exe.win32"/>
+            </executable>
+        </executables>
+    </files>
+    <assets>
+        <checker type="testlib">
+            <source path="files/Check.kt" type="kotlin"/>
+            <binary path="check.jar" type="jar"/>
+            <copy path="check.kt" type="kotlin"/>
+            <testset>
+                <test-count>7</test-count>
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                <tests>
+                    <test verdict="ok"/>
+                    <test verdict="ok"/>
+                    <test verdict="ok"/>
+                    <test verdict="ok"/>
+                    <test verdict="wrong-answer"/>
+                    <test verdict="wrong-answer"/>
+                    <test verdict="wrong-answer"/>
+                </tests>
+            </testset>
+        </checker>
+        <validators>
+            <validator>
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                <binary path="files/validate.exe" type="exe.win32"/>
+                <testset>
+                    <test-count>5</test-count>
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                    <tests>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                    </tests>
+                </testset>
+            </validator>
+        </validators>
+        <solutions>
+            <solution tag="main">
+                <source path="solutions/keys-tourist-pypy.py" type="python.pypy3"/>
+                <binary path="solutions/keys-tourist-pypy.pypys3" type="pythonx.pypy3"/>
+            </solution>
+            <solution tag="rejected">
+                <source path="solutions/keys-tourist-simple-badchars.py" type="python.3"/>
+                <binary path="solutions/keys-tourist-simple-badchars.pys3" type="pythonx.3"/>
+            </solution>
+            <solution tag="rejected">
+                <source path="solutions/keys-tourist-simple.py" type="python.3"/>
+                <binary path="solutions/keys-tourist-simple.pys3" type="pythonx.3"/>
+            </solution>
+            <solution tag="failed">
+                <source path="solutions/keys-tourist.py" type="python.3"/>
+                <binary path="solutions/keys-tourist.pys3" type="pythonx.3"/>
+            </solution>
+            <solution tag="accepted">
+                <source path="solutions/keys_md_nashorn.kt" type="kotlin"/>
+                <binary path="solutions/keys_md_nashorn.jar" type="jar"/>
+            </solution>
+            <solution tag="rejected">
+                <source path="solutions/keys_md_nashorn_almost.kt" type="kotlin"/>
+                <binary path="solutions/keys_md_nashorn_almost.jar" type="jar"/>
+            </solution>
+            <solution tag="time-limit-exceeded">
+                <source path="solutions/keys_md_nashorn_slow.kt" type="kotlin"/>
+                <binary path="solutions/keys_md_nashorn_slow.jar" type="jar"/>
+            </solution>
+            <solution tag="rejected">
+                <source path="solutions/keys_md_nashorn_too_high.kt" type="kotlin"/>
+                <binary path="solutions/keys_md_nashorn_too_high.jar" type="jar"/>
+            </solution>
+            <solution tag="rejected">
+                <source path="solutions/keys_md_nashorn_too_large.kt" type="kotlin"/>
+                <binary path="solutions/keys_md_nashorn_too_large.jar" type="jar"/>
+            </solution>
+            <solution tag="rejected">
+                <source path="solutions/keys_md_nashorn_too_large_bug.kt" type="kotlin"/>
+                <binary path="solutions/keys_md_nashorn_too_large_bug.jar" type="jar"/>
+            </solution>
+            <solution tag="rejected">
+                <source path="solutions/keys_md_no_impossible.py" type="python.3"/>
+                <binary path="solutions/keys_md_no_impossible.pys3" type="pythonx.3"/>
+            </solution>
+            <solution tag="rejected">
+                <source path="solutions/keys_md_too_high.py" type="python.3"/>
+                <binary path="solutions/keys_md_too_high.pys3" type="pythonx.3"/>
+            </solution>
+            <solution tag="rejected">
+                <source path="solutions/keys_pkun.cpp" type="cpp.g++17"/>
+                <binary path="solutions/keys_pkun.exe" type="exe.win32"/>
+            </solution>
+        </solutions>
+    </assets>
+    <properties>
+        <property name="tests-wellformed" value="true"/>
+    </properties>
+    <stresses>
+        <stress-count>0</stress-count>
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+        <list/>
+    </stresses>
+    <tags>
+        <tag value="ascii art"/>
+        <tag value="expression parsing"/>
+    </tags>
+</problem>

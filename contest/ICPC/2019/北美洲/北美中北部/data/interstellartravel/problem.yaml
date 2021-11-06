@@ -1,0 +1,5 @@
+name: Interstellar Travel
+license: cc by-sa
+source: FIXME
+author: Jaehyun Park
+validator_flags: float_tolerance 1e-6

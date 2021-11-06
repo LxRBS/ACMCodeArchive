@@ -1,0 +1,2 @@
+#!/bin/sh
+javac -encoding UTF-8 stagger_validator.java

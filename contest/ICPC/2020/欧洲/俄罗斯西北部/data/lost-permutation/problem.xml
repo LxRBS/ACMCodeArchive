@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="13" short-name="lost-permutation" url="https://polygon.codeforces.com/p92x2kK/avasilyev/lost-permutation">
+    <names>
+        <name language="english" value="Lost Permutation"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+    </statements>
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="">
+        <testset name="tests">
+            <time-limit>2000</time-limit>
+            <memory-limit>536870912</memory-limit>
+            <test-count>33</test-count>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test method="manual" sample="true"/>
+                <test cmd="GenRandomSameLength 3" method="generated"/>
+                <test cmd="GenRandomSameLength 4" method="generated"/>
+                <test cmd="GenRandomSameLength 5" method="generated"/>
+                <test cmd="GenRandomSameLength 6" method="generated"/>
+                <test cmd="GenRandomSameLength 7" method="generated"/>
+                <test cmd="GenRandomSameLength 8" method="generated"/>
+                <test cmd="GenRandomSameLength 9" method="generated"/>
+                <test cmd="GenRandomSameLength 10" method="generated"/>
+                <test cmd="GenRandomSameLength 20" method="generated"/>
+                <test cmd="GenRandomSameLength 50" method="generated"/>
+                <test cmd="GenRandomSameLength 100" method="generated"/>
+                <test cmd="GenRandomSameLength 1000" method="generated"/>
+                <test cmd="GenRandomSameLength 2000" method="generated"/>
+                <test cmd="GenRandomSameLength 5000" method="generated"/>
+                <test cmd="GenRandomSameLength 10000" method="generated"/>
+                <test cmd="GenRandomRandomLength 6" method="generated"/>
+                <test cmd="GenRandomRandomLength 10" method="generated"/>
+                <test cmd="GenRandomRandomLength 50" method="generated"/>
+                <test cmd="GenRandomRandomLength 100" method="generated"/>
+                <test cmd="GenRandomRandomLength 2000" method="generated"/>
+                <test cmd="GenRandomRandomLength 10000" method="generated"/>
+                <test cmd="GenSpecial 6" method="generated"/>
+                <test cmd="GenSpecial 24" method="generated"/>
+                <test cmd="GenSpecial 120" method="generated"/>
+                <test cmd="GenSpecial 720" method="generated"/>
+                <test cmd="GenSpecial 2500" method="generated"/>
+                <test cmd="GenSpecial 5000 0" method="generated"/>
+                <test cmd="GenSpecial 5000 2" method="generated"/>
+                <test cmd="GenSpecial 10000 0" method="generated"/>
+                <test cmd="GenSpecial 10000 1" method="generated"/>
+                <test cmd="GenSpecial 10000 2" method="generated"/>
+                <test cmd="GenSpecial 10000 3" method="generated"/>
+            </tests>
+        </testset>
+    </judging>
+    <files>
+        <resources>
+            <file path="files/olymp.sty"/>
+            <file path="files/problem.tex"/>
+            <file path="files/statements.ftl"/>
+            <file path="files/testlib.h" type="h.g++"/>
+        </resources>
+        <executables>
+            <executable>
+                <source path="files/GenRandomRandomLength.java" type="java8"/>
+                <binary path="files/GenRandomRandomLength.jar" type="jar"/>
+            </executable>
+            <executable>
+                <source path="files/GenRandomSameLength.java" type="java8"/>
+                <binary path="files/GenRandomSameLength.jar" type="jar"/>
+            </executable>
+            <executable>
+                <source path="files/GenSpecial.java" type="java8"/>
+                <binary path="files/GenSpecial.jar" type="jar"/>
+            </executable>
+            <executable>
+                <source path="files/checker.cpp" type="cpp.g++17"/>
+                <binary path="files/checker.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/interactor.cpp" type="cpp.g++17"/>
+                <binary path="files/interactor.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/validator.cpp" type="cpp.g++17"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+            </executable>
+        </executables>
+    </files>
+    <assets>
+        <checker type="testlib">
+            <source path="files/checker.cpp" type="cpp.g++17"/>
+            <binary path="check.exe" type="exe.win32"/>
+            <copy path="check.cpp" type="cpp.g++17"/>
+            <testset>
+                <test-count>1</test-count>
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                <tests>
+                    <test verdict="ok"/>
+                </tests>
+            </testset>
+        </checker>
+        <interactor>
+            <source path="files/interactor.cpp" type="cpp.g++17"/>
+            <binary path="files/interactor.exe" type="exe.win32"/>
+        </interactor>
+        <validators>
+            <validator>
+                <source path="files/validator.cpp" type="cpp.g++17"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+                <testset>
+                    <test-count>1</test-count>
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                    <tests>
+                        <test verdict="valid"/>
+                    </tests>
+                </testset>
+            </validator>
+        </validators>
+        <solutions>
+            <solution tag="accepted">
+                <source path="solutions/lost-tourist.py" type="python.3"/>
+                <binary path="solutions/lost-tourist.pys3" type="pythonx.3"/>
+            </solution>
+            <solution tag="main">
+                <source path="solutions/lostperm_av.java" type="java8"/>
+                <binary path="solutions/lostperm_av.jar" type="jar"/>
+            </solution>
+        </solutions>
+    </assets>
+    <properties>
+        <property name="tests-wellformed" value="true"/>
+    </properties>
+    <stresses>
+        <stress-count>0</stress-count>
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+        <list/>
+    </stresses>
+    <tags>
+        <tag value="cycles"/>
+        <tag value="interactive"/>
+        <tag value="permutations"/>
+    </tags>
+</problem>

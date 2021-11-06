@@ -1,0 +1,7 @@
+INT(3, 10^5, n) NEWLINE
+INT(0, 10^16, v) SPACE
+REP(n-1, SPACE)
+    INT(0,v)
+END
+NEWLINE
+EOF

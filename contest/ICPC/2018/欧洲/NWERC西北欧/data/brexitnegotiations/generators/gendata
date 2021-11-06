@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+
+python  ../generators/gendata.py
+
+for f in ../data/secret/*in; do
+    time pypy ../submissions/accepted/per.py < $f > ${f%.in}.ans
+done

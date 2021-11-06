@@ -1,0 +1,48 @@
+\begin{problem}{Joint Password Storage}{standard input}{standard output}{2 seconds}{512 megabytes}
+
+Johnny is the developer of Joint Password Storage (JPS). Storing passwords in plaintext is a bad idea. JPS splits each password into several parts and stores them separately.
+
+A password is a string consisting of digits and English letters. Bitwise XOR of all parts should be equal to the password. To attract less attention, Johnny decided that each part should look like something ordinary, like an arithmetic equality. What could be more ordinary than things like ``$2+2=4$''? 
+
+Formally, a valid split of a password is a set of correct arithmetic equalities of the same length as the password, for which bitwise XOR of ASCII codes of characters on each position is equal to the ASCII code of the corresponding password character. A correct arithmetic equality is a string described by the following grammar, with both expressions evaluating to the same value. Operator precedence is standard: expressions in brackets of any type take precedence over all other operations, multiplication takes precedence over addition and subtraction, and operators with the same level of precedence are evaluated from left to right.
+
+\begin{tabular}{rcl}
+$\langle equality \rangle$ &\t{::=}& $\langle expression \rangle$ `\t{=}' $\langle expression \rangle$ \\
+$\langle expression \rangle$ &\t{::=}& $\langle term \rangle$ | $\langle expression \rangle$ `\t{+}' $\langle term \rangle$ | $\langle expression \rangle$ `\t{-}' $\langle term \rangle$  \\
+$\langle term \rangle$ &\t{::=}& $\langle multiplier \rangle$ | $\langle term \rangle$ `\t{*}' $\langle multiplier \rangle$ \\
+$\langle multiplier \rangle$ &\t{::=}& $\langle number \rangle$ | `\t{(}' $\langle expression\rangle$ `\t{)}' |  `\t{[}' $\langle expression\rangle$ `\t{]}' | `\t{\{}' $\langle expression \rangle$ `\t{\}}' \\
+$\langle number \rangle$ &\t{::=}& `\t{0}' $\ \vert\ $ ( `\t{1}' | ... | `\t{9}' ) $($ `\t{0}' | ... | `\t{9}' $)^*$
+\end{tabular}
+
+
+For your convenience, ASCII codes of all related characters are provided below:
+\vspace{-2mm}
+\begin{center}
+\begin{tabular} {|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\t{(}  & \t{)}  & \t{*}  & \t{+}  & \t{-}  &  \t{0-9}    &  \t{=}  & \t{A-Z}   & \t{[} & \t{]}   & \t{a-z}    &\t{\{}  & \t{\}} \\ \hline
+40 & 41 & 42 & 43 & 45 &  48-57  &  61 & 65-90 & 91 & 93 & 97-122 &123 & 125 \\ \hline
+\end{tabular}
+\end{center}
+\vspace{-2mm}
+
+
+Your task is to write a splitting module which converts a password into bitwise XOR of several correct arithmetic equalities. 
+
+\InputFile
+The first line contains a single integer $P$ ($1 \le P \le 50$)~--- the number of passwords to split. 
+Each of the next $P$ lines contains a single string~--- password $s$ ($10 \le |s| \le 50$). Passwords can contain digits and both lowercase and uppercase English letters. 
+
+\OutputFile
+For each password, if there is no valid split, output a line with a single word ``\t{NO}''.
+
+Otherwise, the first line should contain a single word ``\t{YES}''. The next line should contain one integer $k$ ($1 \le k \le 1000$)~--- the number of equalities in your split. Each of the next $k$ lines should contain one equality. It can be proven that if a solution exists, there is a solution where $k$ doesn't exceed 1000.
+
+\Example
+
+\begin{examplewide}
+\exmpfile{example.01}{example.01.a}%
+\end{examplewide}
+
+\end{problem}
+

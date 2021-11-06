@@ -1,0 +1,11 @@
+INT(0, 10^12, a) SPACE
+INT(a, 10^12, b) NEWLINE
+
+INT(2, 10^5, n) SPACE
+INT(n, 10^5, m) NEWLINE
+
+REP(m)
+  INT(1, n, u) SPACE
+  INT(1, n, v) SPACE
+  INT(1, 10^6) NEWLINE
+END

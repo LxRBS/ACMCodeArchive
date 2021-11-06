@@ -1,0 +1,34 @@
+\problemname{This Ain't Your Grandpa's Checkerboard}
+
+\ifdefined\pacnw
+\illustration{0.3}{blackandwhite.png}{}
+\else
+\illustration{0.2}{blackandwhite/problem_statement/bAndW.png}{}
+\fi
+
+\noindent
+You are given an $n$-by-$n$ grid where each square is colored either
+black or white.
+A grid is \emph{correct} if all of the following conditions are satisfied:
+
+\begin{itemize}
+\item Every row has the same number of
+black squares as it has white squares.
+\item Every column has the same number of
+black squares as it has white squares.
+\item No row or column has $3$ or more consecutive
+squares of the same color.
+\end{itemize}
+
+Given a grid, determine whether it is \emph{correct}.
+
+\section*{Input}
+
+The first line contains an integer $n$ ($2\le n\le 24$; $n$ is even).
+Each of the next $n$ lines contains a string of length $n$ consisting
+solely of the characters `{\tt B}' and `{\tt W}', representing the colors of the grid squares.
+
+\section*{Output}
+
+If the grid is \emph{correct}, print the number $1$ on a single line.
+Otherwise, print the number $0$ on a single line.

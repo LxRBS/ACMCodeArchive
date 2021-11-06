@@ -1,0 +1,6 @@
+The brute-force solution is the correct one in this case. Otherwise, you can
+iterate through palindromes instead of searching the range directly.
+
+Note there are only 2 non-trivial palindromes in base 2 and 3 simultaneously 
+in the input range: 6,643 and 1,422,773. There are no palindromes in base 2, 3, and
+4 simultaneously in the input range.

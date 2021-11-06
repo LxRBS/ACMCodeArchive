@@ -1,0 +1,4 @@
+n r:double s:double w:double f:double l1:double l2:double (1<=n<=9, 0.0<=l1<w, 0.0<=l2<w, -(s*0.5)<=f<=(s*0.5), 1.0<=r<=100.0, 1.0<=s<=200.0, 0.5<=w<=3.0);
+{
+d:double (1.0<=d<410.0);
+}

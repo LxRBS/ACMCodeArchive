@@ -1,0 +1,32 @@
+1: Sample input
+2: Linear chain, lots of levels of great grandchildren
+3: Flat tree, everyone is siblings
+4: 0th- 4th cousins 0 times removed, then all removed cousins on that tree
+5: Top levels have 1 child, common ancestor is in the middle of tree
+6: 5, but with actual names in case someone is keying on the letter thing
+7; 6, but with everyone having the same first letter, in case anyone is keying on that.
+8: Complete 4-height trinary tree, all pairs checked
+9: 0th cousins, 0(sibling) through 11 times removed
+10: 1st cousins, 1-10 times removed
+11: 2nd cousings 1-9 times removed
+12: same idea (a giant V), all pairs bewteen sides checked
+13: Random 26 nodes, max degree 2, 100 queries
+14: Random 26 nodes, max degree 3, 100 queries
+15: Random 26 nodes, max degree 5, 100 queries
+16: Random 50 nodes, max degree 2, 500 queries
+17: Random 50 nodes, max degree 3, 500 queries
+18: Random 50 ndoes, max degree 5, 500 queries
+19: Random 50 nodes, max degree 10, 500 queries
+20: Random 100 nodes, max degree 2, 500 queries
+21: Random 100 nodes, max degree 3, 500 queries
+22: Random 100 nodes, max degree 5, 500 queries
+23: Random 100 nodes, max degree 10, 500 queries
+24: Random 100 ndoes, max degree 20, 500 queries
+25: Random 100 nodes, max degree 50, 500 queries
+26: Random 100 nodes, max degree 2, 1000 queries
+27: Random 100 nooes, max degree 5, 1000 queries
+28: Random 100 nodes, max degree 10, 1000 queries
+29: Random 100 nodes, max degree 20, 1000 queries
+30: Random 100 ndoes, max degree 50, 1000 queries
+31: First through 49th cousins
+32: 0th cousins 1-99 times removed

@@ -1,0 +1,36 @@
+SET(ssum = 0)
+SET(ksum = 0)
+SET(i = 0)
+SET(j = 0)
+INT(1, 200000, n) SPACE INT(1, 200000, q) NEWLINE
+REP(n)
+  REGEX("[a-z]{1,}", inp[i]) NEWLINE
+  ASSERT(STRLEN(inp[i]) <= 200000)
+  SET(ssum = ssum + STRLEN(inp[i]))
+  SET(i=i+1)
+END
+
+ASSERT(UNIQUE(inp))
+ASSERT(1 <= ssum)
+ASSERT(ssum <= 200000)
+
+REP(q)
+  INT(1, n, k) SPACE INT(1, k, l) NEWLINE
+  SET(j = 0)
+
+  REP(k-1)
+    INT(1, n, tmp) SPACE
+    SET(cur[j] = tmp)
+    SET(j = j+1)
+  END
+
+  INT(1, n, tmp) NEWLINE
+  SET(cur[j] = tmp)
+  SET(j = j+1)
+  SET(ksum = ksum+k)
+  ASSERT(UNIQUE(cur))
+  UNSET(cur)
+END
+ASSERT(1 <= ksum)
+ASSERT(ksum <= 1000000)
+EOF

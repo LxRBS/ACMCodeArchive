@@ -1,0 +1,5 @@
+#eofstyle="linux" eolnstyle="linux"#
+n (2<=n<=100000);
+{[*n]
+    w (1<=w<=200000);
+}

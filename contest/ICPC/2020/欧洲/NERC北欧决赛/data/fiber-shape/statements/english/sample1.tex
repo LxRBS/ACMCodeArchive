@@ -1,0 +1,26 @@
+\documentclass{standalone}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.12}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[grid=both,trig format plots=rad, axis equal, xtick={-1, 0, 1}, ytick={-1,0,1}]	
+\draw[thick] (0.0, 0.0)
+-- (1.0, 0.0)
+-- (0.0, 1.0)
+-- cycle;
+\node [circle, fill=black, inner sep=2pt] at (0.0, 0.0) {};
+\node [circle, fill=black, inner sep=2pt] at (1.0, 0.0) {};
+\node [circle, fill=black, inner sep=2pt] at (0.0, 1.0) {};
+
+\addplot [domain=0.88846777:2.75228454,samples=100]({0.50000000 + -0.79289322*cos(\x) + -0.00000000 * sin(\x)},{0.00000000 + 0.00000000*cos(\x) + -0.61536953 * sin(\x)}); 
+\addplot [domain=1.05980558:1.23095942,samples=100]({0.00000000 + 0.00000000*cos(\x) + 1.41421356 * sin(\x)},{0.50000000 + -1.50000000*cos(\x) + 0.00000000 * sin(\x)}); 
+\addplot [domain=0.33983691:2.80175574,samples=100]({0.50000000 + 0.70710678*cos(\x) + 0.50000000 * sin(\x)},{0.50000000 + -0.70710678*cos(\x) + 0.50000000 * sin(\x)}); 
+\addplot [domain=1.91063324:2.08178707,samples=100]({0.50000000 + 1.50000000*cos(\x) + -0.00000000 * sin(\x)},{0.00000000 + 0.00000000*cos(\x) + 1.41421356 * sin(\x)}); 
+\addplot [domain=0.38930811:2.25312488,samples=100]({0.00000000 + 0.00000000*cos(\x) + -0.61536953 * sin(\x)},{0.50000000 + 0.79289322*cos(\x) + 0.00000000 * sin(\x)}); 
+\addplot [domain=1.30652716:1.83506549,samples=100]({0.50000000 + -0.91421356*cos(\x) + -0.76536686 * sin(\x)},{0.50000000 + 0.91421356*cos(\x) + -0.76536686 * sin(\x)}); 
+\end{axis}
+\end{tikzpicture}
+\end{document}

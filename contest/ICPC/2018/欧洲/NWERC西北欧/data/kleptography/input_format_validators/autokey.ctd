@@ -1,0 +1,5 @@
+INT(1,30,n) SPACE
+INT(n + 1,100,m) NEWLINE
+
+REP(n) REGEX("[a-z]") END NEWLINE
+REP(m) REGEX("[a-z]") END NEWLINE

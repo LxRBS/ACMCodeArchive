@@ -1,0 +1,23 @@
+min max (v_i + (n-i))
+
+Solution:
+Select cheapest node in open set for topo order.
+
+Claim:
+An optimal solution exists that has the cheapest node in the open set as the first node in the topological order.
+
+Proof sketch:
+Proof by contradiction.
+No optimal solution exists that has the cheapest node as the first node. Let v1 be a cheapest node in the open set and let the open set have at least two nodes as otherwise the claim is trivially falsified.
+By our assumption v1 cannot be the first node in the topological order. Thus there is a second node v2, where w(v2) > w(v1) that is the first node in the optimal topological order. Then the optimal solution has the shape <v2,...,v1,...>. We create the new solution <v1,v2,...,...> this does not contradict any of the topological requirements as v1 was in the open set and all other relative orders between two nodes remain the same. We consider two cases.
+Case 1, the cost of <v1,v2,...,...> is defined by v1+n-1. But then v1+n-1 < v2+n-1 and thus <v2,...,v1,...> is not optimal. Contradiction.
+Case 2, the cost of <v1,v2,...,...> is defined by node i>1 in the topological order. Thus the cost is w(v_i) + n - i. In the solution <v2,...,v1,...> node v_i is either at position i or at position i-1. But then the cost of <v2,...,v1,...> is bigger or equal than the cost of <v1,v2,...,...>. As <v2,...,v1,...> is optimal it can only be equal. But then <v1,v2,...,...> is also optimal. Contradiction.
+
+There exists an optimal solution with a cheapest open node in the first location of the topological order.
+
+----------
+Note:
+----------
+A more relaxed requirement can be taken.
+The cheapest open node OR any open node that does not increase the current limit can safely be placed at the front.
+The second part follows from the fact that if a node does not increase the limit now, then it will never at a later position. Hence it does not matter in which order we select these nodes.

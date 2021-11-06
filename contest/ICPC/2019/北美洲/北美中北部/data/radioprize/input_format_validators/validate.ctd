@@ -1,0 +1,14 @@
+INT(1,100000,n) NEWLINE
+REPI(i,n,SPACE)
+    INT(1,1000,t[i])
+END
+NEWLINE
+REPI(i,n-1,NEWLINE)
+    INT(1,n,u[2*i]) SPACE INT(1,n,v[2*i]) SPACE INT(1,1000)
+    SET(u[2*i+1]=v[2*i])
+    SET(v[2*i+1]=u[2*i])
+    ASSERT(u[2*i]!=v[2*i])
+END
+ASSERT(UNIQUE(u,v))
+NEWLINE
+EOF

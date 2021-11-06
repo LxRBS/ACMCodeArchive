@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="17" short-name="heroes-of-coin-flipping" url="https://polygon.codeforces.com/p0s5IPZ/avasilyev/heroes-of-coin-flipping">
+    <names>
+        <name language="english" value="Heroes of Coin Flipping"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+    </statements>
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="">
+        <testset name="tests">
+            <time-limit>2000</time-limit>
+            <memory-limit>536870912</memory-limit>
+            <test-count>67</test-count>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test method="manual" sample="true"/>
+                <test method="manual" sample="true"/>
+                <test method="manual" sample="true"/>
+                <test method="manual" sample="true"/>
+                <test cmd="GenRandom 1 0" method="generated"/>
+                <test cmd="GenRandom 1 1" method="generated"/>
+                <test cmd="GenRandom 2 0" method="generated"/>
+                <test cmd="GenRandom 2 2" method="generated"/>
+                <test cmd="GenRandom 3 0" method="generated"/>
+                <test cmd="GenRandom 3 1" method="generated"/>
+                <test cmd="GenRandom 3 4" method="generated"/>
+                <test cmd="GenRandom 3 7" method="generated"/>
+                <test cmd="GenRandom 4 1" method="generated"/>
+                <test cmd="GenRandom 4 5" method="generated"/>
+                <test cmd="GenRandom 4 15" method="generated"/>
+                <test cmd="GenRandom 5 0" method="generated"/>
+                <test cmd="GenRandom 5 3" method="generated"/>
+                <test cmd="GenRandom 5 20" method="generated"/>
+                <test cmd="GenRandom 8 0" method="generated"/>
+                <test cmd="GenRandom 8 127" method="generated"/>
+                <test cmd="GenRandom 8 255" method="generated"/>
+                <test cmd="GenRandom 12 4" method="generated"/>
+                <test cmd="GenRandom 12 16" method="generated"/>
+                <test cmd="GenRandom 12 64" method="generated"/>
+                <test cmd="GenRandom 12 256" method="generated"/>
+                <test cmd="GenRandom 12 512" method="generated"/>
+                <test cmd="GenRandom 20 1" method="generated"/>
+                <test cmd="GenRandom 20 5" method="generated"/>
+                <test cmd="GenRandom 20 25" method="generated"/>
+                <test cmd="GenRandom 20 125" method="generated"/>
+                <test cmd="GenRandom 20 625" method="generated"/>
+                <test cmd="GenRandom 20 3125" method="generated"/>
+                <test cmd="GenRandom 20 15625" method="generated"/>
+                <test cmd="GenRandom 30 0" method="generated"/>
+                <test cmd="GenRandom 30 1" method="generated"/>
+                <test cmd="GenRandom 30 3" method="generated"/>
+                <test cmd="GenRandom 30 10" method="generated"/>
+                <test cmd="GenRandom 30 100" method="generated"/>
+                <test cmd="GenRandom 30 1000" method="generated"/>
+                <test cmd="GenRandom 30 10000" method="generated"/>
+                <test cmd="GenRandom 30 99999" method="generated"/>
+                <test cmd="GenRandom 30 100000" method="generated"/>
+                <test cmd="GenDeep 4 8" method="generated"/>
+                <test cmd="GenDeep 5 16" method="generated"/>
+                <test cmd="GenDeep 10 512" method="generated"/>
+                <test cmd="GenDeep 10 1023" method="generated"/>
+                <test cmd="GenDeep 16 32768" method="generated"/>
+                <test cmd="GenDeep 16 65535" method="generated"/>
+                <test cmd="GenDeep 20 100000" method="generated"/>
+                <test cmd="GenDeep 30 1" method="generated"/>
+                <test cmd="GenDeep 30 1000" method="generated"/>
+                <test cmd="GenDeep 30 100000" method="generated"/>
+                <test cmd="GenShallow 4 8" method="generated"/>
+                <test cmd="GenShallow 5 16" method="generated"/>
+                <test cmd="GenShallow 10 512" method="generated"/>
+                <test cmd="GenShallow 10 1023" method="generated"/>
+                <test cmd="GenShallow 16 32768" method="generated"/>
+                <test cmd="GenShallow 16 65535" method="generated"/>
+                <test cmd="GenShallow 20 100000" method="generated"/>
+                <test cmd="GenShallow 30 1" method="generated"/>
+                <test cmd="GenShallow 30 1000" method="generated"/>
+                <test cmd="GenShallow 30 100000" method="generated"/>
+                <test cmd="GenRandomLayer 16 32768" method="generated"/>
+                <test cmd="GenRandomLayer 20 100000" method="generated"/>
+                <test cmd="GenRandomLayer 30 1" method="generated"/>
+                <test cmd="GenRandomLayer 30 1000" method="generated"/>
+                <test cmd="GenRandomLayer 30 100000" method="generated"/>
+            </tests>
+        </testset>
+    </judging>
+    <files>
+        <resources>
+            <file path="files/olymp.sty"/>
+            <file path="files/problem.tex"/>
+            <file path="files/statements.ftl"/>
+            <file path="files/testlib.h" type="h.g++"/>
+        </resources>
+        <executables>
+            <executable>
+                <source path="files/GenDeep.java" type="java8"/>
+                <binary path="files/GenDeep.jar" type="jar"/>
+            </executable>
+            <executable>
+                <source path="files/GenRandom.java" type="java8"/>
+                <binary path="files/GenRandom.jar" type="jar"/>
+            </executable>
+            <executable>
+                <source path="files/GenRandomLayer.java" type="java8"/>
+                <binary path="files/GenRandomLayer.jar" type="jar"/>
+            </executable>
+            <executable>
+                <source path="files/GenShallow.java" type="java8"/>
+                <binary path="files/GenShallow.jar" type="jar"/>
+            </executable>
+            <executable>
+                <source path="files/validator.cpp" type="cpp.g++17"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+            </executable>
+        </executables>
+    </files>
+    <assets>
+        <checker name="std::rcmp9.cpp" type="testlib">
+            <source path="files/check.cpp" type="cpp.g++17"/>
+            <binary path="check.exe" type="exe.win32"/>
+            <copy path="check.cpp"/>
+            <testset>
+                <test-count>0</test-count>
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                <tests/>
+            </testset>
+        </checker>
+        <validators>
+            <validator>
+                <source path="files/validator.cpp" type="cpp.g++17"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+                <testset>
+                    <test-count>3</test-count>
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                    <tests>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                    </tests>
+                </testset>
+            </validator>
+        </validators>
+        <solutions>
+            <solution tag="accepted">
+                <source path="solutions/heroes-tourist.py" type="python.pypy3"/>
+                <binary path="solutions/heroes-tourist.pypys3" type="pythonx.pypy3"/>
+            </solution>
+            <solution tag="main">
+                <source path="solutions/heroes_of_coin_flip_av.java" type="java8"/>
+                <binary path="solutions/heroes_of_coin_flip_av.jar" type="jar"/>
+            </solution>
+            <solution tag="rejected">
+                <source path="solutions/heroes_of_coin_flip_av_full_bruteforce.java" type="java8"/>
+                <binary path="solutions/heroes_of_coin_flip_av_full_bruteforce.jar" type="jar"/>
+            </solution>
+        </solutions>
+    </assets>
+    <properties>
+        <property name="tests-wellformed" value="true"/>
+    </properties>
+    <stresses>
+        <stress-count>1</stress-count>
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+        <list>
+            <stress index="1" path="stresses/001"/>
+        </list>
+    </stresses>
+    <tags>
+        <tag value="dfs"/>
+        <tag value="probability"/>
+        <tag value="trees"/>
+    </tags>
+</problem>

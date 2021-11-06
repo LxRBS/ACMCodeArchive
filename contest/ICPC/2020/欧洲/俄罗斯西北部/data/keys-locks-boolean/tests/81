@@ -1,0 +1,1 @@
+(not b and not e and c) or (not b and e and not c) or (not b and e and c) or (b and not e and not c) or (b and not e and c) or (b and e and not c) or (b and e and c)

@@ -1,0 +1,9 @@
+name: Access Points
+source: Northwestern Europe Regional Contest (NWERC) 2018
+license: cc by-sa
+
+validation: default
+validator_flags: float_tolerance 1e-6 # 10^-6 is specified in hints, so apply it.
+
+limits:
+   time_multiplier: 2 # ContestPass.java outlier

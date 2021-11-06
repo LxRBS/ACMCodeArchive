@@ -1,0 +1,99 @@
+\input problem.tex
+\input epsf.tex
+\def\probno{5}
+\def\probname{Digital Speedometer}
+\def\headeryear{2020/2021}
+\fullheader
+\par
+A digital speedometer shows a vehicle's speed as integer miles per
+hour.  There are occasions when the sensed speed varies between two
+integer values, such as during cruise control.  Using a single
+threshold to round between adjacent integers often makes the display
+toggle rapidly between the two integers, which is distracting to the
+driver.
+\par
+Your team must implement a smoothing technique for the display using 
+separate rising and falling thresholds ($t_r$ and $t_f$, respectively).
+% comment out the following line if Figure 1 is not used.
+See Figure~1 for a graphical depiction of the Sample Input for use with
+the following rules.
+\par
+%
+Each sensed speed, $s$, falls between two adjacent integers $i$ and $j$,
+$i \le s < j$, where $j = i + 1$.  When displaying the sensed speed $s$
+as an integer:
+{\parskip=0pt
+\item{$\bullet$} When $s$ falls between $i$ and $i+t_f$, $s$ is displayed
+as $i$.
+\item{$\bullet$} When $s$ falls between $i+t_r$ and $j$, $s$ is displayed
+as $j$.
+\item{$\bullet$} When $s$ falls between $i+t_f$ and $i+t_r$, $s$ is displayed as $i$ if the most recent preceding value for $s$ outside of range $[i+t_f, i+t_r]$ is less than $i+t_r$, and $s$ is displayed as $j$ if the most recent preceding value for $s$ outside of range $[i+t_f, i+t_r]$ is greater than $i+t_r$.
+\item{$\bullet$} Any sensed speed, $0 < s < 1$, must display as 1 because any non-zero speed,
+no matter how small, must display as non-zero to indicate that the vehicle is in motion.
+}
+\par
+The first line of input contains $t_f$, the falling threshold.  
+The second line of input contains $t_r$, the rising threshold.
+The speed sensor reports $s$ in increments of 0.1 mph.  The thresholds
+are always set halfway between speed increments.
+All remaining lines until end-of-file are successive decimal speeds, $s$,
+in miles per hour, one speed per line.  
+The third line of input, which is the first measured speed, will always be 0.
+$$0 < t_f,t_r < 1; \ \ \ \ t_f < t_r; \ \ \ \ 0 \le s \le 120$$
+
+\vskip -\parskip
+Output is the list of speeds, one speed per line, smoothed to integer values appropriate to $t_f$ and $t_r$.
+
+\vskip 22pt
+\centerline{\sl Sample Input}
+\vskip 14pt
+\:0.25
+\:0.75
+\:0
+\:2.0
+\:5.7
+\:5.8
+\:5.7
+\:5.2
+\:5.7
+\:0.8
+\:0.2
+\vfill
+\eject \continuedheader
+\vskip \parskip
+\centerline {\sl Output for the Sample Input}
+\vskip 14pt
+\:0
+\:2
+\:5
+\:6
+\:6
+\:5
+\:5
+\:1
+\:1
+\vskip 22pt
+\bigskip
+\line {\hfill \hbox {\epsfxsize=240pt \epsfbox {F1Speedometer.eps}} \hfill}
+\medskip
+\centerline {{\bf Figure 1.} Sensor readings from the Sample Input, with $t_f = 0.25$ and $t_r = 0.75$.}
+\vskip 22pt
+\centerline {\it Explanation of the Sample Data}
+\vskip 14 pt
+\halign {\indent#\hfil&\quad\hfil#\hfil&\quad#\hfil\cr
+{\sl Input}&{\sl Output}&{\sl Explanation}\cr
+\cr
+{\tt 0.25}&&Value of $t_f$.\cr
+{\tt 0.75}&&Value of $t_r$.\cr
+{\tt 0}&{\tt 0}&Initial input.\cr
+{\tt 2.0}&{\tt 2}&Input greater than $0$, below threshold of $2.25$.\cr
+{\tt 5.7}&{\tt 5}&Input greater than $2.0$, in threshold range.\cr
+{\tt 5.8}&{\tt 6}&Input greater than $2.0$, exceeds upper threshold
+of $5.75$.\cr
+{\tt 5.7}&{\tt 6}&Input less than $5.8$, in threshold range.\cr
+{\tt 5.2}&{\tt 5}&Input less than $5.8$, below threshold of $5.25$.\cr
+{\tt 5.7}&{\tt 5}&Input greater than $5.2$, in threshold range.\cr
+{\tt 0.8}&{\tt 1}&Input greater than $0$ and less than $1$.\cr
+{\tt 0.2}&{\tt 1}&Input greater than $0$ and less than $1$.\cr}
+\vfill \eject
+\bye

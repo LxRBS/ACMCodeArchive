@@ -1,0 +1,22 @@
+INT(1, 15, n) SPACE REGEX("R|B") NEWLINE
+REPI(i, n, SPACE)
+    REGEX("[a-z]{1,20}", word[i])
+END
+ASSERT(UNIQUE(word))
+NEWLINE
+REPI(i, n, SPACE)
+    REGEX("R|B|I|A")
+END
+NEWLINE
+INT(1, 50, m) NEWLINE
+REPI(i, m)
+    INT(1, n, h) SPACE
+    REPI(j, h, SPACE)
+        REGEX("[a-z]+", hint[j])
+        ASSERT(INARRAY(hint[j], word))
+    END
+    ASSERT(UNIQUE(hint))
+    UNSET(hint)
+    NEWLINE
+END
+EOF

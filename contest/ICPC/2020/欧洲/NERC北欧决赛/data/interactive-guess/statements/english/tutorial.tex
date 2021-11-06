@@ -1,0 +1,25 @@
+\begin{tutorial}{Is It Rated?}
+
+See https://en.wikipedia.org/wiki/Randomized\_weighted\_majority\_algorithm for more details.
+
+Intuitively, we want to trust more the predictions of those participants that have already made fewer mistakes. The most radical version of this would be to only trust the participants with the smallest number of mistakes in any given wager; when there are multiple such participants and their predictions differ, we can for example choose the prediction which has the most such ``best participant'' votes behind it. An in case even those are tied, we can flip a coin.
+
+However, it turns out that this solution is not good enough, and trusting just the best participants can backfire. For example, consider the following two wagers with two participants, which can be easily generalized to any even number of participants: 01 (correct 1), then 10 (correct 1). Each participant has made one mistake, while we have made 0.5 mistakes in the first wager on average, plus 1 mistake in the second wager (because the participant which was correct in the first wager makes a mistake there), so we're going to be 1.5 times worse than the worst participant if this is repeated many times, which is not good enough.
+
+Therefore, we need to make two improvements to the aforementioned solution:
+\begin{itemize}
+\item Instead of just considering the votes of the participants that have made the smallest number of mistakes only, we will assign weight $\beta^x$ to the vote of a participant that has made $x$ mistakes, where $0 < \beta < 1$ is some value that we'll choose later.
+\item Instead of choosing the prediction that gets most (weighted) votes, we will choose the prediction randomly, using the fraction of the total vote weight that favors this prediction as the probability of us choosing it.
+\end{itemize}
+
+You can check the ``Analysis'' section of the Wikipedia article mentioned above for the (relatively straightforward) proof
+that this approach is now good enough for the appropriate values of $\beta$. $\beta=\frac{3}{4}$ passes with a margin of 6 standard deviations, but any value of $\beta$ between roughly $\frac{1}{2}$ and $\frac{19}{20}$ was good enough.
+
+Note that in order to avoid floating-point underflow, we should use $\beta^{x-y}$ instead of just $\beta^x$ as the vote weights, where $y$ is the smallest number of mistakes that any participant has made so far.
+
+Note that the judges are not aware of any deterministic solution that passes in this problem. The approach mentioned
+in the beginning, where we choose the prediction that has the most weighted votes instead of picking randomly
+with the appropriate probabilities, ends up being almost twice as worse in the case where the votes are split 51/49 in favor
+of the wrong prediction every time.
+
+\end{tutorial}

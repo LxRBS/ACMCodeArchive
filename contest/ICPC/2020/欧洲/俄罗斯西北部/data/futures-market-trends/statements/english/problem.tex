@@ -1,0 +1,42 @@
+\begin{problem}{Futures Market Trends}{standard input}{standard output}{2 seconds}{512 megabytes}
+
+Fedor wants to earn some extra money out of oil futures. His analysis is based on \textit{trends} and historical data of $d$ previous days.
+
+A cost sequence of at least three distinct days $c_0, c_1, c_2, \cdots, c_n$ forms a {\it trend of power $P$} if average cost change is at least $P$ times bigger than the standard deviation of cost changes.
+
+Formally, average cost change is $A = \frac{1}{n}\sum\limits_{i=1}^n \left(c_i - c_{i-1}\right)$. The standard deviation of cost changes is $D = \sqrt{\frac{1}{n}\sum\limits_{i=1}^n{\left(c_i - c_{i-1} - A\right)^2}}$. The sequence forms a {\it positive trend of power $P$} if $\frac{A}{D} \ge P$, and a {\it negative trend of power $P$} if $\frac{A}{D} \le -P$. 
+
+We assume that if $A > 0$ and $D = 0$ then a positive trend of any power is formed. Similarly, if $A < 0$ and $D = 0$ then a negative trend of any power is formed. If $A = 0$ then no trend is formed, even if $D = 0$.  
+
+To check his theory, Fedor needs to count the number of subsegments of historical data which form positive and negative trends of the given power. Can you help him?
+
+
+
+\InputFile
+The first line contains an integer $d$ ($3 \le d \le 3\,000$) and a real number $P$ ($0.001 \le P \le 1000$)~--- the number of days in Fedor's historical data and the required trend power. $P$ is given with at most 9 digits after the decimal point.  
+
+The next line contains $d$ integers $c_1, c_2, \ldots, c_d$ ($-1000 \le c_i \le 1000$). For each $i$, $c_i$ is the cost of oil futures at the end of the $i$-th day. 
+
+
+
+\OutputFile
+Print two integers~--- the number of subsegments of historical data forming a positive and a negative trend of power $P$, respectively. It's guaranteed that the answer would not change if one changes $P$ by no more than $10^{-8}$. 
+
+
+\Examples
+
+\setlength{\exmpwidinf}{0.6\thelinewidth}
+\setlength{\exmpwidouf}{0.3\thelinewidth}
+\begin{example}
+\exmpfile{example.01}{example.01.a}%
+\exmpfile{example.02}{example.02.a}%
+\exmpfile{example.03}{example.03.a}%
+\end{example}
+
+\Note
+%There would be serious description of first two samples.
+
+The third example test case demonstrates the real prices of oil futures in April 2020 (in dollars, multiplied by 10 and rounded). Be careful with theories like the one Fedor made. 
+
+\end{problem}
+

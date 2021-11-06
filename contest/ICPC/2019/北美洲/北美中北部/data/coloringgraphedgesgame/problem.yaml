@@ -1,0 +1,9 @@
+name: On Average They're Purple
+source: 2019/20 ICPC
+license: cc by-sa
+rights_owner: 2019/20 ICPC
+
+validation: default
+
+limits:
+    time_multiplier: 2

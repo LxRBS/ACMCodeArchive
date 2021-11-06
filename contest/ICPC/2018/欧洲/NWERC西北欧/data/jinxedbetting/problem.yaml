@@ -1,0 +1,9 @@
+name: Jinxed Betting
+source: Northwestern Europe Regional Contest (NWERC) 2018
+# source_url:
+author: Alexander Rass
+# rights_owner:
+license: cc by-sa
+
+limits:
+   time_multiplier: 1.5 # Tobi.java very slow

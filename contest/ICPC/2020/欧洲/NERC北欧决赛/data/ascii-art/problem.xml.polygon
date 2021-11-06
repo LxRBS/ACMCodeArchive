@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="12" short-name="ascii-art" url="https://polygon.codeforces.com/p9FxYhf/elizarov/ascii-art">
+        
+    <names>
+                
+        <name language="english" value="ASCII Automata Art"/>
+            
+    </names>
+        
+    <statements>
+                
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+                
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+            
+    </statements>
+        
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="">
+                
+        <testset name="tests">
+                        
+            <time-limit>3000</time-limit>
+                        
+            <memory-limit>536870912</memory-limit>
+                        
+            <test-count>28</test-count>
+                        
+            <input-path-pattern>tests/%02d</input-path-pattern>
+                        
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+                        
+            <tests>
+                                
+                <test method="manual" sample="true"/>
+                                
+                <test method="manual"/>
+                                
+                <test method="manual"/>
+                                
+                <test method="manual"/>
+                                
+                <test method="manual"/>
+                                
+                <test method="manual"/>
+                                
+                <test method="manual"/>
+                                
+                <test method="manual"/>
+                                
+                <test cmd="ascii_gen C 100" method="generated"/>
+                                
+                <test cmd="ascii_gen A 99" method="generated"/>
+                                
+                <test cmd="ascii_gen B 99" method="generated"/>
+                                
+                <test cmd="ascii_gen AC 100 1111" method="generated"/>
+                                
+                <test cmd="ascii_gen ABC 100" method="generated"/>
+                                
+                <test cmd="ascii_gen ABPC 100" method="generated"/>
+                                
+                <test cmd="ascii_gen ABQC 100" method="generated"/>
+                                
+                <test cmd="ascii_gen ABSC 100" method="generated"/>
+                                
+                <test cmd="ascii_gen P 100 17" method="generated"/>
+                                
+                <test cmd="ascii_gen Q 100 18" method="generated"/>
+                                
+                <test cmd="ascii_gen S 100 19" method="generated"/>
+                                
+                <test cmd="ascii_gen APC 100 20" method="generated"/>
+                                
+                <test cmd="ascii_gen AQC 100 21" method="generated"/>
+                                
+                <test cmd="ascii_gen ASC 100 22" method="generated"/>
+                                
+                <test cmd="ascii_gen APQS 100 23" method="generated"/>
+                                
+                <test cmd="ascii_gen CPQS 100 24" method="generated"/>
+                                
+                <test cmd="ascii_gen ACPQS 100 25" method="generated"/>
+                                
+                <test cmd="ascii_gen ACPQSB 100 26" method="generated"/>
+                                
+                <test cmd="ascii_gen ACPQSB 100 27" method="generated"/>
+                                
+                <test cmd="ascii_gen ACPQSB 100 28" method="generated"/>
+                            
+            </tests>
+                    
+        </testset>
+            
+    </judging>
+        
+    <files>
+                
+        <resources>
+                        
+            <file path="files/olymp.sty"/>
+                        
+            <file path="files/problem.tex"/>
+                        
+            <file path="files/statements.ftl"/>
+                        
+            <file path="files/testlib.h" type="h.g++"/>
+                    
+        </resources>
+                
+        <executables>
+                        
+            <executable>
+                                
+                <source path="files/ascii_check.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/ascii_check.exe" type="exe.win32"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/ascii_gen.kt" type="kotlin"/>
+                                
+                <binary path="files/ascii_gen.jar" type="jar"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/validate.exe" type="exe.win32"/>
+                            
+            </executable>
+                    
+        </executables>
+            
+    </files>
+        
+    <assets>
+                
+        <checker type="testlib">
+                        
+            <source path="files/ascii_check.cpp" type="cpp.g++17"/>
+                        
+            <binary path="check.exe" type="exe.win32"/>
+                        
+            <copy path="check.cpp" type="cpp.g++17"/>
+                        
+            <testset>
+                                
+                <test-count>0</test-count>
+                                
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                                
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                                
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                                
+                <tests/>
+                            
+            </testset>
+                    
+        </checker>
+                
+        <validators>
+                        
+            <validator>
+                                
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/validate.exe" type="exe.win32"/>
+                                
+                <testset>
+                                        
+                    <test-count>0</test-count>
+                                        
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                                        
+                    <tests/>
+                                    
+                </testset>
+                            
+            </validator>
+                    
+        </validators>
+                
+        <solutions>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/ascii_pkun.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/ascii_pkun.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="main">
+                                
+                <source path="solutions/ascii_re.kt" type="kotlin"/>
+                                
+                <binary path="solutions/ascii_re.jar" type="jar"/>
+                            
+            </solution>
+                    
+        </solutions>
+            
+    </assets>
+        
+    <properties>
+                
+        <property name="tests-wellformed" value="true"/>
+            
+    </properties>
+        
+    <stresses>
+                
+        <stress-count>0</stress-count>
+                
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+                
+        <list/>
+            
+    </stresses>
+    
+</problem>

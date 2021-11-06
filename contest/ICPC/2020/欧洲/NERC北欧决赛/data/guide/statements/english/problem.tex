@@ -1,0 +1,31 @@
+\begin{problem}{Guide}{standard input}{standard output}{3 seconds}{512 megabytes}
+
+Mister Gooti is the world-famous guide of The Freezing Isles. The topology of the Isles can be represented as a tree with cities at the vertices and two-way roads between them. 
+Gooti prepares a new sightseeing tour over the Isles. He wants to find the shortest path that starts in the capital and visits $k$ different cities, including the capital. Please, help him.
+
+\InputFile
+The first line of the input contains the number of tests $T$ ($1 \leq T \leq 100$). Each test consists of two lines. The first line contains the overall number of cities $n$ in the Isles and the requested number of cities $k$ for the tour ($1 \leq k \leq n \leq 100$). The second line contains the description of the tree in a rooted manner: $n - 1$ integers where the $i$-th integer, $p_i$, is the parent of the city $i + 1$ ($1 \leq p_i \leq i$). The capital is the city with the number $1$~--- the root of the tree.
+
+\OutputFile
+For each test, the first line of the output shall contain the length of the path $l$. The second line shall contain $l + 1$ integers~--- the cities that lie on the path in the order of the traversal.
+
+\Example
+
+\begin{example}
+\exmpfile{example.01}{example.01.a}%
+\end{example}
+
+\Note
+The following pictures illustrate all the three tests from the example.
+
+\begin{center}
+\begin{tabular}{c@{\hskip 2cm}c@{\hskip 2cm}c}
+\includegraphics{guide.1} &
+\includegraphics{guide.2} &
+\includegraphics{guide.3}
+\end{tabular}
+\end{center}
+
+
+\end{problem}
+

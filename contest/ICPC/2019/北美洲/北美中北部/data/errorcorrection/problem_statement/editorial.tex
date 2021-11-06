@@ -1,0 +1,22 @@
+\problemname{Error Correction}
+
+\noindent
+At first glance this is precisely maximum independent set on a graph;
+that is, find a maximum set of vertices in a graph that are not connected.
+Another way to look at it is to find the maximum clique on the complement
+of the graph, but the graph is sparse so it's probably best to work on
+the original graph.  This is a well-known NP-hard problem, and the
+bounds clearly do not permit an exponential solution, so you should look
+for structure in the graph that can be exploited.
+
+The structure we exploit in this case is permutation parity; the words
+are all anagrams, and thus are permutations of each other, and each
+permutation has a parity.  Alternatively, you can look at it as the
+number of inversions on letters in each word, which also has a well-known
+parity property.  This means that the graph is a bipartite graph, and
+maximum independent set can be calculated with any matching algorithm;
+the sum of the maximum matching and maximum independent set on a
+bipartite graph is just the number of vertices.
+
+Any matching algorithm (Dinitz, Hungarian, or any network flow
+algorithm) can be used.

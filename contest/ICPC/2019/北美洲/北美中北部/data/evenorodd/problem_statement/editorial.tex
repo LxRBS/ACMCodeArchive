@@ -1,0 +1,12 @@
+\problemname{Even or Odd}
+
+\noindent
+The bounds on this problem are sufficiently small that just trying
+all possible starting numbers for a given $N$ easily runs in time.
+But a little thought works too; for a given $N$, the only thing that
+matters is if the starting position is even or odd.  Further
+simplification can be had by realizing that any group of four
+consecutive integers always sums to an even number, so you only
+need consider $N$ mod 4.  If $N mod 4$ is 0, the answer is always even.
+If $N mod 4$ is 2, the answer is always odd.  If $N mod 4$ is 1 or 3, the
+answer is, it could be either.

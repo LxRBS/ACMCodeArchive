@@ -1,0 +1,15 @@
+INT(2,100000,n) SPACE INT(1,100000,m) NEWLINE
+REPI(i,m)
+    INT(1,n,aval) SPACE INT(1,n,bval) NEWLINE
+    ASSERT(aval != bval)
+    # Put each edge in twice, once for each direction. This handles
+    # uniqueness of each road description (each road appears only once) but
+    # also that aval != bval. (When we call UNIQUE below.)
+    # Connectedness is verified in c++ validator
+    SET(a[2*i] = aval)
+    SET(b[2*i] = bval)
+    SET(a[2*i+1] = bval)
+    SET(b[2*i+1] = aval)
+END
+ASSERT(UNIQUE(a,b))
+EOF

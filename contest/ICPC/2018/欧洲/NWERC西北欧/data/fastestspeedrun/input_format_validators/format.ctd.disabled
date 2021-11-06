@@ -1,0 +1,17 @@
+INT(1, 2500, n)
+NEWLINE
+
+REP(n)
+  INT(0, n, x) SPACE
+  INT(1, 10^9, t) SPACE
+
+  SET(last = 10^9)
+
+  REP(n+1, SPACE)
+    INT(t, last, v)
+    SET(last = v)
+  END
+  NEWLINE
+END
+
+EOF

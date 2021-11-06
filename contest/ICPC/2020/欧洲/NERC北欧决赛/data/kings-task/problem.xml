@@ -1,0 +1,78 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<problem
+	version = "1.0"
+	id = "nef.2020.main.kings-task"
+>
+	<judging>
+		<script type = "%icpc">
+			<testset
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+				test-count = "26"
+			>
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+		<script type = "%ioi">
+			<testset
+				name = "preliminary"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test comment = "manual cmd: ''" />
+				<test comment = "manual cmd: ''" />
+				<test comment = "manual cmd: ''" />
+			</testset>
+			<testset
+				name = "main"
+				feedback = "outcome"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test points = "0" comment = "manual cmd: ''" />
+				<test points = "0" comment = "manual cmd: ''" />
+				<test points = "0" comment = "manual cmd: ''" />
+				<test points = "0" comment = "generated cmd: 'gen 3 2 0'" />
+				<test points = "0" comment = "generated cmd: 'gen 4 2 0'" />
+				<test points = "0" comment = "generated cmd: 'gen 9 7 9'" />
+				<test points = "0" comment = "generated cmd: 'gen 15 20 0'" />
+				<test points = "0" comment = "generated cmd: 'gen 101 87 0'" />
+				<test points = "0" comment = "generated cmd: 'gen 239 239 0'" />
+				<test points = "0" comment = "generated cmd: 'gen 531 863 0'" />
+				<test points = "0" comment = "generated cmd: 'gen 737 1323 1'" />
+				<test points = "0" comment = "generated cmd: 'gen 831 324 2'" />
+				<test points = "0" comment = "generated cmd: 'gen 931 1432 3'" />
+				<test points = "0" comment = "generated cmd: 'gen 999 0 0'" />
+				<test points = "0" comment = "generated cmd: 'gen 999 1 0'" />
+				<test points = "0" comment = "generated cmd: 'gen 999 1997 0'" />
+				<test points = "0" comment = "generated cmd: 'gen 999 999 0'" />
+				<test points = "0" comment = "generated cmd: 'gen 999 871 0'" />
+				<test points = "0" comment = "generated cmd: 'gen 999 1132 0'" />
+				<test points = "0" comment = "generated cmd: 'gen 999 999 1'" />
+				<test points = "0" comment = "generated cmd: 'gen 999 999 2'" />
+				<test points = "0" comment = "generated cmd: 'gen 999 999 3'" />
+				<test points = "0" comment = "generated cmd: 'gen 1000 1 0'" />
+				<test points = "0" comment = "generated cmd: 'gen 1000 2 0'" />
+				<test points = "0" comment = "generated cmd: 'gen 1000 3 0'" />
+				<test points = "0" comment = "generated cmd: 'gen 1000 4 0'" />
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+	</judging>
+</problem>

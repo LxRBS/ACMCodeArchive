@@ -1,0 +1,37 @@
+# The input starts with a sinle line containing an integer N,
+# the number of items to process.
+INT(1, 4*10^5, n) NEWLINE
+
+# The sum of all d_i is at most 4*10^5.
+SET(edgecount = 0)
+
+# Thereafter follow N lines, each describing the processable
+# items.
+REPI(process, n)
+
+# # Each such line starts with two integers e_i and d_i, the
+# # number of processors needed and the number of incoming
+# # dependencies respectively.
+  INT(1, 10^6, e) SPACE
+  INT(0, n-1, d)
+
+  SET(edgecount = edgecount + d)
+  ASSERT(edgecount <= 4*10^5)
+
+# # After these two numbers follow d_i further numbers b_i,j
+# # indicating that process b_i,j has to be complete before
+# # process i (1 <= b_i,j <= n and b_i,j != i)
+  REPI(i, d)
+    SPACE INT(1, n, deps[i])
+    ASSERT(deps[i]-1 != process)
+  END
+
+  IF(d > 0)
+    ASSERT(UNIQUE(deps))
+    UNSET(deps)
+  END
+
+  NEWLINE
+END
+
+EOF

@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="23" short-name="equilibrium" url="https://polygon.codeforces.com/p1GO42J/elizarov/equilibrium">
+        
+    <names>
+                
+        <name language="english" value="Equilibrium Point /\textbackslash/\textbackslash"/>
+            
+    </names>
+        
+    <statements>
+                
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+                
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+            
+    </statements>
+        
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="">
+                
+        <testset name="tests">
+                        
+            <time-limit>3000</time-limit>
+                        
+            <memory-limit>536870912</memory-limit>
+                        
+            <test-count>54</test-count>
+                        
+            <input-path-pattern>tests/%02d</input-path-pattern>
+                        
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+                        
+            <tests>
+                                
+                <test method="manual" sample="true"/>
+                                
+                <test cmd="Tests byIndex 1 0" method="generated"/>
+                                
+                <test cmd="Tests byIndex 2 0" method="generated"/>
+                                
+                <test cmd="Tests byIndex 2 1" method="generated"/>
+                                
+                <test cmd="Tests byIndex 3 0" method="generated"/>
+                                
+                <test cmd="Tests byIndex 3 1" method="generated"/>
+                                
+                <test cmd="Tests byIndex 3 2" method="generated"/>
+                                
+                <test cmd="Tests byIndex 3 3" method="generated"/>
+                                
+                <test cmd="Tests byIndex 3 4" method="generated"/>
+                                
+                <test cmd="Tests byIndex 4 4" method="generated"/>
+                                
+                <test cmd="Tests byIndex 5 4" method="generated"/>
+                                
+                <test cmd="Tests byIndex 6 4" method="generated"/>
+                                
+                <test cmd="Tests byIndex 7 4" method="generated"/>
+                                
+                <test cmd="Tests byIndex 8 4" method="generated"/>
+                                
+                <test cmd="Tests byIndex 9 4" method="generated"/>
+                                
+                <test cmd="Tests byIndex 10 4" method="generated"/>
+                                
+                <test cmd="Tests byIndex 11 4" method="generated"/>
+                                
+                <test cmd="Tests byIndex 12 4" method="generated"/>
+                                
+                <test cmd="Tests byIndex 13 4" method="generated"/>
+                                
+                <test cmd="Tests byIndex 14 300" method="generated"/>
+                                
+                <test cmd="Tests byIndex 15 300" method="generated"/>
+                                
+                <test cmd="Tests byIndex 15 2000000" method="generated"/>
+                                
+                <test cmd="Tests byIndex 16 2000000" method="generated"/>
+                                
+                <test cmd="Tests byIndex 17 2000000" method="generated"/>
+                                
+                <test cmd="Tests byIndex 18 2000000" method="generated"/>
+                                
+                <test cmd="Tests byIndex 18 200000000" method="generated"/>
+                                
+                <test cmd="Tests byIndex 18 477638699" method="generated"/>
+                                
+                <test cmd="Tests byIndex 18 477638698" method="generated"/>
+                                
+                <test cmd="Tests byIndex 18 477630700" method="generated"/>
+                                
+                <test cmd="Tests byIndex 18 477608700" method="generated"/>
+                                
+                <test cmd="Tests byIndex 18 477038700" method="generated"/>
+                                
+                <test cmd="Tests byIndex 18 470638700" method="generated"/>
+                                
+                <test cmd="Tests byIndex 18 407638700" method="generated"/>
+                                
+                <test cmd="Tests byIndex 18 307638700" method="generated"/>
+                                
+                <test cmd="Tests byIndex 18 207638700" method="generated"/>
+                                
+                <test cmd="Tests byIndex 18 107638700" method="generated"/>
+                                
+                <test cmd="Tests byIndex 18 566" method="generated"/>
+                                
+                <test cmd="Tests byIndex 18 1" method="generated"/>
+                                
+                <test cmd="Tests byIndex 18 0" method="generated"/>
+                                
+                <test cmd="Tests hills 3 3 3 3 3 3" method="generated"/>
+                                
+                <test cmd="Tests hills 6 6 6" method="generated"/>
+                                
+                <test cmd="Tests hills 6 12" method="generated"/>
+                                
+                <test cmd="Tests hills 13 5" method="generated"/>
+                                
+                <test cmd="Tests hills 1 17" method="generated"/>
+                                
+                <test cmd="Tests hills 16 2" method="generated"/>
+                                
+                <test cmd="Tests greedyDegrees 18 0" method="generated"/>
+                                
+                <test cmd="Tests greedyDegrees 18 10" method="generated"/>
+                                
+                <test cmd="Tests greedyDegrees 18 30" method="generated"/>
+                                
+                <test cmd="Tests greedyDegrees 18 45" method="generated"/>
+                                
+                <test cmd="Tests greedyDegrees 18 70" method="generated"/>
+                                
+                <test cmd="Tests greedyDegrees 18 89" method="generated"/>
+                                
+                <test cmd="Tests greedyDegrees 18 92" method="generated"/>
+                                
+                <test cmd="Tests greedyDegrees 18 111" method="generated"/>
+                                
+                <test cmd="Tests greedyDegrees 18 163" method="generated"/>
+                            
+            </tests>
+                    
+        </testset>
+            
+    </judging>
+        
+    <files>
+                
+        <resources>
+                        
+            <file path="files/olymp.sty"/>
+                        
+            <file path="files/problem.tex"/>
+                        
+            <file path="files/statements.ftl"/>
+                        
+            <file path="files/testlib.h" type="h.g++"/>
+                        
+            <file path="files/testlib4j.jar" type="jar"/>
+                    
+        </resources>
+                
+        <executables>
+                        
+            <executable>
+                                
+                <source path="files/Check.kt" type="kotlin"/>
+                                
+                <binary path="files/Check.jar" type="jar"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/Tests.kt" type="kotlin"/>
+                                
+                <binary path="files/Tests.jar" type="jar"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/validate.exe" type="exe.win32"/>
+                            
+            </executable>
+                    
+        </executables>
+            
+    </files>
+        
+    <assets>
+                
+        <checker type="testlib">
+                        
+            <source path="files/Check.kt" type="kotlin"/>
+                        
+            <binary path="check.jar" type="jar"/>
+                        
+            <copy path="check.kt" type="kotlin"/>
+                        
+            <testset>
+                                
+                <test-count>1</test-count>
+                                
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                                
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                                
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                                
+                <tests>
+                                        
+                    <test verdict="ok"/>
+                                    
+                </tests>
+                            
+            </testset>
+                    
+        </checker>
+                
+        <validators>
+                        
+            <validator>
+                                
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/validate.exe" type="exe.win32"/>
+                                
+                <testset>
+                                        
+                    <test-count>2</test-count>
+                                        
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                                        
+                    <tests>
+                                                
+                        <test verdict="valid"/>
+                                                
+                        <test verdict="invalid"/>
+                                            
+                    </tests>
+                                    
+                </testset>
+                            
+            </validator>
+                    
+        </validators>
+                
+        <solutions>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/Godnotent.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/Godnotent.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="time-limit-exceeded">
+                                
+                <source path="solutions/fed_kup_sayut.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/fed_kup_sayut.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/main_tsaplin_ok1.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/main_tsaplin_ok1.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/main_tsaplin_ok2.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/main_tsaplin_ok2.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="main">
+                                
+                <source path="solutions/main_tsaplin_ok3.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/main_tsaplin_ok3.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="failed">
+                                
+                <source path="solutions/main_tsaplin_re1.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/main_tsaplin_re1.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="failed">
+                                
+                <source path="solutions/main_tsaplin_re2.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/main_tsaplin_re2.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="failed">
+                                
+                <source path="solutions/main_tsaplin_re3.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/main_tsaplin_re3.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/md.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/md.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="time-limit-exceeded">
+                                
+                <source path="solutions/md_fullSearch.kt" type="kotlin"/>
+                                
+                <binary path="solutions/md_fullSearch.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="time-limit-exceeded">
+                                
+                <source path="solutions/md_manyObjects.kt" type="kotlin"/>
+                                
+                <binary path="solutions/md_manyObjects.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="time-limit-exceeded">
+                                
+                <source path="solutions/md_noObjects.kt" type="kotlin"/>
+                                
+                <binary path="solutions/md_noObjects.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="time-limit-exceeded-or-accepted">
+                                
+                <source path="solutions/md_slow.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/md_slow.exe" type="exe.win32"/>
+                            
+            </solution>
+                    
+        </solutions>
+            
+    </assets>
+        
+    <properties>
+                
+        <property name="tests-wellformed" value="true"/>
+            
+    </properties>
+        
+    <stresses>
+                
+        <stress-count>0</stress-count>
+                
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+                
+        <list/>
+            
+    </stresses>
+        
+    <tags>
+                
+        <tag value="bracket sequences"/>
+                
+        <tag value="center mass"/>
+            
+    </tags>
+    
+</problem>

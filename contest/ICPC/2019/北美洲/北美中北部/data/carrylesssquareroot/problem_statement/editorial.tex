@@ -1,0 +1,18 @@
+\problemname{Carry Cam Failure}
+
+\noindent
+Clearly, with 25-digit input, it's impractical to simply try
+all possible numbers.  But since only the least significant
+digit of the input affects the least significant digit of the
+output, and the least significant two digits affect the least
+significant two digits, etc., we can generate possibilities
+recursively, digit by digit, checking as many digits as we have.
+This might look like it can blow up exponentially but a little
+bit of testing will show that it easily runs in time.
+
+A slightly more efficient solution is possible if you note that
+carryless squaring of a reversed number is just the reversed
+result of carryless squaring of that number.  This means that
+you can perform your recursion from the most significant digit
+to the least significant digit, simplifying the check for minimal
+correct result.

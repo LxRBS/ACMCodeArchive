@@ -1,0 +1,21 @@
+INT(1,9,n)
+REGEX("(\t| )*")
+FLOAT(1,100,r,FIXED)
+REGEX("(\t| )*")
+FLOAT(1,200,s,FIXED)
+REGEX("(\t| )*")
+FLOAT(0.5,3,w,FIXED)
+REGEX("(\t| )*")
+FLOAT(-s/2,s/2,f,FIXED)
+REGEX("(\t| )*")
+FLOAT(0,w,l1,FIXED)
+REGEX("(\t| )*")
+FLOAT(0,w,l2,FIXED)
+NEWLINE
+SET(len = 0)
+WHILEI(i,!ISEOF)
+    FLOAT(1,410,d,FIXED) NEWLINE
+    SET(len = i+1)
+END
+ASSERT(len <= 100)
+EOF

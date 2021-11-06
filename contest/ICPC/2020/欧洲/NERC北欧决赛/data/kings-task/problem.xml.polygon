@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="11" short-name="kings-task" url="https://polygon.codeforces.com/p6BKOl1/pashka/kings-task">
+        
+    <names>
+                
+        <name language="english" value="King's Task"/>
+            
+    </names>
+        
+    <statements>
+                
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+                
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/problem.html" type="text/html"/>
+                
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+            
+    </statements>
+        
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="">
+                
+        <testset name="tests">
+                        
+            <time-limit>3000</time-limit>
+                        
+            <memory-limit>536870912</memory-limit>
+                        
+            <test-count>26</test-count>
+                        
+            <input-path-pattern>tests/%02d</input-path-pattern>
+                        
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+                        
+            <tests>
+                                
+                <test method="manual" sample="true"/>
+                                
+                <test method="manual" sample="true"/>
+                                
+                <test method="manual" sample="true"/>
+                                
+                <test cmd="gen 3 2 0" method="generated"/>
+                                
+                <test cmd="gen 4 2 0" method="generated"/>
+                                
+                <test cmd="gen 9 7 9" method="generated"/>
+                                
+                <test cmd="gen 15 20 0" method="generated"/>
+                                
+                <test cmd="gen 101 87 0" method="generated"/>
+                                
+                <test cmd="gen 239 239 0" method="generated"/>
+                                
+                <test cmd="gen 531 863 0" method="generated"/>
+                                
+                <test cmd="gen 737 1323 1" method="generated"/>
+                                
+                <test cmd="gen 831 324 2" method="generated"/>
+                                
+                <test cmd="gen 931 1432 3" method="generated"/>
+                                
+                <test cmd="gen 999 0 0" method="generated"/>
+                                
+                <test cmd="gen 999 1 0" method="generated"/>
+                                
+                <test cmd="gen 999 1997 0" method="generated"/>
+                                
+                <test cmd="gen 999 999 0" method="generated"/>
+                                
+                <test cmd="gen 999 871 0" method="generated"/>
+                                
+                <test cmd="gen 999 1132 0" method="generated"/>
+                                
+                <test cmd="gen 999 999 1" method="generated"/>
+                                
+                <test cmd="gen 999 999 2" method="generated"/>
+                                
+                <test cmd="gen 999 999 3" method="generated"/>
+                                
+                <test cmd="gen 1000 1 0" method="generated"/>
+                                
+                <test cmd="gen 1000 2 0" method="generated"/>
+                                
+                <test cmd="gen 1000 3 0" method="generated"/>
+                                
+                <test cmd="gen 1000 4 0" method="generated"/>
+                            
+            </tests>
+                    
+        </testset>
+            
+    </judging>
+        
+    <files>
+                
+        <resources>
+                        
+            <file path="files/olymp.sty"/>
+                        
+            <file path="files/problem.tex"/>
+                        
+            <file path="files/statements.ftl"/>
+                        
+            <file path="files/testlib.h" type="h.g++"/>
+                    
+        </resources>
+                
+        <executables>
+                        
+            <executable>
+                                
+                <source path="files/gen.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/gen.exe" type="exe.win32"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/validate.exe" type="exe.win32"/>
+                            
+            </executable>
+                    
+        </executables>
+            
+    </files>
+        
+    <assets>
+                
+        <checker name="std::ncmp.cpp" type="testlib">
+                        
+            <source path="files/check.cpp" type="cpp.g++17"/>
+                        
+            <binary path="check.exe" type="exe.win32"/>
+                        
+            <copy path="check.cpp"/>
+                        
+            <testset>
+                                
+                <test-count>0</test-count>
+                                
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                                
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                                
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                                
+                <tests/>
+                            
+            </testset>
+                    
+        </checker>
+                
+        <validators>
+                        
+            <validator>
+                                
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/validate.exe" type="exe.win32"/>
+                                
+                <testset>
+                                        
+                    <test-count>0</test-count>
+                                        
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                                        
+                    <tests/>
+                                    
+                </testset>
+                            
+            </validator>
+                    
+        </validators>
+                
+        <solutions>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/k_re.kt" type="kotlin"/>
+                                
+                <binary path="solutions/k_re.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="main">
+                                
+                <source path="solutions/kings-task_pm.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/kings-task_pm.exe" type="exe.win32"/>
+                            
+            </solution>
+                    
+        </solutions>
+            
+    </assets>
+        
+    <properties>
+                
+        <property name="tests-wellformed" value="true"/>
+            
+    </properties>
+        
+    <stresses>
+                
+        <stress-count>0</stress-count>
+                
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+                
+        <list/>
+            
+    </stresses>
+    
+</problem>

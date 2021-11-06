@@ -1,0 +1,8 @@
+name: Fastest Speedrun
+source: Northwestern Europe Regional Contest (NWERC) 2018
+source_url: https://2018.nwerc.eu
+author: Simon Lindholm
+license: cc by-sa
+limits:
+  time_multiplier: 1.5
+  time_safety_margin: 3

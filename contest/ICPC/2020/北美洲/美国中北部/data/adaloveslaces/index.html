@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+  <meta content="text/html; charset=utf-8" http-equiv=
+  "content-type">
+
+  <title></title>
+  <link rel="stylesheet" href="problem.css" type="text/css">
+  <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: { 
+    ignoreClass: ".*",
+    inlineMath: [['$','$'], ['\\(','\\)']]
+        },
+  MMLorHTML: {
+    prefer: {Firefox: "HTML"}
+    }
+  });
+  </script>
+  <script type="text/javascript" src=
+  "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+
+<body>
+  <div class="problembody">
+    <div class="problemheader">
+      <h1>Ada Loveslaces</h1>
+
+      <h3>Problem ID: adaloveslaces</h3>
+    </div>
+
+    <p>A shoe has a lacing geometry: <span class=
+    "tex2jax_process">$N$</span>, the number of eyelets (on a
+    side), <span class="tex2jax_process">$d$</span>, the distance
+    between eyelets, <span class="tex2jax_process">$s$</span>, the
+    separation between the columns of eyelets when the shoe is
+    laced, and <span class="tex2jax_process">$t$</span>, the
+    thickness of an eyelet. In Figure 1 below, <span class=
+    "tex2jax_process">$N = 3$</span>, with eyelets numbered from
+    <span class="tex2jax_process">$0$</span> to <span class=
+    "tex2jax_process">$2N - 1$</span>.</p>
+
+    <div id="a0000000002" class="figure">
+      <center>
+        <img src="img-0001.png" alt=
+        "\includegraphics[width=.32\textwidth ]{EyeletPattern.png}"
+        style="width:32.00%">
+      </center>
+
+      <div class="caption">
+        <b>Figure 1</b>: Eyelet numbering and dimensions for
+        <span class="tex2jax_process">$N = 3$</span>.
+      </div>
+    </div>
+
+    <p>When laced, a shoelace of length <span class=
+    "tex2jax_process">$L$</span> will have two free ends for knot
+    tying. The free length of each end is <span class=
+    "tex2jax_process">$f$</span>. The length of <span class=
+    "tex2jax_process">$f$</span> must fall within a certain range,
+    <span class="tex2jax_process">$[f_{min}, f_{max}]$</span> to
+    accommodate a knot that is neither too small to tie nor so
+    large as to dangle. See Figure 2 for a common criss-cross
+    pattern.</p>
+
+    <div id="a0000000003" class="figure">
+      <center>
+        <img src="img-0002.png" alt=
+        "\includegraphics[width=.32\textwidth ]{LacingPattern.png}"
+        style="width:32.00%">
+      </center>
+
+      <div class="caption">
+        <b>Figure 2</b>: Criss-cross lacing pattern showing free
+        end length <span class="tex2jax_process">$f$</span>.
+      </div>
+    </div>
+
+    <p>That special end of a lace that prevents fraying is called
+    an “aglet.” You’re welcome.</p>
+
+    <p>Unfortunately, shoelaces break at the most inopportune
+    times. Before purchasing a new shoelace, it is often necessary
+    to retie the shorter, broken lace, or replace it with another
+    lace borrowed from another shoe.</p>
+
+    <p>Given <span class="tex2jax_process">$N, d, s, t, f_{min},
+    f_{max}$</span>, and a series of replacement shoelace lengths,
+    <span class="tex2jax_process">$L$</span>, for each shoelace
+    length determine the number of lacing patterns that leave free
+    ends, <span class="tex2jax_process">$f$</span>, such that
+    <span class="tex2jax_process">$f_{min} \le f \le
+    f_{max}$</span>. The rules of lacing are as follows:</p>
+
+    <ul class="itemize">
+      <li>
+        <p>The resulting lacing pattern must be symmetric across a
+        line drawn vertically between the even-numbered and
+        odd-numbered eyelets.</p>
+      </li>
+
+      <li>
+        <p>The lace can only pass through an eyelet at most
+        once.</p>
+      </li>
+
+      <li>
+        <p>The lace can only pass between eyelets in the same
+        column that are immediately adjacent.</p>
+      </li>
+
+      <li>
+        <p>The free ends of the lace must emerge from eyelet
+        numbers <span class="tex2jax_process">$2N - 2$</span> and
+        <span class="tex2jax_process">$2N - 1$</span>.</p>
+      </li>
+
+      <li>
+        <p>The lace must pass directly between eyelet numbers 0 and
+        1 to ensure the shoelace holds the shoe on the foot.</p>
+      </li>
+    </ul>
+
+    <p>You are to assume that the surface the eyelets are on is to
+    be treated as a plane, that the shoelace passes through the
+    center of the eyelets, and that the thickness of the shoelace
+    itself is negligible. The total length of the shoelace that is
+    used for lacing is the length used between the eyelets plus
+    <span class="tex2jax_process">$t$</span> for each eyelet the
+    shoelace passes through. In the example shown in Figure 2,
+    <span class="tex2jax_process">$6t$</span> of the shoelace
+    length is used by passing through the six eyelets.</p>
+
+    <h2>Input</h2>
+
+    <p>The input begins with a single line containing <span class=
+    "tex2jax_process">$N, d, s, t, f_{min}, f_{max}$</span>,
+    separated by whitespace. Each additional line is a new value of
+    <span class="tex2jax_process">$L$</span> for which your program
+    is to count the number of lacing patterns that meet the stated
+    requirements. There will be between <span class=
+    "tex2jax_process">$1$</span> and <span class=
+    "tex2jax_process">$100$</span> values of <span class=
+    "tex2jax_process">$L$</span>. All measurements are in integer
+    millimeters.</p>
+
+    <p><span class="tex2jax_process">$N$</span> will be between
+    <span class="tex2jax_process">$2$</span> and <span class=
+    "tex2jax_process">$9$</span> inclusive. <span class=
+    "tex2jax_process">$d$</span> will be between <span class=
+    "tex2jax_process">$5$</span> and <span class=
+    "tex2jax_process">$30$</span> inclusive. <span class=
+    "tex2jax_process">$s$</span> will be between <span class=
+    "tex2jax_process">$10$</span> and <span class=
+    "tex2jax_process">$50$</span> inclusive. <span class=
+    "tex2jax_process">$t$</span> will be between <span class=
+    "tex2jax_process">$0$</span> and <span class=
+    "tex2jax_process">$4$</span> inclusive. Shoelace lengths will
+    be between <span class="tex2jax_process">$200$</span> and
+    <span class="tex2jax_process">$2\, 000$</span> millimeters
+    inclusive. <span class="tex2jax_process">$f_{min}$</span> and
+    <span class="tex2jax_process">$f_{max}$</span> will not be
+    within a micron (<span class="tex2jax_process">$0.001$</span>
+    millimeters) of the free end lengths of a valid lacing
+    pattern.</p>
+
+    <h2>Output</h2>
+
+    <p>For each shoelace length, your program is to print the
+    number of possible lacing patterns that meet the above
+    requirements on a single line with no signs, leading or
+    trailing whitespace, or leading zeroes.</p>
+
+    <table class="sample" summary="sample data">
+      <tr>
+        <th>Sample Input 1</th>
+
+        <th>Sample Output 1</th>
+      </tr>
+
+      <tr>
+        <td>
+          <pre>
+3 10 25 3 125 175
+485
+410
+</pre>
+        </td>
+
+        <td>
+          <pre>
+1
+5
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

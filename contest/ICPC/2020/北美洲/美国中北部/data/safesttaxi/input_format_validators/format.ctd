@@ -1,0 +1,18 @@
+INT(2,15,n) SPACE INT(2,15,m) SPACE INT(1,3,k) NEWLINE
+INT(2*(2*n*m-n-m),2*(2*n*m-n-m),d) NEWLINE
+REPI(i,d)
+    INT(0,n-1,r0) SPACE INT(0,m-1,c0) SPACE INT(0,n-1,r1) SPACE INT(0,m-1,c1) SPACE INT(2,100,t) SPACE
+    ASSERT(((r0 == r1-1 || r0 == r1+1) && c0 == c1) || ((c0 == c1-1 || c0 == c1+1) && r0 == r1))
+    ASSERT(t%2 == 0)
+    REPI(j,k,SPACE)
+        REGEX("LSR|LS|SR|LR|R|S|L")
+    END
+    NEWLINE
+END
+INT(1,50,p) NEWLINE
+REPI(i,p)
+    INT(0,n-1,rs0) SPACE INT(0,m-1,cs0) SPACE INT(0,n-1,rs1) SPACE INT(0,m-1,cs1) SPACE INT(0,n-1,rd0) SPACE INT(0,m-1,cd0) SPACE INT(0,n-1,rd1) SPACE INT(0,m-1,cd1) SPACE INT(0,4,x) SPACE INT(0,4,y) NEWLINE
+    ASSERT(((rs0 == rs1-1 || rs0 == rs1+1) && cs0 == cs1) || ((cs0 == cs1-1 || cs0 == cs1+1) && rs0 == rs1))
+    ASSERT(((rd0 == rd1-1 || rd0 == rd1+1) && cd0 == cd1) || ((cd0 == cd1-1 || cd0 == cd1+1) && rd0 == rd1))
+END
+EOF

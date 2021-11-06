@@ -1,0 +1,14 @@
+For a fixed vertex u, we're trying to find the sum of (tax[u] + tax[v]) * dist(u, v) over all v.
+
+We need to keep track of two sums: tax[v] * dist[v] and dist[v], all relative
+to some root u. The answer for u is then sum_v (tax[v] * dist[v]) + tax[u] *
+sum_v (dist[v]). To avoid expensive recomputations, we use the "re-rooting"
+trick. To change the root from u to some neighbor v:
+
+taxsumdist -= w * (tax of all nodes in v's subtree)
+taxsumdist += w * (tax of all nodes not in v's subtree)
+
+sum dist += w * (number of nodes not in v's subtree)
+sum dist -= w * (number of nodes in v's subtree)
+
+These changes can be kept in O(1), so the overall runtime is O(N).

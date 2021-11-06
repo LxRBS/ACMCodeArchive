@@ -1,0 +1,25 @@
+\problemname{Other Side}
+
+\illustration{0.4}{other_side.jpg}{Indiana Dunes State Park. Image by \href{https://pixabay.com/en/indiana-dunes-state-park-beach-1848559/}{pixabay}.}
+
+John Doe wants to transport his possessions from one bank of Lake Michigan to the other. His possessions consist of $W$ wolves, $S$ sheep, and
+$C$ cabbages. The transportation will be carried out using a boat that can hold up to $K$ of these items at the same time.
+During each step, John can take some items from one bank and transfer them to the other bank. Unfortunately,
+when left unsupervised, wolves will eat sheep and sheep will eat cabbages (but wolves don't eat cabbages). John doesn't want to lose his possessions, so he has to devise a
+scheme such that this doesn't happen. With John present, any combination of items is allowed (both on the bank and in the boat). This is
+also true during the loading process. Since John isn't very good at solving problems like this, he asks you to help him.
+
+\section*{Input}
+Input contains a single line with four integers: $W$, $S$, $C$, $K$. The input satisfies the following constraints:
+%\begin{itemize}
+%	\item $0 \leq W, S, C, K \leq 10^6$.
+%	\item $1 \leq max(W, S, C)$.
+%\end{itemize}
+$$0 \leq W, S, C, K \leq 10^6,$$
+$$1 \leq max(W, S, C).$$
+%\begin{itemize}
+%\item $0 \leq W, S, C, K \leq 10^6$.
+%\item $1 \leq \max(W, S, C).$
+%\end{itemize}
+\section*{Output}
+If it's possible to perform the transportation without the loss of items, print \texttt{YES}, otherwise print \texttt{NO}.

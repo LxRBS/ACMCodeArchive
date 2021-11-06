@@ -1,0 +1,113 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<problem
+	version = "1.0"
+	id = "nef.2020.main.fiber-shape"
+>
+	<judging>
+		<script type = "%icpc">
+			<testset
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+				test-count = "61"
+			>
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+		<script type = "%ioi">
+			<testset
+				name = "preliminary"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test comment = "manual cmd: ''" />
+				<test comment = "manual cmd: ''" />
+				<test comment = "manual cmd: ''" />
+			</testset>
+			<testset
+				name = "main"
+				feedback = "outcome"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test points = "0" comment = "manual cmd: ''" />
+				<test points = "0" comment = "manual cmd: ''" />
+				<test points = "0" comment = "manual cmd: ''" />
+				<test points = "0" comment = "generated cmd: 'GenRandomSquare 4 10 | ConvexHull'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomSquare 5 20 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomSquare 10 100 | ConvexHull'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomSquare 50 10000 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomSquare 100 1000 | ConvexHull'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomSquare 1000 10000 | ConvexHull'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomSquare 10000 100000 | ConvexHull'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomSquare 4 100000 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomSquare 20 100000 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomSquare 300 100000 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomSquare 2000 100000 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomSquare 5000 100000 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomSquare 10000 100000 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomCircle 4 10 | ConvexHull'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomCircle 5 20 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomCircle 10 100 | ConvexHull'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomCircle 50 10000 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomCircle 100 1000 | ConvexHull'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomCircle 1000 10000 | ConvexHull'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomCircle 4 100000 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomCircle 20 100000 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomCircle 300 100000 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomCircle 2000 100000 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomCircle 5000 100000 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomCircle 10000 100000 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenVectors 10000 100 | WithLGeom | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenVectors 10500 100 | SkipPoints 9999 | WithLGeom | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenVectors 11000 100 | SkipPoints 9998 | WithLGeom | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenVectors 11500 100 | SkipPoints 9997 | WithLGeom | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenVectors 10500 100 | SkipPoints 9996 | WithMaxL | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenVectors 11000 100 | SkipPoints 9995 | WithMaxL | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenVectors 11500 100 | SkipPoints 9994 | WithMaxL | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomSquare 4 11 | ConvexHull | WithMaxL'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomSquare 4 12 | ConvexHull | WithMaxL | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomSquare 10000 99999 | ConvexHull | WithMaxL'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomSquare 10000 99998 | ConvexHull | WithMaxL | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomCircle 5 13 | ConvexHull | WithMaxL'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomCircle 6 14 | ConvexHull | WithMaxL | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomCircle 10000 99999 | ConvexHull | WithMaxL'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomCircle 10000 99998 | ConvexHull | WithMaxL | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomEllipse 5000 99999 30000 | ConvexHull'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomEllipse 10000 99999 20000 | ConvexHull'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomEllipse 20000 99999 10000 | ConvexHull'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomEllipse 50000 99999 5000 | ConvexHull'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomEllipse 5000 100000 50000 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomEllipse 10000 100000 25000 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomEllipse 20000 100000 15000 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomEllipse 50000 100000 3000 | ConvexHull | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomEllipse 15000 100000 400 | ConvexHull | WithMaxL | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomEllipse 25000 100000 4000 | ConvexHull | WithMaxL | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomEllipse 35000 100000 14000 | ConvexHull | WithMaxL | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRandomEllipse 45000 100000 24000 | ConvexHull | WithMaxL | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRectangle 1 200000 | WithLGeom | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRectangle 200000 1 | WithMaxL | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRectangle 100000 100000 | WithLGeom'" />
+				<test points = "0" comment = "generated cmd: 'GenRectangle 100000 100000 | WithMaxL | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRectangle 150000 150000 | WithMaxL | RandomShift'" />
+				<test points = "0" comment = "generated cmd: 'GenRectangle 199999 199999 | WithMaxL | RandomShift'" />
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+	</judging>
+</problem>

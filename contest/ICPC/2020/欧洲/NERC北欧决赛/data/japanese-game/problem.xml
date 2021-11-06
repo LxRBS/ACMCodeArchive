@@ -1,0 +1,107 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<problem
+	version = "1.0"
+	id = "nef.2020.main.japanese-game"
+>
+	<judging>
+		<script type = "%icpc">
+			<testset
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+				test-count = "55"
+			>
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+		<script type = "%ioi">
+			<testset
+				name = "preliminary"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test comment = "generated cmd: 'japanese-game-gen-cat __#_____'" />
+				<test comment = "generated cmd: 'japanese-game-gen-cat _#'" />
+				<test comment = "generated cmd: 'japanese-game-gen-cat ___'" />
+			</testset>
+			<testset
+				name = "main"
+				feedback = "outcome"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-cat __#_____'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-cat _#'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-cat ___'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-cat ________'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-cat _'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-cat #'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-cat ##'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-cat #_#_#_###_#'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-cat #_#_#_###_#_'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-cat __##________###__'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-cat _###____#__##_'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-cat ___##_________#_______'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-rand-yes --length 1000 --min 1 --max 40 --empty 0'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-rand-yes --length 1000 --min 1 --max 40 --empty 1'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-rand-yes --length 1000 --min 1 --max 40 --empty 2'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-rand-yes --length 1000 --min 1 --max 40 --empty 3'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-rand-yes --length 1000 --min 1 --max 40 --empty 10'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-rand-yes --length 10000 --min 1 --max 400 --empty 0'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-rand-yes --length 10000 --min 1 --max 400 --empty 1'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-rand-yes --length 10000 --min 1 --max 400 --empty 2'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-rand-yes --length 10000 --min 1 --max 400 --empty 3'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-rand-yes --length 10000 --min 1 --max 400 --empty 10'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-rand-yes --length 100000 --min 1 --max 20000 --empty 0'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-rand-yes --length 100000 --min 1 --max 20000 --empty 1'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-rand-yes --length 100000 --min 1 --max 20000 --empty 2'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-rand-yes --length 100000 --min 1 --max 20000 --empty 3'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-rand-yes --length 100000 --min 1 --max 20000 --empty 10'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-rand-yes --length 100000 --min 1 --max 20000 --empty 300'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-cat __#__'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 100000 --profile 50001'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 99999 --profile 50000'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 80017 --profile 2,20000,1,20000,2,20000,3,20000,1'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 80018 --profile 2,20000,1,20000,2,20000,3,20000,1'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 80019 --profile 2,20000,1,20000,2,20000,3,20000,1'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 80020 --profile 2,20000,1,20000,2,20000,3,20000,1'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 80021 --profile 2,20000,1,20000,2,20000,3,20000,1'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 80022 --profile 2,20000,1,20000,2,20000,3,20000,1'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 97777 --profile 2,20000,1,20000,2,20000,3,20000,1'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 98888 --profile 2,20000,1,20000,2,20000,3,20000,1'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 80019 --profile 2,20000,1,20000,2,20000,3,20000,3'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 80020 --profile 2,20000,1,20000,2,20000,3,20000,3'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 80021 --profile 2,20000,1,20000,2,20000,3,20000,3'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 80022 --profile 2,20000,1,20000,2,20000,3,20000,3'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 80023 --profile 2,20000,1,20000,2,20000,3,20000,3'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 80024 --profile 2,20000,1,20000,2,20000,3,20000,3'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 97777 --profile 2,20000,1,20000,2,20000,3,20000,3'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 98888 --profile 2,20000,1,20000,2,20000,3,20000,3'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 80020 --profile 4,20000,1,20000,2,20000,3,20000,2'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 80021 --profile 4,20000,1,20000,2,20000,3,20000,2'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 80022 --profile 4,20000,1,20000,2,20000,3,20000,2'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 80023 --profile 4,20000,1,20000,2,20000,3,20000,2'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 80024 --profile 4,20000,1,20000,2,20000,3,20000,2'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 80025 --profile 4,20000,1,20000,2,20000,3,20000,2'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 97777 --profile 4,20000,1,20000,2,20000,3,20000,2'" />
+				<test points = "0" comment = "generated cmd: 'japanese-game-gen-by-profile --length 98888 --profile 4,20000,1,20000,2,20000,3,20000,2'" />
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+	</judging>
+</problem>

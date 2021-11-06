@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="11" short-name="fiber-shape" url="https://polygon.codeforces.com/p0UXXWs/elizarov/fiber-shape">
+        
+    <names>
+                
+        <name language="english" value="Fiber Shape"/>
+            
+    </names>
+        
+    <statements>
+                
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+                
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/problem.html" type="text/html"/>
+                
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+            
+    </statements>
+        
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="">
+                
+        <testset name="tests">
+                        
+            <time-limit>3000</time-limit>
+                        
+            <memory-limit>536870912</memory-limit>
+                        
+            <test-count>61</test-count>
+                        
+            <input-path-pattern>tests/%02d</input-path-pattern>
+                        
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+                        
+            <tests>
+                                
+                <test method="manual" sample="true"/>
+                                
+                <test method="manual" sample="true"/>
+                                
+                <test method="manual" sample="true"/>
+                                
+                <test cmd="GenRandomSquare 4 10 | ConvexHull" method="generated"/>
+                                
+                <test cmd="GenRandomSquare 5 20 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomSquare 10 100 | ConvexHull" method="generated"/>
+                                
+                <test cmd="GenRandomSquare 50 10000 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomSquare 100 1000 | ConvexHull" method="generated"/>
+                                
+                <test cmd="GenRandomSquare 1000 10000 | ConvexHull" method="generated"/>
+                                
+                <test cmd="GenRandomSquare 10000 100000 | ConvexHull" method="generated"/>
+                                
+                <test cmd="GenRandomSquare 4 100000 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomSquare 20 100000 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomSquare 300 100000 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomSquare 2000 100000 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomSquare 5000 100000 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomSquare 10000 100000 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomCircle 4 10 | ConvexHull" method="generated"/>
+                                
+                <test cmd="GenRandomCircle 5 20 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomCircle 10 100 | ConvexHull" method="generated"/>
+                                
+                <test cmd="GenRandomCircle 50 10000 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomCircle 100 1000 | ConvexHull" method="generated"/>
+                                
+                <test cmd="GenRandomCircle 1000 10000 | ConvexHull" method="generated"/>
+                                
+                <test cmd="GenRandomCircle 4 100000 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomCircle 20 100000 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomCircle 300 100000 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomCircle 2000 100000 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomCircle 5000 100000 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomCircle 10000 100000 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenVectors 10000 100 | WithLGeom | RandomShift" method="generated"/>
+                                
+                <test cmd="GenVectors 10500 100 | SkipPoints 9999 | WithLGeom | RandomShift" method="generated"/>
+                                
+                <test cmd="GenVectors 11000 100 | SkipPoints 9998 | WithLGeom | RandomShift" method="generated"/>
+                                
+                <test cmd="GenVectors 11500 100 | SkipPoints 9997 | WithLGeom | RandomShift" method="generated"/>
+                                
+                <test cmd="GenVectors 10500 100 | SkipPoints 9996 | WithMaxL | RandomShift" method="generated"/>
+                                
+                <test cmd="GenVectors 11000 100 | SkipPoints 9995 | WithMaxL | RandomShift" method="generated"/>
+                                
+                <test cmd="GenVectors 11500 100 | SkipPoints 9994 | WithMaxL | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomSquare 4 11 | ConvexHull | WithMaxL" method="generated"/>
+                                
+                <test cmd="GenRandomSquare 4 12 | ConvexHull | WithMaxL | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomSquare 10000 99999 | ConvexHull | WithMaxL" method="generated"/>
+                                
+                <test cmd="GenRandomSquare 10000 99998 | ConvexHull | WithMaxL | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomCircle 5 13 | ConvexHull | WithMaxL" method="generated"/>
+                                
+                <test cmd="GenRandomCircle 6 14 | ConvexHull | WithMaxL | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomCircle 10000 99999 | ConvexHull | WithMaxL" method="generated"/>
+                                
+                <test cmd="GenRandomCircle 10000 99998 | ConvexHull | WithMaxL | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomEllipse 5000 99999 30000 | ConvexHull" method="generated"/>
+                                
+                <test cmd="GenRandomEllipse 10000 99999 20000 | ConvexHull" method="generated"/>
+                                
+                <test cmd="GenRandomEllipse 20000 99999 10000 | ConvexHull" method="generated"/>
+                                
+                <test cmd="GenRandomEllipse 50000 99999 5000 | ConvexHull" method="generated"/>
+                                
+                <test cmd="GenRandomEllipse 5000 100000 50000 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomEllipse 10000 100000 25000 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomEllipse 20000 100000 15000 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomEllipse 50000 100000 3000 | ConvexHull | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomEllipse 15000 100000 400 | ConvexHull | WithMaxL | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomEllipse 25000 100000 4000 | ConvexHull | WithMaxL | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomEllipse 35000 100000 14000 | ConvexHull | WithMaxL | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRandomEllipse 45000 100000 24000 | ConvexHull | WithMaxL | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRectangle 1 200000 | WithLGeom | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRectangle 200000 1 | WithMaxL | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRectangle 100000 100000 | WithLGeom" method="generated"/>
+                                
+                <test cmd="GenRectangle 100000 100000 | WithMaxL | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRectangle 150000 150000 | WithMaxL | RandomShift" method="generated"/>
+                                
+                <test cmd="GenRectangle 199999 199999 | WithMaxL | RandomShift" method="generated"/>
+                            
+            </tests>
+                    
+        </testset>
+            
+    </judging>
+        
+    <files>
+                
+        <resources>
+                        
+            <file path="files/olymp.sty"/>
+                        
+            <file path="files/problem.tex"/>
+                        
+            <file path="files/statements.ftl"/>
+                        
+            <file path="files/testlib.h" type="h.g++"/>
+                        
+            <file path="files/tutorial.tex"/>
+                    
+        </resources>
+                
+        <executables>
+                        
+            <executable>
+                                
+                <source path="files/ConvexHull.java" type="java8"/>
+                                
+                <binary path="files/ConvexHull.jar" type="jar"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/GenRandomCircle.java" type="java8"/>
+                                
+                <binary path="files/GenRandomCircle.jar" type="jar"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/GenRandomEllipse.java" type="java8"/>
+                                
+                <binary path="files/GenRandomEllipse.jar" type="jar"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/GenRandomSquare.java" type="java8"/>
+                                
+                <binary path="files/GenRandomSquare.jar" type="jar"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/GenRectangle.java" type="java8"/>
+                                
+                <binary path="files/GenRectangle.jar" type="jar"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/GenVectors.java" type="java8"/>
+                                
+                <binary path="files/GenVectors.jar" type="jar"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/RandomShift.java" type="java8"/>
+                                
+                <binary path="files/RandomShift.jar" type="jar"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/SkipPoints.java" type="java8"/>
+                                
+                <binary path="files/SkipPoints.jar" type="jar"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/WithLGeom.java" type="java8"/>
+                                
+                <binary path="files/WithLGeom.jar" type="jar"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/WithMaxL.java" type="java8"/>
+                                
+                <binary path="files/WithMaxL.jar" type="jar"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/validator.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/validator.exe" type="exe.win32"/>
+                            
+            </executable>
+                    
+        </executables>
+            
+    </files>
+        
+    <assets>
+                
+        <checker name="std::rcmp6.cpp" type="testlib">
+                        
+            <source path="files/check.cpp" type="cpp.g++17"/>
+                        
+            <binary path="check.exe" type="exe.win32"/>
+                        
+            <copy path="check.cpp"/>
+                        
+            <testset>
+                                
+                <test-count>0</test-count>
+                                
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                                
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                                
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                                
+                <tests/>
+                            
+            </testset>
+                    
+        </checker>
+                
+        <validators>
+                        
+            <validator>
+                                
+                <source path="files/validator.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/validator.exe" type="exe.win32"/>
+                                
+                <testset>
+                                        
+                    <test-count>0</test-count>
+                                        
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                                        
+                    <tests/>
+                                    
+                </testset>
+                            
+            </validator>
+                    
+        </validators>
+                
+        <solutions>
+                        
+            <solution tag="main">
+                                
+                <source path="solutions/ellipses_av.java" type="java8"/>
+                                
+                <binary path="solutions/ellipses_av.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/f_re.kt" type="kotlin"/>
+                                
+                <binary path="solutions/f_re.jar" type="jar"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/fiber_pkun.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/fiber_pkun.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/godnotent.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/godnotent.exe" type="exe.win32"/>
+                            
+            </solution>
+                    
+        </solutions>
+            
+    </assets>
+        
+    <properties>
+                
+        <property name="tests-wellformed" value="true"/>
+            
+    </properties>
+        
+    <stresses>
+                
+        <stress-count>0</stress-count>
+                
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+                
+        <list/>
+            
+    </stresses>
+        
+    <tags>
+                
+        <tag value="ellipses"/>
+            
+    </tags>
+    
+</problem>

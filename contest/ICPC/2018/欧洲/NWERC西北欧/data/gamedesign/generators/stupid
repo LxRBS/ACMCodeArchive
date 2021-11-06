@@ -1,0 +1,38 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use 5.8.0;
+
+# We will always choose a lazy person to do a difficult job,
+# because a lazy person will find an easy way to do it.
+my $solution = 'pypy ../submissions/accepted/rgl-lazy.py';
+srand 23409867298374561;
+
+sub main {
+  for my $tcid (20 ... 40) {
+    my $finname = sprintf 'secret/%02d.in', $tcid;
+    my $ansname = sprintf 'secret/%02d.ans', $tcid;
+
+    open my $fin, ">$finname";
+    print $fin generate() . "\n";
+    close $fin;
+
+    `$solution < $finname > $ansname &`;
+  }
+}
+
+sub generate {
+  my $length = 1 + int rand 20;
+  my $s = '';
+  for my $i (0 ... $length-1) {
+    while (1) {
+      my $c = ('L','R','U','D')[int rand 4];
+      next if $i && $c eq (substr $s, -1);
+      last if $s .= $c;
+    }
+  }
+  $s;
+}
+
+main;

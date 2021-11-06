@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="20" short-name="corrupted-sort" url="https://polygon.codeforces.com/p6Ya4RK/qwerty787788/corrupted-sort">
+    <names>
+        <name language="english" value="Corrupted Sort"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/problem.html" type="text/html"/>
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+    </statements>
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="">
+        <testset name="tests">
+            <time-limit>2000</time-limit>
+            <memory-limit>536870912</memory-limit>
+            <test-count>25</test-count>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test method="manual" sample="true"/>
+                <test cmd="Gen 3 RAND 7877788" method="generated"/>
+                <test cmd="Gen 5 RAND 2234234" method="generated"/>
+                <test cmd="Gen 5 RAND 22342341" method="generated"/>
+                <test cmd="Gen 5 RAND 22342342" method="generated"/>
+                <test cmd="Gen 25 RAND 223441" method="generated"/>
+                <test cmd="Gen 25 RAND 223442" method="generated"/>
+                <test cmd="Gen 25 RAND 223443" method="generated"/>
+                <test cmd="Gen 50 RAND 223466641" method="generated"/>
+                <test cmd="Gen 50 RAND 223466642" method="generated"/>
+                <test cmd="Gen 50 RAND 223466643" method="generated"/>
+                <test cmd="Gen 50 RAND 223466644" method="generated"/>
+                <test cmd="Gen 50 REV 24446643" method="generated"/>
+                <test cmd="Gen 50 TWO_PARTS 22888844" method="generated"/>
+                <test cmd="Gen 2 RAND 3453453" method="generated"/>
+                <test cmd="Gen 50 RAND 787788000" method="generated"/>
+                <test cmd="Gen 50 RAND 787788001" method="generated"/>
+                <test cmd="Gen 50 RAND 787788002" method="generated"/>
+                <test cmd="Gen 50 RAND 787788003" method="generated"/>
+                <test cmd="Gen 50 RAND 787788004" method="generated"/>
+                <test cmd="Gen 50 RAND 787788005" method="generated"/>
+                <test cmd="Gen 50 RAND 787788006" method="generated"/>
+                <test cmd="Gen 50 RAND 787788007" method="generated"/>
+                <test cmd="Gen 50 RAND 787788008" method="generated"/>
+                <test cmd="Gen 50 RAND 787788009" method="generated"/>
+            </tests>
+        </testset>
+    </judging>
+    <files>
+        <resources>
+            <file path="files/olymp.sty"/>
+            <file path="files/problem.tex"/>
+            <file path="files/statements.ftl"/>
+            <file path="files/testlib.h" type="h.g++"/>
+        </resources>
+        <executables>
+            <executable>
+                <source path="files/Gen.java" type="java8"/>
+                <binary path="files/Gen.jar" type="jar"/>
+            </executable>
+            <executable>
+                <source path="files/checker.cpp" type="cpp.g++17"/>
+                <binary path="files/checker.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/interactor.cpp" type="cpp.ms"/>
+                <binary path="files/interactor.exe" type="exe.win32"/>
+            </executable>
+            <executable>
+                <source path="files/validator.cpp" type="cpp.g++17"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+            </executable>
+        </executables>
+    </files>
+    <assets>
+        <checker type="testlib">
+            <source path="files/checker.cpp" type="cpp.g++17"/>
+            <binary path="check.exe" type="exe.win32"/>
+            <copy path="check.cpp" type="cpp.g++17"/>
+            <testset>
+                <test-count>1</test-count>
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                <tests>
+                    <test verdict="ok"/>
+                </tests>
+            </testset>
+        </checker>
+        <interactor>
+            <source path="files/interactor.cpp" type="cpp.ms"/>
+            <binary path="files/interactor.exe" type="exe.win32"/>
+        </interactor>
+        <validators>
+            <validator>
+                <source path="files/validator.cpp" type="cpp.g++17"/>
+                <binary path="files/validator.exe" type="exe.win32"/>
+                <testset>
+                    <test-count>7</test-count>
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                    <tests>
+                        <test verdict="invalid"/>
+                        <test verdict="valid"/>
+                        <test verdict="valid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="valid"/>
+                        <test verdict="invalid"/>
+                    </tests>
+                </testset>
+            </validator>
+        </validators>
+        <solutions>
+            <solution tag="wrong-answer">
+                <source path="solutions/CorruptedSort_bm_bubble_sort.java" type="java8"/>
+                <binary path="solutions/CorruptedSort_bm_bubble_sort.jar" type="jar"/>
+            </solution>
+            <solution tag="rejected">
+                <source path="solutions/CorruptedSort_bm_nlogn.java" type="java8"/>
+                <binary path="solutions/CorruptedSort_bm_nlogn.jar" type="jar"/>
+            </solution>
+            <solution tag="main">
+                <source path="solutions/CorruptedSort_bm_ok.java" type="java8"/>
+                <binary path="solutions/CorruptedSort_bm_ok.jar" type="jar"/>
+            </solution>
+            <solution tag="wrong-answer">
+                <source path="solutions/CorruptedSort_bm_one_way.java" type="java8"/>
+                <binary path="solutions/CorruptedSort_bm_one_way.jar" type="jar"/>
+            </solution>
+            <solution tag="wrong-answer">
+                <source path="solutions/CorruptedSort_bm_rand.java" type="java8"/>
+                <binary path="solutions/CorruptedSort_bm_rand.jar" type="jar"/>
+            </solution>
+            <solution tag="accepted">
+                <source path="solutions/corrupted-egor.cpp" type="cpp.g++17"/>
+                <binary path="solutions/corrupted-egor.exe" type="exe.win32"/>
+            </solution>
+            <solution tag="rejected">
+                <source path="solutions/corrupted-tourist-exactly10000.py" type="python.3"/>
+                <binary path="solutions/corrupted-tourist-exactly10000.pys3" type="pythonx.3"/>
+            </solution>
+            <solution tag="rejected">
+                <source path="solutions/corrupted-tourist-neverending.py" type="python.3"/>
+                <binary path="solutions/corrupted-tourist-neverending.pys3" type="pythonx.3"/>
+            </solution>
+            <solution tag="wrong-answer">
+                <source path="solutions/corrupted-tourist-rand.py" type="python.3"/>
+                <binary path="solutions/corrupted-tourist-rand.pys3" type="pythonx.3"/>
+            </solution>
+            <solution tag="accepted">
+                <source path="solutions/corrupted-tourist.py" type="python.3"/>
+                <binary path="solutions/corrupted-tourist.pys3" type="pythonx.3"/>
+            </solution>
+        </solutions>
+    </assets>
+    <properties>
+        <property name="tests-wellformed" value="true"/>
+    </properties>
+    <stresses>
+        <stress-count>0</stress-count>
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+        <list/>
+    </stresses>
+    <tags>
+        <tag value="interactive"/>
+        <tag value="sort"/>
+    </tags>
+</problem>

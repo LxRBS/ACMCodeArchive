@@ -1,0 +1,5 @@
+for i in ../data/secret/*.in
+do
+echo $i
+python validate.py < $i
+done

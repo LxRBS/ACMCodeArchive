@@ -1,0 +1,100 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<problem
+	version = "1.0"
+	id = "nef.2020.main.brute-force"
+>
+	<judging>
+		<script type = "%icpc">
+			<testset
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+				test-count = "49"
+			>
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+		<script type = "%ioi">
+			<testset
+				name = "preliminary"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test comment = "manual cmd: ''" />
+				<test comment = "manual cmd: ''" />
+			</testset>
+			<testset
+				name = "main"
+				feedback = "outcome"
+				input-name = "*"
+				output-name = "*"
+				input-href = "tests/##"
+				answer-href = "tests/##.a"
+				time-limit = "3.0s"
+				memory-limit = "536870912"
+			>
+				<test points = "0" comment = "manual cmd: ''" />
+				<test points = "0" comment = "manual cmd: ''" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 1 1'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 2 1'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 2 2'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 2 3'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 3 1'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 3 3'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 3 7'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 4 2'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 4 7'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 4 14'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 5 1'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 5 15'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 5 30'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 7 30'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 8 100'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 9 300'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 1'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 5'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 15'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 40'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 70'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 200'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 400'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 600'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 800'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 900'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 990'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 1000'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 1020'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 1022'" />
+				<test points = "0" comment = "generated cmd: 'GenRandom 10 1023'" />
+				<test points = "0" comment = "generated cmd: 'GenLayers 9 0101010101'" />
+				<test points = "0" comment = "generated cmd: 'GenLayers 9 0111011101'" />
+				<test points = "0" comment = "generated cmd: 'GenLayers 10 01111111110'" />
+				<test points = "0" comment = "generated cmd: 'GenLayers 10 01010101010'" />
+				<test points = "0" comment = "generated cmd: 'GenLayers 10 01101010101'" />
+				<test points = "0" comment = "generated cmd: 'GenLayers 10 00000100000'" />
+				<test points = "0" comment = "generated cmd: 'GenLayers 10 00001110000'" />
+				<test points = "0" comment = "generated cmd: 'GenLayers 10 00010111111'" />
+				<test points = "0" comment = "generated cmd: 'GenFromRandomWalk 10 500 1.0'" />
+				<test points = "0" comment = "generated cmd: 'GenFromRandomWalk 10 300 0.7'" />
+				<test points = "0" comment = "generated cmd: 'GenFromRandomWalk 10 200 0.5'" />
+				<test points = "0" comment = "generated cmd: 'GenFromRandomWalk 10 250 0.1'" />
+				<test points = "0" comment = "generated cmd: 'GenFromRandomWalk 10 500 0.1'" />
+				<test points = "0" comment = "generated cmd: 'GenFromRandomWalk 10 800 0.8'" />
+				<test points = "0" comment = "generated cmd: 'GenFromRandomWalk 10 900 0.9'" />
+				<test points = "0" comment = "generated cmd: 'GenFromRandomWalk 10 1000 0.99'" />
+			</testset>
+			<verifier type = "%testlib">
+				<binary executable-id = "x86.exe.win32" file = "check.exe" />
+			</verifier>
+		</script>
+	</judging>
+</problem>

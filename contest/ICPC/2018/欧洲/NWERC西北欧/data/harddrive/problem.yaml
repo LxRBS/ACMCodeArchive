@@ -1,0 +1,9 @@
+name: Hard Drive
+author: Stefan Kraus
+source: Northwestern Europe Regional Contest (NWERC) 2018
+source_url: https://2018.nwerc.eu/
+validation: custom
+license: cc by-sa
+
+limits:
+   time_multiplier: 1.6 # Philipp_*.java outliers (unbuffered output)

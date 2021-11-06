@@ -1,0 +1,7 @@
+INT(1,100,n) SPACE INT(1,100,m) NEWLINE
+REP(m)
+  REGEX("T") INT(1,n,i) SPACE REGEX("T") INT(1,n,j) NEWLINE
+  ASSERT(i != j)
+END
+EOF
+

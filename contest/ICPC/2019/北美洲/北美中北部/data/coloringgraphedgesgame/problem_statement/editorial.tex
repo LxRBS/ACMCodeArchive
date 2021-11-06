@@ -1,0 +1,19 @@
+\problemname{Coloring Contention}
+
+\noindent
+This problem looks challenging on first glance.  We want to force
+Bob to make at least $k-1$ color changes if the path length is at
+least $k$; this is the best we can do.  And indeed, we can do
+exactly that, by coloring the edges by their distance from node 1.
+Initially we set all edges to uncolored.
+Edges adjacent to node 1 all get red.  Then, edges adjacent to those
+edges that remain uncolored get blue.  And so on, alternating colors,
+until all edges are colored.  Essentially, the color of an edge is
+the parity of the distance from the source node.  Edges that
+connect nodes at the same distance from the source node can get any
+color.
+
+It is not necessary to actually color the graph; all you need do is
+calculate the distance between the two graph nodes and return that
+value less 1.  Since the number of nodes is at least 2, you don't
+even need to worry about the case of a path length of 0.

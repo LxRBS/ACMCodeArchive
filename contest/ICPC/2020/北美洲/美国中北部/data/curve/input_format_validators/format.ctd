@@ -1,0 +1,7 @@
+SET(len = 0)
+WHILEI(i,!ISEOF)
+    INT(100,5280,r) REGEX("(\\t| )+") REGEX("0?\\.[0-9]+",s) NEWLINE
+    SET(len = i+1)
+END
+ASSERT(len <= 100)
+EOF

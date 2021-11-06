@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="24" short-name="cactus-2021" url="https://polygon.codeforces.com/p9PCBmt/elizarov/cactus-2021">
+        
+    <names>
+                
+        <name language="english" value="Cactus Not Enough"/>
+            
+    </names>
+        
+    <statements>
+                
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+                
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/problem.html" type="text/html"/>
+                
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+            
+    </statements>
+        
+    <tutorials>
+                
+        <tutorial charset="UTF-8" language="english" mathjax="true" path="statements/english/tutorial.tex" type="application/x-tex"/>
+                
+        <tutorial charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/tutorial.html" type="text/html"/>
+                
+        <tutorial language="english" path="statements/.pdf/english/tutorial.pdf" type="application/pdf"/>
+            
+    </tutorials>
+        
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="">
+                
+        <testset name="tests">
+                        
+            <time-limit>3000</time-limit>
+                        
+            <memory-limit>536870912</memory-limit>
+                        
+            <test-count>84</test-count>
+                        
+            <input-path-pattern>tests/%02d</input-path-pattern>
+                        
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+                        
+            <tests>
+                                
+                <test method="manual" sample="true"/>
+                                
+                <test cmd="Tests 2" from-file="2" method="generated"/>
+                                
+                <test cmd="Tests 2" from-file="3" method="generated"/>
+                                
+                <test cmd="Tests 2" from-file="4" method="generated"/>
+                                
+                <test cmd="Tests 5" from-file="5" method="generated"/>
+                                
+                <test cmd="Tests 5" from-file="6" method="generated"/>
+                                
+                <test cmd="Tests 5" from-file="7" method="generated"/>
+                                
+                <test cmd="Tests 8" from-file="8" method="generated"/>
+                                
+                <test cmd="Tests 8" from-file="9" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="10" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="11" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="12" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="13" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="14" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="15" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="16" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="17" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="18" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="19" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="20" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="21" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="22" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="23" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="24" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="25" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="26" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="27" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="28" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="29" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="30" method="generated"/>
+                                
+                <test cmd="Tests 10" from-file="31" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="32" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="33" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="34" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="35" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="36" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="37" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="38" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="39" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="40" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="41" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="42" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="43" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="44" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="45" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="46" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="47" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="48" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="49" method="generated"/>
+                                
+                <test cmd="Tests 32" from-file="50" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="51" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="52" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="53" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="54" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="55" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="56" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="57" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="58" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="59" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="60" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="61" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="62" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="63" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="64" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="65" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="66" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="67" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="68" method="generated"/>
+                                
+                <test cmd="Tests 51" from-file="69" method="generated"/>
+                                
+                <test cmd="Tests 70" from-file="70" method="generated"/>
+                                
+                <test cmd="Tests 70" from-file="71" method="generated"/>
+                                
+                <test cmd="Tests 70" from-file="72" method="generated"/>
+                                
+                <test cmd="Tests 70" from-file="73" method="generated"/>
+                                
+                <test cmd="Tests 70" from-file="74" method="generated"/>
+                                
+                <test cmd="Tests 70" from-file="75" method="generated"/>
+                                
+                <test cmd="Tests 70" from-file="76" method="generated"/>
+                                
+                <test cmd="Tests 70" from-file="77" method="generated"/>
+                                
+                <test cmd="Tests 70" from-file="78" method="generated"/>
+                                
+                <test cmd="Tests 70" from-file="79" method="generated"/>
+                                
+                <test cmd="Tests 70" from-file="80" method="generated"/>
+                                
+                <test cmd="Tests 70" from-file="81" method="generated"/>
+                                
+                <test cmd="Tests 70" from-file="82" method="generated"/>
+                                
+                <test cmd="Tests 70" from-file="83" method="generated"/>
+                                
+                <test cmd="Tests 70" from-file="84" method="generated"/>
+                            
+            </tests>
+                    
+        </testset>
+            
+    </judging>
+        
+    <files>
+                
+        <resources>
+                        
+            <file path="files/olymp.sty"/>
+                        
+            <file path="files/problem.tex"/>
+                        
+            <file path="files/statements.ftl"/>
+                        
+            <file path="files/testlib.h" type="h.g++"/>
+                        
+            <file path="files/tutorial.tex"/>
+                    
+        </resources>
+                
+        <executables>
+                        
+            <executable>
+                                
+                <source path="files/Tests.java" type="java11"/>
+                                
+                <binary path="files/Tests.jar" type="jar"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/check.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/check.exe" type="exe.win32"/>
+                            
+            </executable>
+                        
+            <executable>
+                                
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/validate.exe" type="exe.win32"/>
+                            
+            </executable>
+                    
+        </executables>
+            
+    </files>
+        
+    <assets>
+                
+        <checker type="testlib">
+                        
+            <source path="files/check.cpp" type="cpp.g++17"/>
+                        
+            <binary path="check.exe" type="exe.win32"/>
+                        
+            <copy path="check.cpp" type="cpp.g++17"/>
+                        
+            <testset>
+                                
+                <test-count>7</test-count>
+                                
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                                
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                                
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                                
+                <tests>
+                                        
+                    <test verdict="ok"/>
+                                        
+                    <test verdict="wrong-answer"/>
+                                        
+                    <test verdict="crashed"/>
+                                        
+                    <test verdict="wrong-answer"/>
+                                        
+                    <test verdict="wrong-answer"/>
+                                        
+                    <test verdict="crashed"/>
+                                        
+                    <test verdict="wrong-answer"/>
+                                    
+                </tests>
+                            
+            </testset>
+                    
+        </checker>
+                
+        <validators>
+                        
+            <validator>
+                                
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                                
+                <binary path="files/validate.exe" type="exe.win32"/>
+                                
+                <testset>
+                                        
+                    <test-count>6</test-count>
+                                        
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                                        
+                    <tests>
+                                                
+                        <test verdict="invalid"/>
+                                                
+                        <test verdict="invalid"/>
+                                                
+                        <test verdict="valid"/>
+                                                
+                        <test verdict="invalid"/>
+                                                
+                        <test verdict="invalid"/>
+                                                
+                        <test verdict="invalid"/>
+                                            
+                    </tests>
+                                    
+                </testset>
+                            
+            </validator>
+                    
+        </validators>
+                
+        <solutions>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/cactus_af_dp.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/cactus_af_dp.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/cactus_al_wa_anti.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/cactus_al_wa_anti.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="accepted">
+                                
+                <source path="solutions/cactus_pkun_greed.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/cactus_pkun_greed.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/cactus_pkun_greed_bug1.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/cactus_pkun_greed_bug1.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="wrong-answer">
+                                
+                <source path="solutions/cactus_pkun_greed_bug2.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/cactus_pkun_greed_bug2.exe" type="exe.win32"/>
+                            
+            </solution>
+                        
+            <solution tag="main">
+                                
+                <source path="solutions/cactus_tourist.cpp" type="cpp.g++17"/>
+                                
+                <binary path="solutions/cactus_tourist.exe" type="exe.win32"/>
+                            
+            </solution>
+                    
+        </solutions>
+            
+    </assets>
+        
+    <properties>
+                
+        <property name="tests-wellformed" value="true"/>
+            
+    </properties>
+        
+    <stresses>
+                
+        <stress-count>0</stress-count>
+                
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+                
+        <list/>
+            
+    </stresses>
+        
+    <tags>
+                
+        <tag value="dfs"/>
+            
+    </tags>
+    
+</problem>

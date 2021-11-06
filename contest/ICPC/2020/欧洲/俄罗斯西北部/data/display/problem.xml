@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="18" short-name="display" url="https://polygon.codeforces.com/p69pVqU/kgeorgiy/display">
+    <names>
+        <name language="english" value="Display"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/problem.html" type="text/html"/>
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+    </statements>
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="">
+        <testset name="tests">
+            <time-limit>2000</time-limit>
+            <memory-limit>536870912</memory-limit>
+            <test-count>56</test-count>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test cmd="Tests" from-file="1" method="generated" sample="true"/>
+                <test cmd="Tests" from-file="2" method="generated"/>
+                <test cmd="Tests" from-file="3" method="generated"/>
+                <test cmd="Tests" from-file="4" method="generated"/>
+                <test cmd="Tests" from-file="5" method="generated"/>
+                <test cmd="Tests" from-file="6" method="generated"/>
+                <test cmd="Tests" from-file="7" method="generated"/>
+                <test cmd="Tests" from-file="8" method="generated"/>
+                <test cmd="Tests" from-file="9" method="generated"/>
+                <test cmd="Tests" from-file="10" method="generated"/>
+                <test cmd="Tests" from-file="11" method="generated"/>
+                <test cmd="Tests" from-file="12" method="generated"/>
+                <test cmd="Tests" from-file="13" method="generated"/>
+                <test cmd="Tests" from-file="14" method="generated"/>
+                <test cmd="Tests" from-file="15" method="generated"/>
+                <test cmd="Tests" from-file="16" method="generated"/>
+                <test cmd="Tests" from-file="17" method="generated"/>
+                <test cmd="Tests" from-file="18" method="generated"/>
+                <test cmd="Tests" from-file="19" method="generated"/>
+                <test cmd="Tests" from-file="20" method="generated"/>
+                <test cmd="Tests" from-file="21" method="generated"/>
+                <test cmd="Tests" from-file="22" method="generated"/>
+                <test cmd="Tests" from-file="23" method="generated"/>
+                <test cmd="Tests" from-file="24" method="generated"/>
+                <test cmd="Tests" from-file="25" method="generated"/>
+                <test cmd="Tests" from-file="26" method="generated"/>
+                <test cmd="Tests" from-file="27" method="generated"/>
+                <test cmd="Tests" from-file="28" method="generated"/>
+                <test cmd="Tests" from-file="29" method="generated"/>
+                <test cmd="Tests" from-file="30" method="generated"/>
+                <test cmd="Tests" from-file="31" method="generated"/>
+                <test cmd="Tests" from-file="32" method="generated"/>
+                <test cmd="Tests" from-file="33" method="generated"/>
+                <test cmd="Tests" from-file="34" method="generated"/>
+                <test cmd="Tests" from-file="35" method="generated"/>
+                <test cmd="Tests" from-file="36" method="generated"/>
+                <test cmd="Tests" from-file="37" method="generated"/>
+                <test cmd="Tests" from-file="38" method="generated"/>
+                <test cmd="Tests" from-file="39" method="generated"/>
+                <test cmd="Tests" from-file="40" method="generated"/>
+                <test cmd="Tests" from-file="41" method="generated"/>
+                <test cmd="Tests" from-file="42" method="generated"/>
+                <test cmd="Tests" from-file="43" method="generated"/>
+                <test cmd="Tests" from-file="44" method="generated"/>
+                <test cmd="Tests" from-file="45" method="generated"/>
+                <test cmd="Tests" from-file="46" method="generated"/>
+                <test cmd="Tests" from-file="47" method="generated"/>
+                <test cmd="Tests" from-file="48" method="generated"/>
+                <test cmd="Tests" from-file="49" method="generated"/>
+                <test cmd="Tests" from-file="50" method="generated"/>
+                <test cmd="Tests" from-file="51" method="generated"/>
+                <test cmd="Tests" from-file="52" method="generated"/>
+                <test cmd="Tests" from-file="53" method="generated"/>
+                <test cmd="Tests" from-file="54" method="generated"/>
+                <test cmd="Tests" from-file="55" method="generated"/>
+                <test cmd="Tests" from-file="56" method="generated"/>
+            </tests>
+        </testset>
+    </judging>
+    <files>
+        <resources>
+            <file path="files/olymp.sty"/>
+            <file path="files/problem.tex"/>
+            <file path="files/statements.ftl"/>
+            <file path="files/testlib.h" type="h.g++"/>
+            <file path="files/testlib4j.jar" type="jar"/>
+            <file path="files/validate4j.jar" type="jar"/>
+        </resources>
+        <executables>
+            <executable>
+                <source path="files/Check.java" type="java8"/>
+                <binary path="files/Check.jar" type="jar"/>
+            </executable>
+            <executable>
+                <source path="files/Tests.java" type="java8"/>
+                <binary path="files/Tests.jar" type="jar"/>
+            </executable>
+            <executable>
+                <source path="files/Validate.java" type="java8"/>
+                <binary path="files/Validate.jar" type="jar"/>
+            </executable>
+        </executables>
+    </files>
+    <assets>
+        <checker type="testlib">
+            <source path="files/Check.java" type="java8"/>
+            <binary path="check.jar" type="jar"/>
+            <copy path="Check.java" type="java8"/>
+            <testset>
+                <test-count>8</test-count>
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                <tests>
+                    <test verdict="ok"/>
+                    <test verdict="ok"/>
+                    <test verdict="wrong-answer"/>
+                    <test verdict="wrong-answer"/>
+                    <test verdict="crashed"/>
+                    <test verdict="wrong-answer"/>
+                    <test verdict="wrong-answer"/>
+                    <test verdict="wrong-answer"/>
+                </tests>
+            </testset>
+        </checker>
+        <validators>
+            <validator>
+                <source path="files/Validate.java" type="java8"/>
+                <binary path="files/Validate.jar" type="jar"/>
+                <testset>
+                    <test-count>11</test-count>
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                    <tests>
+                        <test verdict="valid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="valid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="valid"/>
+                    </tests>
+                </testset>
+            </validator>
+        </validators>
+        <solutions>
+            <solution tag="accepted">
+                <source path="solutions/display-tourist.py" type="python.3"/>
+                <binary path="solutions/display-tourist.pys3" type="pythonx.3"/>
+            </solution>
+            <solution tag="main">
+                <source path="solutions/solution_gk.java" type="java8"/>
+                <binary path="solutions/solution_gk.jar" type="jar"/>
+            </solution>
+            <solution tag="wrong-answer">
+                <source path="solutions/solution_gk_wa_count.java" type="java8"/>
+                <binary path="solutions/solution_gk_wa_count.jar" type="jar"/>
+            </solution>
+            <solution tag="wrong-answer">
+                <source path="solutions/solution_gk_wa_no_prefix.java" type="java8"/>
+                <binary path="solutions/solution_gk_wa_no_prefix.jar" type="jar"/>
+            </solution>
+            <solution tag="wrong-answer">
+                <source path="solutions/solution_gk_wa_no_suffix.java" type="java8"/>
+                <binary path="solutions/solution_gk_wa_no_suffix.jar" type="jar"/>
+            </solution>
+            <solution tag="rejected">
+                <source path="solutions/solution_gk_wa_percentsign.java" type="java8"/>
+                <binary path="solutions/solution_gk_wa_percentsign.jar" type="jar"/>
+            </solution>
+            <solution tag="wrong-answer">
+                <source path="solutions/solution_gk_wa_round.java" type="java8"/>
+                <binary path="solutions/solution_gk_wa_round.jar" type="jar"/>
+            </solution>
+        </solutions>
+    </assets>
+    <properties>
+        <property name="tests-wellformed" value="true"/>
+    </properties>
+    <stresses>
+        <stress-count>0</stress-count>
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+        <list/>
+    </stresses>
+    <tags>
+        <tag value="simple"/>
+    </tags>
+</problem>

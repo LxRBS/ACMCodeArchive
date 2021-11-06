@@ -1,0 +1,8 @@
+name: Inflation
+source: Northwestern Europe Regional Contest (NWERC) 2018
+source_url: https://2018.nwerc.eu
+author: Arthur van Goethem
+validator_flags: "float_tolerance 1e-6"
+license: cc by-sa
+limits:
+  time_multiplier: 2
