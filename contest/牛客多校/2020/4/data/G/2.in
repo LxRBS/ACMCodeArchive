@@ -1,0 +1,56 @@
+5
+7
+A C B D E
+AB AC AE AD BE BC DE CD
+Equals(LengthOf(Line(A, C)), 16)
+Equals(LengthOf(Line(E, D)), 5)
+Equals(LengthOf(Line(A, B)), 12)
+PointLiesOnLine(B, Line(A, C))
+Parallel(Line(C, D), Line(B, E))
+PointLiesOnLine(E, Line(A, D))
+Find(LengthOf(Line(A, E)))
+12
+A B C D F
+CB CD CA CF BD BA BF DA DF AF
+Equals(MeasureOf(Angle(F, A, D)), 20)
+Equals(LengthOf(Line(D, A)), 9)
+Equals(MeasureOf(Angle(F, A, B)), 32)
+Equals(LengthOf(Line(B, A)), 6)
+Equals(MeasureOf(Angle(D, B, C)), 40)
+PointLiesOnLine(F, Line(C, A))
+PointLiesOnLine(F, Line(B, D))
+Parallel(Line(A, D), Line(B, C))
+Equals(LengthOf(Line(A, D)), LengthOf(Line(B, C)))
+Parallel(Line(A, B), Line(D, C))
+Equals(LengthOf(Line(A, B)), LengthOf(Line(D, C)))
+Find(MeasureOf(Angle(A, D, C)))
+12
+A B C D E F G
+GC GD GB GF GA GE CE BF BA FA
+Equals(MeasureOf(Angle(A, G, C)), 60)
+PointLiesOnLine(F, Line(G, A))
+PointLiesOnLine(G, Line(C, E))
+PointLiesOnLine(G, Line(B, F))
+PointLiesOnLine(G, Line(B, A))
+PointLiesOnLine(F, Line(B, A))
+PointLiesOnCircle(C, Circle(G))
+PointLiesOnCircle(B, Circle(G))
+PointLiesOnCircle(A, Circle(G))
+PointLiesOnCircle(E, Circle(G))
+Perpendicular(Line(G, F), Line(G, D))
+Find(MeasureOf(Angle(B, G, E)))
+3
+A B C
+AB AC BC
+Equals(MeasureOf(Angle(A, B, C)), 40)
+Equals(MeasureOf(Angle(C, A, B)), 25)
+Find(MeasureOf(Angle(B, C, A)))
+6
+D A B K G
+KG GD DA KA AB KB
+Equals(MeasureOf(Angle(B, A, D)), 3x-70)
+Equals(MeasureOf(Angle(K, G, D)), 120)
+Equals(MeasureOf(Angle(G, D, A)), x)
+Parallel(Line(K, G), Line(A, D))
+PointLiesOnLine(A, Line(K, B))
+Find(x)

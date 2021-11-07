@@ -1,0 +1,43 @@
+5
+5
+A B C
+AB AC BC
+Equals(LengthOf(Line(A, C)), 24)
+Equals(LengthOf(Line(B, C)), x)
+Equals(LengthOf(Line(A, B)), 74)
+Perpendicular(Line(A, C), Line(B, C))
+Find(x)
+7
+A B C D
+AB AD DB AC BC CD
+PointLiesOnLine(D, Line(B, A))
+PointLiesOnCircle(B, Circle(D))
+PointLiesOnCircle(A, Circle(D))
+PointLiesOnCircle(C, Circle(D))
+Equals(LengthOf(Line(B, C)), 8)
+Equals(LengthOf(Line(A, C)), 6)
+Find(LengthOf(Line(C, D)))
+5
+W X Y Z
+WX WY WZ XY XZ YZ
+PointLiesOnLine(Y, Line(X, Z))
+Perpendicular(Line(X, Y), Line(Y, W))
+Equals(LengthOf(Line(X, Y)), LengthOf(Line(Z, Y)))
+Equals(LengthOf(Line(W, Z)), 4)
+Find(LengthOf(Line(W, X)))
+6
+E F G H
+EG EH EF GH GF HF
+Equals(LengthOf(Line(F, G)), 25)
+Equals(LengthOf(Line(H, F)), 16)
+PointLiesOnLine(H, Line(F, G))
+Perpendicular(Line(F, E), Line(G, E))
+Perpendicular(Line(H, E), Line(H, F))
+Find(LengthOf(Line(E, F)))
+4
+A B C
+AB AC BC
+Equals(LengthOf(Line(A, B)), 3)
+Equals(MeasureOf(Angle(C, B, A)), 30)
+Equals(LengthOf(Line(A, B)), LengthOf(Line(C, A)))
+Find(MeasureOf(Angle(C, A, B)))
