@@ -1,0 +1,20 @@
+10 9
+zvok 2
+ymik 4
+vbdn 8
+wfln 16
+xsoe 32
+zneo 64
+zlkh 128
+utkr 256
+zivk 512
+ytnw 1024
+2 zneo = 1 xsoe
+2 zlkh = 1 zneo
+2 vbdn = 1 ymik
+2 xsoe = 1 wfln
+2 ymik = 1 zvok
+2 utkr = 1 zlkh
+2 wfln = 1 vbdn
+2 ytnw = 1 zivk
+2 zivk = 1 utkr

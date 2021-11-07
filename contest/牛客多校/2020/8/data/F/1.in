@@ -1,0 +1,15 @@
+8 6
+inser 1
+belt 1
+lsp 1
+elect 1
+wheel 1
+plate 1
+cable 1
+cp 1
+1 inser + 1 belt = 1 lsp
+1 elect + 1 wheel + 1 plate = 1 inser
+1 plate + 1 wheel = 2 belt
+2 plate = 1 wheel
+2 cable + 1 plate = 1 elect
+1 cp = 2 cable

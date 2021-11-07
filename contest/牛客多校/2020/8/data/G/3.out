@@ -1,0 +1,1000 @@
+Case #1: 1 2 7
+Case #2: -1
+Case #3: 1 2 3
+Case #4: 1 2 4
+Case #5: -1
+Case #6: 1 2 3
+Case #7: 1 2 3
+Case #8: 1 2 4
+Case #9: 1 2 4
+Case #10: 1 2 3
+Case #11: -1
+Case #12: 1 2 4
+Case #13: 1 2 5
+Case #14: 1 2 3
+Case #15: 1 3 4
+Case #16: 1 2 4
+Case #17: 1 2 7
+Case #18: 1 2 3
+Case #19: 1 2 4
+Case #20: 1 2 4
+Case #21: -1
+Case #22: 1 2 3
+Case #23: 1 3 7
+Case #24: 1 2 4
+Case #25: 1 2 3
+Case #26: 1 2 3
+Case #27: 1 2 3
+Case #28: -1
+Case #29: 2 3 4
+Case #30: 1 3 5
+Case #31: 1 2 4
+Case #32: 1 2 4
+Case #33: 1 2 8
+Case #34: 1 3 6
+Case #35: 1 2 4
+Case #36: 1 3 4
+Case #37: 1 2 3
+Case #38: -1
+Case #39: -1
+Case #40: -1
+Case #41: 1 2 5
+Case #42: 2 3 5
+Case #43: 1 2 7
+Case #44: 1 2 3
+Case #45: 1 2 9
+Case #46: 1 2 3
+Case #47: 1 2 9
+Case #48: -1
+Case #49: 1 2 3
+Case #50: 1 2 5
+Case #51: 1 2 4
+Case #52: 1 2 3
+Case #53: 1 2 5
+Case #54: 1 2 13
+Case #55: 1 2 6
+Case #56: 1 3 7
+Case #57: 1 2 3
+Case #58: 1 2 5
+Case #59: -1
+Case #60: 1 2 7
+Case #61: 1 2 9
+Case #62: 1 2 3
+Case #63: 1 2 4
+Case #64: 1 2 3
+Case #65: 1 2 8
+Case #66: 1 2 5
+Case #67: 1 2 5
+Case #68: 1 2 3
+Case #69: 1 2 6
+Case #70: -1
+Case #71: 1 2 4
+Case #72: 1 2 8
+Case #73: 1 2 6
+Case #74: 1 2 6
+Case #75: 1 2 3
+Case #76: 1 2 10
+Case #77: 1 2 4
+Case #78: 1 2 4
+Case #79: 1 2 4
+Case #80: -1
+Case #81: 1 2 3
+Case #82: 1 5 8
+Case #83: 1 2 9
+Case #84: 2 5 6
+Case #85: 1 2 5
+Case #86: 3 4 5
+Case #87: 1 2 3
+Case #88: 1 2 11
+Case #89: 1 2 3
+Case #90: 1 2 15
+Case #91: 1 3 15
+Case #92: 1 2 4
+Case #93: 1 2 7
+Case #94: 1 2 4
+Case #95: 1 2 3
+Case #96: 1 2 4
+Case #97: 1 2 3
+Case #98: 1 2 8
+Case #99: 1 2 5
+Case #100: 1 2 4
+Case #101: 1 2 6
+Case #102: 1 3 4
+Case #103: 1 2 3
+Case #104: 1 2 3
+Case #105: 1 2 3
+Case #106: 1 2 5
+Case #107: 1 2 5
+Case #108: 1 2 3
+Case #109: -1
+Case #110: -1
+Case #111: 1 6 8
+Case #112: 1 8 9
+Case #113: 1 2 3
+Case #114: 1 2 4
+Case #115: 1 2 3
+Case #116: -1
+Case #117: 1 2 4
+Case #118: -1
+Case #119: 1 2 11
+Case #120: -1
+Case #121: 1 2 4
+Case #122: 1 2 3
+Case #123: 1 2 3
+Case #124: 1 2 14
+Case #125: -1
+Case #126: 1 2 4
+Case #127: 1 2 4
+Case #128: 1 2 3
+Case #129: 1 2 4
+Case #130: 1 2 5
+Case #131: 1 2 6
+Case #132: 1 2 6
+Case #133: 1 3 5
+Case #134: 1 2 4
+Case #135: 1 2 8
+Case #136: 1 2 3
+Case #137: 1 2 6
+Case #138: 1 2 8
+Case #139: 2 3 4
+Case #140: 1 2 4
+Case #141: 1 2 3
+Case #142: 1 2 4
+Case #143: 1 3 11
+Case #144: 1 2 3
+Case #145: 1 2 5
+Case #146: 1 2 9
+Case #147: -1
+Case #148: 1 2 3
+Case #149: -1
+Case #150: 1 3 4
+Case #151: 1 2 7
+Case #152: 1 2 6
+Case #153: 1 3 7
+Case #154: 1 2 4
+Case #155: 1 2 15
+Case #156: 1 2 5
+Case #157: 1 2 3
+Case #158: 1 2 5
+Case #159: 1 2 3
+Case #160: 1 2 8
+Case #161: 1 2 4
+Case #162: 1 2 3
+Case #163: 3 4 6
+Case #164: 1 2 15
+Case #165: 1 2 9
+Case #166: 1 2 6
+Case #167: -1
+Case #168: -1
+Case #169: 1 2 6
+Case #170: -1
+Case #171: 1 2 10
+Case #172: 1 2 5
+Case #173: -1
+Case #174: 1 2 6
+Case #175: 1 2 3
+Case #176: 2 3 4
+Case #177: -1
+Case #178: 1 2 8
+Case #179: -1
+Case #180: 1 2 7
+Case #181: 1 2 6
+Case #182: 1 2 3
+Case #183: 1 2 6
+Case #184: 1 2 14
+Case #185: 1 2 3
+Case #186: 1 2 5
+Case #187: 1 2 3
+Case #188: 1 2 4
+Case #189: 1 2 3
+Case #190: 1 2 3
+Case #191: -1
+Case #192: 1 2 9
+Case #193: 1 2 4
+Case #194: 1 2 3
+Case #195: 1 2 6
+Case #196: 3 4 7
+Case #197: 1 4 5
+Case #198: 1 2 4
+Case #199: -1
+Case #200: 1 3 5
+Case #201: 1 2 5
+Case #202: 1 3 7
+Case #203: 1 2 5
+Case #204: 1 2 3
+Case #205: -1
+Case #206: 1 2 4
+Case #207: 1 2 3
+Case #208: 1 2 3
+Case #209: -1
+Case #210: 1 2 9
+Case #211: 1 2 9
+Case #212: 1 2 4
+Case #213: 1 2 4
+Case #214: 1 2 3
+Case #215: 1 2 5
+Case #216: -1
+Case #217: 1 2 8
+Case #218: 1 2 3
+Case #219: 1 2 4
+Case #220: 1 3 5
+Case #221: 1 2 5
+Case #222: 1 2 4
+Case #223: 1 2 3
+Case #224: 1 2 7
+Case #225: 1 2 6
+Case #226: 1 2 3
+Case #227: 1 2 7
+Case #228: 1 4 5
+Case #229: 1 2 3
+Case #230: 1 2 3
+Case #231: 1 2 22
+Case #232: 1 2 11
+Case #233: 1 2 3
+Case #234: -1
+Case #235: 1 2 8
+Case #236: -1
+Case #237: 1 2 4
+Case #238: 1 3 20
+Case #239: 1 2 5
+Case #240: 1 2 4
+Case #241: 1 3 5
+Case #242: 1 2 3
+Case #243: 1 2 10
+Case #244: 1 2 3
+Case #245: 1 2 7
+Case #246: 1 2 8
+Case #247: 1 2 7
+Case #248: 1 2 5
+Case #249: 1 2 7
+Case #250: 1 2 5
+Case #251: 1 2 3
+Case #252: 1 2 3
+Case #253: 1 2 9
+Case #254: 1 4 6
+Case #255: 1 2 7
+Case #256: 1 2 3
+Case #257: 1 2 7
+Case #258: 1 2 6
+Case #259: 1 3 13
+Case #260: 1 2 5
+Case #261: 1 2 4
+Case #262: 1 2 4
+Case #263: 1 2 8
+Case #264: 1 2 4
+Case #265: 1 2 3
+Case #266: 1 2 4
+Case #267: 1 2 4
+Case #268: 1 2 4
+Case #269: 1 2 3
+Case #270: 1 2 4
+Case #271: 1 2 3
+Case #272: 1 2 4
+Case #273: 1 2 6
+Case #274: 1 2 3
+Case #275: 1 2 3
+Case #276: 1 2 7
+Case #277: 1 2 9
+Case #278: 1 2 6
+Case #279: -1
+Case #280: 1 2 3
+Case #281: 1 4 6
+Case #282: -1
+Case #283: 1 2 3
+Case #284: 1 2 5
+Case #285: 1 2 3
+Case #286: 1 2 3
+Case #287: 1 3 4
+Case #288: 1 3 12
+Case #289: 1 2 3
+Case #290: -1
+Case #291: 1 4 6
+Case #292: 1 7 8
+Case #293: 1 3 4
+Case #294: 1 3 5
+Case #295: 1 2 4
+Case #296: 1 3 14
+Case #297: 1 2 3
+Case #298: -1
+Case #299: -1
+Case #300: 1 2 11
+Case #301: -1
+Case #302: 1 2 6
+Case #303: -1
+Case #304: 1 2 3
+Case #305: -1
+Case #306: 1 2 7
+Case #307: 1 2 3
+Case #308: 1 2 4
+Case #309: 1 3 10
+Case #310: 1 2 3
+Case #311: 1 2 3
+Case #312: 1 4 8
+Case #313: 1 2 5
+Case #314: 1 2 4
+Case #315: 1 2 6
+Case #316: 1 2 11
+Case #317: 1 2 5
+Case #318: 1 2 3
+Case #319: 1 3 4
+Case #320: 1 2 3
+Case #321: 1 2 5
+Case #322: 1 2 3
+Case #323: 1 2 3
+Case #324: 1 2 3
+Case #325: 1 2 4
+Case #326: -1
+Case #327: 1 2 3
+Case #328: 1 2 3
+Case #329: 1 3 4
+Case #330: 1 2 5
+Case #331: 1 2 3
+Case #332: 1 3 4
+Case #333: 1 2 5
+Case #334: 1 2 4
+Case #335: 1 2 3
+Case #336: 1 2 3
+Case #337: 1 2 3
+Case #338: 1 2 7
+Case #339: 1 3 9
+Case #340: 1 2 6
+Case #341: 1 2 5
+Case #342: 1 2 3
+Case #343: 1 2 4
+Case #344: -1
+Case #345: -1
+Case #346: 1 2 3
+Case #347: 1 2 6
+Case #348: 1 2 4
+Case #349: 1 2 11
+Case #350: 1 2 8
+Case #351: 1 3 5
+Case #352: 1 2 3
+Case #353: -1
+Case #354: -1
+Case #355: 1 2 7
+Case #356: 1 2 5
+Case #357: -1
+Case #358: 1 2 3
+Case #359: 1 2 4
+Case #360: 1 2 3
+Case #361: 1 2 9
+Case #362: 1 2 3
+Case #363: 1 2 4
+Case #364: -1
+Case #365: 1 2 4
+Case #366: 1 2 9
+Case #367: 1 2 3
+Case #368: 1 2 5
+Case #369: 1 2 3
+Case #370: 1 2 3
+Case #371: -1
+Case #372: 1 2 3
+Case #373: 1 2 4
+Case #374: 1 2 4
+Case #375: -1
+Case #376: 1 2 6
+Case #377: 1 2 9
+Case #378: 1 5 9
+Case #379: 1 2 6
+Case #380: 1 3 5
+Case #381: 1 2 14
+Case #382: -1
+Case #383: 1 2 3
+Case #384: 1 2 8
+Case #385: -1
+Case #386: 1 2 3
+Case #387: 1 3 5
+Case #388: 1 2 3
+Case #389: 1 2 6
+Case #390: 1 2 3
+Case #391: 1 2 3
+Case #392: 1 2 3
+Case #393: -1
+Case #394: 1 2 5
+Case #395: 1 2 3
+Case #396: 1 2 3
+Case #397: 1 2 3
+Case #398: 2 3 4
+Case #399: 1 2 4
+Case #400: 1 3 6
+Case #401: 1 2 3
+Case #402: 1 2 4
+Case #403: 1 3 6
+Case #404: 1 2 3
+Case #405: 1 2 4
+Case #406: 1 2 6
+Case #407: 1 2 8
+Case #408: 1 2 8
+Case #409: 1 2 3
+Case #410: 1 2 3
+Case #411: -1
+Case #412: 1 2 3
+Case #413: 1 3 5
+Case #414: 1 5 6
+Case #415: 1 2 5
+Case #416: 1 3 5
+Case #417: 1 2 8
+Case #418: 1 2 3
+Case #419: 1 2 4
+Case #420: 1 2 9
+Case #421: 1 3 6
+Case #422: 1 2 3
+Case #423: -1
+Case #424: 1 2 11
+Case #425: -1
+Case #426: 1 2 5
+Case #427: 2 4 7
+Case #428: 1 2 4
+Case #429: 1 2 4
+Case #430: 1 2 3
+Case #431: 1 2 20
+Case #432: 1 2 4
+Case #433: 1 2 5
+Case #434: 1 2 4
+Case #435: -1
+Case #436: 1 2 11
+Case #437: 1 2 4
+Case #438: 1 2 3
+Case #439: 1 2 5
+Case #440: 1 2 5
+Case #441: 1 2 3
+Case #442: 1 2 6
+Case #443: 1 2 4
+Case #444: -1
+Case #445: 1 2 11
+Case #446: -1
+Case #447: 1 2 10
+Case #448: 1 2 4
+Case #449: 1 3 4
+Case #450: 1 2 5
+Case #451: 1 2 3
+Case #452: 1 2 3
+Case #453: 1 3 5
+Case #454: 1 2 5
+Case #455: 1 2 5
+Case #456: 1 2 8
+Case #457: 1 3 4
+Case #458: 1 2 4
+Case #459: 1 2 3
+Case #460: 1 2 8
+Case #461: -1
+Case #462: 2 3 5
+Case #463: -1
+Case #464: 1 2 7
+Case #465: 1 2 8
+Case #466: 1 2 3
+Case #467: 1 2 3
+Case #468: 1 2 9
+Case #469: 1 2 4
+Case #470: -1
+Case #471: -1
+Case #472: 1 2 6
+Case #473: -1
+Case #474: 1 2 10
+Case #475: 1 2 3
+Case #476: 1 2 5
+Case #477: 1 2 8
+Case #478: 1 2 3
+Case #479: 1 2 3
+Case #480: -1
+Case #481: 1 2 4
+Case #482: -1
+Case #483: 1 6 9
+Case #484: -1
+Case #485: 1 2 5
+Case #486: 2 3 8
+Case #487: 1 2 3
+Case #488: -1
+Case #489: 1 2 3
+Case #490: 1 2 7
+Case #491: 1 2 7
+Case #492: -1
+Case #493: 1 2 3
+Case #494: 1 2 8
+Case #495: -1
+Case #496: 1 2 4
+Case #497: 1 2 5
+Case #498: 1 2 3
+Case #499: 1 2 4
+Case #500: 1 2 8
+Case #501: 1 2 10
+Case #502: 1 2 5
+Case #503: 1 2 3
+Case #504: 1 2 3
+Case #505: 1 4 5
+Case #506: 1 2 5
+Case #507: 1 2 7
+Case #508: -1
+Case #509: 1 2 8
+Case #510: 1 2 13
+Case #511: 1 2 5
+Case #512: 1 2 5
+Case #513: 1 2 8
+Case #514: 1 4 16
+Case #515: 1 2 7
+Case #516: 1 2 3
+Case #517: 1 2 3
+Case #518: 2 4 6
+Case #519: 1 2 3
+Case #520: -1
+Case #521: 1 2 6
+Case #522: 1 2 3
+Case #523: 1 2 3
+Case #524: 1 2 3
+Case #525: 1 2 5
+Case #526: 1 2 3
+Case #527: 1 2 4
+Case #528: 1 2 7
+Case #529: -1
+Case #530: 1 2 9
+Case #531: 1 2 3
+Case #532: 1 2 6
+Case #533: -1
+Case #534: 1 2 6
+Case #535: 1 2 4
+Case #536: 1 3 4
+Case #537: 1 2 3
+Case #538: 1 2 4
+Case #539: 1 2 4
+Case #540: 1 2 4
+Case #541: -1
+Case #542: -1
+Case #543: 1 2 10
+Case #544: 1 2 6
+Case #545: 1 2 15
+Case #546: -1
+Case #547: 1 2 4
+Case #548: 1 2 3
+Case #549: -1
+Case #550: -1
+Case #551: 1 2 3
+Case #552: 1 2 3
+Case #553: 1 2 17
+Case #554: 1 2 4
+Case #555: -1
+Case #556: 1 2 8
+Case #557: 1 2 6
+Case #558: 1 4 7
+Case #559: 1 2 8
+Case #560: 1 2 8
+Case #561: 1 3 6
+Case #562: 2 3 4
+Case #563: 1 2 9
+Case #564: 1 2 6
+Case #565: -1
+Case #566: -1
+Case #567: 1 3 4
+Case #568: -1
+Case #569: 2 3 4
+Case #570: 1 2 3
+Case #571: 1 2 6
+Case #572: 1 2 4
+Case #573: -1
+Case #574: 1 2 4
+Case #575: 1 3 5
+Case #576: 1 2 5
+Case #577: -1
+Case #578: -1
+Case #579: 1 2 3
+Case #580: -1
+Case #581: -1
+Case #582: 1 2 4
+Case #583: 1 2 4
+Case #584: 1 2 3
+Case #585: 1 2 6
+Case #586: 1 2 11
+Case #587: 1 3 4
+Case #588: 1 2 7
+Case #589: -1
+Case #590: 1 2 8
+Case #591: 1 2 3
+Case #592: 1 2 3
+Case #593: -1
+Case #594: -1
+Case #595: -1
+Case #596: -1
+Case #597: -1
+Case #598: 1 2 5
+Case #599: -1
+Case #600: 1 2 4
+Case #601: 1 2 3
+Case #602: 1 2 3
+Case #603: 1 4 5
+Case #604: 1 2 3
+Case #605: 1 2 6
+Case #606: 1 2 10
+Case #607: 1 2 3
+Case #608: -1
+Case #609: 1 2 4
+Case #610: 1 2 4
+Case #611: 1 2 5
+Case #612: 1 2 4
+Case #613: 1 2 7
+Case #614: 1 3 16
+Case #615: 1 3 5
+Case #616: 1 2 3
+Case #617: 1 2 5
+Case #618: 1 2 4
+Case #619: 1 2 4
+Case #620: 1 2 4
+Case #621: 1 2 6
+Case #622: 1 2 6
+Case #623: 1 2 15
+Case #624: 1 2 12
+Case #625: 1 2 3
+Case #626: 1 2 3
+Case #627: 1 2 5
+Case #628: 1 2 4
+Case #629: 1 3 6
+Case #630: 1 2 15
+Case #631: -1
+Case #632: 1 2 21
+Case #633: 3 4 6
+Case #634: 1 2 3
+Case #635: 3 5 6
+Case #636: 1 2 4
+Case #637: 1 2 7
+Case #638: 1 3 10
+Case #639: 1 2 3
+Case #640: -1
+Case #641: 1 2 6
+Case #642: 1 2 6
+Case #643: 1 2 5
+Case #644: 1 2 3
+Case #645: 1 2 8
+Case #646: 1 2 3
+Case #647: -1
+Case #648: 1 2 3
+Case #649: 1 2 3
+Case #650: 1 2 4
+Case #651: 1 2 3
+Case #652: 1 2 3
+Case #653: 1 2 5
+Case #654: 1 2 4
+Case #655: 1 2 3
+Case #656: 1 2 5
+Case #657: -1
+Case #658: 1 2 4
+Case #659: 1 3 4
+Case #660: 1 2 3
+Case #661: 1 2 3
+Case #662: 1 2 3
+Case #663: 1 2 7
+Case #664: 1 2 3
+Case #665: 1 2 14
+Case #666: -1
+Case #667: -1
+Case #668: 1 2 3
+Case #669: -1
+Case #670: 1 2 7
+Case #671: 1 2 5
+Case #672: 1 2 9
+Case #673: -1
+Case #674: 1 4 9
+Case #675: 2 5 6
+Case #676: 1 2 3
+Case #677: 1 2 3
+Case #678: 1 2 3
+Case #679: -1
+Case #680: 1 2 6
+Case #681: 1 2 7
+Case #682: 1 3 4
+Case #683: 1 2 4
+Case #684: -1
+Case #685: 1 4 6
+Case #686: 1 2 3
+Case #687: 1 2 3
+Case #688: 1 2 3
+Case #689: 1 2 4
+Case #690: 1 2 3
+Case #691: 1 2 4
+Case #692: 3 4 6
+Case #693: 1 2 3
+Case #694: 1 2 7
+Case #695: 1 2 3
+Case #696: 1 2 3
+Case #697: 1 2 8
+Case #698: 1 2 5
+Case #699: 1 2 7
+Case #700: 1 2 4
+Case #701: 1 2 7
+Case #702: 1 2 6
+Case #703: 1 2 4
+Case #704: 1 2 4
+Case #705: 1 2 5
+Case #706: 1 2 3
+Case #707: -1
+Case #708: 1 2 8
+Case #709: 1 2 5
+Case #710: 2 3 4
+Case #711: 1 3 9
+Case #712: 1 2 3
+Case #713: 1 2 8
+Case #714: 1 2 3
+Case #715: 1 2 3
+Case #716: 1 2 4
+Case #717: 1 2 3
+Case #718: -1
+Case #719: 1 2 6
+Case #720: 1 2 3
+Case #721: 1 2 8
+Case #722: 1 2 6
+Case #723: 1 2 10
+Case #724: 1 3 4
+Case #725: -1
+Case #726: -1
+Case #727: -1
+Case #728: 1 2 3
+Case #729: 1 2 7
+Case #730: 1 2 6
+Case #731: 1 2 3
+Case #732: 1 2 5
+Case #733: -1
+Case #734: 1 2 3
+Case #735: 1 5 7
+Case #736: 1 2 12
+Case #737: 1 2 4
+Case #738: 1 2 5
+Case #739: 1 2 4
+Case #740: -1
+Case #741: 1 2 3
+Case #742: 1 2 3
+Case #743: 1 2 5
+Case #744: 1 2 4
+Case #745: 1 2 4
+Case #746: 1 2 6
+Case #747: -1
+Case #748: 1 2 16
+Case #749: 1 2 3
+Case #750: 1 2 3
+Case #751: 1 2 3
+Case #752: 1 4 7
+Case #753: 1 2 7
+Case #754: 1 2 5
+Case #755: 1 2 11
+Case #756: -1
+Case #757: 1 2 3
+Case #758: 1 3 10
+Case #759: 1 2 7
+Case #760: -1
+Case #761: 1 2 4
+Case #762: 1 2 4
+Case #763: 1 2 5
+Case #764: 1 2 14
+Case #765: 1 2 4
+Case #766: 1 2 3
+Case #767: 1 2 3
+Case #768: 1 2 9
+Case #769: 1 2 3
+Case #770: 1 2 3
+Case #771: 1 2 3
+Case #772: 1 2 16
+Case #773: 1 2 7
+Case #774: 1 2 5
+Case #775: -1
+Case #776: 1 2 5
+Case #777: 1 2 19
+Case #778: -1
+Case #779: 1 3 5
+Case #780: 1 2 6
+Case #781: 1 2 8
+Case #782: 1 3 5
+Case #783: 1 2 4
+Case #784: 1 2 3
+Case #785: 1 2 3
+Case #786: -1
+Case #787: -1
+Case #788: -1
+Case #789: 1 2 10
+Case #790: 1 2 6
+Case #791: -1
+Case #792: 1 2 17
+Case #793: 1 2 9
+Case #794: 1 2 4
+Case #795: 1 2 6
+Case #796: 1 2 3
+Case #797: 1 2 6
+Case #798: 1 2 5
+Case #799: 1 5 7
+Case #800: 1 2 7
+Case #801: 1 2 4
+Case #802: -1
+Case #803: 1 2 8
+Case #804: 1 2 3
+Case #805: -1
+Case #806: 1 2 3
+Case #807: 1 2 3
+Case #808: -1
+Case #809: 1 2 12
+Case #810: 1 3 5
+Case #811: 1 2 3
+Case #812: 1 2 4
+Case #813: 1 2 3
+Case #814: 1 2 3
+Case #815: 1 2 5
+Case #816: 1 2 5
+Case #817: 1 4 5
+Case #818: 1 2 3
+Case #819: 1 2 7
+Case #820: 1 2 5
+Case #821: 1 2 6
+Case #822: 3 4 6
+Case #823: 1 2 4
+Case #824: 1 2 3
+Case #825: -1
+Case #826: 1 2 3
+Case #827: 1 2 8
+Case #828: 1 2 3
+Case #829: 1 2 11
+Case #830: 1 3 7
+Case #831: 1 2 3
+Case #832: 1 3 4
+Case #833: 1 3 4
+Case #834: 1 3 14
+Case #835: 1 2 5
+Case #836: 1 4 5
+Case #837: 1 2 3
+Case #838: 1 2 5
+Case #839: 1 2 6
+Case #840: 1 2 8
+Case #841: 1 2 4
+Case #842: 1 5 6
+Case #843: 1 3 4
+Case #844: 1 2 4
+Case #845: 1 2 13
+Case #846: 1 2 4
+Case #847: 1 2 6
+Case #848: 1 2 11
+Case #849: 1 2 3
+Case #850: 1 2 7
+Case #851: 1 2 5
+Case #852: 1 2 16
+Case #853: -1
+Case #854: 1 2 3
+Case #855: 1 3 15
+Case #856: 1 2 6
+Case #857: 1 2 5
+Case #858: 1 2 3
+Case #859: 1 3 9
+Case #860: -1
+Case #861: 1 3 6
+Case #862: -1
+Case #863: 1 2 3
+Case #864: 1 2 9
+Case #865: 1 2 7
+Case #866: 1 2 3
+Case #867: 1 2 3
+Case #868: 1 2 5
+Case #869: 1 2 4
+Case #870: -1
+Case #871: 1 3 11
+Case #872: 1 2 3
+Case #873: 1 2 9
+Case #874: 1 2 3
+Case #875: -1
+Case #876: 1 2 3
+Case #877: 1 2 3
+Case #878: 1 2 13
+Case #879: 1 2 3
+Case #880: 1 2 9
+Case #881: 1 2 12
+Case #882: 1 2 3
+Case #883: 1 2 6
+Case #884: 1 2 3
+Case #885: 1 2 10
+Case #886: 1 2 3
+Case #887: 1 2 4
+Case #888: 1 3 6
+Case #889: 1 2 5
+Case #890: 1 2 6
+Case #891: -1
+Case #892: 1 2 12
+Case #893: 1 3 4
+Case #894: 1 2 9
+Case #895: 1 2 5
+Case #896: 1 2 3
+Case #897: 1 2 8
+Case #898: 1 2 7
+Case #899: 1 2 5
+Case #900: 1 2 9
+Case #901: 1 2 12
+Case #902: 1 2 6
+Case #903: 1 2 3
+Case #904: 1 2 3
+Case #905: -1
+Case #906: 1 2 4
+Case #907: -1
+Case #908: -1
+Case #909: 1 2 3
+Case #910: 1 2 10
+Case #911: 1 2 6
+Case #912: 1 2 4
+Case #913: -1
+Case #914: 1 2 3
+Case #915: -1
+Case #916: 1 2 4
+Case #917: 1 2 7
+Case #918: 1 3 4
+Case #919: 1 2 6
+Case #920: 1 2 3
+Case #921: -1
+Case #922: 1 2 5
+Case #923: 1 3 5
+Case #924: -1
+Case #925: 1 2 4
+Case #926: 1 3 5
+Case #927: -1
+Case #928: 1 2 3
+Case #929: 1 2 3
+Case #930: 1 3 8
+Case #931: 1 2 5
+Case #932: -1
+Case #933: 1 2 7
+Case #934: 1 2 5
+Case #935: 1 2 6
+Case #936: 1 2 4
+Case #937: 1 2 4
+Case #938: 1 2 4
+Case #939: 1 2 6
+Case #940: -1
+Case #941: 1 2 4
+Case #942: 1 2 5
+Case #943: 1 2 4
+Case #944: 1 3 12
+Case #945: 1 2 9
+Case #946: 1 2 4
+Case #947: 1 2 5
+Case #948: 1 2 10
+Case #949: 1 2 7
+Case #950: 1 2 15
+Case #951: 1 4 5
+Case #952: 1 2 6
+Case #953: 1 2 8
+Case #954: 1 4 10
+Case #955: -1
+Case #956: 1 3 4
+Case #957: -1
+Case #958: 1 2 4
+Case #959: 1 2 4
+Case #960: 1 2 8
+Case #961: 1 2 4
+Case #962: 1 2 3
+Case #963: 1 2 4
+Case #964: 1 2 6
+Case #965: -1
+Case #966: 1 2 9
+Case #967: -1
+Case #968: 1 6 7
+Case #969: 1 2 5
+Case #970: 1 2 4
+Case #971: 1 3 14
+Case #972: 1 2 6
+Case #973: 1 2 5
+Case #974: 1 2 13
+Case #975: 1 2 3
+Case #976: 1 2 3
+Case #977: 1 2 5
+Case #978: 1 2 4
+Case #979: 1 2 8
+Case #980: 1 2 12
+Case #981: 1 2 3
+Case #982: 1 2 4
+Case #983: 1 2 6
+Case #984: 1 2 7
+Case #985: 1 2 5
+Case #986: 1 3 5
+Case #987: -1
+Case #988: 1 3 13
+Case #989: -1
+Case #990: -1
+Case #991: 1 2 12
+Case #992: 1 2 3
+Case #993: 1 2 3
+Case #994: -1
+Case #995: 1 2 3
+Case #996: 1 2 4
+Case #997: -1
+Case #998: 1 2 5
+Case #999: 1 2 5
+Case #1000: 1 2 3
