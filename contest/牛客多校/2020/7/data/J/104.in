@@ -1,0 +1,13 @@
+12
+A = a
+B = b
+C = c
+D = d
+E = e
+F = f
+B.a = A
+C.b = B
+D = C.b
+A.c = D
+E = A.c
+F = E.a

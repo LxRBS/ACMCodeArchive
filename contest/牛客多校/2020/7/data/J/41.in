@@ -1,0 +1,21 @@
+20
+E = w
+W = E
+W = l
+E = a
+E.b = E
+F = E.b
+W.s = F
+Y = W.s
+E.s = E
+E.b = E
+W.b = E
+W = W.b
+F.s = E
+E.b = F
+W = E.b
+R = F.s
+W = E.b
+F.b = E
+W = F.b
+F = E.s

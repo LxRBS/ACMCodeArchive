@@ -1,0 +1,21 @@
+20
+X = u
+X = o
+Z = p
+D = t
+F.h = Z
+F.n = F
+Z = F.n
+L.w = F
+S = L.w
+H.h = F
+Z.l = H
+F.a = Z
+S.c = F
+X.t = S
+Y = X.t
+S = S.c
+Z = F.a
+Z = Z.l
+Y = H.h
+X = F.h

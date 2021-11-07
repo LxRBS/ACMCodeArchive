@@ -1,0 +1,21 @@
+20
+Q = y
+L = J
+Q = j
+K = t
+L = l
+L = k
+K = f
+P = e
+P = J
+L = e
+P = j
+Q = d
+V = t
+V = l
+P = K
+V = J
+P.q = Q
+Q = P.q
+L.q = V
+Q = L.q

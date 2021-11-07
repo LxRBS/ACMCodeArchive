@@ -1,0 +1,20 @@
+19
+U = s
+P = m
+T = i
+U.p = Q
+P.y = U
+T.l = P
+P.m = T
+Q.f = P
+P.o = Q
+T.g = P
+T.v = T
+U = T.v
+W = T.g
+Q = P.o
+Q = Q.f
+U = P.m
+T = T.l
+T = P.y
+U = U.p

@@ -1,0 +1,6 @@
+5
+B.f = A
+C = B.f
+C = x
+A = o
+B = o

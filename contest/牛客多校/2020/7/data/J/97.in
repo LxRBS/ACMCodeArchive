@@ -1,0 +1,20 @@
+19
+U = H
+X = M
+Y = T
+V.k = G
+G.p = V
+C.p = G
+D.x = C
+Z.k = D
+O.k = Z
+U.y = O
+C.j = U
+X = C.j
+Y = U.y
+T = O.k
+Z = Z.k
+F = D.x
+H = C.p
+J = G.p
+X = V.k
