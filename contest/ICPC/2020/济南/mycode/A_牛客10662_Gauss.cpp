@@ -3,6 +3,7 @@
     AX = B.X
     问解的数量一共有多少个
     其中B.X表示B和X的元素乘法，即对应元素相乘
+    https://ac.nowcoder.com/acm/contest/10662/A
 */
 #include <bits/stdc++.h>
 using namespace std;
