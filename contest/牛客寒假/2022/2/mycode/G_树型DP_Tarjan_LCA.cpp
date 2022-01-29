@@ -6,8 +6,10 @@
  * 令X[i]为从根到i点的划分，令Y[i]为从i到根的花费
  * 树型DP可以求出
  * 所以对每次询问，只需找出u和v的LCA即可
- * Tarjan算法离线找LCA并回答问题
- * 但是只有90%的正确率，不知道哪里错了
+ * Tarjan算法离线找LCA并回答问题，只有90%的正确率
+ * 因为(u, v)和(v, u)可能会同时出现，离线回答问题时，不容易保存到正确的序号中
+ * 因此Tarjan只用来求出所有需要的LCA
+ * 再回答问题即可
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -52,9 +54,9 @@ llt A[SIZE];
 llt X[SIZE]; 
 llt Y[SIZE];
 
-I2VecMapTy Qs, IQ;
-MapTy Q2I;
-llt Ans[SIZE];
+I2VecMapTy Q;
+MapTy Lca; // 记录LCA
+
 
 void dfs(int u, int parent){
     for(int v: G[u]){
@@ -83,27 +85,14 @@ void Tarjan(int u, int parent){
 		Father[v] = u;
 	}
 
-    for(int v: Qs[u]){
+    for(auto v: Q[u]){
 		if(!Flag[v]) continue;
-
-        int idx = Q2I[{u, v}];
-// 		if(Ans[idx] != -1) continue;
-
-		int r = find(v); // r is lca of u and v.		
-		Ans[idx] = A[u] + Y[u] - Y[r] + X[v] - X[r];
-	}
-
-	for(int v: IQ[u]){
-		if(!Flag[v]) continue;
-
-        int idx = Q2I[{v, u}];
-// 		if(Ans[idx] != -1) continue;
 		
-		int r = find(v);
-		Ans[idx] = A[v] + Y[v] - Y[r] + X[u] - X[r];
+		Lca[u < v ? make_pair(u, v) : make_pair(v, u)] = find(v);
 	}
 }
 
+int U[SIZE], V[SIZE];
 int main() {
 #ifndef ONLINE_JUDGE
     freopen("1.txt", "r", stdin);
@@ -120,16 +109,20 @@ int main() {
 	X[1] = Y[1] = 0;
 	dfs(1, 0);
 	for(int a,b,i=1;i<=M;++i){
-        a = getInt();
-		b = getInt();
-		Qs[a].push_back(b);
-		IQ[b].push_back(a);
-		Q2I[{a, b}] = i;
-		Ans[i] = -1;
+        U[i] = a = getInt();
+		V[i] = b = getInt();
+		Q[a].push_back(b);
+		Q[b].push_back(a);
 	}
 	Tarjan(1, 0);
-	for(int i=1;i<=M;++i){
-		printf("%lld\n", Ans[i]);
+	for(int r,a,b,i=1;i<=M;++i){		
+		a = U[i];
+		b = V[i];
+		if(a > b) swap(a, b);
+		auto it = Lca.find({a, b});
+		assert(it != Lca.end());
+		r = it->second;
+		printf("%lld\n", A[a]+Y[a]-Y[r]+X[b]-X[r]);
 	}
     return 0;
 }
