@@ -156,7 +156,7 @@ int main() {
     /// 先跑一个Floyd
     Floyd();
 
-    /// 对trip派一个序
+    /// 对trip排一个序
     sort(Trip+1, Trip+K+1);
 
     /// 建一个有向图，求路径覆盖
