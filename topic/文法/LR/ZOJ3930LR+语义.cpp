@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <string>
 #include <cctype>
+#include <cstring>
 #include <vector>
 #include <stack>
 #include <sstream>
@@ -136,9 +137,10 @@ char Input[2005];
 int main(){
     int kase;
     scanf("%d",&kase);
-    gets(Input);
+    fgets(Input, 2200, stdin);
     while(kase--){
-        gets(Input);
+        fgets(Input, 2200, stdin);
+        Input[strlen(Input) - 1] = '\0';
         void proc();
         proc();
     }
