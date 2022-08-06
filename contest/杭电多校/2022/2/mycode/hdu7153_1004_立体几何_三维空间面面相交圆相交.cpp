@@ -137,7 +137,9 @@ struct Line{
     Vector direction; // 如果采用实数坐标，方向向量最好单位化
     Line():base(), direction(){}
     /// 注意是基点、方向向量，而不是两点确定一条直线
-    Line(const Point&a, const Vector&b): base(a), direction(b){}
+    Line(const Point&a, const Vector&b): base(a), direction(b){
+        this->direction.normSelf();
+    }
 };
 
 /// 面, Ax+By+Cz+D=0
@@ -242,7 +244,7 @@ int relation(const Plane &a, const Plane &b){
 		Real dist(const Point &, const Plane &); // 前置声明
 		Real d = dist(a.one(), b);
 		if(is0(d)){
-			assert(is0(dist(b.one(), b)));
+			assert(is0(dist(b.one(), a)));
 			return CHONGHE;
 		}
 		return PINGXING;
