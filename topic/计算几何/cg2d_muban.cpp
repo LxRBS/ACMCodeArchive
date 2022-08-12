@@ -270,6 +270,8 @@ Polygon(int n):pts(n, Dian()){}
 int next(int i) const {return this->pts.size() == ++i ? 0 : i;}
 int prev(int i) const {return -1 == --i ? this->pts.size() - 1 : i;}
 
+void init(int n){pts.resize(n);}
+
 /// 点与简单多边形位置关系, O(N), 顺时针逆时针都能用
 int relate(const Dian & p) const {
     int n = pts.size();
@@ -278,7 +280,7 @@ int relate(const Dian & p) const {
     Xianduan ls(p, Ponit(INF, p.y));
     int ans = 0;
     for(int r,nxt,i=0;i<n;++i){
-        nxt = next(i);
+        nxt = (this->next)(i);
         /// 首先看点本身与边的位置关系
         r = p.relate(pts[i], pts[nxt]);
         if(r) return r;
@@ -307,7 +309,7 @@ Real dist(const Dian & p, Real const inf=INF) const {
     int n = pts.size();
     Real ans = inf;
     for(int i=0;i<n;++i){
-        ans = min(ans, p.dist(pts[i], pts[next(i)]));
+        ans = min(ans, p.dist(pts[i], pts[(this->next)(i)]));
     }
     return ans;
 }
@@ -317,13 +319,22 @@ T area() const {
     int n = pts.size();    
     T ans = 0;
     for(int i=1;i<n-1;++i){
-        ans += pts[0].cross(pts[i], pts[next(i)]);
+        ans += pts[0].cross(pts[i], pts[(this->next)(i)]);
+    }
+    return ans;
+}
+
+/// 周长, 必然为实型
+Real circum() const {
+    Real ans = 0.0;
+    for(int i=0,n=pts.size();i<n;++i){
+        ans += pts[i].dist(pts[(this->next)(i)]);
     }
     return ans;
 }
 
 /// 规范化, 删除共线点
-void norm(){
+void normSelf(){
     auto &p = pts;
     int n = pts.size();
     if(n <= 2) return;
@@ -331,7 +342,7 @@ void norm(){
     int top = 1;
     int k = 1;
     while(1){
-        while(k < n && is0(p[top-1].cross(p[k], p[next(k)]))) ++k;
+        while(k < n && is0(p[top-1].cross(p[k], p[(this->next)(k)]))) ++k;
         if(k == n) {p[top++] = p[n-1]; break;}
         p[top++] = p[k++];
         if(k == n) break;
@@ -342,12 +353,12 @@ void norm(){
     if(p.size() <= 2) return;
 
     // 处理0点 
-    if(is0(p[0].cross(p[prev(0)], p[next(0)]))) p.erase(p.begin());
+    if(is0(p[0].cross(p[(this->prev)(0)], p[(this->next)(0)]))) p.erase(p.begin());
     /// assert
     assert([&]()->bool{
         int n = p.size();
         for(int i=0;i<n;++i){
-            if(is0(p[i].cross(p[prev(i)], p[next(i)]))){
+            if(is0(p[i].cross(p[(this->prev)(i)], p[(this->next)(i)]))){
                 return false;
             }
         }
@@ -424,7 +435,7 @@ int relate(const Dian & p) const {
 /// nlogn
 int Graham(){    
     auto & pts = this->pts;
-    int n = pts->size();
+    int n = pts.size();
 
     /// 特判 
     if(1 == n) return 1;
@@ -467,7 +478,7 @@ int Graham(){
 /// 对于两个凸多边形a和b,凸多边形c=a+b，即a和b中的所有点对相加
 /// 返回一个凸多边形，为闵可夫斯基和，可能存共线点
 const Tu operator + (const Convex & r) const {
-    auto next = this->next;
+     
     /// 最下最左
     auto lowleft = [](const Dian &u, const Dian &v)->bool{
         int t = sgn(u.y - v.y);
@@ -495,7 +506,7 @@ const Tu operator + (const Convex & r) const {
         int kll = 0; // 最下最左
         int jll = 0; // 最小角
         for(int i=0;i<n;++i){
-            ans[i] = p[next(i)] - p[i];
+            ans[i] = p[(this->next)(i)] - p[i];
             if(lowleft(p[i], p[kll])) kll = i;
             if(cmp(ans[i], ans[jll])) jll = i;
         }
@@ -531,8 +542,8 @@ const Tu operator + (const Convex & r) const {
 
 /// 凸多边形的直径，即凸多边形内最长的线段, O(N), 旋转卡壳法
 /// 返回直径的长度的平方，pans里保存构成直径的两个端点的序号, 可能有很多对, 只保存其中一对
-T rcDiamenter2(int pans[] = nullptr) const {
-    auto next = this->next;
+T rcDiameter2(int pans[] = nullptr) const {
+     
     auto f = [](const Dian &u, const Dian &v)->T{
         auto x = u.x - v.x, y = u.y - v.y;
         return x * x + y * y;
@@ -544,8 +555,8 @@ T rcDiamenter2(int pans[] = nullptr) const {
     T d = 0;
     int k1 = 0, k2 = 1;
     for(k1=0;k1<n;++k1){
-        while(sgn(p[next(k1)].cross(p[next(k2)], p[k1]) - p[next(k1)].cross(p[k2], p[k1])) > 0){
-            k2 = next(k2);
+        while(sgn(p[(this->next)(k1)].cross(p[(this->next)(k2)], p[k1]) - p[(this->next)(k1)].cross(p[k2], p[k1])) > 0){
+            k2 = (this->next)(k2);
         }
         auto tmp = f(p[k1], p[k2]);
         if(tmp > d){
@@ -563,10 +574,10 @@ T rcDiamenter2(int pans[] = nullptr) const {
 
 /// 旋转卡壳法求凸多边形中的最大三角形, O(N^2)
 /// 返回最大面积的两倍
-T rcTriagle2(int pans[] = nullptr) const {
+T rcTriangle2(int pans[] = nullptr) const {
     const auto & p = this->pts;
     int const n = p.size();
-    auto next = this->next;
+     
 
     T edge = 0;
     T ans = 0;
@@ -603,7 +614,7 @@ LL_rcTriangle:
 /// 即找到一个矩形完全盖住凸多边形p, 且该矩形面积是最小的
 /// 返回最小面积, pans中记录4个点，为矩形, 点必须是实型
 /// p保证是逆时针, 顺时针需要更改while中的关系符号
-Real rcRecatangle(Point<Real> pans[] = nullptr, const Real inf=INF) const {
+Real rcRectangle(Point<Real> pans[] = nullptr, const Real inf=INF) const {
     const auto & p = this->pts;
     int const n = p.size();
 
@@ -646,22 +657,22 @@ Real rcRecatangle(Point<Real> pans[] = nullptr, const Real inf=INF) const {
             /// 记录点
             if(pans != nullptr){
                 /// 底部的方向向量, 和左右的方向向量
-                Dian diDirection(p[(i+1)%n].x - p[i].x, p[(i+1)%n].y - p[i].y);
-                Dian zuoDirection(-diDirection.y, -diDirection.x);
-                /// 底部的直线
-                Zhixian bLine(p[i], diDirection);
+                Dian diDirection(p[(i+1)%n] - p[i]);
+                Dian zuoDirection(-diDirection.y, diDirection.x);
+                /// 底部的直线, 注意这里不能用构造函数
+                Zhixian bLine = Zhixian::create(p[i], diDirection);
                 /// 右侧的直线
-                Zhixian rLine(p[r], zuoDirection);
+                Zhixian rLine = Zhixian::create(p[r], zuoDirection);
                 /// 上部直线
-                Zhixian tLine(p[t], diDirection);
+                Zhixian tLine = Zhixian::create(p[t], diDirection);
                 /// 左侧直线
-                Zhixian lLine(p[l], zuoDirection);
+                Zhixian lLine = Zhixian::create(p[l], zuoDirection);
                 /// 4个交点
                 int c919 = bLine.relate(rLine, pans);
                 c919 &= rLine.relate(tLine, pans+1);
                 c919 &= tLine.relate(lLine, pans+2);
                 c919 &= lLine.relate(bLine, pans+3);
-                assert(IN & c919);
+                assert(JIAO & c919);
             }
         }
     }
@@ -677,9 +688,9 @@ Real rcRecatangle(Point<Real> pans[] = nullptr, const Real inf=INF) const {
 /// O(logN), dir为计算方向的函数
 int extreme(function<Dian(const Dian &)> dir) const {
     const auto &p=this->pts;
-    auto next = this->next;
+     
     
-    const auto check=[&](const size_t i){return sgn(dir(p[i]).cross(p[next(i)]-p[i]))>=0;};
+    const auto check=[&](const size_t i){return sgn(dir(p[i]).cross(p[(this->next)(i)]-p[i]))>=0;};
     const auto dir0=dir(p[0]); const auto check0=check(0);
     if (!check0 && check(p.size()-1)) return 0;
     const auto cmp=[&](const Dian &v){
@@ -711,8 +722,6 @@ pair<int, int> qiexian(const Dian &A, const Dian &B) const{
 Real dist(const Dian & p) const {
     int n = this->n;
     const auto & pts = this->pts;
-    auto next = this->next;
-    auto prev = this->prev;
 
     /// 特判
     if(1 == n) return dist(p, pts[0]);
@@ -729,10 +738,10 @@ Real dist(const Dian & p) const {
     do{
         m1 = left + (right - left) / 3;
         m2 = right - (right - left) / 3;
-        if(sgn(p.dist(pts[m1], pts[next(m1)]) - p.dist(pts[m2], pts[next(m2)])) <= 0){
-            right = prev(m2);
+        if(sgn(p.dist(pts[m1], pts[(this->next)(m1)]) - p.dist(pts[m2], pts[(this->next)(m2)])) <= 0){
+            right = (this->prev)(m2);
         }else{
-            left = next(m1); 
+            left = (this->next)(m1); 
         }
     }while(left <= right);
     /// left是答案
@@ -888,6 +897,9 @@ static int sandi(Banpm hp[], int n, int&bot, int&top){
 }
 
 };
+
+using Point64I = Point<llt>;
+using Point64F = Point<Real>;
 
 char *__abc147, *__xyz258, __ma369[100000];
 #define __hv007() ((__abc147==__xyz258) && (__xyz258=(__abc147=__ma369)+fread(__ma369,1,100000,stdin),__abc147==__xyz258) ? EOF : *__abc147++)
