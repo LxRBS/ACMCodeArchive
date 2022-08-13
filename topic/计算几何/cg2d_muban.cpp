@@ -269,10 +269,6 @@ vt pts; // 端点数组, 保证没有多余的长度, 即size() == n
 Polygon() = default;
 Polygon(int n):pts(n, Dian()){}
 
-/// 前一个点和后一个点的编号, 这样就无需设计pts[n] == pts[0]
-int next(int i) const {return this->pts.size() == ++i ? 0 : i;}
-int prev(int i) const {return -1 == --i ? this->pts.size() - 1 : i;}
-
 void init(int n){pts.resize(n);}
 
 /// 点与简单多边形位置关系, O(N), 顺时针逆时针都能用
@@ -283,7 +279,7 @@ int relate(const Dian & p) const {
     Xianduan ls(p, Dian(INF, p.y));
     int ans = 0;
     for(int r,nxt,i=0;i<n;++i){
-        nxt = (this->next)(i);
+        nxt = (i+1) % n;
         /// 首先看点本身与边的位置关系
         r = p.relate(pts[i], pts[nxt]);
         if(r) return r;
@@ -313,7 +309,7 @@ Real dist(const Dian & p, Real const inf=INF) const {
     int n = pts.size();
     Real ans = inf;
     for(int i=0;i<n;++i){
-        ans = min(ans, p.dist(pts[i], pts[(this->next)(i)]));
+        ans = min(ans, p.dist(pts[i], pts[(i+1)%n]));
     }
     return ans;
 }
@@ -323,7 +319,7 @@ T area2() const {
     int n = pts.size();    
     T ans = 0;
     for(int i=1;i<n-1;++i){
-        ans += pts[0].cross(pts[i], pts[(this->next)(i)]);
+        ans += pts[0].cross(pts[i], pts[(i+1)%n]);
     }
     return ans;
 }
@@ -332,7 +328,7 @@ T area2() const {
 Real circum() const {
     Real ans = 0.0;
     for(int i=0,n=pts.size();i<n;++i){
-        ans += pts[i].dist(pts[(this->next)(i)]);
+        ans += pts[i].dist(pts[(i+1)%n]);
     }
     return ans;
 }
@@ -346,7 +342,7 @@ void normSelf(){
     int top = 1;
     int k = 1;
     while(1){
-        while(k < n && is0(p[top-1].cross(p[k], p[(this->next)(k)]))) ++k;
+        while(k < n && is0(p[top-1].cross(p[k], p[(k+1)%n]))) ++k;
         if(k == n) {p[top++] = p[n-1]; break;}
         p[top++] = p[k++];
         if(k == n) break;
@@ -357,12 +353,12 @@ void normSelf(){
     if(p.size() <= 2) return;
 
     // 处理0点 
-    if(is0(p[0].cross(p[(this->prev)(0)], p[(this->next)(0)]))) p.erase(p.begin());
+    if(is0(p[0].cross(p[p.size()-1], p[1]))) p.erase(p.begin());
     /// assert
     assert([&]()->bool{
         int n = p.size();
         for(int i=0;i<n;++i){
-            if(is0(p[i].cross(p[(this->prev)(i)], p[(this->next)(i)]))){
+            if(is0(p[i].cross(p[(i-1+n)%n], p[(i+1)%n]))){
                 return false;
             }
         }
@@ -510,7 +506,7 @@ const Tu operator + (const Convex & r) const {
         int kll = 0; // 最下最左
         int jll = 0; // 最小角
         for(int i=0;i<n;++i){
-            ans[i] = p[(this->next)(i)] - p[i];
+            ans[i] = p[(i+1)%n] - p[i];
             if(lowleft(p[i], p[kll])) kll = i;
             if(cmp(ans[i], ans[jll])) jll = i;
         }
@@ -558,8 +554,8 @@ T rcDiameter2(int pans[] = nullptr) const {
     T d = 0;
     int k1 = 0, k2 = 1;
     for(k1=0;k1<n;++k1){
-        while(sgn(p[(this->next)(k1)].cross(p[(this->next)(k2)], p[k1]) - p[(this->next)(k1)].cross(p[k2], p[k1])) > 0){
-            k2 = (this->next)(k2);
+        while(sgn(p[(k1+1)%n].cross(p[(k2+1)%n], p[k1]) - p[(k1+1)%n].cross(p[k2], p[k1])) > 0){
+            k2 = (k2+1)%n;
         }
         auto tmp = f(p[k1], p[k2]);
         if(tmp > d){
@@ -691,9 +687,9 @@ Real rcRectangle(Point<Real> pans[] = nullptr, const Real inf=INF) const {
 /// O(logN), dir为计算方向的函数
 int extreme(function<Dian(const Dian &)> dir) const {
     const auto &p=this->pts;
-     
+    int const n = p.size(); 
     
-    const auto check=[&](const size_t i){return sgn(dir(p[i]).cross(p[(this->next)(i)]-p[i]))>=0;};
+    const auto check=[&](const size_t i){return sgn(dir(p[i]).cross(p[(i+1)%n]-p[i]))>=0;};
     const auto dir0=dir(p[0]); const auto check0=check(0);
     if (!check0 && check(p.size()-1)) return 0;
     const auto cmp=[&](const Dian &v){
@@ -741,10 +737,10 @@ Real dist(const Dian & p) const {
     do{
         m1 = left + (right - left) / 3;
         m2 = right - (right - left) / 3;
-        if(sgn(p.dist(pts[m1], pts[(this->next)(m1)]) - p.dist(pts[m2], pts[(this->next)(m2)])) <= 0){
-            right = (this->prev)(m2);
+        if(sgn(p.dist(pts[m1], pts[(m1+1)%n]) - p.dist(pts[m2], pts[(m2+1)%n])) <= 0){
+            right = (m2 - 1 + n) % n;
         }else{
-            left = (this->next)(m1); 
+            left = (m1+1)%n; 
         }
     }while(left <= right);
     /// left是答案
