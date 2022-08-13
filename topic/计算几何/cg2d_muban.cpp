@@ -782,7 +782,7 @@ int relate(const Dian &p) const {
 /// 该特殊情况在排序增量法中直接得到半平面交为空集
 /// 返回真表示交点有效，返回false表示特殊情况
 /// 交点只能用实型
-bool iner(const Banpm & r, Point<Real> &p) const {
+bool inter(const Banpm & r, Point<Real> &p) const {
     const T xishu = a * r.b - b * r.a;
     if(is0(xishu)) return false;
     Real tmp = xishu;
@@ -825,7 +825,7 @@ static int sandi(Banpm hp[], int n, int&bot, int&top){
             return u.c * v.a > u.a * v.c;
         }
         /// a为0则b必不为0
-        if(sgn(u.b > 0)){
+        if(sgn(u.b) > 0){
             return u.c * v.b < u.b * v.c;
         }
         return u.c * v.b > u.b * v.c;
