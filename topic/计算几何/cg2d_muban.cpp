@@ -162,7 +162,7 @@ static Zhixian create(const Dian &p, const Dian &d, bool needNorm=false){
 /// 归一化, 可以用于stl的数据结构, 必须是整型
 void normSelf() {
     T aa = a >= 0 ? a : -a;
-    T bb = b >= 0 ? b : -c;
+    T bb = b >= 0 ? b : -b;
     T cc = c >= 0 ? b : -c;
     T g = 0;
     if(0 == aa){ // bb 必然不为0
