@@ -719,12 +719,12 @@ pair<int, int> qiexian(const Dian &A, const Dian &B) const{
 /// 点到凸多边形的距离, O(logN)
 /// 首先求出所有可见点, 然后三分
 Real dist(const Dian & p) const {
-    int n = this->n;
     const auto & pts = this->pts;
+    int const n = pts.size();
 
     /// 特判
-    if(1 == n) return dist(p, pts[0]);
-    if(2 == n) return dist(p, pts[0], pts[1]);
+    if(1 == n) return p.dist(pts[0]);
+    if(2 == n) return p.dist(pts[0], pts[1]);
     /// 先判内, 这也是log算法
     int r = this->relate(p);
     if(r & IN) return 0;
