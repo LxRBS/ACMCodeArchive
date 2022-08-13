@@ -163,7 +163,7 @@ static Zhixian create(const Dian &p, const Dian &d, bool needNorm=false){
 void normSelf() {
     T aa = a >= 0 ? a : -a;
     T bb = b >= 0 ? b : -b;
-    T cc = c >= 0 ? b : -c;
+    T cc = c >= 0 ? c : -c;
     T g = 0;
     if(0 == aa){ // bb 必然不为0
         if(0 == cc) g = bb;
@@ -222,6 +222,8 @@ template<typename T>struct LineSeg{
 using Dian = Point<T>;
 using Xianduan = LineSeg<T>;
 Dian s, e; // s和e不区分顺序
+
+LineSeg(const Dian &A, const Dian &B):s(A),e(B){}
 
 /// 点与线段的位置关系
 int relate(const Dian & p) const {

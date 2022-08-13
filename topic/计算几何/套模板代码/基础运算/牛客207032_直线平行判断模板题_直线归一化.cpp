@@ -201,15 +201,7 @@ int const SIZE = 210;
 
 int N;
 Point64I P[SIZE];
-
-using pii = pair<llt, llt>;
-template<>struct std::hash<pii>{
-	inline size_t operator()(const pii&p)const{
-		return p.first * 1331 + p.second;
-	}
-};
-
-unordered_set<pii> Set;
+using Line64I = Line<llt>;
 
 int main() {
 #ifndef ONLINE_JUDGE
@@ -217,10 +209,19 @@ int main() {
 #endif  
     N = getInt();
     for(int i=0;i<N;++i) P[i].x = getInt(), P[i].y = getInt();
+
+    vector<Line<llt> > vec;
     for(int i=0;i<N;++i)for(int j=i+1;j<N;++j){
-        Line<llt> line(P[i], P[j], true);   
-        Set.insert({line.a, line.b});
+        vec.push_back(Line64I(P[i], P[j], true));   
     }
-    cout << Set.size() << endl;
+    sort(vec.begin(), vec.end(), [](const Line64I&u, const Line64I&v)->bool{
+        if(u.a != v.a) return u.a < v.a;
+        if(u.b != v.b) return u.b < v.b;
+        return u.c < v.c;
+    });
+    vec.erase(unique(vec.begin(), vec.end(),[](const Line64I&u, const Line64I&v)->bool{
+        return u.a == v.a && u.b == v.b;
+    }), vec.end());
+    cout<<vec.size()<<endl;
     return 0;
 }
