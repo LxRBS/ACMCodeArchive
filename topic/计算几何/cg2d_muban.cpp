@@ -300,8 +300,8 @@ int relate(const Dian & p) const {
 
         ++ans;
     }
-    /// 奇外偶内
-    return (ans & 1) ? OUT : IN;
+    /// 奇内偶外
+    return (ans & 1) ? IN : OUT;
 }
 
 /// 点到简单多边形的, O(N)
@@ -317,7 +317,7 @@ Real dist(const Dian & p, Real const inf=INF) const {
 }
 
 /// 有向面积的二倍
-T area() const {
+T area2() const {
     int n = pts.size();    
     T ans = 0;
     for(int i=1;i<n-1;++i){
