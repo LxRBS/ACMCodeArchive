@@ -127,7 +127,7 @@ Real dist(const Point &A, const Point &B) const {
     if(sgn(A.dot(*this, B)) <= 0) return this->dist(A);
     if(sgn(B.dot(*this, A)) <= 0) return this->dist(B);
     /// 距离为高
-    return sqrt(this->cross(A, B) / (A - B).square());
+    return fabs(this->cross(A, B)) / (A - B).length();
 }
 
 
@@ -293,6 +293,7 @@ int relate(const Dian & p) const {
 
         /// 线段与边不交也忽略
         r = ls.relate(pts[i], pts[nxt]);
+        if(OUT == r) continue;
 
         /// 交于较高的点也忽略
         if(t > 0 && ls.relate(pts[nxt])) continue;
