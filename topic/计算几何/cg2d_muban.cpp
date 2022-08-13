@@ -279,7 +279,7 @@ int relate(const Dian & p) const {
     int n = pts.size();
 
     /// 无穷远点构成的线段 
-    Xianduan ls(p, Ponit(INF, p.y));
+    Xianduan ls(p, Dian(INF, p.y));
     int ans = 0;
     for(int r,nxt,i=0;i<n;++i){
         nxt = (this->next)(i);
@@ -504,7 +504,7 @@ const Tu operator + (const Convex & r) const {
     };
     /// 主计算过程，将输入的多边形p拆分成向量,放入ans
     /// ans中的向量最终按照极角排序, 返回最下最左的编号
-    auto calc = [&](const vt &p, int n, vt &ans)->int{
+    auto calc = [&](const vt &p, int n, Dian ans[])->int{
         int kll = 0; // 最下最左
         int jll = 0; // 最小角
         for(int i=0;i<n;++i){
@@ -527,10 +527,10 @@ const Tu operator + (const Convex & r) const {
     int nc = pc.size();    
 
     /// 先拆pa, 再拆pb
-    int ka = calc(pa, na, pc);
-    int kb = calc(pb, nb, pc+na);
+    int ka = calc(pa, na, pc.data());
+    int kb = calc(pb, nb, pc.data()+na);
     /// 归并
-    inplace_merge(pc, pc+na, pc+na+nb, cmp);
+    inplace_merge(pc.begin(), pc.begin()+na, pc.begin()+na+nb, cmp);
     /// 再将pc依次连接起来即可，pc中可能存在共线的点
     pc[0].x += pa[ka].x + pb[kb].x;
     pc[0].y += pa[ka].y + pb[kb].y;
@@ -541,7 +541,6 @@ const Tu operator + (const Convex & r) const {
     }
     return ret;    
 }
-
 /// 凸多边形的直径，即凸多边形内最长的线段, O(N), 旋转卡壳法
 /// 返回直径的长度的平方，pans里保存构成直径的两个端点的序号, 可能有很多对, 只保存其中一对
 T rcDiameter2(int pans[] = nullptr) const {
