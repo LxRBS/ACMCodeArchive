@@ -115,9 +115,10 @@ T dist2(const Point & r) const {return (*this-r).square();}
 Real dist(const Point & r) const {return (*this-r).length();}
 /// this与线段AB的位置关系
 int relate(const Point &A, const Point &B) const {
-    if(A == *this || B == *this) return IN & VERTEX;
+    assert(!(A == B));
+    if(A == *this || B == *this) return IN | VERTEX;
     if(sgn(this->dot(A, B)) <= 0 && 0 == sgn(this->cross(A, B))){
-        return IN & EDGE;
+        return IN | EDGE;
     }
     return OUT;
 }
@@ -388,16 +389,16 @@ int relate(const Dian & p) const {
     int n = pts.size();
 
     /// 特判
-    if(1 == n) return (p == pts[0]) ? (IN & VERTEX) : OUT;
+    if(1 == n) return (p == pts[0]) ? (IN | VERTEX) : OUT;
     if(2 == n) return p.relate(pts[0], pts[1]);
     /// 一点点保证
     assert(sgn(pts[0].cross(pts[1], pts[2])) >= 0);
     /// p到点1是逆时针，则p必然在外面
-    if(sgn(pts[0].cross(p, pts[1])) >= 0) return OUT;
+    if(sgn(pts[0].cross(p, pts[1])) > 0) return OUT;
     /// p到点n-1是顺时针，则p必然在外面
-    if(sgn(pts[0].cross(p, pts[n-1])) <= 0) return OUT;
+    if(sgn(pts[0].cross(p, pts[n-1])) < 0) return OUT;
     // 二分
-    int left = 0, right = n - 2, mid;
+    int left = 1, right = n - 2, mid;
     do{
         mid = (left + right) >> 1;
         assert(mid > 0 && mid + 1 < n);
