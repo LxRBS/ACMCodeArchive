@@ -306,6 +306,9 @@ void init(int n){pts.resize(n);}
 int relate(const Dian & p) const {
     int n = pts.size();
 
+    /// 特判
+    if(1 == n) return (p == pts[0]) ? (IN | VERTEX) : OUT;
+
     /// 无穷远点构成的线段 
     Xianduan ls(p, Dian(INF, p.y));
     int ans = 0;
