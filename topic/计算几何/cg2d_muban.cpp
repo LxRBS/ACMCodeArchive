@@ -420,6 +420,8 @@ int relate(const Dian & p) const {
     if(2 == n) return p.relate(pts[0], pts[1]);
     /// 一点点保证
     assert(sgn(pts[0].cross(pts[1], pts[2])) >= 0);
+    /// 特判是否与0点重合，否则以后只会返回IN, 而不会返回端点
+    if(p == pts[0]) return IN | VERTEX;
     /// p到点1是逆时针，则p必然在外面
     if(sgn(pts[0].cross(p, pts[1])) > 0) return OUT;
     /// p到点n-1是顺时针，则p必然在外面
