@@ -372,6 +372,24 @@ void normSelf(){
     auto &p = pts;
     int n = pts.size();
     if(n <= 2) return;
+
+    if(this->isDegenerate()){
+        auto lowleft = [](const Dian &a, const Dian &b){
+            int t = sgn(a.y - b.y);
+            if(t) return t < 0;
+            return sgn(a.x - b.x) < 0;
+        };
+        int k = 0;
+        for(int i=1;i<n;++i){
+            if(lowleft(pts[i], pts[k])){
+                k = i;
+            }
+        }
+        /// 保存最小最左及其前一个点即可
+        const Dian tmp[] = {pts[k], pts[(k-1+n)%n]};
+        pts.assign(tmp, tmp+2);
+        return;
+    }
     
     int top = 1;
     int k = 1;
@@ -401,6 +419,8 @@ void normSelf(){
 }
 
 /// 是否退化, O(N)
+/// 一般不会有退化，直接返回false即可
+/// 感觉退化情况下意义不大, 特别是对凸多边形 
 bool isDegenerate() const {
     if(1 == pts.size()) return true; // 退化成一个点
     for(int i=2,n=pts.size();i<n;++i){
