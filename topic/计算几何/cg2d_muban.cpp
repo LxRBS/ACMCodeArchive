@@ -397,6 +397,17 @@ void normSelf(){
     }());
 }
 
+/// 是否退化, O(N)
+bool isDegenerate() const {
+    if(1 == pts.size()) return true; // 退化成一个点
+    for(int i=2,n=pts.size();i<n;++i){
+        if(sgn(pts[0].cross(pts[1], pts[i]))){
+            return false;
+        }
+    }
+    return true; // 退化成一条线段
+}
+
 };
 
 /// 凸多边形和凸包
@@ -410,7 +421,7 @@ using Tu = Convex<T>;
 Convex():Polygon<T>(){}
 Convex(int n):Polygon<T>(n){}
 
-/// 点是否在凸多边形内, log算法, 必须是逆时针
+/// 点是否在凸多边形内, log算法, 必须是逆时针, 不能退化
 int relate(const Dian & p) const {
     const auto & pts = this->pts;
     int n = pts.size();
