@@ -6,7 +6,7 @@ using namespace std;
  * @version 20220812, 模板类, 函数尽量作为成员函数, 可以少写模板参数
  * 1. typedef和常数
  * 2. 处理边界的数学库函数
- * 3. 点与向量的结构体以及基本运算，算术运算, 关系运算, 点积和叉积
+ * 3. 点与向量的结构体以及基本运算，算术运算, 关系运算, 点积和叉积, 极角排序的functor
  * 4. 直线的结构体
  * 5. 线段的结构体，线段有时也用两点表示
  * 6. 多边形与凸多边形, 凸包, 闵可夫斯基和与旋转卡壳法
@@ -78,7 +78,7 @@ inline Real myasin(Real x){
     return asin(x);
 }
 
-/** 3. 点与向量的结构体以及基本运算，相等，叉积，点积 **/
+/** 3. 点与向量的结构体以及基本运算，相等，叉积，点积, 极角排序 **/
 /// 模板类, 可以实例化成整型或者实型
 template<typename T>struct Point{
 
@@ -131,6 +131,37 @@ Real dist(const Point &A, const Point &B) const {
     return fabs(this->cross(A, B)) / (A - B).length();
 }
 
+
+};
+
+/// 极角排序, [0, 36)
+template<typename T> struct ArgCmp{
+using Dian = Point<T>;
+
+const Dian center; // 中心点, 默认是原点
+
+ArgCmp(const Dian &a = Dian()):center(a){}
+
+bool operator () (const Dian &a, const Dian &b) const {
+    auto calLoc = [&](const Dian &p)->int{ // 计算象限        
+        if(sgn(p.y) > 0) return 2; // (0, 180)
+        if(sgn(p.y) < 0) return 4; // (180, 360)
+        if(sgn(p.x) > 0) return 1; // 0度
+        if(sgn(p.x) < 0) return 3; // 180度
+        return 0; // 原点
+    };
+
+    const Dian da(a - center);
+    const Dian db(b - center);
+    const int aloc = calLoc(da);
+    const int bloc = calLoc(db);
+    if(aloc != bloc) return aloc < bloc;
+
+    const auto chaji = sgn(da.cross(db));
+    if(chaji) return chaji > 0; // 从a到b是逆时针 
+    /// 到此说明幅角一致, 看长度
+    return sgn(da.square() - db.square()) < 0;
+}    
 
 };
 
@@ -478,28 +509,15 @@ int Graham(){
 /// 对于两个凸多边形a和b,凸多边形c=a+b，即a和b中的所有点对相加
 /// 返回一个凸多边形，为闵可夫斯基和，可能存共线点
 const Tu operator + (const Convex & r) const {
-     
+    /// 极角排序，0-360 
+    ArgCmp<T> cmp;
     /// 最下最左
     auto lowleft = [](const Dian &u, const Dian &v)->bool{
         int t = sgn(u.y - v.y);
         if(t) return t < 0;
         return u.x < v.x;
     };
-    /// 计算象限
-    auto loc = [](const Dian &p)->int{
-        if(is0(p.y)) return p.x > 0 ? 0 : 4;
-        if(is0(p.x)) return p.y > 0 ? 2 : 6;
-        if(p.x > 0) return p.y > 0 ? 1 : 7;
-        return p.y > 0 ? 3 : 5;
-    };
-    /// 极角排序，0-360 
-    auto cmp = [&](const Dian &u, const Dian &v)->bool{
-        int uloc = loc(u), vloc = loc(v);
-        if(uloc != vloc) return uloc < vloc;
-        /// 同一个区域计算叉积
-        auto chaji = sgn(u.x * v.y - v.x * u.y);
-        return chaji > 0;
-    };
+
     /// 主计算过程，将输入的多边形p拆分成向量,放入ans
     /// ans中的向量最终按照极角排序, 返回最下最左的编号
     auto calc = [&](const vt &p, int n, Dian ans[])->int{
