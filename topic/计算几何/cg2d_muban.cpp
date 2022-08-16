@@ -819,7 +819,7 @@ int extreme(const Dian & direction) const {
     const int t0 = f(0);
   
     /// 说明(n-1,0,1)刚好从右侧转到了direction左侧或者转到了direction正向
-    if((t0 & 0x21) || (t0 & 0x24)){ 
+    if((t0 == 0x21) || (t0 == 0x24)){ 
         return 0;
     }
 
@@ -829,7 +829,7 @@ int extreme(const Dian & direction) const {
         const int i = &dian - p.data(); // 获取点的索引
         const int ti = f(i);
         /// 就是极值点，肯定不满足条件
-        if((ti & 0x21) || (ti & 0x24)) return false;
+        if((ti == 0x21) || (ti == 0x24)) return false;
         if(t0 & 0x1){ // 说明01边相对于direction向左
             /// 所有向右转的边都符合条件
             if(ti & 0x2) return true;
