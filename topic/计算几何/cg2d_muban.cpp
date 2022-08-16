@@ -877,7 +877,7 @@ int extreme(const Dian & direction) const {
         throw runtime_error("XX");
         return false;
     };
-    int ret = partition_point(p.begin(), p.end(), cmp) - p.begin();
+    int ret = partition_point(p.begin()+1, p.end(), cmp) - p.begin();
     return ret;
 }
 
