@@ -790,7 +790,7 @@ int extreme(const Dian & direction) const {
         if(tnxt > 0) ret |= 1;
         else if(tnxt < 0) ret |= 2;
         else {
-            int t = direction.dot(p[i] - p[(i-1+n)%n]));
+            int t = sgn(direction.dot(p[i] - p[(i-1+n)%n]));
             assert(t);
             if(t > 0) ret |= 4;
             else ret |= 8;
@@ -825,7 +825,7 @@ int extreme(const Dian & direction) const {
 
     /// 如果0不是答案，则答案必然在[1, n-1]中，令答案为ans, 则
     /// [0, ans)均满足某个条件,[ans, n-1]均不满足某个条件
-    auto cmp = [](const Dian & dian)->bool{
+    auto cmp = [&](const Dian & dian)->bool{
         const int i = &dian - p.data(); // 获取点的索引
         const int ti = f(i);
         /// 就是极值点，肯定不满足条件
