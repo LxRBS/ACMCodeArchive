@@ -790,7 +790,7 @@ int extreme(const Dian & direction) const {
         if(tnxt > 0) ret |= 1;
         else if(tnxt < 0) ret |= 2;
         else {
-            int t = sgn(direction.dot(p[i] - p[(i-1+n)%n]));
+            int t = sgn(direction.dot(p[(i+1)%n] - p[i]));
             assert(t);
             if(t > 0) ret |= 4;
             else ret |= 8;
@@ -798,7 +798,7 @@ int extreme(const Dian & direction) const {
         if(tprv > 0) ret |= 0x10;
         else if(tprv < 0) ret |= 0x20;
         else{
-            int t = direction.dot(p[(i+1)%n] - p[i]);
+            int t = sgn(direction.dot(p[i] - p[(i-1+n)%n]));            
             assert(t);
             if(t > 0) ret |= 0x40;
             else ret |= 0x80;
