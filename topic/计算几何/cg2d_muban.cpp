@@ -744,129 +744,106 @@ Real rcRectangle(Point<Real> pans[] = nullptr, const Real inf=INF) const {
 /// 凸多边形的所有点都在该半平面内
 /// 返回值为点在凸多边形中的序号
 /// 如果要得到平行直线的点对, 需要正反调用两次
-/// 保证凸多边形本身是逆时针, 且不能退化成一大条线段
+/// 保证凸多边形本身是逆时针, 且不能退化成一大条线段, 共线点应该可以适用
 /// https://codeforces.com/blog/entry/48868
 /// O(logN), dir为计算方向的函数
+/// 如果是给定方向，则dir返回一个定值即可
+/// 如果是给定点，则dir返回pi - jidian
 int extreme(function<Dian(const Dian &)> dir) const {
     const auto &p=this->pts;
     int const n = p.size(); 
-    
-    const auto check=[&](const size_t i){return sgn(dir(p[i]).cross(p[(i+1)%n]-p[i]))>=0;};
-    const auto dir0=dir(p[0]); const auto check0=check(0);
-    if (!check0 && check(p.size()-1)) return 0;
-    const auto cmp=[&](const Dian &v){
-        const int vi=&v-p.data();
-        const auto checkv=check(vi);
-        const auto t=sgn(dir0.cross(v-p[0]));
-        return checkv^(checkv==check0 && ((!check0 && t<=0) || (check0 && t<0)));
-    };
-    return partition_point(p.begin(),p.end(),cmp)-p.begin();
-}
 
-/// 设极点为i，令(i-1,i)边记作prv, 后边记作nxt
-/// 则从prv转向nxt需要跨越direction的正方向print
-int extreme(const Dian & direction) const {
-    const auto & p = this->pts;
-    int const n = p.size();
-  
-    /// 特判
     if(1 == n) return 0;
-    if(2 == n) {
-        int t = sgn(direction.cross(p[1] - p[0]));
-        if(t > 0) return 0;
+    if(2 == n){
+        int t = sgn(dir(p[0]).cross(p[1] - p[0]));
         if(t < 0) return 1;
-        t = sgn(direction.dot(p[1] - p[0]));
+        if(t > 0) return 0;
+        t = sgn(dir(p[0]).dot(p[1] - p[0]));
         assert(t);
         if(t > 0) return 0;
         return 1;
     }
-
-    /// 检查i点前后边的情况, 每条边返回4位, 分别表示左右同向异向
-    /// 前一条边为高位，后一条边为低位
+    
+    /// 计算i点前后的情况，每条边返回4种可能性，分别表示逆顺正反
     auto f = [&](int i)->int{
-        int tprv = sgn(direction.cross(p[i] - p[(i-1+n)%n]));
-        int tnxt = sgn(direction.cross(p[(i+1)%n] - p[i]));
+        const Dian now = dir(p[i]);
+
+        int tprv = sgn(now.cross(p[i] - p[(i-1+n)%n]));
+        int tnxt = sgn(now.cross(p[(i+1)%n] - p[i]));
+
         int ret = 0;
-        if(tnxt > 0) ret |= 1;
-        else if(tnxt < 0) ret |= 2;
-        else {
-            int t = sgn(direction.dot(p[(i+1)%n] - p[i]));
-            assert(t);
-            if(t > 0) ret |= 4;
-            else ret |= 8;
-        } 
         if(tprv > 0) ret |= 0x10;
         else if(tprv < 0) ret |= 0x20;
-        else{
-            int t = sgn(direction.dot(p[i] - p[(i-1+n)%n]));            
+        else{ // 判断dir与边(i-1,i)的方向
+            int t = sgn(now.dot(p[i] - p[(i-1+n)%n]));
             assert(t);
             if(t > 0) ret |= 0x40;
             else ret |= 0x80;
         }
 
-        /// 只有10种可能性
-        assert(
-            0x41 == ret || 0x44 == ret
-         || 0x11 == ret || 0x18 == ret || 0x12 == ret
-         || 0x82 == ret || 0x88 == ret
-         || 0x22 == ret || 0x24 == ret || 0x21 == ret  
-        );  
+        if(tnxt > 0) ret |= 1;
+        else if(tnxt < 0) ret |= 2;
+        else{ // 判断dir与边(i, i+1)的方向
+            int t = sgn(now.dot(p[(i+1)%n] - p[i]));
+            assert(t);
+            if(t > 0) ret |= 0x4;
+            else ret |= 0x8;
+        }
 
         return ret;
-    };
+    }; 
 
-    /// 首先检查0点
-    const int t0 = f(0);
-  
-    /// 说明(n-1,0,1)刚好从右侧转到了direction左侧或者转到了direction正向
-    if((t0 == 0x21) || (t0 == 0x24)){ 
+    int const t0 = f(0);
+    const Dian vec0 = dir(p[0]);
+    if(0x21 == t0 || 0x24 == t0){ // 恰好就是0
         return 0;
     }
 
     /// 如果0不是答案，则答案必然在[1, n-1]中，令答案为ans, 则
-    /// [0, ans)均满足某个条件,[ans, n-1]均不满足某个条件
-    auto cmp = [&](const Dian & dian)->bool{
-        const int i = &dian - p.data(); // 获取点的索引
-        const int ti = f(i);
+    /// [0, ans)均满足某个条件,[ans, n-1]均不满足某个条件 
+    auto cmp = [&](const Dian& dian){
+        int const i = &dian - p.data();
+        int const ti = f(i);
         /// 就是极值点，肯定不满足条件
         if((ti == 0x21) || (ti == 0x24)) return false;
-        if(t0 & 0x1){ // 说明01边相对于direction向左
-            /// 所有向右转的边都符合条件
+        if(t0 & 0x1){ // 说明p0向量到p1向量向左
+            /// 所有向右转的都符合条件
             if(ti & 0x2) return true;
             /// 所有负方向边符合
             if(ti & 0x8) return true;
             /// 所有正方向不符合
-            if(ti & 0x4) return false;
+            if(ti & 0x4) return false;      
             /// 最后剩下同为向左的, 此时如果i在0点左边，则符合
-            int c919 = direction.cross(dian - p[0]);
+            int c919 = sgn(vec0.cross(dian - p[0]));
             if(c919 > 0) return true;
-            /// 因为01边是向左转的，在右边或者同一条线上都不符合
-            /// 同一条线上的必然在负方向
-            if(0 == c919) assert(sgn(direction.dot(dian - p[0])) < 0);
-            return false;
-
-        }else if(t0 & 0x2){ // 01边相对于d方向向右
+            if(c919 < 0) return false;
+            c919 = sgn(vec0.dot(dian - p[0]));
+            assert(c919);
+            if(c919 > 0) return true;
+            return false;                
+        }else if(t0 & 0x2){ // 说明p0到p1是向右转
             /// 只有也是向右转的才有可能是true，其他都是false
             if(ti & 0x2){ // 需要在0点的右边才是true
-                int c919 = sgn(direction.cross(dian - p[0]));
-                assert(c919);
+                int c919 = sgn(vec0.cross(dian - p[0]));
                 if(c919 < 0) return true;
-                return false;
-            }
-            return false;
-        }else if(t0 & 0x4){ // 01边刚好是d正方向
-            if(ti & 0x4){ // 只有ti也朝上且i在0的下方才是false
-                int c919 = sgn(direction.dot(dian - p[0]));
-                assert(c919);
-                if(c919 < 0) return false;
+                if(c919 > 0) return false;
+                c919 = sgn(vec0.dot(dian - p[0]));
+                if(c919 > 0) return false;
                 return true;
             }
-            return true;
-        }else if(t0 & 0x8){ // 01边刚好是d的负方向
+            return false;            
+        }else if(t0 & 0x4){ // p0和p1向量其实是同方向
+            int c919 = sgn(vec0.cross(dian - p[0]));
+            assert(c919 >= 0);
+            if(c919 > 0) return true;
+            c919 = sgn(vec0.dot(dian - p[0]));
+            if(c919 > 0) return true;
+            return false;
+        }else if(t0 & 0x8){
             if(ti & 0x2) return true; // 向右的都对
             if(ti & (0x1 | 0x4)) return false; // 向左或者正方向的都不对
             if(ti & 0x8){ // 负方向且在0的下方才对
-                int c919 = sgn(direction.dot(dian - p[0]));
+                int c919 = sgn(vec0.dot(dian - p[0]));
                 assert(c919);
                 if(c919 < 0) return true;
                 return false;
@@ -875,10 +852,17 @@ int extreme(const Dian & direction) const {
         }
 
         throw runtime_error("XX");
-        return false;
-    };
-    int ret = partition_point(p.begin()+1, p.end(), cmp) - p.begin();
-    return ret;
+        return false;        
+    }; 
+    // int left = 1, right = n - 1, mid;
+    // do{
+    //     mid = (left + right) >> 1;
+    //     if(cmp(p[mid])) left = mid + 1;
+    //     else right = mid - 1;
+    // }while(left <= right);
+    // return left;
+
+    return partition_point(++p.begin(),p.end(),cmp)-p.begin();
 }
 
 /// 保证点p在凸多边形外, 返回两条切线
