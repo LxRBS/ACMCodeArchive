@@ -1,0 +1,9 @@
+2
+5 5
+cmp 1 2
+swap_p 1 2
+cmp 1 2
+swap_a 1 2
+cmp 1 2
+1 1
+swap_a 1 1
