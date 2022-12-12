@@ -3,11 +3,11 @@
 */
 #include <bits/stdc++.h>
 using namespace std;
-typedef int weight_t;
+typedef long long int weight_t;
 
 int const SIZE_OF_VERTICES = 100010;//点数的最大值
-int const SIZE_OF_EDGES = 100010<<2;//边数的最大值
-weight_t const INF = 0x3f3f3f3f;
+int const SIZE_OF_EDGES = 120010<<2;//边数的最大值
+weight_t const INF = 0x3f3f3f3f3f3f3f;
 
 struct edge_t{
     int to;
@@ -145,6 +145,6 @@ int main(){
         b = getUnsigned();
         mkEdge(a,b,getUnsigned());
     }
-    printf("%d\n",isap(s,t,n));
+    printf("%lld\n",isap(s,t,n));
     return 0;
 }
