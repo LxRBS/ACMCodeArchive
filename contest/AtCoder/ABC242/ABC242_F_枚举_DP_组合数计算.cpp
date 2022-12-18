@@ -1,12 +1,12 @@
 /**
- * NÐÐMÁÐ£¬·ÅW¸ö°×³µB¸öºÚ³µ£¬»¥Ïà²»¹¥»÷£¬ÎÊ·½°¸×ÜÊý£¬N¡¢MÔÚ50ÒÔÄÚ
- * ¿ÉÒÔ×öÒ»¸öËÄÖØÑ­»·£¬Çó³öÇ¡ºÃbrÐÐbcÁÐ·ÅºÚ³µ¡¢wrÐÐwcÁÐ·Å°×³µµÄ·½°¸Êý£¬ÀÛ¼Ó¼´¿É
- * ÓÉÓÚ°×ºÚ»¥Ïà²»¹¥»÷£¬Òò´Ë·½°¸ÊýÊÇ¶ÀÁ¢µÄ£¬ËùÒÔÖ»ÐèÈ¡³örÐÐrÁÐ·Åt¸ö³µµÄ·½°¸£¨Ã»ÓÐ¿ÕÐÐ£¬Ã»ÓÐ¿ÕÁÐ£©
- * ÁîDijÎª´ð°¸£¬Ôò
- * Dij = C(i*j, t) - SIGMA{C(i,u)*C(j,v)*Duv,u=1..i,v=1..j,ÇÒ(u,v)!=(i,j)}
- * µÚÒ»ÏîÊÇiÐÐjÁÐ·Åt¸ö³µµÄ·½°¸£¬È»ºó¼õÈ¥°üº¬¿ÕÐÐµÄ·½°¸¼´¿É
- * ¿ÕÐÐµÄ·½°¸Êµ¼ÊÉÏ¾ÍÊÇDuv,ÒòÎªuÐÐvÁÐ¾Í·ÅÏÂÁËt¸ö³µ£¬Ê£ÏÂµÄÐÐÁÐ×ÔÈ»ÊÇ¿ÕµÄ
- * ÔÙ¼ÓÉÏºÏÊÊµÄ×éºÏÊý¼´¿É
+ * Nè¡ŒMåˆ—ï¼Œæ”¾Wä¸ªç™½è½¦Bä¸ªé»‘è½¦ï¼Œäº’ç›¸ä¸æ”»å‡»ï¼Œé—®æ–¹æ¡ˆæ€»æ•°ï¼ŒNã€Måœ¨50ä»¥å†…
+ * å¯ä»¥åšä¸€ä¸ªå››é‡å¾ªçŽ¯ï¼Œæ±‚å‡ºæ°å¥½brè¡Œbcåˆ—æ”¾é»‘è½¦ã€wrè¡Œwcåˆ—æ”¾ç™½è½¦çš„æ–¹æ¡ˆæ•°ï¼Œç´¯åŠ å³å¯
+ * ç”±äºŽç™½é»‘äº’ç›¸ä¸æ”»å‡»ï¼Œå› æ­¤æ–¹æ¡ˆæ•°æ˜¯ç‹¬ç«‹çš„ï¼Œæ‰€ä»¥åªéœ€å–å‡ºrè¡Œråˆ—æ”¾tä¸ªè½¦çš„æ–¹æ¡ˆï¼ˆæ²¡æœ‰ç©ºè¡Œï¼Œæ²¡æœ‰ç©ºåˆ—ï¼‰
+ * ä»¤Dijä¸ºç­”æ¡ˆï¼Œåˆ™
+ * Dij = C(i*j, t) - SIGMA{C(i,u)*C(j,v)*Duv,u=1..i,v=1..j,ä¸”(u,v)!=(i,j)}
+ * ç¬¬ä¸€é¡¹æ˜¯iè¡Œjåˆ—æ”¾tä¸ªè½¦çš„æ–¹æ¡ˆï¼Œç„¶åŽå‡åŽ»åŒ…å«ç©ºè¡Œçš„æ–¹æ¡ˆå³å¯
+ * ç©ºè¡Œçš„æ–¹æ¡ˆå®žé™…ä¸Šå°±æ˜¯Duv,å› ä¸ºuè¡Œvåˆ—å°±æ”¾ä¸‹äº†tä¸ªè½¦ï¼Œå‰©ä¸‹çš„è¡Œåˆ—è‡ªç„¶æ˜¯ç©ºçš„
+ * å†åŠ ä¸Šåˆé€‚çš„ç»„åˆæ•°å³å¯
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -61,7 +61,6 @@ void init(int n){
 llt N, M, B, W;
 llt BD[SIZE][SIZE], WD[SIZE][SIZE];
 
-/// n¸öÖÐ¼äÌôm¸öµÄ×éºÏÊý, ±£Ö¤ n>=m
 inline llt C(llt n, llt m){
     return Fac[n] * IFac[m] % MOD * IFac[n-m] % MOD;
 }
@@ -85,7 +84,6 @@ void calc(llt total, llt (&a)[SIZE][SIZE]){
 	}
 }
 
-/// ºÚ·½brÐÐbcÁÐ£¬°×·½wrÐÐwcÁÐ£¬µÄ·½°¸×ÜÊý
 inline llt proc(int br, int bc, int wr, int wc){
     llt ans = 1LL;
 	(ans *= BD[br][bc]) %= MOD;

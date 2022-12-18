@@ -1,0 +1,58 @@
+/**
+ * 长度为N的非负数组之和为M，要求其异或和最大，问满足异或最大的情况下一共有多少种不同的情况
+ * 要使异或最大，显然加法中没有进位，因此每一位的1都是独一无二的，且这个最大的异或和就是M
+ * 因此对M中的每一个二进制1，都有N种不同的摆法，一共有N^x个，其中x是M的二进制1的数量
+ */
+#include <bits/stdc++.h>
+using namespace std;
+ 
+char *__abc147, *__xyz258, __ma369[100000];
+#define __hv007() ((__abc147==__xyz258) && (__xyz258=(__abc147=__ma369)+fread(__ma369,1,100000,stdin),__abc147==__xyz258) ? EOF : *__abc147++)
+
+int getInt(){
+	int sgn = 1;
+	char ch = __hv007();
+	while( ch != '-' && ( ch < '0' || ch > '9' ) ) ch = __hv007();
+	if ( '-' == ch ) {sgn = 0;ch=__hv007();}
+ 
+	int ret = (int)(ch-'0');
+	while( '0' <= (ch=__hv007()) && ch <= '9' ) ret = ret * 10 + (int)(ch-'0');
+	return sgn ? ret : -ret;
+}
+ 
+#ifndef ONLINE_JUDGE
+int const SIZE = 23;
+#else
+int const SIZE = 2E5+10;
+#endif
+
+using llt = long long; 
+using vi = vector<int>;
+using si = set<int>;
+using vvi = vector<vi>;
+using msi = map<int, si>;
+using pii = pair<int, int>;
+using vpii = vector<pii>;
+
+llt const MOD = 1000000007LL;
+
+llt N, M;
+
+
+int main(){
+#ifndef ONLINE_JUDGE
+    freopen("1.txt", "r", stdin);
+#endif
+    ios::sync_with_stdio(0);
+	cin.tie(0); cout.tie(0);
+    cin >> N >> M;
+	llt ans = 1LL;
+	while(M){
+		if(M & 1) (ans *= N) %= MOD;
+		M >>= 1;
+	}
+	cout << ans << endl;
+    return 0;
+}
+
+
