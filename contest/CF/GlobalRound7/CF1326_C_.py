@@ -1,12 +1,12 @@
 # encoding: utf-8
 """
-��һ������ΪN�����У��Լ�һ������K
-�������л���ΪK������
-����pv=SIGMA(max(pi),i��1��K)
-�ҳ�pv�����ֵ���Լ��ܹ��ﵽ������ֵ�Ļ��ֵ�����
+给一个长度为N的排列，以及一个整数K
+将该排列划分为K个部分
+定义pv=SIGMA(max(pi),i从1到K)
+找出pv的最大值，以及能够达到这个最大值的划分的数量
 
-���ֵ����ֵ��Ȼ�Ǵ�N�ӵ�N-K+1��
-Ȼ�󻮷�������Ȼ��֮��ĸ��ϵ����������˻�
+划分的最大值显然是从N加到N-K+1。
+然后划分总数显然是之间的隔断的数量的连乘积
 """
 from math import sqrt
 from queue import Queue

@@ -1,6 +1,6 @@
 /**
- * ��������������A��B��B������ת���һ�εõ�A�������ĸ��ڵ�
- * �Ӹ����£��ҵ���һ����ͬ�Ľڵ㣬����A�Ľڵ�
+ * 给定二个二叉树A和B，B可以旋转最多一次得到A，问旋哪个节点
+ * 从根往下，找到第一个不同的节点，就是A的节点
 */
 #include<bits/stdc++.h>
 using namespace std;

@@ -1,7 +1,7 @@
 /**
- * ��������A����ÿ��Ai������ȫѡ��ѡһ�룬���߲�ѡ
- * ����ѡ֮�ʹ�1��M�ķ�������
- * ����DP
+ * 给定数组A，对每个Ai，可以全选、选一半，或者不选
+ * 问所选之和从1到M的方案总数
+ * 背包DP
 */
 #include<bits/stdc++.h>
 using namespace std;

@@ -1,10 +1,10 @@
 /**
- * ¸ø¶¨Êý×éA£¬ÔÙ¸ø¶¨Êý×éX£¬ÆäÖÐXi=max(0, A1...A[i-1])
- * ÔÙ¸ø¶¨Êý×éB£¬ÁîBi=Ai-Xi
- * ÏÖÔÚÒÑÖªÊý×éB£¬ÒªÇó·´ÍÆ³öÊý×éA
+ * ç»™å®šæ•°ç»„Aï¼Œå†ç»™å®šæ•°ç»„Xï¼Œå…¶ä¸­Xi=max(0, A1...A[i-1])
+ * å†ç»™å®šæ•°ç»„Bï¼Œä»¤Bi=Ai-Xi
+ * çŽ°åœ¨å·²çŸ¥æ•°ç»„Bï¼Œè¦æ±‚åæŽ¨å‡ºæ•°ç»„A
  * 
- * ºÜÃ÷ÏÔÁîxÎªµ±Ç°AÊý×éµÄ×î´óÖµ£¨³õÊ¼Îª0£©
- * ÔÙÁîAi=Bi+x¼´¿É
+ * å¾ˆæ˜Žæ˜¾ä»¤xä¸ºå½“å‰Aæ•°ç»„çš„æœ€å¤§å€¼ï¼ˆåˆå§‹ä¸º0ï¼‰
+ * å†ä»¤Ai=Bi+xå³å¯
 */
 #include <bits/stdc++.h>
 using namespace std;

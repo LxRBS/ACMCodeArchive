@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 /**
  * @brief 二维平面几何
  * @version 20220812, 模板类, 函数尽量作为成员函数, 可以少写模板参数
@@ -15,7 +12,7 @@ using namespace std;
  * 持续更新...
  * 题目列表:
  * 基础运算
- * LuoguP1355: 点在三角形内
+ * LuoguP1355: 点在三角形内，用的是logN的算法
  * 牛客207032: 直线的位置关系, 2个方法
  * 牛客220476: 线段相交, 2个方法
  * 牛客233186: 凸多边形的距离，闵可夫斯基和，GJK算法
@@ -34,6 +31,22 @@ using namespace std;
  * 牛客233171: 半平面交求周长
  * 牛客2022暑假3G: 凸多边形碰撞检测, 闵可夫斯基何, GJK算法
  */
+#include <bits/stdc++.h>
+using namespace std;
+
+char *__abc147, *__xyz258, __ma369[100000];
+#define __hv007() ((__abc147==__xyz258) && (__xyz258=(__abc147=__ma369)+fread(__ma369,1,100000,stdin),__abc147==__xyz258) ? EOF : *__abc147++)
+
+int getInt(){
+	int sgn = 1;
+	char ch = __hv007();
+	while( ch != '-' && ( ch < '0' || ch > '9' ) ) ch = __hv007();
+	if ( '-' == ch ) {sgn = 0;ch=__hv007();}
+ 
+	int ret = (int)(ch-'0');
+	while( '0' <= (ch=__hv007()) && ch <= '9' ) ret = ret * 10 + (int)(ch-'0');
+	return sgn ? ret : -ret;
+}
 
 /** 1. typdef和常数 **/
 using Real = long double;
@@ -79,52 +92,56 @@ inline Real myasin(Real x){
     return asin(x);
 }
 
-/** 3. 点与向量的结构体以及基本运算，相等，叉积，点积, 极角排序 **/
-/// 模板类, 可以实例化成整型或者实型
-template<typename T>struct Point{
+using T = llt;
+
+/** 3. 点与向量的结构，只实现整型的 **/
+struct Point{
 
 T x, y;
-Point(T a=0, T b=0):x(a),y(b){}
-/// 整型注意有可能超范围
-T square() const {return x * x + y * y;}
-/// 长度必须是实型
-Real length() const {return sqrt((Real)this->square());}
-void normSelf() { // 单位化, 必须是实型
-    T tmp = this->square();
-    if(is0(tmp - 1)) return;
-    Real t = sqrt((Real)tmp);
-    this-> x /= t, this->y /= t;
+Point() = default;
+Point(T a, T b):x(a),y(b){}
+
+void input(){
+    this->x = getInt();
+    this->y = getInt();
 }
-bool isZero() const {return is0(x) && is0(y);}
-/// 算术运算加减乘
-const Point operator + (const Point & r) const {return Point(x + r.x, y + r.y);}
+
+T square() const {return x * x + y * y;} // 整型小心超范围
+
+bool operator == (const Point & r) const {return x == r.x && y == r.y;}
+
 const Point operator - (const Point & r) const {return Point(x - r.x, y - r.y);}
-const Point operator * (T k) const {return Point(x * k, y * k);}
-/// 关系运算
-bool operator == (const Point & r) const {return is0(x - r.x) && is0(y - r.y);}
-/// 向量叉积, this 叉 r
-T cross(const Point & r) const {return x * r.y - y * r.x;}
-/// 向量点积
+
 T dot(const Point & r) const {return x * r.x + y * r.y;}
-/// 点的叉积, this作为点O, OA 叉 OB
-T cross(const Point &A, const Point &B) const {return (A - *this).cross(B - *this);}
-/// 点的点积
-T dot(const Point &A, const Point &B) const {return (A - *this).dot(B - *this);}
-/// 距离的平方
-T dist2(const Point & r) const {return (*this-r).square();}
-/// 距离, 必须是实数
-Real dist(const Point & r) const {return (*this-r).length();}
-/// this与线段AB的位置关系
-int relate(const Point &A, const Point &B) const {
+
+T dot(const Point & A, const Point & B) const {return (A - *this).dot(B - *this);}
+
+T cross(const Point & r) const {return x * r.y - y * r.x;}
+
+T cross(const Point & A, const Point & B) const {return (A - *this).cross(B - *this);}
+
+Real length() const {return (Real)sqrt((Real)this->square());}
+
+Real dist(const Point & r) const {return (*this - r).length();}
+
+/**
+ * @brief 返回this与线段AB的关系，保证A!=B 
+ * @return this是A、B之一，返回IN|VERTEX,this在AB上，返回IN|EDGE,否则返回OUT
+ */
+int relate(const Point & A, const Point & B) const {
     assert(!(A == B));
     if(A == *this || B == *this) return IN | VERTEX;
     if(sgn(this->dot(A, B)) <= 0 && 0 == sgn(this->cross(A, B))){
         return IN | EDGE;
     }
-    return OUT;
+    return OUT;    
 }
-/// this与线段AB的距离
-Real dist(const Point &A, const Point &B) const {
+
+/**
+ * @brief 返回this到线段AB之间的距离
+ * @return 距离 
+ */
+Real dist(const Point & A, const Point & B) const {
     if(IN & this->relate(A, B)) return 0;
     if(sgn(A.dot(*this, B)) <= 0) return this->dist(A);
     if(sgn(B.dot(*this, A)) <= 0) return this->dist(B);
@@ -132,67 +149,31 @@ Real dist(const Point &A, const Point &B) const {
     return fabs(this->cross(A, B)) / (A - B).length();
 }
 
-
-};
-
-/// 极角排序, [0, 36)
-template<typename T> struct ArgCmp{
-using Dian = Point<T>;
-
-const Dian center; // 中心点, 默认是原点
-
-ArgCmp(const Dian &a = Dian()):center(a){}
-
-bool operator () (const Dian &a, const Dian &b) const {
-    auto calLoc = [&](const Dian &p)->int{ // 计算象限        
-        if(sgn(p.y) > 0) return 2; // (0, 180)
-        if(sgn(p.y) < 0) return 4; // (180, 360)
-        if(sgn(p.x) > 0) return 1; // 0度
-        if(sgn(p.x) < 0) return 3; // 180度
-        return 0; // 原点
-    };
-
-    const Dian da(a - center);
-    const Dian db(b - center);
-    const int aloc = calLoc(da);
-    const int bloc = calLoc(db);
-    if(aloc != bloc) return aloc < bloc;
-
-    const auto chaji = sgn(da.cross(db));
-    if(chaji) return chaji > 0; // 从a到b是逆时针 
-    /// 到此说明幅角一致, 看长度
-    return sgn(da.square() - db.square()) < 0;
-}    
-
 };
 
 /** 4. 直线的结构体 **/
-template<typename T>struct Line{
+struct Line{
 
-using Dian = Point<T>;
-using Zhixian = Line<T>;
-
-T a, b, c; // 对于整点而言, 必然存在满足条件的abc为整数
+T a, b, c; // ax + by + c = 0
 
 Line() = default;
 
-/// 两点确定一条直线
-Line(const Dian &A, const Dian &B, bool needNorm=false){
+/**
+ * @brief 直线AB
+ * @param needNorm 是否需要归一化
+ */
+Line(const Point & A, const Point & B, bool needNorm=false){
     assert(!(A == B));
-    /// 用仿射坐标生成
     this->a = A.y - B.y;
     this->b = B.x - A.x;
-    this->c = A.x * B.y - B.x * A.y; 
-    
-    if(needNorm) normSelf();
+    this->c = A.x * B.y - B.x * A.y;     
+    if(needNorm) normSelf();    
 }
 
-/// 给定基点p和方向向量d, 生成直线
-static Zhixian create(const Dian &p, const Dian &d, bool needNorm=false){
-    return Zhixian(p, p+d, needNorm);
-}
-
-/// 归一化, 可以用于stl的数据结构, 必须是整型
+/**
+ * @brief 归一化，即a/b/c互质，
+ * 且a不为零则a保证大于零，a为零则保证b大于零
+ */
 void normSelf() {
     T aa = a >= 0 ? a : -a;
     T bb = b >= 0 ? b : -b;
@@ -212,10 +193,14 @@ void normSelf() {
     if(a < 0 || (0 == a && b < 0)) {a = -a, b = -b, c = -c;}
 }
 
-T eval(const Dian &p) const {return a * p.x + b * p.y + c;}
+T eval(const Point & p) const {return p.x * a + p.y * b + c;}
 
-/// 两条直线的位置关系, 相交还能返回交点, 交点只能是实型 
-int relate(const Line & r, Point<Real> *pk=nullptr) const {
+/**
+ * @brief this与r的位置关系，两条直线的位置关系
+ * @param pk 相交情况下，且不为空，则会带出交点坐标，注意交点不能保证是整型
+ * @return CHONGHE, PINGXING或者JIAO 
+ */
+int relate(const Line & r, pair<Real, Real> * pk=nullptr) const {
     T x = b * r.c - c * r.b; // 整型有可能溢出
     T y = r.a * c - r.c * a;
     T t = a * r.b - b * r.a;
@@ -223,54 +208,24 @@ int relate(const Line & r, Point<Real> *pk=nullptr) const {
         if(is0(x) && is0(y)) return CHONGHE;
         return PINGXING;
     }
-    if(pk) pk->x = (Real)x / t, pk->y = (Real)y / t;
+    if(pk) pk->first = (Real)x / t, pk->second = (Real)y / t;
     return JIAO;
-}
-
-/// 直线与点的位置关系
-int relate(const Dian & p) const {
-    return is0(a * p.x + b * p.y + c) ? IN : OUT;
-}
-
-/// 直线与线段AB的位置关系
-int relate(const Dian & A, const Dian & B) const {
-    int ra = sgn(this->eval(A));
-    int rb = sgn(this->eval(B));
-    if(0 == ra && 0 == rb) return JIAO & CHONGHE;
-    if(0 == ra || 0 == rb) return JIAO & VERTEX;
-    return ra * rb < 0 ? JIAO : OUT;
-}
-
-/// 点到直线的距离
-Real dist(const Dian & p) const {
-    return this->eval(p) / sqrt(a * a + b * b);
 }
 
 };
 
 /** 5. 线段的结构体，线段有时也用两点表示 **/
-template<typename T>struct LineSeg{
+struct LineSeg{
 
-/// 为了节约模板参数, 重命名
-using Dian = Point<T>;
-using Xianduan = LineSeg<T>;
-Dian s, e; // s和e不区分顺序
+Point s, e;
+LineSeg() = default;
+LineSeg(const Point & A, const Point & B):s(A),e(B){}
 
-LineSeg(const Dian &A, const Dian &B):s(A),e(B){}
-
-/// 点与线段的位置关系
-int relate(const Dian & p) const {
-    return p.relate(this->s, this->e);
-}
-
-/// 点与线段的距离
-Real dist(const Dian & p) const {
-    return p.dist2(this->s, this->e);
-}
-
-/// 线段与线段的位置关系, 只返回JIAO或者OUT
-/// 要判断是否交于端点需要额外判断
-int relate(const Dian &A, const Dian &B) const {
+/**
+ * @brief this与线段AB的位置关系，两线段的位置关系
+ * @return JIAO或者OUT，如果需要进一步知道相交的位置，需要额外判断
+ */
+int relate(const Point &A, const Point &B) const {
     return sgn(min(s.x, e.x) - max(A.x, B.x)) <= 0
         && sgn(min(s.y, e.y) - max(A.y, B.y)) <= 0
         && sgn(min(A.x, B.x) - max(s.x, e.x)) <= 0
@@ -280,38 +235,35 @@ int relate(const Dian &A, const Dian &B) const {
         ? JIAO : OUT;
 }
 
-/// 线段与线段的位置关系, 只返回JIAO或者OUT
-/// 要判断是否交于端点需要额外判断
-int relate(const Xianduan & r) const {
-    return this->relate(r.s, r.e);         
-}
-
 };
 
-/** 6. 多边形, 简单多边形和凸多边形和凸包 **/
-/// 简单多边形
-template<typename T>struct Polygon{
+/*** 6. 简单多边形 ***/
+struct Polygon{
 
-using Dian = Point<T>;
-using Xianduan = LineSeg<T>;
-using vt = vector<Dian>;
-
-vt pts; // 端点数组, 保证没有多余的长度, 即size() == n
+vector<Point> pts; // 编号从0开始
 
 Polygon() = default;
-Polygon(int n):pts(n, Dian()){}
 
-void init(int n){pts.resize(n);}
+void input(int n){
+    this->pts.assign(n, Point());
+    for(auto & p : this->pts){
+        p.x = getInt();
+        p.y = getInt();
+    }
+}
 
-/// 点与简单多边形位置关系, O(N), 顺时针逆时针都能用
-int relate(const Dian & p) const {
+/**
+ * @brief 判断点p是否在this里，this是简单多边形，顺逆时针均可，O(N)
+ * @return 如果在端点上返回IN|VERTEX，在边上返回IN|EDGE，在里返回IN，否则返回OUT 
+ */
+int relate(const Point & p) const {
     int n = pts.size();
 
     /// 特判
     if(1 == n) return (p == pts[0]) ? (IN | VERTEX) : OUT;
 
     /// 无穷远点构成的线段 
-    Xianduan ls(p, Dian(INF, p.y));
+    LineSeg ls(p, Point(INF, p.y));
     int ans = 0;
     for(int r,nxt,i=0;i<n;++i){
         nxt = (i+1) % n;
@@ -328,8 +280,8 @@ int relate(const Dian & p) const {
         if(OUT == r) continue;
 
         /// 交于较高的点也忽略
-        if(t > 0 && ls.relate(pts[nxt])) continue;
-        if(t < 0 && ls.relate(pts[i])) continue;
+        if(t > 0 && pts[nxt].relate(ls.s, ls.e)) continue;
+        if(t < 0 && pts[i].relate(ls.s, ls.e)) continue;
 
         ++ans;
     }
@@ -337,270 +289,20 @@ int relate(const Dian & p) const {
     return (ans & 1) ? IN : OUT;
 }
 
-/// 点到简单多边形的, O(N)
-Real dist(const Dian & p, Real const inf=INF) const {
-    if(this->relate(p)) return 0;
-
-    int n = pts.size();
-    Real ans = inf;
-    for(int i=0;i<n;++i){
-        ans = min(ans, p.dist(pts[i], pts[(i+1)%n]));
-    }
-    return ans;
-}
-
-/// 有向面积的二倍
-T area2() const {
-    int n = pts.size();    
-    T ans = 0;
-    for(int i=1;i<n-1;++i){
-        ans += pts[0].cross(pts[i], pts[(i+1)%n]);
-    }
-    return ans;
-}
-
-/// 周长, 必然为实型
-Real circum() const {
-    Real ans = 0.0;
-    for(int i=0,n=pts.size();i<n;++i){
-        ans += pts[i].dist(pts[(i+1)%n]);
-    }
-    return ans;
-}
-
-/// 规范化, 删除共线点
-void normSelf(){
-    auto &p = pts;
-    int n = pts.size();
-    if(n <= 2) return;
-
-    if(this->isDegenerate()){
-        auto lowleft = [](const Dian &a, const Dian &b){
-            int t = sgn(a.y - b.y);
-            if(t) return t < 0;
-            return sgn(a.x - b.x) < 0;
-        };
-        int k = 0;
-        for(int i=1;i<n;++i){
-            if(lowleft(pts[i], pts[k])){
-                k = i;
-            }
-        }
-        /// 保存最小最左及其前一个点即可
-        const Dian tmp[] = {pts[k], pts[(k-1+n)%n]};
-        pts.assign(tmp, tmp+2);
-        return;
-    }
-    
-    int top = 1;
-    int k = 1;
-    while(1){
-        while(k < n && is0(p[top-1].cross(p[k], p[(k+1)%n]))) ++k;
-        if(k == n) {p[top++] = p[n-1]; break;}
-        p[top++] = p[k++];
-        if(k == n) break;
-    }
-
-    /// 后处理top
-    while(top >= 3 && is0(p[0].cross(p[top-1], p[top-2]))){
-        --top;
-    }
-    
-    /// 删除
-    p.erase(p.begin() + top, p.end());
-    if(p.size() <= 2) return;
-
-    // 处理0点 
-    if(is0(p[0].cross(p[p.size()-1], p[1]))) p.erase(p.begin());
-    /// assert
-    assert([&]()->bool{
-        int n = p.size();
-        for(int i=0;i<n;++i){
-            if(is0(p[i].cross(p[(i-1+n)%n], p[(i+1)%n]))){
-                return false;
-            }
-        }
-        return true;
-    }());
-}
-
-/// 是否退化, O(N)
-/// 一般不会有退化，直接返回false即可
-/// 感觉退化情况下意义不大, 特别是对凸多边形 
-bool isDegenerate() const {
-    if(1 == pts.size()) return true; // 退化成一个点
-    for(int i=2,n=pts.size();i<n;++i){
-        if(sgn(pts[0].cross(pts[1], pts[i]))){
-            return false;
-        }
-    }
-    return true; // 退化成一条线段
-}
-
 };
 
 /// 凸多边形和凸包
-template<typename T>struct Convex : public Polygon<T>{
+template<typename T>struct Convex_ : public Polygon_<T>{
 
-using Dian = Point<T>;
-using Zhixian = Line<T>;
+using Dian = Point_<T>;
+using Zhixian = Line_<T>;
 using vt = vector<Dian>;
-using Tu = Convex<T>;
+using Tu = Convex_<T>;
 
-Convex():Polygon<T>(){}
-Convex(int n):Polygon<T>(n){}
+Convex_():Polygon_<T>(){}
+Convex_(int n):Polygon_<T>(n){}
 
-/// 点是否在凸多边形内, log算法, 必须是逆时针
-/// 凸多边形不能退化成一大条线段
-/// 0点所在的边不能存在三点共线
-int relate(const Dian & p) const {
-    const auto & pts = this->pts;
-    int n = pts.size();
 
-    /// 特判
-    if(1 == n) return (p == pts[0]) ? (IN | VERTEX) : OUT;
-    if(2 == n) return p.relate(pts[0], pts[1]);
-    /// 一点点保证
-    assert(sgn(pts[0].cross(pts[1], pts[2])) >= 0);
-    /// 特判是否与0点重合，否则以后只会返回IN, 而不会返回端点
-    if(p == pts[0]) return IN | VERTEX;
-    /// p到点1是逆时针，则p必然在外面
-    if(sgn(pts[0].cross(p, pts[1])) > 0) return OUT;
-    /// p到点n-1是顺时针，则p必然在外面
-    if(sgn(pts[0].cross(p, pts[n-1])) < 0) return OUT;
-    // 二分
-    int left = 1, right = n - 2, mid;
-    do{
-        mid = (left + right) >> 1;
-        assert(mid > 0 && mid + 1 < n);
-        T t1 = pts[0].cross(pts[mid], p);
-        T t2 = pts[0].cross(pts[mid+1], p);
-        /// p 必然在(mid, mid+1)之间
-        if(sgn(t1) >= 0 && sgn(t2) <= 0){
-            /// 要特判是否在(0,1)边上
-            if(1 == mid){
-                int r = p.relate(pts[0], pts[1]);
-                if(r != OUT) return r;
-            }
-            /// 要特判是否在(n-1, 0)边上
-            if(mid + 1 == n - 1){
-                int r = p.relate(pts[n-1], pts[0]);
-                if(r != OUT) return r;
-            }
-            /// 算叉积
-            T chaji = p.cross(pts[mid], pts[mid+1]);
-            int r = sgn(chaji);
-            if(r > 0) return IN;
-            if(r < 0) return OUT;
-            /// 此时必然在(mid, mid+1)边上
-            r = p.relate(pts[mid], pts[mid+1]);
-            assert(r == (IN | VERTEX) || r == (IN | EDGE));
-            return r;
-        }
-        /// 二分
-        if(t1 < 0) right = mid - 1;
-        else left = mid + 1;         
-    }while(left <= right);
-    return OUT;
-}
-
-/// Graham凸包算法, 
-/// 事先把点集塞到pts中, 会改变点集的内容
-/// 该算法保证结果中没有任意三点共线，这一点对计算面积和周长其实没用
-/// nlogn
-int Graham(){    
-    auto & pts = this->pts;
-    int n = pts.size();
-
-    /// 特判 
-    if(1 == n) return 1;
-
-    /// 求最下最左点
-    auto lowleft = min_element(pts.begin(), pts.end(), [](const Dian&a, const Dian &b)->bool{
-        int tmp = sgn(a.y - b.y);
-        if(tmp) return tmp < 0;
-        return a.x < b.x;
-    });
-
-    /// 将最下最左点设为pts[0]
-    swap(*lowleft, pts[0]);
-
-    /// 相对于最下最左点进行排序
-    sort(++pts.begin(), pts.end(), [&](const Dian&a, const Dian&b)->bool{
-        const int tmp = sgn(pts[0].cross(a, b));
-        if(tmp) return tmp > 0; // 角度小的排在前面
-        /// 角度一样，距离小的排在前面
-        return sgn((a - pts[0]).square() - (b - pts[0]).square()) < 0;
-    });
-
-    /// 真正的Graham循环，本质上是一个栈
-    int top = 2;
-    for(int i=2;i<n;++i){
-        while(top > 1 && sgn(pts[top-2].cross(pts[top-1], pts[i])) <= 0){
-            --top;
-        }
-        pts[top++] = pts[i];
-    }
-    /// 去掉最后一条边上有可能共线的点
-    if(top >= 3 && 0 == sgn(pts[0].cross(pts[top-1], pts[top-2]))){
-        --top;
-    }
-    pts.erase(pts.begin()+top, pts.end());
-    return top; // 一定要赋值    
-}
-
-/// 闵可夫斯基和，只能用于凸的
-/// 对于两个凸多边形a和b,凸多边形c=a+b，即a和b中的所有点对相加
-/// 返回一个凸多边形，为闵可夫斯基和，可能存共线点
-const Tu operator + (const Convex & r) const {
-    /// 极角排序，0-360 
-    ArgCmp<T> cmp;
-    /// 最下最左
-    auto lowleft = [](const Dian &u, const Dian &v)->bool{
-        int t = sgn(u.y - v.y);
-        if(t) return t < 0;
-        return u.x < v.x;
-    };
-
-    /// 主计算过程，将输入的多边形p拆分成向量,放入ans
-    /// ans中的向量最终按照极角排序, 返回最下最左的编号
-    auto calc = [&](const vt &p, int n, Dian ans[])->int{
-        int kll = 0; // 最下最左
-        int jll = 0; // 最小角
-        for(int i=0;i<n;++i){
-            ans[i] = p[(i+1)%n] - p[i];
-            if(lowleft(p[i], p[kll])) kll = i;
-            if(cmp(ans[i], ans[jll])) jll = i;
-        }
-        rotate(ans, ans+jll, ans+n);
-        return kll;
-    };
-    
-    /// 参数
-    const auto & pa = this->pts;
-    const auto & pb = r.pts;
-    int na = pa.size(), nb = pb.size();
-
-    /// 返回值
-    Tu ret(na+nb);
-    auto & pc = ret.pts;
-    int nc = pc.size();    
-
-    /// 先拆pa, 再拆pb
-    int ka = calc(pa, na, pc.data());
-    int kb = calc(pb, nb, pc.data()+na);
-    /// 归并
-    inplace_merge(pc.begin(), pc.begin()+na, pc.begin()+na+nb, cmp);
-    /// 再将pc依次连接起来即可，pc中可能存在共线的点
-    pc[0].x += pa[ka].x + pb[kb].x;
-    pc[0].y += pa[ka].y + pb[kb].y;
-
-    for(int i=1;i<nc;++i){
-        pc[i].x += pc[i-1].x;
-        pc[i].y += pc[i-1].y;
-    }
-    return ret;    
-}
 /// 凸多边形的直径，即凸多边形内最长的线段, O(N), 旋转卡壳法
 /// 返回直径的长度的平方，pans里保存构成直径的两个端点的序号, 可能有很多对, 只保存其中一对
 T rcDiameter2(int pans[] = nullptr) const {
@@ -675,7 +377,7 @@ LL_rcTriangle:
 /// 即找到一个矩形完全盖住凸多边形p, 且该矩形面积是最小的
 /// 返回最小面积, pans中记录4个点，为矩形, 点必须是实型
 /// p保证是逆时针, 顺时针需要更改while中的关系符号
-Real rcRectangle(Point<Real> pans[] = nullptr, const Real inf=INF) const {
+Real rcRectangle(Point_<Real> pans[] = nullptr, const Real inf=INF) const {
     const auto & p = this->pts;
     int const n = p.size();
 
@@ -913,18 +615,243 @@ Real dist(const Dian & p) const {
 
 };
 
-/** 7 半平面和半平面交排序增量法 **/
-template<typename T>struct HalfPlane{
+/*** 7. 凸多边形与凸包 ***/
+struct Convex{
 
-using Dian = Point<T>;
-using Banpm = HalfPlane<T>;
+vector<Point> pts; // 编号从0开始
+
+void input(int n){
+    this->pts.assign(n, Point());
+    for(auto & p : this->pts){
+        p.x = getInt();
+        p.y = getInt();
+    }
+}
+
+/**
+ * @brief 凸多边形this与点p的位置关系，this必须是凸的，逆时针，O(logN)
+ * this不能退化，0点所在的边不能存在三点共线?
+ * @return 如果在端点上返回IN|VERTEX，在边上返回IN|EDGE，在里返回IN，否则返回OUT
+ */
+int relate(const Point & p)const{
+    const vector<Point> & pts = this->pts;
+    int n = pts.size();
+
+    /// 特判
+    if(1 == n) return (p == pts[0]) ? (IN | VERTEX) : OUT;
+    if(2 == n) return p.relate(pts[0], pts[1]);
+    /// 一点点保证
+    assert(sgn(pts[0].cross(pts[1], pts[2])) >= 0);
+    /// 特判是否与0点重合，否则以后只会返回IN, 而不会返回端点
+    if(p == pts[0]) return IN | VERTEX;
+    /// p到点1是逆时针，则p必然在外面
+    if(sgn(pts[0].cross(p, pts[1])) > 0) return OUT;
+    /// p到点n-1是顺时针，则p必然在外面
+    if(sgn(pts[0].cross(p, pts[n-1])) < 0) return OUT;
+    // 二分
+    int left = 1, right = n - 2, mid;
+    do{
+        mid = (left + right) >> 1;
+        assert(mid > 0 && mid + 1 < n);
+        int t1 = sgn(pts[0].cross(pts[mid], p));
+        int t2 = sgn(pts[0].cross(pts[mid+1], p));
+        /// p 必然在(mid, mid+1)之间
+        if(t1 >= 0 && t2 <= 0){
+            /// 要特判是否在(0,1)边上
+            if(1 == mid){
+                int r = p.relate(pts[0], pts[1]);
+                if(r != OUT) return r;
+            }
+            /// 要特判是否在(n-1, 0)边上
+            if(mid + 1 == n - 1){
+                int r = p.relate(pts[n-1], pts[0]);
+                if(r != OUT) return r;
+            }
+            /// 算叉积
+            int r = sgn(p.cross(pts[mid], pts[mid+1]));
+            if(r > 0) return IN;
+            if(r < 0) return OUT;
+            /// 此时必然在(mid, mid+1)边上
+            r = p.relate(pts[mid], pts[mid+1]);
+            assert(r == (IN | VERTEX) || r == (IN | EDGE));
+            return r;
+        }
+        /// 二分
+        if(t1 < 0) right = mid - 1;
+        else left = mid + 1;         
+    }while(left <= right);
+    return OUT;    
+}
+
+/**
+ * @brief Graham凸包算法，NlogN
+ *  需要事先把点集放入pts中，最后会改变pts的内容，
+ *  最后结果保证没有任意三点共线，这一点其实一般没用
+ * @return 凸包点的数量 
+ */
+int Graham(){    
+    auto & pts = this->pts;
+    int n = pts.size();
+
+    /// 特判 
+    if(1 == n) return 1;
+
+    /// 求最下最左点
+    auto lowleft = min_element(pts.begin(), pts.end(), [](const Point&a, const Point &b)->bool{
+        int tmp = sgn(a.y - b.y);
+        if(tmp) return tmp < 0;
+        return a.x < b.x;
+    });
+
+    /// 将最下最左点设为pts[0]
+    swap(*lowleft, pts[0]);
+
+    /// 相对于最下最左点进行排序
+    sort(++pts.begin(), pts.end(), [&](const Point&a, const Point&b)->bool{
+        const int tmp = sgn(pts[0].cross(a, b));
+        if(tmp) return tmp > 0; // 角度小的排在前面
+        /// 角度一样，距离小的排在前面
+        return sgn((a - pts[0]).square() - (b - pts[0]).square()) < 0;
+    });
+
+    /// 真正的Graham循环，本质上是一个栈
+    int top = 2;
+    for(int i=2;i<n;++i){
+        while(top > 1 && sgn(pts[top-2].cross(pts[top-1], pts[i])) <= 0) --top;
+        pts[top++] = pts[i];
+    }
+    pts.erase(pts.begin()+top, pts.end());
+    
+    // 验证一下
+    n = pts.size();
+    if(n >= 3)for(int i=0;i<n;++i){
+        int prv = (i-1+n)%n;
+        int nxt = (i+1)%n;
+        if(is0(pts[i].cross(pts[prv], pts[nxt]))){
+            throw runtime_error(to_string(i));
+        }
+    }
+
+    return top;   
+}
+
+/// 闵可夫斯基和, ans = *this + r, O(N)
+/// ans必然是一个凸多边形，可能存在共线点
+
+/**
+ * @brief 求this与r的闵可夫斯基和，O(N)
+ *   this与r均是凸多边形，逆时针
+ * @param ans 输出参数，可能存在共线的边
+ */
+void Minkowski(const Convex & r, Convex & ans)const{
+    using vt = vector<Point>;
+
+    auto lowleft = [](const Point & a, const Point & b){
+        int t = sgn(a.y - b.y);
+        if(t) return t < 0;
+        return a.x < b.x;
+    };
+    /// 向量排序，从0-360，极角相同，长度小的排在前面
+    auto cmp = [](const Point & a, const Point & b){
+        int ya = sgn(a.y), yb = sgn(b.y);
+        if(ya && yb && ya != yb) return ya > yb;
+        if(!ya && !yb) {
+            int xa = sgn(a.x), xb = sgn(b.x);
+            if(xa != xb) return xa > xb;
+            return a.square() < b.square();
+        }
+        int t = sgn(a.cross(b));
+        if(t) return t > 0;
+        return a.square() < b.square();
+    };
+
+    /// 主计算过程，将输入的多边形p拆分成向量,放入ret
+    /// ans中的向量最终按照极角0-360排序, 返回最下最左的编号
+    auto calc = [cmp, lowleft](const vt &p, int n, Point ret[])->int{
+        int kll = 0; // 最下最左
+        int jll = 0; // 最小角
+        for(int i=0;i<n;++i){
+            ret[i] = p[(i+1)%n] - p[i];
+            if(lowleft(p[i], p[kll])) kll = i;
+            if(cmp(ret[i], ret[jll])) jll = i;
+        }
+        rotate(ret, ret+jll, ret+n);
+        return kll;
+    };  
+
+    /// 参数
+    const auto & pa = this->pts;
+    const auto & pb = r.pts;
+    int na = pa.size(), nb = pb.size();
+
+    /// 返回值
+    auto & pc = ans.pts;
+    pc.assign(na + nb, Point());
+    int nc = pc.size();    
+
+    /// 先拆pa, 再拆pb
+    int ka = calc(pa, na, pc.data());
+    int kb = calc(pb, nb, pc.data()+na);
+    /// 归并
+    inplace_merge(pc.begin(), pc.begin()+na, pc.begin()+na+nb, cmp);
+    /// 再将pc依次连接起来即可，pc中可能存在共线的点
+    pc[0].x += pa[ka].x + pb[kb].x;
+    pc[0].y += pa[ka].y + pb[kb].y;
+    for(int i=1;i<nc;++i){
+        pc[i].x += pc[i-1].x;
+        pc[i].y += pc[i-1].y;
+    }
+    return;        
+}
+
+/**
+ * @brief 返回某一个方向的极值点, O(logN)
+ *   假设极值点是p，方向是dir，则过p以dir做向量，则多边形上没有任何点在该向量的右边
+ *   https://codeforces.com/blog/entry/48868
+ *   保证this是凸的，逆时针，不能退化成一条线段
+ *   如果存在多点共线的情况，可能可以work
+ * @param dir 生成方向的函数, dir(p)可以得到真正的方向向量
+ *   dir的具体构造可以参照后续的函数
+ * @return 极值点在多边形内的编号，如果有多个极值点，返回逆时针序的第一个
+ */
+int extreme(function<Point(const Point &)> dir){
+    auto & pts = this->pts;
+    int n = pts.size();
+
+    /// dir(j)与向量ij的叉积的符号，为0说明共线，为1说明向量ij在左，否则在右 
+    auto vertexCmp = [dir, &pts](int i, int j)->int{
+        int t = sgn(dir(pts[j]).cross(pts[j] - pts[i]));
+        return t;
+    };
+    
+    /**
+     * @brief 点i是否为极值点
+     *  对某个点i而言，如果i-1在它的右边，i+1在它的左边或者共线，则i是极值点
+     *  iSgn保存当前i的计算值，以节约运算
+     */
+    auto isExtreme = [n, vertexCmp](int i, int & iSgn){
+        iSgn = vertexCmp((i+1)%n, i);
+        int t = vertexCmp(i, (i-1+n)%n);
+        return iSgn >= 0 && t < 0;
+    };
+
+    int left = 0;  // TODO
+}
+
+};
+
+/** 7 半平面和半平面交排序增量法 **/
+template<typename T>struct HalfPlane_{
+
+using Dian = Point_<T>;
+using Banpm = HalfPlane_<T>;
 
 /// ax+by+c >= 0, (a, b)就是法向量
 T a, b, c; // 整点可以形成整数半平面
 
-HalfPlane(T aa=0, T bb=0, T cc=0):a(aa),b(bb),c(cc){}
+HalfPlane_(T aa=0, T bb=0, T cc=0):a(aa),b(bb),c(cc){}
 /// 两点生成一个半平面，从u到v是逆时针，即半平面在uv的左手边
-HalfPlane(const Dian &u, const Dian &v){
+HalfPlane_(const Dian &u, const Dian &v){
     /// 与直线生成一模一样
     assert(!(u == v));
     this->a = u.y - v.y;
@@ -946,7 +873,7 @@ int relate(const Dian &p) const {
 /// 该特殊情况在排序增量法中直接得到半平面交为空集
 /// 返回真表示交点有效，返回false表示特殊情况
 /// 交点只能用实型
-bool inter(const Banpm & r, Point<Real> &p) const {
+bool inter(const Banpm & r, Point_<Real> &p) const {
     const T xishu = a * r.b - b * r.a;
     if(is0(xishu)) return false;
     Real tmp = xishu;
@@ -1006,7 +933,7 @@ static int sandi(Banpm hp[], int n, int&bot, int&top){
 
     /// 主循环
     bot = 0, top = 1;
-    Point<Real> p; // 交点必须是实型
+    Point_<Real> p; // 交点必须是实型
     for(int i=2;i<n;++i){
         /// 最前端的两个半平面相交
         while(bot < top){
@@ -1061,28 +988,6 @@ static int sandi(Banpm hp[], int n, int&bot, int&top){
 
 };
 
-using Point64I = Point<llt>;
-using Point64F = Point<Real>;
-
-char *__abc147, *__xyz258, __ma369[100000];
-#define __hv007() ((__abc147==__xyz258) && (__xyz258=(__abc147=__ma369)+fread(__ma369,1,100000,stdin),__abc147==__xyz258) ? EOF : *__abc147++)
-
-int getInt(){
-	int sgn = 1;
-	char ch = __hv007();
-	while( ch != '-' && ( ch < '0' || ch > '9' ) ) ch = __hv007();
-	if ( '-' == ch ) {sgn = 0;ch=__hv007();}
-
-	int ret = (int)(ch-'0');
-	while( '0' <= (ch=__hv007()) && ch <= '9' ) ret = ret * 10 + (int)(ch-'0');
-	return sgn ? ret : -ret;
-}
-
-#ifndef ONLINE_JUDGE
-int const SIZE = 7;
-#else
-int const SIZE = 1E5+10;
-#endif
 
 int main() {
 #ifndef ONLINE_JUDGE
@@ -1091,3 +996,5 @@ int main() {
 
     return 0;
 }
+
+

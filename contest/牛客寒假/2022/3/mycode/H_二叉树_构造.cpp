@@ -1,6 +1,6 @@
 /**
- * ¸ø¶¨¶ş²æÊ÷AºÍB£¬B¾­¹ıÈô¸É´ÎĞı×ª¿ÉÒÔµÃµ½A£¬ÇóÒ»¸ö¿ÉĞĞµÄĞı×ª·½°¸
- * °´ÕÕAµÄÑù×Ó£¬´ÓÉÏµ½ÏÂ£¬½«BÖĞµÄ¶ÔÓ¦½ÚµãĞıµ½Î»¼´¿É£¬×î¶àN^2/2´ÎĞı×ª
+ * ç»™å®šäºŒå‰æ ‘Aå’ŒBï¼ŒBç»è¿‡è‹¥å¹²æ¬¡æ—‹è½¬å¯ä»¥å¾—åˆ°Aï¼Œæ±‚ä¸€ä¸ªå¯è¡Œçš„æ—‹è½¬æ–¹æ¡ˆ
+ * æŒ‰ç…§Açš„æ ·å­ï¼Œä»ä¸Šåˆ°ä¸‹ï¼Œå°†Bä¸­çš„å¯¹åº”èŠ‚ç‚¹æ—‹åˆ°ä½å³å¯ï¼Œæœ€å¤šN^2/2æ¬¡æ—‹è½¬
 */
 #include<bits/stdc++.h>
 using namespace std;
@@ -49,7 +49,7 @@ void _rotate(int t){
     int p = NodeB[t].parent;
     int sn = NodeB[t].sn;
     int osn = sn ^ 1;
-    //ÖØĞÂÈ·¶¨Èı¶Ô¸¸×Ó¹ØÏµ
+    //ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½Ó¹ï¿½Ïµ
     _link(p,sn,NodeB[t].son[osn]);
     _link(NodeB[p].parent,NodeB[p].sn,t);
     _link(t,osn,p);
@@ -62,7 +62,7 @@ void _splay(int&root,int p,int t){
         _rotate(t);
     }
 
-    if(0==p) root = t;//¸Ä¸ù
+    if(0==p) root = t;//ï¿½Ä¸ï¿½
 }
 
 int RootA, RootB;
@@ -103,7 +103,7 @@ int main(){
             auto ha = qa.front(); qa.pop();
             auto hb = qb.front(); qb.pop();
             if(ha != hb){
-                /// ½«BÊ÷ÖĞµÄhaĞı×ªµ½ÏàÓ¦Î»ÖÃ
+                /// ï¿½ï¿½Bï¿½ï¿½ï¿½Ğµï¿½haï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½Ó¦Î»ï¿½ï¿½
                 int parent = NodeA[ha].parent;
                 _splay(RootB, parent, ha);
             }

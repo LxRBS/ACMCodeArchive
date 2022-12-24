@@ -1,4 +1,4 @@
-/// 凸包求周长，模板题，实型坐标
+/// 凸包求周长，模板题，整型坐标
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -65,7 +65,7 @@ inline Real myasin(Real x){
     return asin(x);
 }
 
-using T = Real;
+using T = llt;
 
 struct Point{
 
@@ -131,7 +131,8 @@ vector<Point> pts; // 编号从0开始
 void input(int n){
     this->pts.assign(n, Point());
     for(auto & p : this->pts){
-        cin >> p.x >> p.y;
+        p.x = getInt();
+        p.y = getInt();
     }
 }
 
@@ -174,7 +175,7 @@ int Graham(){
     
     // 验证一下
     n = pts.size();
-    if(n >= 3)for(int i=0;i<n;++i){
+    for(int i=0;i<n;++i){
         int prv = (i-1+n)%n;
         int nxt = (i+1)%n;
         if(is0(pts[i].cross(pts[prv], pts[nxt]))){
@@ -188,12 +189,12 @@ int Graham(){
 
 };
 
-int N;
+int N, L;
 Convex Con;
 
 Real proc(){
     int n = Con.Graham();
-    Real ans = 0;
+    Real ans = (PI + PI) * L;
     for(int i=0;i<n;++i){
         ans += Con.pts[i].dist(Con.pts[(i+1)%n]);
     }
@@ -204,11 +205,13 @@ int main() {
 #ifndef ONLINE_JUDGE
     freopen("1.txt", "r", stdin);
 #endif 
-    ios::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-    cin >> N;
-    Con.input(N);
-    printf("%.12Lf\n", proc());
+    int nofkase = getInt();
+    while(nofkase--){
+        N = getInt(); L = getInt();
+        Con.input(N);
+        printf("%.0Lf\n", proc());
+        if(nofkase)printf("\n");
+    }
     return 0;
 }
 
