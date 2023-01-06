@@ -1,30 +1,47 @@
 /**
  * @brief 二维平面几何
- * @version 20220812, 模板类, 函数尽量作为成员函数, 可以少写模板参数
+ * @version 20221225, 所有函数作为成员函数，默认为整型坐标
  * 注意： 如果多边形退化成一个点或者一个线段，或者多边形存在三点共线，都需要慎重考虑
  * 1. typedef和常数
  * 2. 处理边界的数学库函数
- * 3. 点与向量的结构体以及基本运算，算术运算, 关系运算, 点积和叉积, 极角排序的functor
+ * 3. 点与向量的结构体以及基本运算，算术运算, 关系运算, 点积和叉积
  * 4. 直线的结构体
  * 5. 线段的结构体，线段有时也用两点表示
- * 6. 多边形与凸多边形, 凸包, 闵可夫斯基和与旋转卡壳法
- * 7. 半平面交排序增量法
+ * 6. 简单多边形
+ * 7. 凸包与凸多边形
+ * 8. 半平面交排序增量法
+ * 9. 德劳奈三角剖分和Voronoi图
  * 持续更新...
  * 题目列表:
+ * 
  * 基础运算
  * LuoguP1355: 点在三角形内，用的是logN的算法
  * 牛客207032: 直线的位置关系, 2个方法
  * 牛客220476: 线段相交, 2个方法
- * 牛客233186: 凸多边形的距离，闵可夫斯基和，GJK算法
- * 牛客233737: 点在凸多边形内，log算法
+ * 
  * 半平面
- * 牛客233170UVA1396UVALive3890: 半平面移动, 半平面交, 二分
+ * 牛客19905: 半平面交，求面积
+ * 牛客233170UVA1396UVALive3890: 半平面移动, 半平面交, 二分，实型坐标
  * 牛客234015: 半平面交二分
+ * 
  * 凸包
  * 牛客233135: 凸包求周长
+ * ZOJ1464: 凸包求周长
+ * 
+ * 凸多边形的log算法
+ * 牛客233165: 点关于凸多边形的切点，动态凸包，面积
+ * 牛客233737: 点在凸多边形内，log算法 
+ * 牛客233738: 直线关于凸多边形的切点
+ * 
+ * 闵可夫斯基和
+ * 牛客233186: 凸多边形的距离，闵可夫斯基和，GJK算法，实型坐标
+ * 
  * 旋转卡壳
- * 牛客232791: 凸包最小矩形覆盖求面积
+ * 牛客20057: 凸包最小矩形覆盖求矩形
  * 牛客233136: 凸包旋转卡壳求直径
+ * 牛客232791: 凸包最小矩形覆盖求面积
+ * hdu7052: 外凸包到内凸包的距离
+ *
  * contest
  * 牛客20057: 凸包最小矩形覆盖求矩形
  * 牛客19905: 半平面交求面积
@@ -54,7 +71,7 @@ using llt = long long;
 
 Real const EPS = 1E-9; // 根据需要调整
 Real const PI = acos(-1);
-Real const INF = 1E9;  // 根据需要调整
+Real const INF = 1E100;  // 根据需要调整
 
 inline int sgn(Real x){return x >= EPS ? 1 : (x <= -EPS ? -1 : 0);}
 inline bool is0(Real x){return 0 == sgn(x);}
@@ -111,6 +128,8 @@ T square() const {return x * x + y * y;} // 整型小心超范围
 bool operator == (const Point & r) const {return x == r.x && y == r.y;}
 
 const Point operator - (const Point & r) const {return Point(x - r.x, y - r.y);}
+
+const Point operator + (const Point & r) const {return Point(x + r.x, y + r.y);}
 
 T dot(const Point & r) const {return x * r.x + y * r.y;}
 
@@ -291,341 +310,14 @@ int relate(const Point & p) const {
 
 };
 
-/// 凸多边形和凸包
-template<typename T>struct Convex_ : public Polygon_<T>{
-
-using Dian = Point_<T>;
-using Zhixian = Line_<T>;
-using vt = vector<Dian>;
-using Tu = Convex_<T>;
-
-Convex_():Polygon_<T>(){}
-Convex_(int n):Polygon_<T>(n){}
-
-
-/// 凸多边形的直径，即凸多边形内最长的线段, O(N), 旋转卡壳法
-/// 返回直径的长度的平方，pans里保存构成直径的两个端点的序号, 可能有很多对, 只保存其中一对
-T rcDiameter2(int pans[] = nullptr) const {
-     
-    auto f = [](const Dian &u, const Dian &v)->T{
-        auto x = u.x - v.x, y = u.y - v.y;
-        return x * x + y * y;
-    };
-    
-    const auto & p = this->pts;
-    int const n = p.size();
-
-    T d = 0;
-    int k1 = 0, k2 = 1;
-    for(k1=0;k1<n;++k1){
-        while(sgn(p[(k1+1)%n].cross(p[(k2+1)%n], p[k1]) - p[(k1+1)%n].cross(p[k2], p[k1])) > 0){
-            k2 = (k2+1)%n;
-        }
-        auto tmp = f(p[k1], p[k2]);
-        if(tmp > d){
-            d = tmp;
-            if(pans){
-                pans[0] = k1;
-                pans[1] = k2;
-                if(k1 > k2) swap(pans[0], pans[1]);
-            }
-        }
-    }
-    return d;
-
-}
-
-/// 旋转卡壳法求凸多边形中的最大三角形, O(N^2)
-/// 返回最大面积的两倍
-T rcTriangle2(int pans[] = nullptr) const {
-    const auto & p = this->pts;
-    int const n = p.size();
-     
-
-    T edge = 0;
-    T ans = 0;
-    for(int k,j,i=0;i<n-2;++i){
-        j = i + 1;
-        k = j + 1;
-LL_rcTriangle:
-        edge = 0;
-        while(k < n){
-            auto chaji = cross(p[i], p[j], p[k]);
-            if(chaji < 0) chaji = -chaji;
-            if(edge > chaji) break;
-            edge = chaji;
-            ++k;
-        }
-        /// edge记录的是以ij为边"所能达到的最大三角形"
-        if(ans < edge) {
-            ans = edge;
-            if(pans){
-                pans[0] = i, pans[1] = j, pans[2] = k;
-            }
-        }
-        /// 更新j,继续循环
-        --k, ++j;
-        if(n - 1 == j) continue;
-        goto LL_rcTriangle;
-    }
-    assert(is0(fabs(p[pans[0]].cross(p[pans[1]], p[pans[2]]) - ans)));
-    sort(pans, pans+3);
-    return ans;
-}
-
-/// 旋转卡壳法求最小覆盖矩形, 
-/// 即找到一个矩形完全盖住凸多边形p, 且该矩形面积是最小的
-/// 返回最小面积, pans中记录4个点，为矩形, 点必须是实型
-/// p保证是逆时针, 顺时针需要更改while中的关系符号
-Real rcRectangle(Point_<Real> pans[] = nullptr, const Real inf=INF) const {
-    const auto & p = this->pts;
-    int const n = p.size();
-
-    if(1 == n){ // 一个点的特殊情况
-        return 0;
-    }
-    if(2 == n){ // 二个点的特殊情况
-        return 0;
-    }
-    /// 初步确定最上点
-    int t = 1; // 分别是最左、最右、最上点
-    while(t < n && sgn(p[0].cross(p[1], p[t]) - p[0].cross(p[1], p[(t+1)%n])) <= 0){
-        ++t;
-    }
-    if(t == n){ /// 说明都在一条直线上
-        return 0;
-    }
-    /// 初步最左和最右
-    int l = t, r = 1;
-    Real ans = inf;
-    for(int i=0;i<n;++i){
-        /// 找另外三个卡点
-        const auto vec = p[(i+1)%n] - p[i];
-        while(vec.dot(p[(r+1)%n]-p[r]) >= 0){
-            r = (r + 1) % n;
-        }
-        while(sgn(p[i].cross(p[(i+1)%n], p[t]) - p[i].cross(p[(i+1)%n], p[(t+1)%n])) <= 0){
-            t = (t + 1) % n;
-        }
-        while(vec.dot(p[(l+1)%n]-p[l]) <= 0){
-            l = (l + 1) % n;
-        }
-        /// 矩形为(i,i+1)边所在的直线且卡住t,l,r三个点
-        /// 矩形的面积就是t到(i,i+1)的距离乘以向量(l, r)在(i,i+1)上投影的长度
-        Real chang = fabs(p[i].cross(p[(i+1)%n], p[t]) / vec.length()); 
-        Real kuan = fabs(vec.dot(p[r] - p[l]) / vec.length());
-        Real tmp = chang * kuan;
-        if(tmp < ans){
-            ans = tmp;
-            /// 记录点
-            if(pans != nullptr){
-                /// 底部的方向向量, 和左右的方向向量
-                Dian diDirection(p[(i+1)%n] - p[i]);
-                Dian zuoDirection(-diDirection.y, diDirection.x);
-                /// 底部的直线, 注意这里不能用构造函数
-                Zhixian bLine = Zhixian::create(p[i], diDirection);
-                /// 右侧的直线
-                Zhixian rLine = Zhixian::create(p[r], zuoDirection);
-                /// 上部直线
-                Zhixian tLine = Zhixian::create(p[t], diDirection);
-                /// 左侧直线
-                Zhixian lLine = Zhixian::create(p[l], zuoDirection);
-                /// 4个交点
-                int c919 = bLine.relate(rLine, pans);
-                c919 &= rLine.relate(tLine, pans+1);
-                c919 &= tLine.relate(lLine, pans+2);
-                c919 &= lLine.relate(bLine, pans+3);
-                assert(JIAO & c919);
-            }
-        }
-    }
-    return ans;
-}
-
-/// 返回某一个方向上的极值点, 即过该点以该方向做一个半平面
-/// 凸多边形的所有点都在该半平面内
-/// 返回值为点在凸多边形中的序号
-/// 如果要得到平行直线的点对, 需要正反调用两次
-/// 保证凸多边形本身是逆时针, 且不能退化成一大条线段, 共线点应该可以适用
-/// https://codeforces.com/blog/entry/48868
-/// O(logN), dir为计算方向的函数
-/// 如果是给定方向，则dir返回一个定值即可
-/// 如果是给定点，则dir返回pi - jidian
-int extreme(function<Dian(const Dian &)> dir) const {
-    const auto &p=this->pts;
-    int const n = p.size(); 
-
-    if(1 == n) return 0;
-    if(2 == n){
-        int t = sgn(dir(p[0]).cross(p[1] - p[0]));
-        if(t < 0) return 1;
-        if(t > 0) return 0;
-        t = sgn(dir(p[0]).dot(p[1] - p[0]));
-        assert(t);
-        if(t > 0) return 0;
-        return 1;
-    }
-    
-    /// 计算i点前后的情况，每条边返回4种可能性，分别表示逆顺正反
-    auto f = [&](int i)->int{
-        const Dian now = dir(p[i]);
-
-        int tprv = sgn(now.cross(p[i] - p[(i-1+n)%n]));
-        int tnxt = sgn(now.cross(p[(i+1)%n] - p[i]));
-
-        int ret = 0;
-        if(tprv > 0) ret |= 0x10;
-        else if(tprv < 0) ret |= 0x20;
-        else{ // 判断dir与边(i-1,i)的方向
-            int t = sgn(now.dot(p[i] - p[(i-1+n)%n]));
-            assert(t);
-            if(t > 0) ret |= 0x40;
-            else ret |= 0x80;
-        }
-
-        if(tnxt > 0) ret |= 1;
-        else if(tnxt < 0) ret |= 2;
-        else{ // 判断dir与边(i, i+1)的方向
-            int t = sgn(now.dot(p[(i+1)%n] - p[i]));
-            assert(t);
-            if(t > 0) ret |= 0x4;
-            else ret |= 0x8;
-        }
-
-        return ret;
-    }; 
-
-    int const t0 = f(0);
-    const Dian vec0 = dir(p[0]);
-    if(0x21 == t0 || 0x24 == t0){ // 恰好就是0
-        return 0;
-    }
-
-    /// 如果0不是答案，则答案必然在[1, n-1]中，令答案为ans, 则
-    /// [0, ans)均满足某个条件,[ans, n-1]均不满足某个条件 
-    auto cmp = [&](const Dian& dian){
-        int const i = &dian - p.data();
-        int const ti = f(i);
-        /// 就是极值点，肯定不满足条件
-        if((ti == 0x21) || (ti == 0x24)) return false;
-        if(t0 & 0x1){ // 说明p0向量到p1向量向左
-            /// 所有向右转的都符合条件
-            if(ti & 0x2) return true;
-            /// 所有负方向边符合
-            if(ti & 0x8) return true;
-            /// 所有正方向不符合
-            if(ti & 0x4) return false;      
-            /// 最后剩下同为向左的, 此时如果i在0点左边，则符合
-            int c919 = sgn(vec0.cross(dian - p[0]));
-            if(c919 > 0) return true;
-            if(c919 < 0) return false;
-            c919 = sgn(vec0.dot(dian - p[0]));
-            assert(c919);
-            if(c919 > 0) return true;
-            return false;                
-        }else if(t0 & 0x2){ // 说明p0到p1是向右转
-            /// 只有也是向右转的才有可能是true，其他都是false
-            if(ti & 0x2){ // 需要在0点的右边才是true
-                int c919 = sgn(vec0.cross(dian - p[0]));
-                if(c919 < 0) return true;
-                if(c919 > 0) return false;
-                c919 = sgn(vec0.dot(dian - p[0]));
-                if(c919 > 0) return false;
-                return true;
-            }
-            return false;            
-        }else if(t0 & 0x4){ // p0和p1向量其实是同方向
-            int c919 = sgn(vec0.cross(dian - p[0]));
-            assert(c919 >= 0);
-            if(c919 > 0) return true;
-            c919 = sgn(vec0.dot(dian - p[0]));
-            if(c919 > 0) return true;
-            return false;
-        }else if(t0 & 0x8){
-            if(ti & 0x2) return true; // 向右的都对
-            if(ti & (0x1 | 0x4)) return false; // 向左或者正方向的都不对
-            if(ti & 0x8){ // 负方向且在0的下方才对
-                int c919 = sgn(vec0.dot(dian - p[0]));
-                assert(c919);
-                if(c919 < 0) return true;
-                return false;
-            } 
-            throw runtime_error("hehe");
-        }
-
-        throw runtime_error("XX");
-        return false;        
-    }; 
-    // int left = 1, right = n - 1, mid;
-    // do{
-    //     mid = (left + right) >> 1;
-    //     if(cmp(p[mid])) left = mid + 1;
-    //     else right = mid - 1;
-    // }while(left <= right);
-    // return left;
-
-    return partition_point(++p.begin(),p.end(),cmp)-p.begin();
-}
-
-/// 保证点p在凸多边形外, 返回两条切线
-/// 即[first, second]之间的点为p的可见点
-pair<int, int> qiexian(const Dian &p) const{
-    int a = this->extreme([&](const Dian &q){return q - p;});
-    int b = this->extreme([&](const Dian &q){return p - q;});
-    return {a, b};
-}
-
-/// 求与直线AB平行的切线的切点
-pair<int, int> qiexian(const Dian &A, const Dian &B) const{
-    int a = this->extreme([&](const Dian &q){return B - A;});
-    int b = this->extreme([&](const Dian &q){return A - B;});
-    return {a, b};
-}
-
-/// 点到凸多边形的距离, O(logN)
-/// 首先求出所有可见点, 然后三分
-Real dist(const Dian & p) const {
-    const auto & pts = this->pts;
-    int const n = pts.size();
-
-    /// 特判
-    if(1 == n) return p.dist(pts[0]);
-    if(2 == n) return p.dist(pts[0], pts[1]);
-    /// 先判内, 这也是log算法
-    int r = this->relate(p);
-    if(r & IN) return 0;
-
-    /// 求可见点范围
-    auto pp = this->qiexian(p);
-
-    /// 三分搜索
-    int left = pp.first, right = pp.second, m1, m2;
-    do{
-        m1 = left + (right - left) / 3;
-        m2 = right - (right - left) / 3;
-        if(sgn(p.dist(pts[m1], pts[(m1+1)%n]) - p.dist(pts[m2], pts[(m2+1)%n])) <= 0){
-            right = (m2 - 1 + n) % n;
-        }else{
-            left = (m1+1)%n; 
-        }
-    }while(left <= right);
-    /// left是答案
-    return p.dist(pts[left], pts[left+1]);    
-}
-
-};
-
 /*** 7. 凸多边形与凸包 ***/
 struct Convex{
 
-vector<Point> pts; // 编号从0开始
+vector<Point> pts; // 编号从0开始，逆时针
 
 void input(int n){
     this->pts.assign(n, Point());
-    for(auto & p : this->pts){
-        p.x = getInt();
-        p.y = getInt();
-    }
+    for(auto & p : this->pts) p.input();
 }
 
 /**
@@ -735,9 +427,6 @@ int Graham(){
     return top;   
 }
 
-/// 闵可夫斯基和, ans = *this + r, O(N)
-/// ans必然是一个凸多边形，可能存在共线点
-
 /**
  * @brief 求this与r的闵可夫斯基和，O(N)
  *   this与r均是凸多边形，逆时针
@@ -753,16 +442,19 @@ void Minkowski(const Convex & r, Convex & ans)const{
     };
     /// 向量排序，从0-360，极角相同，长度小的排在前面
     auto cmp = [](const Point & a, const Point & b){
-        int ya = sgn(a.y), yb = sgn(b.y);
-        if(ya && yb && ya != yb) return ya > yb;
-        if(!ya && !yb) {
-            int xa = sgn(a.x), xb = sgn(b.x);
-            if(xa != xb) return xa > xb;
-            return a.square() < b.square();
-        }
-        int t = sgn(a.cross(b));
-        if(t) return t > 0;
-        return a.square() < b.square();
+        auto calLoc = [](const Point & p)->int{
+            if(sgn(p.y) > 0) return 2; // (0, 180)
+            if(sgn(p.y) < 0) return 4; // (180,360)
+            if(sgn(p.x) > 0) return 1; // 0
+            if(sgn(p.x) < 0) return 2; // 180
+            return 0;
+        };
+        int aloc = calLoc(a), bloc = calLoc(b);
+        if(aloc != bloc) return aloc < bloc;
+
+        int chaji = sgn(a.cross(b));
+        if(chaji) return chaji > 0;
+        return sgn(a.square() - b.square()) < 0;
     };
 
     /// 主计算过程，将输入的多边形p拆分成向量,放入ret
@@ -805,16 +497,20 @@ void Minkowski(const Convex & r, Convex & ans)const{
 }
 
 /**
- * @brief 返回某一个方向的极值点, O(logN)
- *   假设极值点是p，方向是dir，则过p以dir做向量，则多边形上没有任何点在该向量的右边
+ * @brief 返回凸多边形关于某一个方向的极值点, O(logN)
+ *   假设极值点是p，方向是dir，则过p以dir做向量，则多边形上所有点都在该向量的右边
  *   https://codeforces.com/blog/entry/48868
- *   保证this是凸的，逆时针，不能退化成一条线段
- *   如果存在多点共线的情况，可能可以work
+ *   保证this是凸的，逆时针
+ *   如果存在多点共线的情况，简单测试之下也是可以工作的，但是一般会先跑一个凸包，因此这种情况可以避免
+ *   如果退化成一条线段，也能work。如果线段上有多个点，只要排布有序，简单测试之下也没有发现问题
+ *   该函数主要是被tangent函数调用
  * @param dir 生成方向的函数, dir(p)可以得到真正的方向向量
  *   dir的具体构造可以参照后续的函数
  * @return 极值点在多边形内的编号，如果有多个极值点，返回逆时针序的第一个
+ *   但是注意如果0点是答案，则会直接返回0，
+ *   但一般均会先跑一个凸包算法，这样的话0点是最小最左点，则仍然符合上述规律
  */
-int extreme(function<Point(const Point &)> dir){
+int extreme(function<Point(const Point &)> dir)const{
     auto & pts = this->pts;
     int n = pts.size();
 
@@ -835,23 +531,282 @@ int extreme(function<Point(const Point &)> dir){
         return iSgn >= 0 && t < 0;
     };
 
-    int left = 0;  // TODO
+    int leftSign;
+    if(isExtreme(0, leftSign)) return 0;
+
+    int left = 0, right = n, mid, midSign;
+    do{
+        mid = (left + right) >> 1;
+        if(isExtreme(mid, midSign)) return mid;
+        if(leftSign != midSign ? leftSign < midSign : leftSign == vertexCmp(left, mid)){
+            right = mid;
+        }else{
+            left = mid, leftSign = midSign;
+        }
+    }while(left + 1 < right);
+    return left;
 }
+
+/**
+ * @brief 求p点关于凸多边形的两个切点，p要保证在多边形外
+ * @return 返回两个切点在凸多边形的编号, [first, second]之间即为p的"可见"区域
+ *  注意返回是有序的，不能颠倒。first有可能大于second
+ *  如果恰好共线，first可能是不可见的,first+1才是可见的
+ */
+pair<int, int> tangent(const Point & p) const {
+    int a = this->extreme([&p](const Point & q){return q - p;});
+    int b = this->extreme([&p](const Point & q){return p - q;});
+    return {a, b};
+}
+
+/**
+ * @brief 返回凸多边形关于直线AB双向的切点，即假设p和q是答案
+ *   则用平行于AB的直线族去卡多边形，恰好两边交于p和q
+ * @return 切点在多边形的编号
+ */
+pair<int, int> tangent(const Point & A, const Point &B)const{
+    /// 沿AB方向的直线，交于a点，此时多边形都在该直线右侧，即a点是直线AB的对踵点
+    int a = this->extreme([&A, &B](...){return B - A;});
+    int b = this->extreme([&A, &B](...){return A - B;});
+    return {a, b};
+}
+
+// area[i]记录从0到i的扇形面积，注意是2倍
+vector<T> sector_area;
+
+/**
+ * @brief 计算sector_area
+ *  area[i]记录了从0到i的扇形面积的两倍
+ */
+void initSectorArea(){
+    int n = pts.size();
+    sector_area.assign(n + 1, 0LL);
+    for(int i=1;i<=n;++i){
+        sector_area[i] = pts[i-1].cross(pts[i%n]);
+    }
+    for(int i=1;i<=n;++i){
+        sector_area[i] += sector_area[i-1];
+    }
+}
+
+/**
+ * @brief 计算凸多边形从idx到jdx的弓形面积的两倍, O(1)
+ *   idx和jdx是有序的，但是idx有可能大于jdx
+ */
+llt calcArcArea(int idx, int jdx)const{
+    assert(this->sector_area.size() == this->pts.size() + 1);
+    int n = pts.size();
+    if(idx <= jdx){
+        return sector_area[jdx] - sector_area[idx] - pts[idx].cross(pts[jdx]);
+    }
+    return sector_area[n] - sector_area[idx] + sector_area[jdx] - pts[idx].cross(pts[jdx]);
+}
+
+
+/**
+ * @brief 旋转卡壳法求凸包的直径, O(N)
+ *   返回直径的平方, pans保存直径的端点
+ * @param pans 输出参数，保存直径的两个端点的编号，可能有多条直径，只保存一条
+ * @return 直径的平方
+ */
+T rcDiameter2(int pans[] = nullptr) const {
+     
+    auto f = [](const Point &u, const Point &v)->T{
+        auto x = u.x - v.x, y = u.y - v.y;
+        return x * x + y * y;
+    };
+    
+    const auto & p = this->pts;
+    int const n = p.size();
+
+    T d = 0;
+    int k1 = 0, k2 = 1;
+    for(k1=0;k1<n;++k1){
+        while(sgn(p[(k1+1)%n].cross(p[(k2+1)%n], p[k1]) - p[(k1+1)%n].cross(p[k2], p[k1])) > 0){
+            k2 = (k2+1)%n;
+        }
+        auto tmp = f(p[k1], p[k2]);
+        if(tmp > d){
+            d = tmp;
+            if(pans){
+                pans[0] = k1;
+                pans[1] = k2;
+                if(k1 > k2) swap(pans[0], pans[1]);
+            }
+        }
+    }
+    return d;
+
+}
+
+/**
+ * @brief 旋转卡壳法求凸包的最大三角形，O(N^2)
+ *  即在凸包上找三个点，使得这个三点构成的三角形面积最大
+ *  返回最大面积的两倍，pans保存三角形的端点
+ * @param pans 输出参数，三角形端点的编号
+ * @return 最大面积的两倍
+ */
+T rcTriangle2(int pans[] = nullptr) const {
+    const auto & p = this->pts;
+    int const n = p.size();     
+
+    T edge = 0;
+    T ans = 0;
+    for(int k,j,i=0;i<n-2;++i){
+        j = i + 1;
+        k = j + 1;
+LL_rcTriangle:
+        edge = 0;
+        while(k < n){
+            auto chaji = p[i].cross(p[j], p[k]);
+            // if(chaji < 0) chaji = -chaji;
+            assert(chaji >= 0);
+            if(edge > chaji) break;
+            edge = chaji;
+            ++k;
+        }
+        /// edge记录的是以ij为边"所能达到的最大三角形"
+        if(ans < edge) {
+            ans = edge;
+            if(pans){
+                pans[0] = i, pans[1] = j, pans[2] = k;
+            }
+        }
+        /// 更新j,继续循环
+        --k, ++j;
+        if(n - 1 == j) continue;
+        goto LL_rcTriangle;
+    }
+    assert(is0(p[pans[0]].cross(p[pans[1]], p[pans[2]]) - ans));
+    sort(pans, pans+3);
+    return ans;
+}
+
+/**
+ * @brief 旋转卡壳法求凸包的最小覆盖矩形, O(N)
+ *  即找到一个矩形完全覆盖住凸包，且矩形面积最小
+ *  返回矩形的面积，矩形的点放在pans中返回
+ * @param pans 矩形的4个端点，逆时针，矩形不能保证是整点
+ *   注意return 0的时候pans里没有内容
+ * @return 矩形的最小面积 
+ */
+Real rcRectangle(pair<Real, Real> pans[] = nullptr) const {
+    const auto & p = this->pts;
+    int const n = p.size();
+
+    if(1 == n){ // 一个点的特殊情况
+        return 0;
+    }
+    if(2 == n){ // 二个点的特殊情况
+        return 0;
+    }
+    /// 初步确定最上点
+    int t = 1; // 分别是最左、最右、最上点
+    while(t < n && sgn(p[0].cross(p[1], p[t]) - p[0].cross(p[1], p[(t+1)%n])) <= 0){
+        ++t;
+    }
+    if(t == n){ /// 说明都在一条直线上
+        return 0;
+    }
+    /// 初步最左和最右
+    int l = t, r = 1;
+    Real ans = INF;
+    for(int i=0;i<n;++i){
+        /// 找另外三个卡点
+        const auto vec = p[(i+1)%n] - p[i];
+        while(vec.dot(p[(r+1)%n]-p[r]) >= 0){
+            r = (r + 1) % n;
+        }
+        while(sgn(p[i].cross(p[(i+1)%n], p[t]) - p[i].cross(p[(i+1)%n], p[(t+1)%n])) <= 0){
+            t = (t + 1) % n;
+        }
+        while(vec.dot(p[(l+1)%n]-p[l]) <= 0){
+            l = (l + 1) % n;
+        }
+        /// 矩形为(i,i+1)边所在的直线且卡住t,l,r三个点
+        /// 矩形的面积就是t到(i,i+1)的距离乘以向量(l, r)在(i,i+1)上投影的长度
+        Real chang = fabs(p[i].cross(p[(i+1)%n], p[t]) / vec.length()); 
+        Real kuan = fabs(vec.dot(p[r] - p[l]) / vec.length());
+        Real tmp = chang * kuan;
+        if(tmp < ans){
+            ans = tmp;
+            /// 记录点
+            if(pans){
+                /// 底部的方向向量, 和左右的方向向量
+                Point diDirection(p[(i+1)%n] - p[i]);
+                Point zuoDirection(-diDirection.y, diDirection.x);
+                /// 底部的直线, 注意这里不能用构造函数
+                Line bLine(p[i], p[(i+1)%n]);
+                /// 右侧的直线
+                Line rLine(p[r], p[r] + zuoDirection);
+                /// 上部直线
+                Line tLine(p[t], p[t] + diDirection);
+                /// 左侧直线
+                Line lLine(p[l], p[l] + zuoDirection);
+                /// 4个交点
+                int c919 = bLine.relate(rLine, pans);
+                c919 &= rLine.relate(tLine, pans+1);
+                c919 &= tLine.relate(lLine, pans+2);
+                c919 &= lLine.relate(bLine, pans+3);
+                assert(JIAO & c919);
+            }
+        }
+    }
+    return ans;
+}
+
+/**
+ * @brief 点p到this的距离，log(N)
+ *   首先判断p是否在多边形内，然后求出切点，然后再三分搜索
+ */
+Real dist(const Point & p) const {
+    const auto & pts = this->pts;
+    int const n = pts.size();
+
+    /// 特判
+    if(1 == n) return p.dist(pts[0]);
+    if(2 == n) return p.dist(pts[0], pts[1]);
+    /// 先判内, 这也是log算法
+    int r = this->relate(p);
+    if(r & IN) return 0;
+
+    /// 求可见点范围
+    auto pp = this->tangent(p);
+
+    /// 三分搜索
+    int left = pp.first, right = pp.second, m1, m2;
+    if(right < left) right += n;
+    do{
+        m1 = left + (right - left) / 3;
+        m2 = right - (right - left) / 3;
+        if(sgn(p.dist(pts[m1%n], pts[(m1+1)%n]) - p.dist(pts[m2%n], pts[(m2+1)%n])) <= 0){
+            right = m2 - 1;
+        }else{
+            left = m1 + 1;
+        }
+    }while(left <= right);
+    /// left是答案
+    return p.dist(pts[left%n], pts[(left+1)%n]);    
+}
+
+
 
 };
 
-/** 7 半平面和半平面交排序增量法 **/
-template<typename T>struct HalfPlane_{
-
-using Dian = Point_<T>;
-using Banpm = HalfPlane_<T>;
+/** 8 半平面和半平面交排序增量法 **/
+struct HalfPlane{
 
 /// ax+by+c >= 0, (a, b)就是法向量
-T a, b, c; // 整点可以形成整数半平面
+T a, b, c; 
 
-HalfPlane_(T aa=0, T bb=0, T cc=0):a(aa),b(bb),c(cc){}
-/// 两点生成一个半平面，从u到v是逆时针，即半平面在uv的左手边
-HalfPlane_(const Dian &u, const Dian &v){
+HalfPlane() = default;
+
+HalfPlane(T aa, T bb, T cc):a(aa),b(bb),c(cc){}
+
+/**
+ * @brief 两点构成一个半平面，u到v是逆时针，半平面在uv的左手边
+ */
+HalfPlane(const Point &u, const Point &v){
     /// 与直线生成一模一样
     assert(!(u == v));
     this->a = u.y - v.y;
@@ -859,42 +814,63 @@ HalfPlane_(const Dian &u, const Dian &v){
     this->c = u.x * v.y - v.x * u.y;    
 }
 
-T eval(const Dian &p) const {return a * p.x + b * p.y + c;}
-/// 点与半平面的关系, 内, 边界, 外
-int relate(const Dian &p) const {
-    int r = sgn(eval(p));
-    if(0 == r) return IN & EDGE;
+Real eval(Real x, Real y) const {return a * x + b * y + c;}
+
+/**
+ * @brief 点(x, y)与半平面的关系
+ * @return 在边界上返回IN|EDGE，在内返回IN，否则返回OUT
+ */
+int relate(Real x, Real y) const {
+    int r = sgn(eval(x, y));
+    if(0 == r) return IN | EDGE;
     if(r > 0) return IN;
     return OUT;
 }
 
-/// 半平面相交求交点，保证相交
-/// 只有一种情况需要特判，就是法向量相反，且交集为空的情况
-/// 该特殊情况在排序增量法中直接得到半平面交为空集
-/// 返回真表示交点有效，返回false表示特殊情况
-/// 交点只能用实型
-bool inter(const Banpm & r, Point_<Real> &p) const {
+/**
+ * @brief 这个函数用于排序增量法中求this与r相交，保证相交，
+ *  除了一种特殊情况，即法向量相反且交集为空，此情况下排序增量法的结果为空集
+ *  返回true表示普通情况，交点坐标由x和y带回
+ *  返回false，表示出现上述特殊情况
+ */
+bool inter(const HalfPlane & r, Real & x, Real & y) const {
     const T xishu = a * r.b - b * r.a;
     if(is0(xishu)) return false;
     Real tmp = xishu;
-    p = {(b * r.c - c * r.b) / tmp, (c * r.a - a * r.c) / tmp};
+    x = (b * r.c - c * r.b) / tmp;
+    y = (c * r.a - a * r.c) / tmp;
     return true;
 }
 
-/// 半平面沿着法向量方向移动距离d, 为负数表示沿着法向量反方向移动
-/// 只能是实型
-Banpm move(T d) const {
-    return Banpm(a, b, c - d * sqrt(a * a + b * b));
+/**
+ * @brief 半平面沿法向移动d形成的新半平面，必须是实型
+ */
+HalfPlane move(T d) const {
+    return HalfPlane(a, b, c - d * sqrt(a * a + b * b));
 }
 
-/// 半平面交的排序增量法
-/// 保证结果是有限的，否则需要加包围盒，因此n肯定大于4
-/// 会改变hp的内容，0-index
-/// 结果保存在hp[bot..top]中
-/// 返回top-bot+1，即半平面的数量，如果小于3，说明原交集为空集
-static int sandi(Banpm hp[], int n, int&bot, int&top){
+/**
+ * @brief 给hp数组加上包围盒，hp的内容是hp[0...n)
+ *  加完以后变为hp[0...n+4)
+ * @return 返回n+4
+ */
+static int bound(HalfPlane hp[], int n, T inf){
+    hp[n++] = {Point(-inf, 1), Point(-inf, 0)}; // 左
+    hp[n++] = {Point(+inf, 0), Point(+inf, 1)}; // 右
+    hp[n++] = {Point(1, +inf), Point(0, +inf)}; // 上
+    hp[n++] = {Point(0, -inf), Point(1, -inf)}; // 下
+    return n;
+}
+
+/**
+ * @brief 半平面相交的排序增量法，必须确保结果是有限的
+ *   对于可能无限的结果，需要事先加上包围盒
+ * @param hp 输入输出参数，从0开始编号，输入是为hp[0...n)，输出时为hp[bot...top]
+ * @return 最后结果的半平面数量，注意小于3，说明交集为空集
+ */
+static int sandi(HalfPlane hp[], int n, int&bot, int&top){
     /// 根据法向量幅角(-180,180]比较大小，角度相同越靠近法向量越小
-    sort(hp, hp+n, [](const Banpm&u, const Banpm&v)->bool{
+    sort(hp, hp+n, [](const HalfPlane&u, const HalfPlane&v)->bool{
         /// 法向量分别位于x轴上下，可以直接得到结果
         int ly = sgn(u.b) >= 0 ? 1 : -1;
         int ry = sgn(v.b) >= 0 ? 1 : -1;
@@ -923,7 +899,7 @@ static int sandi(Banpm hp[], int n, int&bot, int&top){
     });
 
     /// 完全平行的法向量只取一个
-    n = unique(hp, hp+n, [](const Banpm&u, const Banpm&v)->bool{
+    n = unique(hp, hp+n, [](const HalfPlane&u, const HalfPlane&v)->bool{
         int ly = sgn(u.b) >= 0 ? 1 : -1;
         int ry = sgn(v.b) >= 0 ? 1 : -1;
         if (ly != ry) return false;
@@ -933,15 +909,15 @@ static int sandi(Banpm hp[], int n, int&bot, int&top){
 
     /// 主循环
     bot = 0, top = 1;
-    Point_<Real> p; // 交点必须是实型
+    Real x, y;
     for(int i=2;i<n;++i){
         /// 最前端的两个半平面相交
         while(bot < top){
-            bool b = hp[top-1].inter(hp[top], p);
+            bool b = hp[top-1].inter(hp[top], x, y);
             if(!b) return bot = top = -1, 0; // 直接返回空集即可
 
             /// 交点在当前半平面外则出队            
-            if(hp[i].relate(p)){
+            if(hp[i].relate(x, y)){
                 break;
             }else{
                 --top;
@@ -949,10 +925,10 @@ static int sandi(Banpm hp[], int n, int&bot, int&top){
         }
         /// 最底端的两个半平面相交
         while(bot < top){
-            bool b = hp[bot].inter(hp[bot+1], p);
+            bool b = hp[bot].inter(hp[bot+1], x, y);
             if(!b) return bot = top = -1, 0;
 
-            if(hp[i].relate(p)){
+            if(hp[i].relate(x, y)){
                 break;
             }else{
                 ++bot;
@@ -964,19 +940,19 @@ static int sandi(Banpm hp[], int n, int&bot, int&top){
 
     /// 后处理
     while(bot < top){
-        bool b = hp[top-1].inter(hp[top], p);
+        bool b = hp[top-1].inter(hp[top], x, y);
         if(!b) return bot = top = -1, 0;        
-        if(hp[bot].relate(p)){
+        if(hp[bot].relate(x, y)){
             break;
         }else{
             --top;
         }
     }
     while(bot < top){
-        bool b = hp[bot].inter(hp[bot+1], p);
+        bool b = hp[bot].inter(hp[bot+1], x, y);
         if(!b) return bot = top = -1, 0;  
             
-        if(hp[top].relate(p)){
+        if(hp[top].relate(x, y)){
             break;
         }else{
             ++bot;
@@ -986,8 +962,273 @@ static int sandi(Banpm hp[], int n, int&bot, int&top){
     return top - bot + 1;
 }
 
+
 };
 
+
+/*** 9 Delaunay三角剖分和Voronoi图 ***/
+struct Delaunay{ // 分治算法, NlogN
+
+struct point_t{
+
+Real x, y;
+int id;
+point_t(Real a=0,Real b=0,int c=-1):x(a),y(b),id(c){}
+
+void input(){
+    scanf("%Lf%Lf", &x, &y);
+}
+
+bool operator < (const point_t & r) const {
+    int tmp = sgn(this->x - r.x);
+    if(tmp) return tmp < 0;
+    return this->y < r.y;
+}
+
+/**
+ * 叉积，this作为点O，OA×OB
+ */
+Real cross(const point_t & a, const point_t & b) const {
+    auto ax = a.x - this->x;
+    auto ay = a.y - this->y;
+    auto bx = b.x - this->x;
+    auto by = b.y - this->y;
+    return ax * by - bx * ay;
+}
+
+Real dist2(const point_t & r) const {
+    auto x = this->x - r.x;
+    auto y = this->y - r.y;
+    return x * x + y * y;
+}
+
+};
+
+struct t3t{
+
+Real x, y, z;
+t3t() = default;
+t3t(Real a, Real b, Real c):x(a),y(b),z(c){}
+t3t(const point_t & p):x(p.x),y(p.y){
+    z = x * x + y * y;
+}
+
+Real dot(const t3t & p) const {
+    return x * p.x + y * p.y + z * p.z;
+}
+
+t3t& operator -= (const t3t & r) {
+    this->x -= r.x;
+    this->y -= r.y;
+    this->z -= r.z;
+    return *this;
+}
+
+t3t cross(const t3t & r) const {
+    return t3t(
+        y * r.z - z * r.y,
+        z * r.x - x * r.z,
+        x * r.y - y * r.x
+    );
+}
+
+};
+
+struct edge_t{
+
+int id;
+list<edge_t>::iterator it;
+edge_t(int i=0):id(i){}
+
+};
+
+vector<list<edge_t>> head;
+vector<point_t> pts;
+vector<int> rename;
+
+/**
+ * @brief 输入原始点集，一共n个点，编号[0, n-1]
+ *   id也从[0, n-1]
+ */
+void input(int n){
+    pts.assign(n, point_t());
+    for(int i=0;i<n;++i){
+        pts[pts[i].id = i].input();
+    }
+}
+
+/**
+ * @brief 拷贝原始点集，编号从[0, n-1]
+ *  id也从[0, n-1]
+ */
+void input(const vector<Point> & origin_points){
+    int n = origin_points.size();
+    pts.assign(n, point_t());
+    for(int i=0;i<n;++i){
+        pts[pts[i].id = i].x = origin_points[i].x;
+        pts[i].y = origin_points[i].y;
+    }
+}
+
+/**
+ * @brief Delaunay三角剖分的分治算法
+ *  点集要事先保存在this->pts中
+ *  会改变pts中的内容
+ */
+void run(){
+    auto & rename = this->rename;
+    auto & pts = this->pts;
+    int n = pts.size();
+    /// 初始化
+    this->head.assign(n, list<edge_t>());
+    rename.assign(n, 0);
+    /// 排序
+    sort(pts.begin(), pts.end());
+    for(int i=0;i<n;++i) rename[pts[i].id] = i;
+    /// 分治
+    this->divide(0, n - 1);
+}
+
+/**
+ * @brief 分治，处理[left, right]之间的点
+ */
+void divide(int left, int right){
+    if(right <= left + 2){ // 说明少于等于3个点
+        for(int i=left;i<=right;++i){
+            for(int j=i+1;j<=right;++j){
+                this->addEdge(i, j);
+            }
+        }
+        return;
+    }
+
+    int mid = (left + right) >> 1;
+    this->divide(left, mid);
+    this->divide(mid + 1, right);
+
+    auto & pts = this->pts;
+    auto & head = this->head;
+
+    int nowl = left, nowr = right;
+    for(int update=1;update;){
+        update = 0;
+        auto ptL = pts[nowl], ptR = pts[nowr];
+        for(auto it=head[nowl].begin(),et=head[nowl].end();it!=et;++it){
+            auto t = pts[it->id];
+            int tmp = sgn(ptR.cross(ptL, t));
+            if(tmp > 0 || (0 == tmp && sgn(ptR.dist2(t) - ptR.dist2(ptL)) < 0)){
+                nowl = it->id;
+                update = 1;
+                break;
+            }
+        }
+        if(update) continue;
+        for(auto it=head[nowr].begin(),et=head[nowr].end();it!=et;++it){
+            auto t = pts[it->id];
+            int tmp = sgn(ptL.cross(ptR, t));
+            if(tmp < 0 || (0 == tmp && sgn(ptL.dist2(t) - ptL.dist2(ptR)) < 0)){
+                nowr = it->id;
+                update = 1;
+                break;
+            }
+        }
+    }
+
+    this->addEdge(nowl, nowr);
+
+    for(int update=1;;){
+        update = 0;
+        auto ptL = pts[nowl], ptR = pts[nowr];
+        int ch = -1, side = 0;
+        for(auto it=head[nowl].begin(),et=head[nowl].end();it!=et;++it){
+            int tmp = sgn(ptL.cross(ptR, pts[it->id]));
+            if(tmp > 0 && (-1 == ch || this->isInCircle(ptL, ptR, pts[ch], pts[it->id]) < 0)){
+                ch = it->id, side = -1;
+            }
+        }
+        for(auto it=head[nowr].begin(),et=head[nowr].end();it!=et;++it){
+            int tmp = sgn(ptR.cross(pts[it->id], ptL));
+            if(tmp > 0 && (-1 == ch || this->isInCircle(ptL, ptR, pts[ch], pts[it->id]) < 0)){
+                ch = it->id; side = 1;
+            }
+        }
+        if(-1 == ch) break;
+        if(-1 == side){
+            for(auto it=head[nowl].begin(),et=head[nowl].end();it!=et;){
+                if(this->inter(ptL, pts[it->id], ptR, pts[ch])){
+                    head[it->id].erase(it->it);
+                    head[nowl].erase(it++);
+                }else{
+                    ++it;
+                }
+            } 
+            nowl = ch;
+            this->addEdge(nowl, nowr);
+        }else{
+            for(auto it=head[nowr].begin(),et=head[nowr].end();it!=et;){
+                if(this->inter(ptR, pts[it->id], ptL, pts[ch])){
+                    head[it->id].erase(it->it);
+                    head[nowr].erase(it++);
+                }else{
+                    ++it;
+                }
+            }
+            nowr = ch;
+            this->addEdge(nowl, nowr);
+        }
+    }
+    return;
+}
+
+/**
+ * u到v之间加一条边
+ */
+void addEdge(int u, int v){
+    this->head[u].push_front(edge_t(v));
+    this->head[v].push_front(edge_t(u));
+    this->head[u].begin()->it = this->head[v].begin();
+    this->head[v].begin()->it = this->head[u].begin();
+    return;
+}
+
+int isInCircle(const point_t & a, point_t b, point_t c, const point_t & p) const {
+    if(sgn(a.cross(b, c)) < 0) swap(b, c);
+    t3t a3(a), b3(b), c3(c), p3(p);
+    b3 -= a3;
+    c3 -= a3;
+    p3 -= a3;
+    t3t f = b3.cross(c3);
+    int tmp = sgn(p3.dot(f));
+    return tmp;
+}
+
+int inter(const point_t & a, const point_t & b, const point_t & c, const point_t & d) const {
+    return sgn(a.cross(c, b)) * sgn(a.cross(b, d)) > 0
+        && sgn(c.cross(a, d)) * sgn(c.cross(d, b)) > 0;
+}
+
+/**
+ * @brief 获取剖分的结果, 返回三角形的边的数组
+ *  ret[i]表示某条边，即从first到second有一条边
+ *  注意编号指的是原点集中的编号。
+ */
+vector<pair<int, int>> getEdge(){
+    vector<pair<int, int>> ret;
+    auto & head = this->head;
+    auto & pts = this->pts;
+    int n = pts.size();
+    
+    ret.reserve(n);
+    for(int i=0;i<n;++i){
+        for(auto it=head[i].begin(),et=head[i].end();it!=et;++it){
+            if(it->id < i) continue;
+            ret.emplace_back(pts[i].id, pts[it->id].id);
+        }
+    }
+    return ret;
+}
+
+};
 
 int main() {
 #ifndef ONLINE_JUDGE

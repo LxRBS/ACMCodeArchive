@@ -1,46 +1,39 @@
-#include <bits/stdc++.h>
-using namespace std;
 
 /**
- * @brief ¶şÎ¬Æ½Ãæ¼¸ºÎ
- * @version 20220812, Ä£°åÀà, º¯Êı¾¡Á¿×÷Îª³ÉÔ±º¯Êı, ¿ÉÒÔÉÙĞ´Ä£°å²ÎÊı
- * 1. typedefºÍ³£Êı
- * 2. ´¦Àí±ß½çµÄÊıÑ§¿âº¯Êı
- * 3. µãÓëÏòÁ¿µÄ½á¹¹ÌåÒÔ¼°»ù±¾ÔËËã£¬ËãÊõÔËËã, ¹ØÏµÔËËã, µã»ıºÍ²æ»ı
- * 4. Ö±ÏßµÄ½á¹¹Ìå
- * 5. Ïß¶ÎµÄ½á¹¹Ìå£¬Ïß¶ÎÓĞÊ±Ò²ÓÃÁ½µã±íÊ¾
- * 6. ¶à±ßĞÎÓëÍ¹¶à±ßĞÎ, Í¹°ü, ãÉ¿É·òË¹»ùºÍÓëĞı×ª¿¨¿Ç·¨
- * 7. °ëÆ½Ãæ½»ÅÅĞòÔöÁ¿·¨
- * ³ÖĞø¸üĞÂ...
- * ÌâÄ¿ÁĞ±í:
- * »ù´¡ÔËËã
- * LuoguP1355: µãÔÚÈı½ÇĞÎÄÚ
- * Å£¿Í207032: Ö±ÏßµÄÎ»ÖÃ¹ØÏµ, 2¸ö·½·¨
- * Å£¿Í220476: Ïß¶ÎÏà½», 2¸ö·½·¨
- * Å£¿Í233186: Í¹¶à±ßĞÎµÄ¾àÀë£¬ãÉ¿É·òË¹»ùºÍ£¬GJKËã·¨
- * Å£¿Í233737: µãÔÚÍ¹¶à±ßĞÎÄÚ£¬logËã·¨
- * °ëÆ½Ãæ
- * Å£¿Í233170UVA1396UVALive3890: °ëÆ½ÃæÒÆ¶¯, °ëÆ½Ãæ½», ¶ş·Ö
- * Å£¿Í234015: °ëÆ½Ãæ½»¶ş·Ö
- * Í¹°ü
- * Å£¿Í233135: Í¹°üÇóÖÜ³¤
- * Ğı×ª¿¨¿Ç
- * Å£¿Í232791: Í¹°ü×îĞ¡¾ØĞÎ¸²¸ÇÇóÃæ»ı
- * Å£¿Í233136: Í¹°üĞı×ª¿¨¿ÇÇóÖ±¾¶
- * contest
- * Å£¿Í20057: Í¹°ü×îĞ¡¾ØĞÎ¸²¸ÇÇó¾ØĞÎ
- * Å£¿Í19905: °ëÆ½Ãæ½»ÇóÃæ»ı
- * Å£¿Í233171: °ëÆ½Ãæ½»ÇóÖÜ³¤
- * Å£¿Í2022Êî¼Ù3G: Í¹¶à±ßĞÎÅö×²¼ì²â, ãÉ¿É·òË¹»ùºÎ, GJKËã·¨
+ * ç»™å®šNä¸ªç‚¹ï¼Œæ±‚å‡¸åŒ…çš„æœ€å¤§ç›´å¾„çš„å¹³æ–¹
+ * æ¨¡æ¿é¢˜ã€‚æ—‹è½¬å¡å£³æ³•ã€‚
  */
+#include <bits/stdc++.h>
+using namespace std;
+ 
+char *__abc147, *__xyz258, __ma369[100000];
+#define __hv007() ((__abc147==__xyz258) && (__xyz258=(__abc147=__ma369)+fread(__ma369,1,100000,stdin),__abc147==__xyz258) ? EOF : *__abc147++)
 
-/** 1. typdefºÍ³£Êı **/
+int getInt(){
+	int sgn = 1;
+	char ch = __hv007();
+	while( ch != '-' && ( ch < '0' || ch > '9' ) ) ch = __hv007();
+	if ( '-' == ch ) {sgn = 0;ch=__hv007();}
+ 
+	int ret = (int)(ch-'0');
+	while( '0' <= (ch=__hv007()) && ch <= '9' ) ret = ret * 10 + (int)(ch-'0');
+	return sgn ? ret : -ret;
+}
+ 
+#ifndef ONLINE_JUDGE
+int const SIZE = 23;
+#else
+int const SIZE = 2E5+10;
+#endif
+
+
+/** 1. typdefå’Œå¸¸æ•° **/
 using Real = long double;
 using llt = long long;
 
-Real const EPS = 1E-9; // ¸ù¾İĞèÒªµ÷Õû
+Real const EPS = 1E-9; // æ ¹æ®éœ€è¦è°ƒæ•´
 Real const PI = acos(-1);
-Real const INF = 1E9;  // ¸ù¾İĞèÒªµ÷Õû
+Real const INF = 1E100;  // æ ¹æ®éœ€è¦è°ƒæ•´
 
 inline int sgn(Real x){return x >= EPS ? 1 : (x <= -EPS ? -1 : 0);}
 inline bool is0(Real x){return 0 == sgn(x);}
@@ -48,16 +41,16 @@ inline bool is0(Real x){return 0 == sgn(x);}
 inline int sgn(llt x){return x > 0 ? 1 : (x < 0 ? -1 : 0);}
 inline bool is0(llt x){return 0 == x;}
 
-/// ±íÎ»ÖÃ¹ØÏµµÄ³£Êı
-int const OUT = 0; // Ã»ÓĞ¹«¹²µã£¬¼´²»Ïà½»
-int const IN = 1; // µãÔÚ¸÷ÖÖÍ¼ĞÎÄÚ
-int const JIAO = 2; // Ö±ÏßÓëÖ±Ïß£¬Ïß¶ÎÓëÏß¶Î£¬Ö±ÏßÓëÏß¶Î
-int const PINGXING = 4; // Ö±ÏßÓëÖ±Ïß
-int const CHONGHE = 8; // Ö±ÏßÓëÖ±Ïß
-int const VERTEX = 0x10; // ±íÊ¾µã»¹ÔÚÍ¼ĞÎµÄ¶ËµãÉÏ
-int const EDGE = 0x20; // ±íÊ¾µã»¹ÔÚÍ¼ĞÎµÄ±ßÉÏ
+/// è¡¨ä½ç½®å…³ç³»çš„å¸¸æ•°
+int const OUT = 0; // æ²¡æœ‰å…¬å…±ç‚¹ï¼Œå³ä¸ç›¸äº¤
+int const IN = 1; // ç‚¹åœ¨å„ç§å›¾å½¢å†…
+int const JIAO = 2; // ç›´çº¿ä¸ç›´çº¿ï¼Œçº¿æ®µä¸çº¿æ®µï¼Œç›´çº¿ä¸çº¿æ®µ
+int const PINGXING = 4; // ç›´çº¿ä¸ç›´çº¿
+int const CHONGHE = 8; // ç›´çº¿ä¸ç›´çº¿
+int const VERTEX = 0x10; // è¡¨ç¤ºç‚¹è¿˜åœ¨å›¾å½¢çš„ç«¯ç‚¹ä¸Š
+int const EDGE = 0x20; // è¡¨ç¤ºç‚¹è¿˜åœ¨å›¾å½¢çš„è¾¹ä¸Š
 
-/** 2. ´¦Àí±ß½çµÄÊıÑ§¿âº¯Êı **/
+/** 2. å¤„ç†è¾¹ç•Œçš„æ•°å­¦åº“å‡½æ•° **/
 inline Real mysqrt(Real x){
     assert(sgn(x) >= 0);
     if(0 == sgn(x)) return 0;
@@ -78,144 +71,124 @@ inline Real myasin(Real x){
     return asin(x);
 }
 
-/** 3. µãÓëÏòÁ¿µÄ½á¹¹ÌåÒÔ¼°»ù±¾ÔËËã£¬ÏàµÈ£¬²æ»ı£¬µã»ı **/
-/// Ä£°åÀà, ¿ÉÒÔÊµÀı»¯³ÉÕûĞÍ»òÕßÊµĞÍ
-template<typename T>struct Point{
+using T = llt;
+
+struct Point{
 
 T x, y;
-Point(T a=0, T b=0):x(a),y(b){}
-/// ÕûĞÍ×¢ÒâÓĞ¿ÉÄÜ³¬·¶Î§
-T square() const {return x * x + y * y;}
-/// ³¤¶È±ØĞëÊÇÊµĞÍ
-Real length() const {return sqrt((Real)this->square());}
-void normSelf() { // µ¥Î»»¯, ±ØĞëÊÇÊµĞÍ
-    T tmp = this->square();
-    if(is0(tmp - 1)) return;
-    Real t = sqrt((Real)tmp);
-    this-> x /= t, this->y /= t;
+Point() = default;
+Point(T a, T b):x(a),y(b){}
+
+void input(){
+    this->x = getInt();
+    this->y = getInt();
 }
-bool isZero() const {return is0(x) && is0(y);}
-/// ËãÊõÔËËã¼Ó¼õ³Ë
-const Point operator + (const Point & r) const {return Point(x + r.x, y + r.y);}
+
+T square() const {return x * x + y * y;} // æ•´å‹å°å¿ƒè¶…èŒƒå›´
+
+bool operator == (const Point & r) const {return x == r.x && y == r.y;}
+
 const Point operator - (const Point & r) const {return Point(x - r.x, y - r.y);}
-const Point operator * (T k) const {return Point(x * k, y * k);}
-/// ¹ØÏµÔËËã
-bool operator == (const Point & r) const {return is0(x - r.x) && is0(y - r.y);}
-/// ÏòÁ¿²æ»ı, this ²æ r
-T cross(const Point & r) const {return x * r.y - y * r.x;}
-/// ÏòÁ¿µã»ı
+
+const Point operator + (const Point & r) const {return Point(x + r.x, y + r.y);}
+
 T dot(const Point & r) const {return x * r.x + y * r.y;}
-/// µãµÄ²æ»ı, this×÷ÎªµãO, OA ²æ OB
-T cross(const Point &A, const Point &B) const {return (A - *this).cross(B - *this);}
-/// µãµÄµã»ı
-T dot(const Point &A, const Point &B) const {return (A - *this).dot(B - *this);}
-/// ¾àÀëµÄÆ½·½
-T dist2(const Point & r) const {return (*this-r).square();}
-/// ¾àÀë, ±ØĞëÊÇÊµÊı
-Real dist(const Point & r) const {return (*this-r).length();}
-/// thisÓëÏß¶ÎABµÄÎ»ÖÃ¹ØÏµ
-int relate(const Point &A, const Point &B) const {
-    if(A == *this || B == *this) return IN & VERTEX;
+
+T dot(const Point & A, const Point & B) const {return (A - *this).dot(B - *this);}
+
+T cross(const Point & r) const {return x * r.y - y * r.x;}
+
+T cross(const Point & A, const Point & B) const {return (A - *this).cross(B - *this);}
+
+Real length() const {return (Real)sqrt((Real)this->square());}
+
+Real dist(const Point & r) const {return (*this - r).length();}
+
+/**
+ * @brief è¿”å›thisä¸çº¿æ®µABçš„å…³ç³»ï¼Œä¿è¯A!=B 
+ * @return thisæ˜¯Aã€Bä¹‹ä¸€ï¼Œè¿”å›IN|VERTEX,thisåœ¨ABä¸Šï¼Œè¿”å›IN|EDGE,å¦åˆ™è¿”å›OUT
+ */
+int relate(const Point & A, const Point & B) const {
+    assert(!(A == B));
+    if(A == *this || B == *this) return IN | VERTEX;
     if(sgn(this->dot(A, B)) <= 0 && 0 == sgn(this->cross(A, B))){
-        return IN & EDGE;
+        return IN | EDGE;
     }
-    return OUT;
+    return OUT;    
 }
-/// thisÓëÏß¶ÎABµÄ¾àÀë
-Real dist(const Point &A, const Point &B) const {
+
+/**
+ * @brief è¿”å›thisåˆ°çº¿æ®µABä¹‹é—´çš„è·ç¦»
+ * @return è·ç¦» 
+ */
+Real dist(const Point & A, const Point & B) const {
     if(IN & this->relate(A, B)) return 0;
     if(sgn(A.dot(*this, B)) <= 0) return this->dist(A);
     if(sgn(B.dot(*this, A)) <= 0) return this->dist(B);
-    /// ¾àÀëÎª¸ß
-    return sqrt(this->cross(A, B) / (A - B).square());
+    /// è·ç¦»ä¸ºé«˜
+    return fabs(this->cross(A, B)) / (A - B).length();
 }
 
-
 };
 
+struct Convex{
 
-/** 6. ¶à±ßĞÎ, ¼òµ¥¶à±ßĞÎºÍÍ¹¶à±ßĞÎºÍÍ¹°ü **/
-/// ¼òµ¥¶à±ßĞÎ
-template<typename T>struct Polygon{
+vector<Point> pts; // ç¼–å·ä»0å¼€å§‹ï¼Œé€†æ—¶é’ˆ
 
-using Dian = Point<T>;
-// using Xianduan = LineSeg<T>;
-using vt = vector<Dian>;
+void input(int n){
+    this->pts.assign(n, Point());
+    for(auto & p : this->pts) p.input();
+}
 
-vt pts; // ¶ËµãÊı×é, ±£Ö¤Ã»ÓĞ¶àÓàµÄ³¤¶È, ¼´size() == n
-
-Polygon() = default;
-Polygon(int n):pts(n, Dian()){}
-
-/// Ç°Ò»¸öµãºÍºóÒ»¸öµãµÄ±àºÅ, ÕâÑù¾ÍÎŞĞèÉè¼Æpts[n] == pts[0]
-int next(int i) const {return this->pts.size() == ++i ? 0 : i;}
-int prev(int i) const {return -1 == --i ? this->pts.size() - 1 : i;}
-
-void init(int n){pts.resize(n);}
-
-};
-
-/// Í¹¶à±ßĞÎºÍÍ¹°ü
-template<typename T>struct Convex : public Polygon<T>{
-
-using Dian = Point<T>;
-// using Zhixian = Line<T>;
-using vt = vector<Dian>;
-using Tu = Convex<T>;
-
-Convex():Polygon<T>(){}
-Convex(int n):Polygon<T>(n){}
-
-/// GrahamÍ¹°üËã·¨, 
-/// ÊÂÏÈ°Ñµã¼¯Èûµ½ptsÖĞ, »á¸Ä±äµã¼¯µÄÄÚÈİ
-/// ¸ÃËã·¨±£Ö¤½á¹ûÖĞÃ»ÓĞÈÎÒâÈıµã¹²Ïß£¬ÕâÒ»µã¶Ô¼ÆËãÃæ»ıºÍÖÜ³¤ÆäÊµÃ»ÓÃ
-/// nlogn
 int Graham(){    
     auto & pts = this->pts;
     int n = pts.size();
 
-    /// ÌØÅĞ 
+    /// ç‰¹åˆ¤ 
     if(1 == n) return 1;
 
-    /// Çó×îÏÂ×î×óµã
-    auto lowleft = min_element(pts.begin(), pts.end(), [](const Dian&a, const Dian &b)->bool{
+    /// æ±‚æœ€ä¸‹æœ€å·¦ç‚¹
+    auto lowleft = min_element(pts.begin(), pts.end(), [](const Point&a, const Point &b)->bool{
         int tmp = sgn(a.y - b.y);
         if(tmp) return tmp < 0;
         return a.x < b.x;
     });
 
-    /// ½«×îÏÂ×î×óµãÉèÎªpts[0]
+    /// å°†æœ€ä¸‹æœ€å·¦ç‚¹è®¾ä¸ºpts[0]
     swap(*lowleft, pts[0]);
 
-    /// Ïà¶ÔÓÚ×îÏÂ×î×óµã½øĞĞÅÅĞò
-    sort(++pts.begin(), pts.end(), [&](const Dian&a, const Dian&b)->bool{
+    /// ç›¸å¯¹äºæœ€ä¸‹æœ€å·¦ç‚¹è¿›è¡Œæ’åº
+    sort(++pts.begin(), pts.end(), [&](const Point&a, const Point&b)->bool{
         const int tmp = sgn(pts[0].cross(a, b));
-        if(tmp) return tmp > 0; // ½Ç¶ÈĞ¡µÄÅÅÔÚÇ°Ãæ
-        /// ½Ç¶ÈÒ»Ñù£¬¾àÀëĞ¡µÄÅÅÔÚÇ°Ãæ
+        if(tmp) return tmp > 0; // è§’åº¦å°çš„æ’åœ¨å‰é¢
+        /// è§’åº¦ä¸€æ ·ï¼Œè·ç¦»å°çš„æ’åœ¨å‰é¢
         return sgn((a - pts[0]).square() - (b - pts[0]).square()) < 0;
     });
 
-    /// ÕæÕıµÄGrahamÑ­»·£¬±¾ÖÊÉÏÊÇÒ»¸öÕ»
+    /// çœŸæ­£çš„Grahamå¾ªç¯ï¼Œæœ¬è´¨ä¸Šæ˜¯ä¸€ä¸ªæ ˆ
     int top = 2;
     for(int i=2;i<n;++i){
-        while(top > 1 && sgn(pts[top-2].cross(pts[top-1], pts[i])) <= 0){
-            --top;
-        }
+        while(top > 1 && sgn(pts[top-2].cross(pts[top-1], pts[i])) <= 0) --top;
         pts[top++] = pts[i];
     }
-    /// È¥µô×îºóÒ»Ìõ±ßÉÏÓĞ¿ÉÄÜ¹²ÏßµÄµã
-    if(top >= 3 && 0 == sgn(pts[0].cross(pts[top-1], pts[top-2]))){
-        --top;
-    }
     pts.erase(pts.begin()+top, pts.end());
-    return top; // Ò»¶¨Òª¸³Öµ    
+    
+    // éªŒè¯ä¸€ä¸‹
+    n = pts.size();
+    if(n >= 3)for(int i=0;i<n;++i){
+        int prv = (i-1+n)%n;
+        int nxt = (i+1)%n;
+        if(is0(pts[i].cross(pts[prv], pts[nxt]))){
+            throw runtime_error(to_string(i));
+        }
+    }
+
+    return top;   
 }
 
-/// Í¹¶à±ßĞÎµÄÖ±¾¶£¬¼´Í¹¶à±ßĞÎÄÚ×î³¤µÄÏß¶Î, O(N), Ğı×ª¿¨¿Ç·¨
-/// ·µ»ØÖ±¾¶µÄ³¤¶ÈµÄÆ½·½£¬pansÀï±£´æ¹¹³ÉÖ±¾¶µÄÁ½¸ö¶ËµãµÄĞòºÅ, ¿ÉÄÜÓĞºÜ¶à¶Ô, Ö»±£´æÆäÖĞÒ»¶Ô
 T rcDiameter2(int pans[] = nullptr) const {
      
-    auto f = [](const Dian &u, const Dian &v)->T{
+    auto f = [](const Point &u, const Point &v)->T{
         auto x = u.x - v.x, y = u.y - v.y;
         return x * x + y * y;
     };
@@ -226,8 +199,8 @@ T rcDiameter2(int pans[] = nullptr) const {
     T d = 0;
     int k1 = 0, k2 = 1;
     for(k1=0;k1<n;++k1){
-        while(sgn(p[(this->next)(k1)].cross(p[(this->next)(k2)], p[k1]) - p[(this->next)(k1)].cross(p[k2], p[k1])) > 0){
-            k2 = (this->next)(k2);
+        while(sgn(p[(k1+1)%n].cross(p[(k2+1)%n], p[k1]) - p[(k1+1)%n].cross(p[k2], p[k1])) > 0){
+            k2 = (k2+1)%n;
         }
         auto tmp = f(p[k1], p[k2]);
         if(tmp > d){
@@ -246,40 +219,15 @@ T rcDiameter2(int pans[] = nullptr) const {
 
 };
 
-using Point64I = Point<llt>;
-using Point64F = Point<Real>;
-
-char *__abc147, *__xyz258, __ma369[100000];
-#define __hv007() ((__abc147==__xyz258) && (__xyz258=(__abc147=__ma369)+fread(__ma369,1,100000,stdin),__abc147==__xyz258) ? EOF : *__abc147++)
-
-int getInt(){
-	int sgn = 1;
-	char ch = __hv007();
-	while( ch != '-' && ( ch < '0' || ch > '9' ) ) ch = __hv007();
-	if ( '-' == ch ) {sgn = 0;ch=__hv007();}
-
-	int ret = (int)(ch-'0');
-	while( '0' <= (ch=__hv007()) && ch <= '9' ) ret = ret * 10 + (int)(ch-'0');
-	return sgn ? ret : -ret;
-}
-
-#ifndef ONLINE_JUDGE
-int const SIZE = 7;
-#else
-int const SIZE = 1E5+10;
-#endif
-
 int N;
-Convex<llt> Con;
+Convex Con;
 
 int main(){
 #ifndef ONLINE_JUDGE
     freopen("1.txt", "r", stdin);
 #endif
-    Con.init(N = getInt());
-	auto & P = Con.pts;
-    for(int i=0;i<N;++i) P[i].x = getInt(), P[i].y = getInt();
-    N = Con.Graham();
+    Con.input(N = getInt());
+    Con.Graham();
     cout << Con.rcDiameter2() << endl;
     return 0;
 }

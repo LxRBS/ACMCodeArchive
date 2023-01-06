@@ -1,46 +1,37 @@
+/**
+ * ç»™å®šNä¸ªå‡¸å¤šè¾¹å½¢ï¼Œæ±‚äº¤çš„é¢ç§¯
+ * åŠå¹³é¢äº¤çš„æ¨¡æ¿é¢˜
+ */
 #include <bits/stdc++.h>
 using namespace std;
+ 
+char *__abc147, *__xyz258, __ma369[100000];
+#define __hv007() ((__abc147==__xyz258) && (__xyz258=(__abc147=__ma369)+fread(__ma369,1,100000,stdin),__abc147==__xyz258) ? EOF : *__abc147++)
 
-/**
- * @brief ¶şÎ¬Æ½Ãæ¼¸ºÎ
- * @version 20220812, Ä£°åÀà, º¯Êı¾¡Á¿×÷Îª³ÉÔ±º¯Êı, ¿ÉÒÔÉÙĞ´Ä£°å²ÎÊı
- * 1. typedefºÍ³£Êı
- * 2. ´¦Àí±ß½çµÄÊıÑ§¿âº¯Êı
- * 3. µãÓëÏòÁ¿µÄ½á¹¹ÌåÒÔ¼°»ù±¾ÔËËã£¬ËãÊõÔËËã, ¹ØÏµÔËËã, µã»ıºÍ²æ»ı
- * 4. Ö±ÏßµÄ½á¹¹Ìå
- * 5. Ïß¶ÎµÄ½á¹¹Ìå£¬Ïß¶ÎÓĞÊ±Ò²ÓÃÁ½µã±íÊ¾
- * 6. ¶à±ßĞÎÓëÍ¹¶à±ßĞÎ, Í¹°ü, ãÉ¿É·òË¹»ùºÍÓëĞı×ª¿¨¿Ç·¨
- * 7. °ëÆ½Ãæ½»ÅÅĞòÔöÁ¿·¨
- * ³ÖĞø¸üĞÂ...
- * ÌâÄ¿ÁĞ±í:
- * »ù´¡ÔËËã
- * LuoguP1355: µãÔÚÈı½ÇĞÎÄÚ
- * Å£¿Í207032: Ö±ÏßµÄÎ»ÖÃ¹ØÏµ, 2¸ö·½·¨
- * Å£¿Í220476: Ïß¶ÎÏà½», 2¸ö·½·¨
- * Å£¿Í233186: Í¹¶à±ßĞÎµÄ¾àÀë£¬ãÉ¿É·òË¹»ùºÍ£¬GJKËã·¨
- * Å£¿Í233737: µãÔÚÍ¹¶à±ßĞÎÄÚ£¬logËã·¨
- * °ëÆ½Ãæ
- * Å£¿Í233170UVA1396UVALive3890: °ëÆ½ÃæÒÆ¶¯, °ëÆ½Ãæ½», ¶ş·Ö
- * Å£¿Í234015: °ëÆ½Ãæ½»¶ş·Ö
- * Í¹°ü
- * Å£¿Í233135: Í¹°üÇóÖÜ³¤
- * Ğı×ª¿¨¿Ç
- * Å£¿Í232791: Í¹°ü×îĞ¡¾ØĞÎ¸²¸ÇÇóÃæ»ı
- * Å£¿Í233136: Í¹°üĞı×ª¿¨¿ÇÇóÖ±¾¶
- * contest
- * Å£¿Í20057: Í¹°ü×îĞ¡¾ØĞÎ¸²¸ÇÇó¾ØĞÎ
- * Å£¿Í19905: °ëÆ½Ãæ½»ÇóÃæ»ı
- * Å£¿Í233171: °ëÆ½Ãæ½»ÇóÖÜ³¤
- * Å£¿Í2022Êî¼Ù3G: Í¹¶à±ßĞÎÅö×²¼ì²â, ãÉ¿É·òË¹»ùºÎ, GJKËã·¨
- */
+int getInt(){
+	int sgn = 1;
+	char ch = __hv007();
+	while( ch != '-' && ( ch < '0' || ch > '9' ) ) ch = __hv007();
+	if ( '-' == ch ) {sgn = 0;ch=__hv007();}
+ 
+	int ret = (int)(ch-'0');
+	while( '0' <= (ch=__hv007()) && ch <= '9' ) ret = ret * 10 + (int)(ch-'0');
+	return sgn ? ret : -ret;
+}
+ 
+#ifndef ONLINE_JUDGE
+int const SIZE = 23;
+#else
+int const SIZE = 2E5+10;
+#endif
 
-/** 1. typdefºÍ³£Êı **/
+/** 1. typdefå’Œå¸¸æ•° **/
 using Real = long double;
 using llt = long long;
 
-Real const EPS = 1E-9; // ¸ù¾İĞèÒªµ÷Õû
+Real const EPS = 1E-9; // æ ¹æ®éœ€è¦è°ƒæ•´
 Real const PI = acos(-1);
-Real const INF = 1E9;  // ¸ù¾İĞèÒªµ÷Õû
+Real const INF = 1E9;  // æ ¹æ®éœ€è¦è°ƒæ•´
 
 inline int sgn(Real x){return x >= EPS ? 1 : (x <= -EPS ? -1 : 0);}
 inline bool is0(Real x){return 0 == sgn(x);}
@@ -48,16 +39,16 @@ inline bool is0(Real x){return 0 == sgn(x);}
 inline int sgn(llt x){return x > 0 ? 1 : (x < 0 ? -1 : 0);}
 inline bool is0(llt x){return 0 == x;}
 
-/// ±íÎ»ÖÃ¹ØÏµµÄ³£Êı
-int const OUT = 0; // Ã»ÓĞ¹«¹²µã£¬¼´²»Ïà½»
-int const IN = 1; // µãÔÚ¸÷ÖÖÍ¼ĞÎÄÚ
-int const JIAO = 2; // Ö±ÏßÓëÖ±Ïß£¬Ïß¶ÎÓëÏß¶Î£¬Ö±ÏßÓëÏß¶Î
-int const PINGXING = 4; // Ö±ÏßÓëÖ±Ïß
-int const CHONGHE = 8; // Ö±ÏßÓëÖ±Ïß
-int const VERTEX = 0x10; // ±íÊ¾µã»¹ÔÚÍ¼ĞÎµÄ¶ËµãÉÏ
-int const EDGE = 0x20; // ±íÊ¾µã»¹ÔÚÍ¼ĞÎµÄ±ßÉÏ
+/// è¡¨ä½ç½®å…³ç³»çš„å¸¸æ•°
+int const OUT = 0; // æ²¡æœ‰å…¬å…±ç‚¹ï¼Œå³ä¸ç›¸äº¤
+int const IN = 1; // ç‚¹åœ¨å„ç§å›¾å½¢å†…
+int const JIAO = 2; // ç›´çº¿ä¸ç›´çº¿ï¼Œçº¿æ®µä¸çº¿æ®µï¼Œç›´çº¿ä¸çº¿æ®µ
+int const PINGXING = 4; // ç›´çº¿ä¸ç›´çº¿
+int const CHONGHE = 8; // ç›´çº¿ä¸ç›´çº¿
+int const VERTEX = 0x10; // è¡¨ç¤ºç‚¹è¿˜åœ¨å›¾å½¢çš„ç«¯ç‚¹ä¸Š
+int const EDGE = 0x20; // è¡¨ç¤ºç‚¹è¿˜åœ¨å›¾å½¢çš„è¾¹ä¸Š
 
-/** 2. ´¦Àí±ß½çµÄÊıÑ§¿âº¯Êı **/
+/** 2. å¤„ç†è¾¹ç•Œçš„æ•°å­¦åº“å‡½æ•° **/
 inline Real mysqrt(Real x){
     assert(sgn(x) >= 0);
     if(0 == sgn(x)) return 0;
@@ -78,146 +69,125 @@ inline Real myasin(Real x){
     return asin(x);
 }
 
-/** 3. µãÓëÏòÁ¿µÄ½á¹¹ÌåÒÔ¼°»ù±¾ÔËËã£¬ÏàµÈ£¬²æ»ı£¬µã»ı **/
-/// Ä£°åÀà, ¿ÉÒÔÊµÀı»¯³ÉÕûĞÍ»òÕßÊµĞÍ
-template<typename T>struct Point{
+using T = llt;
+
+struct Point{
 
 T x, y;
-Point(T a=0, T b=0):x(a),y(b){}
-/// ÕûĞÍ×¢ÒâÓĞ¿ÉÄÜ³¬·¶Î§
-T square() const {return x * x + y * y;}
-/// ³¤¶È±ØĞëÊÇÊµĞÍ
-Real length() const {return sqrt((Real)this->square());}
-void normSelf() { // µ¥Î»»¯, ±ØĞëÊÇÊµĞÍ
-    T tmp = this->square();
-    if(is0(tmp - 1)) return;
-    Real t = sqrt((Real)tmp);
-    this-> x /= t, this->y /= t;
+Point() = default;
+Point(T a, T b):x(a),y(b){}
+
+void input(){
+    this->x = getInt();
+    this->y = getInt();
 }
-bool isZero() const {return is0(x) && is0(y);}
-/// ËãÊõÔËËã¼Ó¼õ³Ë
-const Point operator + (const Point & r) const {return Point(x + r.x, y + r.y);}
+
+T square() const {return x * x + y * y;} // æ•´å‹å°å¿ƒè¶…èŒƒå›´
+
+bool operator == (const Point & r) const {return x == r.x && y == r.y;}
+
 const Point operator - (const Point & r) const {return Point(x - r.x, y - r.y);}
-const Point operator * (T k) const {return Point(x * k, y * k);}
-/// ¹ØÏµÔËËã
-bool operator == (const Point & r) const {return is0(x - r.x) && is0(y - r.y);}
-/// ÏòÁ¿²æ»ı, this ²æ r
-T cross(const Point & r) const {return x * r.y - y * r.x;}
-/// ÏòÁ¿µã»ı
+
+const Point operator + (const Point & r) const {return Point(x + r.x, y + r.y);}
+
 T dot(const Point & r) const {return x * r.x + y * r.y;}
-/// µãµÄ²æ»ı, this×÷ÎªµãO, OA ²æ OB
-T cross(const Point &A, const Point &B) const {return (A - *this).cross(B - *this);}
-/// µãµÄµã»ı
-T dot(const Point &A, const Point &B) const {return (A - *this).dot(B - *this);}
-/// ¾àÀëµÄÆ½·½
-T dist2(const Point & r) const {return (*this-r).square();}
-/// ¾àÀë, ±ØĞëÊÇÊµÊı
-Real dist(const Point & r) const {return (*this-r).length();}
-/// thisÓëÏß¶ÎABµÄÎ»ÖÃ¹ØÏµ
-int relate(const Point &A, const Point &B) const {
+
+T dot(const Point & A, const Point & B) const {return (A - *this).dot(B - *this);}
+
+T cross(const Point & r) const {return x * r.y - y * r.x;}
+
+T cross(const Point & A, const Point & B) const {return (A - *this).cross(B - *this);}
+
+Real length() const {return (Real)sqrt((Real)this->square());}
+
+Real dist(const Point & r) const {return (*this - r).length();}
+
+int relate(const Point & A, const Point & B) const {
     assert(!(A == B));
     if(A == *this || B == *this) return IN | VERTEX;
     if(sgn(this->dot(A, B)) <= 0 && 0 == sgn(this->cross(A, B))){
         return IN | EDGE;
     }
-    return OUT;
+    return OUT;    
 }
-/// thisÓëÏß¶ÎABµÄ¾àÀë
-Real dist(const Point &A, const Point &B) const {
+
+Real dist(const Point & A, const Point & B) const {
     if(IN & this->relate(A, B)) return 0;
     if(sgn(A.dot(*this, B)) <= 0) return this->dist(A);
     if(sgn(B.dot(*this, A)) <= 0) return this->dist(B);
-    /// ¾àÀëÎª¸ß
+    /// è·ç¦»ä¸ºé«˜
     return fabs(this->cross(A, B)) / (A - B).length();
 }
 
-
 };
 
-/** 7 °ëÆ½ÃæºÍ°ëÆ½Ãæ½»ÅÅĞòÔöÁ¿·¨ **/
-template<typename T>struct HalfPlane{
+struct HalfPlane{
 
-using Dian = Point<T>;
-using Banpm = HalfPlane<T>;
+/// ax+by+c >= 0, (a, b)å°±æ˜¯æ³•å‘é‡
+T a, b, c; 
 
-/// ax+by+c >= 0, (a, b)¾ÍÊÇ·¨ÏòÁ¿
-T a, b, c; // Õûµã¿ÉÒÔĞÎ³ÉÕûÊı°ëÆ½Ãæ
+HalfPlane() = default;
 
-HalfPlane(T aa=0, T bb=0, T cc=0):a(aa),b(bb),c(cc){}
-/// Á½µãÉú³ÉÒ»¸ö°ëÆ½Ãæ£¬´Óuµ½vÊÇÄæÊ±Õë£¬¼´°ëÆ½ÃæÔÚuvµÄ×óÊÖ±ß
-HalfPlane(const Dian &u, const Dian &v){
-    /// ÓëÖ±ÏßÉú³ÉÒ»Ä£Ò»Ñù
+HalfPlane(T aa, T bb, T cc):a(aa),b(bb),c(cc){}
+
+HalfPlane(const Point &u, const Point &v){
+    /// ä¸ç›´çº¿ç”Ÿæˆä¸€æ¨¡ä¸€æ ·
     assert(!(u == v));
     this->a = u.y - v.y;
     this->b = v.x - u.x;
     this->c = u.x * v.y - v.x * u.y;    
 }
 
-T eval(const Dian &p) const {return a * p.x + b * p.y + c;}
-/// µãÓë°ëÆ½ÃæµÄ¹ØÏµ, ÄÚ, ±ß½ç, Íâ
-int relate(const Dian &p) const {
-    int r = sgn(eval(p));
-    if(0 == r) return IN & EDGE;
+Real eval(Real x, Real y) const {return a * x + b * y + c;}
+
+int relate(Real x, Real y) const {
+    int r = sgn(eval(x, y));
+    if(0 == r) return IN | EDGE;
     if(r > 0) return IN;
     return OUT;
 }
 
-/// °ëÆ½ÃæÏà½»Çó½»µã£¬±£Ö¤Ïà½»
-/// Ö»ÓĞÒ»ÖÖÇé¿öĞèÒªÌØÅĞ£¬¾ÍÊÇ·¨ÏòÁ¿Ïà·´£¬ÇÒ½»¼¯Îª¿ÕµÄÇé¿ö
-/// ¸ÃÌØÊâÇé¿öÔÚÅÅĞòÔöÁ¿·¨ÖĞÖ±½ÓµÃµ½°ëÆ½Ãæ½»Îª¿Õ¼¯
-/// ·µ»ØÕæ±íÊ¾½»µãÓĞĞ§£¬·µ»Øfalse±íÊ¾ÌØÊâÇé¿ö
-/// ½»µãÖ»ÄÜÓÃÊµĞÍ
-bool inter(const Banpm & r, Point<Real> &p) const {
+bool inter(const HalfPlane & r, Real & x, Real & y) const {
     const T xishu = a * r.b - b * r.a;
     if(is0(xishu)) return false;
     Real tmp = xishu;
-    p = {(b * r.c - c * r.b) / tmp, (c * r.a - a * r.c) / tmp};
+    x = (b * r.c - c * r.b) / tmp;
+    y = (c * r.a - a * r.c) / tmp;
     return true;
 }
 
-/// °ëÆ½ÃæÑØ×Å·¨ÏòÁ¿·½ÏòÒÆ¶¯¾àÀëd, Îª¸ºÊı±íÊ¾ÑØ×Å·¨ÏòÁ¿·´·½ÏòÒÆ¶¯
-/// Ö»ÄÜÊÇÊµĞÍ
-Banpm move(T d) const {
-    return Banpm(a, b, c - d * sqrt(a * a + b * b));
-}
-
-/// °ëÆ½Ãæ½»µÄÅÅĞòÔöÁ¿·¨
-/// ±£Ö¤½á¹ûÊÇÓĞÏŞµÄ£¬·ñÔòĞèÒª¼Ó°üÎ§ºĞ£¬Òò´Ën¿Ï¶¨´óÓÚ4
-/// »á¸Ä±ähpµÄÄÚÈİ£¬0-index
-/// ½á¹û±£´æÔÚhp[bot..top]ÖĞ
-/// ·µ»Øtop-bot+1£¬¼´°ëÆ½ÃæµÄÊıÁ¿£¬Èç¹ûĞ¡ÓÚ3£¬ËµÃ÷Ô­½»¼¯Îª¿Õ¼¯
-static int sandi(Banpm hp[], int n, int&bot, int&top){
-    /// ¸ù¾İ·¨ÏòÁ¿·ù½Ç(-180,180]±È½Ï´óĞ¡£¬½Ç¶ÈÏàÍ¬Ô½¿¿½ü·¨ÏòÁ¿Ô½Ğ¡
-    sort(hp, hp+n, [](const Banpm&u, const Banpm&v)->bool{
-        /// ·¨ÏòÁ¿·Ö±ğÎ»ÓÚxÖáÉÏÏÂ£¬¿ÉÒÔÖ±½ÓµÃµ½½á¹û
+static int sandi(HalfPlane hp[], int n, int&bot, int&top){
+    /// æ ¹æ®æ³•å‘é‡å¹…è§’(-180,180]æ¯”è¾ƒå¤§å°ï¼Œè§’åº¦ç›¸åŒè¶Šé è¿‘æ³•å‘é‡è¶Šå°
+    sort(hp, hp+n, [](const HalfPlane&u, const HalfPlane&v)->bool{
+        /// æ³•å‘é‡åˆ†åˆ«ä½äºxè½´ä¸Šä¸‹ï¼Œå¯ä»¥ç›´æ¥å¾—åˆ°ç»“æœ
         int ly = sgn(u.b) >= 0 ? 1 : -1;
         int ry = sgn(v.b) >= 0 ? 1 : -1;
         if(ly != ry) return ly < ry;
         
-        /// Èç¹û¶¼ÔÚxÖáÉÏ£¬ÇÒÒ»¶«Ò»Î÷
+        /// å¦‚æœéƒ½åœ¨xè½´ä¸Šï¼Œä¸”ä¸€ä¸œä¸€è¥¿
         if(is0(u.b) && is0(v.b) && sgn(u.a * v.a) < 0) return u.a > v.a;
         
-        /// ¼ÆËã²æ»ı£¬Èç¹û²æ»ı²»ÎªÁã
+        /// è®¡ç®—å‰ç§¯ï¼Œå¦‚æœå‰ç§¯ä¸ä¸ºé›¶
         int chaji = sgn(u.a * v.b - u.b * v.a);
         if(chaji) return chaji > 0;
         
-        /// µ½´Ë´¦ËµÃ÷Æ½ĞĞ, µ±a´óÓÚ0
+        /// åˆ°æ­¤å¤„è¯´æ˜å¹³è¡Œ, å½“aå¤§äº0
         if(sgn(u.a) > 0){
-            /// Èôhp1±Èhp2¸ü¿¿½ü·¨ÏòÁ¿£¬Ôò±ØÓĞa1x+b1y+c1=0¶øa2x+b2y+c2>0
+            /// è‹¥hp1æ¯”hp2æ›´é è¿‘æ³•å‘é‡ï¼Œåˆ™å¿…æœ‰a1x+b1y+c1=0è€Œa2x+b2y+c2>0
             return u.c * v.a < u.a * v.c;
         }
-        if(sgn(u.a) < 0){ // Ğ¡ÓÚ0¾ÍÊÇ·´¹ıÀ´
+        if(sgn(u.a) < 0){ // å°äº0å°±æ˜¯åè¿‡æ¥
             return u.c * v.a > u.a * v.c;
         }
-        /// aÎª0Ôòb±Ø²»Îª0
+        /// aä¸º0åˆ™bå¿…ä¸ä¸º0
         if(sgn(u.b) > 0){
             return u.c * v.b < u.b * v.c;
         }
         return u.c * v.b > u.b * v.c;
     });
 
-    /// ÍêÈ«Æ½ĞĞµÄ·¨ÏòÁ¿Ö»È¡Ò»¸ö
-    n = unique(hp, hp+n, [](const Banpm&u, const Banpm&v)->bool{
+    /// å®Œå…¨å¹³è¡Œçš„æ³•å‘é‡åªå–ä¸€ä¸ª
+    n = unique(hp, hp+n, [](const HalfPlane&u, const HalfPlane&v)->bool{
         int ly = sgn(u.b) >= 0 ? 1 : -1;
         int ry = sgn(v.b) >= 0 ? 1 : -1;
         if (ly != ry) return false;
@@ -225,52 +195,52 @@ static int sandi(Banpm hp[], int n, int&bot, int&top){
         return is0(u.a * v.b - v.a * u.b);        
     }) - hp;
 
-    /// Ö÷Ñ­»·
+    /// ä¸»å¾ªç¯
     bot = 0, top = 1;
-    Point<Real> p; // ½»µã±ØĞëÊÇÊµĞÍ
+    Real x, y;
     for(int i=2;i<n;++i){
-        /// ×îÇ°¶ËµÄÁ½¸ö°ëÆ½ÃæÏà½»
+        /// æœ€å‰ç«¯çš„ä¸¤ä¸ªåŠå¹³é¢ç›¸äº¤
         while(bot < top){
-            bool b = hp[top-1].inter(hp[top], p);
-            if(!b) return bot = top = -1, 0; // Ö±½Ó·µ»Ø¿Õ¼¯¼´¿É
+            bool b = hp[top-1].inter(hp[top], x, y);
+            if(!b) return bot = top = -1, 0; // ç›´æ¥è¿”å›ç©ºé›†å³å¯
 
-            /// ½»µãÔÚµ±Ç°°ëÆ½ÃæÍâÔò³ö¶Ó            
-            if(hp[i].relate(p)){
+            /// äº¤ç‚¹åœ¨å½“å‰åŠå¹³é¢å¤–åˆ™å‡ºé˜Ÿ            
+            if(hp[i].relate(x, y)){
                 break;
             }else{
                 --top;
             }
         }
-        /// ×îµ×¶ËµÄÁ½¸ö°ëÆ½ÃæÏà½»
+        /// æœ€åº•ç«¯çš„ä¸¤ä¸ªåŠå¹³é¢ç›¸äº¤
         while(bot < top){
-            bool b = hp[bot].inter(hp[bot+1], p);
+            bool b = hp[bot].inter(hp[bot+1], x, y);
             if(!b) return bot = top = -1, 0;
 
-            if(hp[i].relate(p)){
+            if(hp[i].relate(x, y)){
                 break;
             }else{
                 ++bot;
             }
         }
-        /// ¸³Öµ
+        /// èµ‹å€¼
         hp[++top] = hp[i];
     }
 
-    /// ºó´¦Àí
+    /// åå¤„ç†
     while(bot < top){
-        bool b = hp[top-1].inter(hp[top], p);
+        bool b = hp[top-1].inter(hp[top], x, y);
         if(!b) return bot = top = -1, 0;        
-        if(hp[bot].relate(p)){
+        if(hp[bot].relate(x, y)){
             break;
         }else{
             --top;
         }
     }
     while(bot < top){
-        bool b = hp[bot].inter(hp[bot+1], p);
+        bool b = hp[bot].inter(hp[bot+1], x, y);
         if(!b) return bot = top = -1, 0;  
             
-        if(hp[top].relate(p)){
+        if(hp[top].relate(x, y)){
             break;
         }else{
             ++bot;
@@ -280,11 +250,70 @@ static int sandi(Banpm hp[], int n, int&bot, int&top){
     return top - bot + 1;
 }
 
+
 };
 
-using Point64I = Point<llt>;
-using Point64F = Point<Real>;
+int N, M;
+Point P[SIZE];
+HalfPlane Hp[SIZE];
 
+int main(){
+#ifndef ONLINE_JUDGE
+    freopen("1.txt", "r", stdin);
+#endif
+    /// åŠ åŒ…å›´ç›’
+    int k = 0;
+    Hp[k++] = {Point(-INF, 1), Point(-INF, 0)};
+    Hp[k++] = {Point(+INF, 0), Point(+INF, 1)};
+    Hp[k++] = {Point(1, +INF), Point(0, +INF)};
+    Hp[k++] = {Point(0, -INF), Point(1, -INF)};
+
+    N = getInt();
+    for(int i=0;i<N;++i){
+        M = getInt();
+        for(int j=0;j<M;++j) P[j].input();
+        P[M] = P[0];
+        for(int j=0;j<M;++j) Hp[k++] = {P[j], P[j+1]};
+    }
+
+    int bot, top;
+    int n = HalfPlane::sandi(Hp, k, bot, top);
+    if(n <= 2){
+        return (void)puts("0.000"), 0;
+    }
+
+    vector<pair<Real, Real>> vec;
+    Real x, y;
+    bool b = Hp[top].inter(Hp[bot], x, y);
+    assert(b);
+    vec.emplace_back(x, y);
+
+    for(int i=bot;i<top;++i){
+        b = Hp[i].inter(Hp[i+1], x, y);
+        assert(b);
+        vec.emplace_back(x, y);
+    }
+
+    auto f = [](const pair<Real, Real> & a, const pair<Real, Real> & b)->Real{
+        return a.first * b.second - a.second * b.first;
+    };
+
+    Real ans = 0;
+    for(int i=0,n=vec.size();i<n;++i){
+        ans += f(vec[i], vec[(i+1)%n]);
+    }
+    printf("%.3Lf\n", 0.5 * ans);
+    return 0;
+}
+
+
+/**
+ * ç»™å®šNä¸ªå‡¸å¤šè¾¹å½¢ï¼Œæ±‚äº¤çš„é¢ç§¯
+ * åŠå¹³é¢äº¤çš„æ¨¡æ¿é¢˜
+ */
+#include <bits/stdc++.h>
+using namespace std;
+ 
 char *__abc147, *__xyz258, __ma369[100000];
 #define __hv007() ((__abc147==__xyz258) && (__xyz258=(__abc147=__ma369)+fread(__ma369,1,100000,stdin),__abc147==__xyz258) ? EOF : *__abc147++)
 
@@ -293,59 +322,295 @@ int getInt(){
 	char ch = __hv007();
 	while( ch != '-' && ( ch < '0' || ch > '9' ) ) ch = __hv007();
 	if ( '-' == ch ) {sgn = 0;ch=__hv007();}
-
+ 
 	int ret = (int)(ch-'0');
 	while( '0' <= (ch=__hv007()) && ch <= '9' ) ret = ret * 10 + (int)(ch-'0');
 	return sgn ? ret : -ret;
 }
-
+ 
 #ifndef ONLINE_JUDGE
 int const SIZE = 23;
 #else
-int const SIZE = 1010;
+int const SIZE = 2E5+10;
 #endif
 
-HalfPlane<Real> Hp[SIZE];
-Point64F P[SIZE];
-int N;
+/** 1. typdefå’Œå¸¸æ•° **/
+using Real = long double;
+using llt = long long;
+
+Real const EPS = 1E-9; // æ ¹æ®éœ€è¦è°ƒæ•´
+Real const PI = acos(-1);
+Real const INF = 1E9;  // æ ¹æ®éœ€è¦è°ƒæ•´
+
+inline int sgn(Real x){return x >= EPS ? 1 : (x <= -EPS ? -1 : 0);}
+inline bool is0(Real x){return 0 == sgn(x);}
+
+inline int sgn(llt x){return x > 0 ? 1 : (x < 0 ? -1 : 0);}
+inline bool is0(llt x){return 0 == x;}
+
+/// è¡¨ä½ç½®å…³ç³»çš„å¸¸æ•°
+int const OUT = 0; // æ²¡æœ‰å…¬å…±ç‚¹ï¼Œå³ä¸ç›¸äº¤
+int const IN = 1; // ç‚¹åœ¨å„ç§å›¾å½¢å†…
+int const JIAO = 2; // ç›´çº¿ä¸ç›´çº¿ï¼Œçº¿æ®µä¸çº¿æ®µï¼Œç›´çº¿ä¸çº¿æ®µ
+int const PINGXING = 4; // ç›´çº¿ä¸ç›´çº¿
+int const CHONGHE = 8; // ç›´çº¿ä¸ç›´çº¿
+int const VERTEX = 0x10; // è¡¨ç¤ºç‚¹è¿˜åœ¨å›¾å½¢çš„ç«¯ç‚¹ä¸Š
+int const EDGE = 0x20; // è¡¨ç¤ºç‚¹è¿˜åœ¨å›¾å½¢çš„è¾¹ä¸Š
+
+/** 2. å¤„ç†è¾¹ç•Œçš„æ•°å­¦åº“å‡½æ•° **/
+inline Real mysqrt(Real x){
+    assert(sgn(x) >= 0);
+    if(0 == sgn(x)) return 0;
+    return sqrt(x);
+}
+
+inline Real myacos(Real x){
+    assert(sgn(fabs(x) - 1) <= 0);
+    if(0 == sgn(x - 1)) x = 1;
+    else if(0 == sgn(x + 1)) x = -1;
+    return acos(x);
+}
+
+inline Real myasin(Real x){
+    assert(sgn(fabs(x) - 1) <= 0);
+    if(0 == sgn(x - 1)) x = 1;
+    else if(0 == sgn(x + 1)) x = -1;
+    return asin(x);
+}
+
+using T = llt;
+
+struct Point{
+
+T x, y;
+Point() = default;
+Point(T a, T b):x(a),y(b){}
+
+void input(){
+    this->x = getInt();
+    this->y = getInt();
+}
+
+T square() const {return x * x + y * y;} // æ•´å‹å°å¿ƒè¶…èŒƒå›´
+
+bool operator == (const Point & r) const {return x == r.x && y == r.y;}
+
+const Point operator - (const Point & r) const {return Point(x - r.x, y - r.y);}
+
+const Point operator + (const Point & r) const {return Point(x + r.x, y + r.y);}
+
+T dot(const Point & r) const {return x * r.x + y * r.y;}
+
+T dot(const Point & A, const Point & B) const {return (A - *this).dot(B - *this);}
+
+T cross(const Point & r) const {return x * r.y - y * r.x;}
+
+T cross(const Point & A, const Point & B) const {return (A - *this).cross(B - *this);}
+
+Real length() const {return (Real)sqrt((Real)this->square());}
+
+Real dist(const Point & r) const {return (*this - r).length();}
+
+int relate(const Point & A, const Point & B) const {
+    assert(!(A == B));
+    if(A == *this || B == *this) return IN | VERTEX;
+    if(sgn(this->dot(A, B)) <= 0 && 0 == sgn(this->cross(A, B))){
+        return IN | EDGE;
+    }
+    return OUT;    
+}
+
+Real dist(const Point & A, const Point & B) const {
+    if(IN & this->relate(A, B)) return 0;
+    if(sgn(A.dot(*this, B)) <= 0) return this->dist(A);
+    if(sgn(B.dot(*this, A)) <= 0) return this->dist(B);
+    /// è·ç¦»ä¸ºé«˜
+    return fabs(this->cross(A, B)) / (A - B).length();
+}
+
+};
+
+struct HalfPlane{
+
+/// ax+by+c >= 0, (a, b)å°±æ˜¯æ³•å‘é‡
+T a, b, c; 
+
+HalfPlane() = default;
+
+HalfPlane(T aa, T bb, T cc):a(aa),b(bb),c(cc){}
+
+HalfPlane(const Point &u, const Point &v){
+    /// ä¸ç›´çº¿ç”Ÿæˆä¸€æ¨¡ä¸€æ ·
+    assert(!(u == v));
+    this->a = u.y - v.y;
+    this->b = v.x - u.x;
+    this->c = u.x * v.y - v.x * u.y;    
+}
+
+Real eval(Real x, Real y) const {return a * x + b * y + c;}
+
+int relate(Real x, Real y) const {
+    int r = sgn(eval(x, y));
+    if(0 == r) return IN | EDGE;
+    if(r > 0) return IN;
+    return OUT;
+}
+
+bool inter(const HalfPlane & r, Real & x, Real & y) const {
+    const T xishu = a * r.b - b * r.a;
+    if(is0(xishu)) return false;
+    Real tmp = xishu;
+    x = (b * r.c - c * r.b) / tmp;
+    y = (c * r.a - a * r.c) / tmp;
+    return true;
+}
+
+static int sandi(HalfPlane hp[], int n, int&bot, int&top){
+    /// æ ¹æ®æ³•å‘é‡å¹…è§’(-180,180]æ¯”è¾ƒå¤§å°ï¼Œè§’åº¦ç›¸åŒè¶Šé è¿‘æ³•å‘é‡è¶Šå°
+    sort(hp, hp+n, [](const HalfPlane&u, const HalfPlane&v)->bool{
+        /// æ³•å‘é‡åˆ†åˆ«ä½äºxè½´ä¸Šä¸‹ï¼Œå¯ä»¥ç›´æ¥å¾—åˆ°ç»“æœ
+        int ly = sgn(u.b) >= 0 ? 1 : -1;
+        int ry = sgn(v.b) >= 0 ? 1 : -1;
+        if(ly != ry) return ly < ry;
+        
+        /// å¦‚æœéƒ½åœ¨xè½´ä¸Šï¼Œä¸”ä¸€ä¸œä¸€è¥¿
+        if(is0(u.b) && is0(v.b) && sgn(u.a * v.a) < 0) return u.a > v.a;
+        
+        /// è®¡ç®—å‰ç§¯ï¼Œå¦‚æœå‰ç§¯ä¸ä¸ºé›¶
+        int chaji = sgn(u.a * v.b - u.b * v.a);
+        if(chaji) return chaji > 0;
+        
+        /// åˆ°æ­¤å¤„è¯´æ˜å¹³è¡Œ, å½“aå¤§äº0
+        if(sgn(u.a) > 0){
+            /// è‹¥hp1æ¯”hp2æ›´é è¿‘æ³•å‘é‡ï¼Œåˆ™å¿…æœ‰a1x+b1y+c1=0è€Œa2x+b2y+c2>0
+            return u.c * v.a < u.a * v.c;
+        }
+        if(sgn(u.a) < 0){ // å°äº0å°±æ˜¯åè¿‡æ¥
+            return u.c * v.a > u.a * v.c;
+        }
+        /// aä¸º0åˆ™bå¿…ä¸ä¸º0
+        if(sgn(u.b) > 0){
+            return u.c * v.b < u.b * v.c;
+        }
+        return u.c * v.b > u.b * v.c;
+    });
+
+    /// å®Œå…¨å¹³è¡Œçš„æ³•å‘é‡åªå–ä¸€ä¸ª
+    n = unique(hp, hp+n, [](const HalfPlane&u, const HalfPlane&v)->bool{
+        int ly = sgn(u.b) >= 0 ? 1 : -1;
+        int ry = sgn(v.b) >= 0 ? 1 : -1;
+        if (ly != ry) return false;
+        if (is0(u.b) && is0(v.b)) return u.a * v.a > 0;
+        return is0(u.a * v.b - v.a * u.b);        
+    }) - hp;
+
+    /// ä¸»å¾ªç¯
+    bot = 0, top = 1;
+    Real x, y;
+    for(int i=2;i<n;++i){
+        /// æœ€å‰ç«¯çš„ä¸¤ä¸ªåŠå¹³é¢ç›¸äº¤
+        while(bot < top){
+            bool b = hp[top-1].inter(hp[top], x, y);
+            if(!b) return bot = top = -1, 0; // ç›´æ¥è¿”å›ç©ºé›†å³å¯
+
+            /// äº¤ç‚¹åœ¨å½“å‰åŠå¹³é¢å¤–åˆ™å‡ºé˜Ÿ            
+            if(hp[i].relate(x, y)){
+                break;
+            }else{
+                --top;
+            }
+        }
+        /// æœ€åº•ç«¯çš„ä¸¤ä¸ªåŠå¹³é¢ç›¸äº¤
+        while(bot < top){
+            bool b = hp[bot].inter(hp[bot+1], x, y);
+            if(!b) return bot = top = -1, 0;
+
+            if(hp[i].relate(x, y)){
+                break;
+            }else{
+                ++bot;
+            }
+        }
+        /// èµ‹å€¼
+        hp[++top] = hp[i];
+    }
+
+    /// åå¤„ç†
+    while(bot < top){
+        bool b = hp[top-1].inter(hp[top], x, y);
+        if(!b) return bot = top = -1, 0;        
+        if(hp[bot].relate(x, y)){
+            break;
+        }else{
+            --top;
+        }
+    }
+    while(bot < top){
+        bool b = hp[bot].inter(hp[bot+1], x, y);
+        if(!b) return bot = top = -1, 0;  
+            
+        if(hp[top].relate(x, y)){
+            break;
+        }else{
+            ++bot;
+        }
+    }
+
+    return top - bot + 1;
+}
+
+
+};
+
+int N, M;
+Point P[SIZE];
+HalfPlane Hp[SIZE];
 
 int main(){
 #ifndef ONLINE_JUDGE
     freopen("1.txt", "r", stdin);
 #endif
+    /// åŠ åŒ…å›´ç›’
     int k = 0;
-    /// °üÎ§ºĞ
-    Hp[k++] = {Point64F(-INF, 1), Point64F(-INF, 0)}; // ×ó
-    Hp[k++] = {Point64F(+INF, 0), Point64F(+INF, 1)}; // ÓÒ
-    Hp[k++] = {Point64F(1, +INF), Point64F(0, +INF)}; // ÉÏ
-    Hp[k++] = {Point64F(0, -INF), Point64F(1, -INF)}; // ÏÂ
+    Hp[k++] = {Point(-INF, 1), Point(-INF, 0)};
+    Hp[k++] = {Point(+INF, 0), Point(+INF, 1)};
+    Hp[k++] = {Point(1, +INF), Point(0, +INF)};
+    Hp[k++] = {Point(0, -INF), Point(1, -INF)};
+
     N = getInt();
-    for(int m,i=0;i<N;++i){
-        m = getInt();
-        for(int j=0;j<m;++j) P[j].x=getInt(), P[j].y=getInt();
-        P[m] = P[0];
-        for(int j=0;j<m;++j) Hp[k++] = {P[j], P[j+1]};
+    for(int i=0;i<N;++i){
+        M = getInt();
+        for(int j=0;j<M;++j) P[j].input();
+        P[M] = P[0];
+        for(int j=0;j<M;++j) Hp[k++] = {P[j], P[j+1]};
     }
-    
+
     int bot, top;
-    int n = HalfPlane<Real>::sandi(Hp, k, bot, top);
-    if(n <= 2) {
-        puts("0.000"); return 0;
+    int n = HalfPlane::sandi(Hp, k, bot, top);
+    if(n <= 2){
+        return (void)puts("0.000"), 0;
     }
-    /// Çó½»µã
-    Point64F p;
-    bool b = Hp[top].inter(Hp[bot], p);
+
+    vector<pair<Real, Real>> vec;
+    Real x, y;
+    bool b = Hp[top].inter(Hp[bot], x, y);
     assert(b);
-    vector<Point64F> vec(1, p);
-    for(int i=bot; i<top;++i){
-        bool b = Hp[i].inter(Hp[i+1], p);
-        assert(b);        
-        vec.emplace_back(p);
+    vec.emplace_back(x, y);
+
+    for(int i=bot;i<top;++i){
+        b = Hp[i].inter(Hp[i+1], x, y);
+        assert(b);
+        vec.emplace_back(x, y);
     }
+
+    auto f = [](const pair<Real, Real> & a, const pair<Real, Real> & b)->Real{
+        return a.first * b.second - a.second * b.first;
+    };
+
     Real ans = 0;
-    for(int i=0,n=vec.size();i<n-1;++i){
-        ans += vec[0].cross(vec[i], vec[i+1]);
+    for(int i=0,n=vec.size();i<n;++i){
+        ans += f(vec[i], vec[(i+1)%n]);
     }
-    cout << fixed << setprecision(3) << 0.5 * ans << endl;
+    printf("%.3Lf\n", 0.5 * ans);
     return 0;
 }
