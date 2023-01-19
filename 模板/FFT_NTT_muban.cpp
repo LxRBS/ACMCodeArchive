@@ -188,8 +188,8 @@ namespace NTT{
 using llt = long long;
 using vll = vector<llt>;
 
-int const SIZE_OF_OMEGA = 20;
-int const SIZE = 1 << SIZE_OF_OMEGA;
+int const SIZE_OF_OMEGA = 22; 
+int const SIZE = 1 << SIZE_OF_OMEGA; // 多项式的长度不能超过SIZE
 // llt const NTT_MOD = (479LL << 21) | 1LL; // 大质数
 llt const NTT_MOD = 998244353LL; // 大质数
 llt const G = 3LL; // 大质数的原根
@@ -289,7 +289,7 @@ void mul(const vll & a, const vll & b, vll & ans){
  *  令b最高次为n/2, 且 ab = 1
  *  则 x = b * (2 - a * b)
  *  因此可以使用递归来求
- * @param a a要补到最高次
+ * @param a a要补到最高次，即a的长度是deg+1
  * @param deg 最高次
  * @param ans 逆
  */
@@ -410,5 +410,50 @@ void sqrt(const vll & a, int n, vll & ans){
     _dfs_sqrt(a, n);
 	return;
 }
+
+/// 对多项式求导
+void derivate(const vll & a, vll & ans){
+    auto n = a.size();
+	ans.assign(n, 0);
+	for(int i=1;i<n;++i){
+		ans[i - 1] = i * a[i] % NTT_MOD;
+	}
+	return;
+}
+
+/// 多多项式不定积分
+void integral(const vll & a, vll & ans){
+    auto n = a.size();
+	ans.assign(n, 0);
+	for(int i=1;i<n;++i){
+		ans[i] = a[i-1] * powerMod(i, NTT_MOD - 2LL) % NTT_MOD;
+	}
+	return;
+}
+
+/**
+ * @brief 对多项式a求对数。即 ans = ln(a) (mod x^n)
+ *  考虑求导数 ans' = a' / a
+ *  因此可以先对a求导，然后乘以a的逆，然后再不定积分即可
+ * @param a 保证x的最高次为n-1，即a的长度是n，保证a0==1
+ * @param n 表明模 x^n
+ * @param ans 
+ */
+void ln(const vll & a, int n, vll & ans){
+    assert(a.size() == n && 1 == a[0]);
+    /// 先对a求逆
+    inv(a, n - 1, ans);
+    /// 再对a求导
+    vll ap;
+    derivate(a, ap);
+    /// 乘积
+    vll ji;
+    mul(ap, ans, ji);
+    /// 再积分
+    integral(ji, ans);
+    ans.erase(ans.begin()+n, ans.end());
+    return;
+}
+
 
 }
