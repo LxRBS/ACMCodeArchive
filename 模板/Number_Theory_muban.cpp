@@ -1,7 +1,4 @@
 
-#include <bits/stdc++.h>
-using namespace std;
-
 /// 普通筛法, O(NlogN), 可以同时求出所有数的质因子
 namespace NormalSieve{
 

@@ -1,99 +1,132 @@
-//¿ìËÙ¸µÀïÒ¶±ä»»£¬¶àÏîÊ½³Ë·¨£¬Ä£°åÌâ
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <algorithm>
+/**
+ * å¤šé¡¹å¼ä¹˜æ³•ï¼ŒFFTæ¨¡æ¿é¢˜
+ */
+#include <bits/stdc++.h>
 using namespace std;
+ 
+char *__abc147, *__xyz258, __ma369[1000000];
+#define __hv007() ((__abc147==__xyz258) && (__xyz258=(__abc147=__ma369)+fread(__ma369,1,100000,stdin),__abc147==__xyz258) ? EOF : *__abc147++)
 
-double const PI = acos(-1.0);
-double const D_PI = 2.0 * PI;
-
-//¸´Êı¼°ÆäÔËËã
-struct complex_t{
-    double real,imag;
-    complex_t(double xx=0.0,double yy=0.0):real(xx),imag(yy){}
-};
-
-const complex_t operator + (complex_t const&lhs,complex_t const&rhs){
-	return complex_t( lhs.real + rhs.real, lhs.imag + rhs.imag );
+int getInt(){
+	int sgn = 1;
+	char ch = __hv007();
+	while( ch != '-' && ( ch < '0' || ch > '9' ) ) ch = __hv007();
+	if ( '-' == ch ) {sgn = 0;ch=__hv007();}
+ 
+	int ret = (int)(ch-'0');
+	while( '0' <= (ch=__hv007()) && ch <= '9' ) ret = ret * 10 + (int)(ch-'0');
+	return sgn ? ret : -ret;
 }
+ 
+#ifndef ONLINE_JUDGE
+int const SIZE = 23;
+#else
+int const SIZE = 110;
+#endif
 
-const complex_t operator - (complex_t const&lhs,complex_t const&rhs){
-	return complex_t( lhs.real - rhs.real, lhs.imag - rhs.imag );
-}
+/// å¿«é€Ÿå‚…é‡Œå¶å˜æ¢ä»¥åŠå¤šé¡¹å¼è®¡ç®—
+namespace FFT{
 
-const complex_t operator * (complex_t const&lhs,complex_t const&rhs){
-	return complex_t(
-		    lhs.real * rhs.real - lhs.imag * rhs.imag,
-			lhs.real * rhs.imag + lhs.imag * rhs.real
-		);
-}
+using Real = double;
+using vr = vector<Real>;
+using Complex = complex<Real>;
+using vc = vector<Complex>;
 
-//À×µÂËã·¨£¬µ÷ÕûÏµÊıÎ»ÖÃ£¬nÎªÊı×é³¤¶È£¬´Ó0¿ªÊ¼
-void Rader(complex_t a[],int n){
-    for(int i=1,j=n>>1,k;i<n-1;++i){
-        if ( i < j ) swap(a[i],a[j]);
+Real const PI = acos((Real)-1);
+Real const D_PI = PI + PI;
+
+// é›·å¾·ç®—æ³•ï¼Œè°ƒæ•´ç³»æ•°çš„ä½ç½®
+void Rader(vc & a){
+    auto n = a.size() - 1;
+    /// nå¿…é¡»æ˜¯2çš„å¹‚
+    assert(0 == (n & n - 1));
+    for(int i=1,j=n>>1,k;i+1<n;++i){
+        if(i < j) swap(a[i], a[j]);
         k = n >> 1;
-        while( j >= k ) j -= k, k >>= 1;
-        if ( j < k ) j += k;
+        while(j >= k) j -= k, k >>= 1;
+        if(j < k) j += k;
     }
 }
 
-//¿ìËÙ¸µÀïÒ¶±ä»»£¬n±ØĞëÊÇ2µÄÃİ£¬invÈ¡-1±íÊ¾Äæ±ä»»
-void FFT(complex_t a[],int n,int inv=1){
-    Rader(a,n);
-    //×îÍâ²ãÑ­»·
+/// å¿«é€Ÿå‚…é‡Œå¶å˜æ¢, aè¡¨ç¤ºç³»æ•°ï¼Œä»a0åˆ°an
+/// nå¿…é¡»æ˜¯2çš„å¹‚, invå–-1è¡¨ç¤ºé€†å˜æ¢
+/// ç»“æœæ”¾åœ¨aä¸­
+void fft(vc & a, int inv = 1){
+    Rader(a);
+    auto n = a.size() - 1;
+    /// æœ€å¤–å±‚å¾ªç¯
     for(int i=2;i<=n;i<<=1){
-        complex_t wm( cos(D_PI/(double)i),-inv*sin(D_PI/(double)i) );
-
-        //ÖĞ¼äÑ­»·n/i´Î
+        Complex wm(cos(D_PI/(Real)i), -inv * sin(D_PI/(Real)i));
+        /// ä¸­é—´å¾ªç¯n/iæ¬¡
         for(int j=0;j<n;j+=i){
-            complex_t w(1.0);
+            Complex w(1.0, 0.0);
             for(int k=j,t=j+(i>>1);k<t;++k){
-                complex_t u(a[k]);
-                complex_t v(w*a[k+(i>>1)]);
+                Complex u(a[k]);
+                Complex v(w * a[k + (i>>1)]);
                 a[k] = u + v;
-                a[k+(i>>1)] = u - v;
+                a[k + (i>>1)] = u - v;
                 w = w * wm;
             }
         }
     }
-    //Èç¹ûÊÇÄæ±ä»»£¬ÔÙ³ıÒÔn£¬²»¹ØĞÄĞé²¿
-    if ( -1 == inv ) for(int i=0;i<n;++i) a[i].real /= n;
+    /// å¦‚æœæ˜¯é€†å˜æ¢ï¼Œå†é™¤ä»¥n
+    if(-1 == inv)for(auto & c : a) c /= n; 
 }
 
-//½«×Ö·û´®×ªÎª¸´ÊıĞòÁĞ£¬anÎª×Ö·û´®³¤¶È£¬cnÎª¸´ÊıĞòÁĞ³¤¶È
-void str2Complex(char const a[],int const an,complex_t c[],int const cn){
-    for(int i=0;i<an;++i) c[i].real = (double)(a[an-1-i]-'0'), c[i].imag = 0.0;
-    fill(c+an,c+cn,complex_t());
+/// è®¡ç®—å¤šé¡¹å¼a * bï¼Œç»“æœæ”¾åœ¨ans
+void mul(const vr & a, const vr & b, vr & ans){
+    /// æ„å»ºä¸€ä¸ªå¤æ•°å¤šé¡¹å¼x,ä»¤ x = a + bi
+    int an = a.size();
+    int bn = b.size();
+    auto ff = 1;
+    while(ff < an + bn) ff <<= 1;
+
+    vc x(ff+1, Complex((Real)0, (Real)0));
+    for(int i=0,n=a.size();i<n;++i) x[i].real(a[i]);
+    for(int i=0,n=b.size();i<n;++i) x[i].imag(b[i]);
+
+    fft(x);
+
+    const Complex ctmp((Real)0, (Real)0.25);
+    vc y; y.reserve(ff + 1);
+    y.emplace_back(x[0].real() * x[0].imag(), (Real)0);
+    for(int i=1;i<=ff;++i){
+        y.emplace_back((conj(x[ff-i]) + x[i]) * (conj(x[ff-i]) - x[i]) * ctmp);
+    }
+
+    fft(y, -1);
+    
+    --an, --bn;
+    ans.clear(); ans.reserve(an + bn + 1);
+    for(int i=0,n=an+bn;i<=n;++i){
+        ans.emplace_back(y[i].real());
+    }
+
+    return;
 }
 
-int const SIZE = 65536<<1;
+}
 
-complex_t X[SIZE<<1],Y[SIZE<<1];
+using vi = vector<int>;
+using vd = vector<double>;
+vd A, B;
+int N, M;
 
 int main(){
-	int n,m;
-	scanf("%d%d",&n,&m);
-	++n,++m;
-	for(int i=0;i<n;++i)scanf("%lf",&X[i].real),X[i].imag=0.;
-	for(int i=0;i<m;++i)scanf("%lf",&Y[i].real),Y[i].imag=0.;
+#ifndef ONLINE_JUDGE
+    freopen("1.txt", "r", stdin);
+#endif
+    A.assign((N=getInt())+1, 0);
+    B.assign((M=getInt())+1, 0);
+    for(auto & i : A) i = getInt();
+    for(auto & i : B) i = getInt();
 
-	int ff = 1;
-	while( ff < n + m ) ff <<= 1;
+    vd ans;
+    FFT::mul(A, B, ans);
 
-	FFT(X,ff);
-	FFT(Y,ff);
-
-	for(int i=0;i<ff;++i) X[i] = X[i] * Y[i];
-
-	FFT(X,ff,-1);
-
-	--n,n += --m;
-	printf("%d",(int)(X[0].real+0.5));
-	for(int i=1;i<=n;++i){
-        printf(" %d",(int)(X[i].real+0.5));
-	}
-    putchar('\n');
-	return 0;
+    for(const auto & i : ans){
+        printf("%d ", (int)(i + 0.5));
+    }
+    printf("\n");
+    return 0;
 }

@@ -1,111 +1,149 @@
-//¿ìËÙÊıÂÛ±ä»»£¬¶àÏîÊ½³Ë·¨£¬Ä£°åÌâ
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <algorithm>
+/**
+ * å¤šé¡¹å¼ä¹˜æ³•ï¼ŒNTTå˜æ¢æ¨¡æ¿é¢˜ã€‚ 
+ */
+#include <bits/stdc++.h>
 using namespace std;
-typedef long long llt;
+ 
+char *__abc147, *__xyz258, __ma369[1000000];
+#define __hv007() ((__abc147==__xyz258) && (__xyz258=(__abc147=__ma369)+fread(__ma369,1,100000,stdin),__abc147==__xyz258) ? EOF : *__abc147++)
+
+int getInt(){
+	int sgn = 1;
+	char ch = __hv007();
+	while( ch != '-' && ( ch < '0' || ch > '9' ) ) ch = __hv007();
+	if ( '-' == ch ) {sgn = 0;ch=__hv007();}
+ 
+	int ret = (int)(ch-'0');
+	while( '0' <= (ch=__hv007()) && ch <= '9' ) ret = ret * 10 + (int)(ch-'0');
+	return sgn ? ret : -ret;
+}
+ 
+#ifndef ONLINE_JUDGE
+int const SIZE = 23;
+#else
+int const SIZE = 110;
+#endif
+
+/// å¿«é€Ÿæ•°è®ºå˜æ¢åŠå¤šé¡¹å¼è®¡ç®—
+namespace NTT{
+
+using llt = long long;
+using vll = vector<llt>;
 
 int const SIZE_OF_OMEGA = 20;
 int const SIZE = 1 << SIZE_OF_OMEGA;
-llt const NTT_MOD = (479LL << 21) | 1LL;//´óÖÊÊı
-llt const G = 3LL;   //´óÖÊÊıµÄÔ­¸ù
-llt  Omega[SIZE_OF_OMEGA];
+llt const NTT_MOD = (479LL << 21) | 1LL; // å¤§è´¨æ•°
+llt const G = 3LL; // å¤§è´¨æ•°çš„åŸæ ¹
 
-//¿ìËÙÃİÈ¡Ä£
 llt powerMod(llt a, llt n){
     llt ans = 1LL;
     a %= NTT_MOD;
     while(n){
-        if(n & 1LL) ans = ans * a % NTT_MOD;
-        a = a * a % NTT_MOD;n >>= 1;
+        if(n & 1) (ans *= a) %= NTT_MOD;
+        (a *= a) %= NTT_MOD;
+        n >>= 1;
     }
     return ans;
 }
 
-void initOmega(){
-    for(int i=0;i<SIZE_OF_OMEGA;++i){
-        int t = 1 << i;
-        Omega[i] = powerMod(G, (NTT_MOD - 1) / t);
+const vll & getOmega(){
+    static vll Omega;
+    if(Omega.empty()){
+        Omega.reserve(SIZE_OF_OMEGA);
+        for(int i=0;i<SIZE_OF_OMEGA;++i){
+            int t = 1 << i;
+            Omega.emplace_back(powerMod(G, (NTT_MOD - 1) / t));
+        }
     }
+    return Omega;
 }
 
-//À×µÂËã·¨£¬µ÷ÕûÏµÊıÎ»ÖÃ£¬nÎªÊı×é³¤¶È£¬´Ó0¿ªÊ¼
-void Rader(llt a[],int n){
-    for(int i=1,j=n>>1,k;i<n-1;++i){
-        if ( i < j ) swap(a[i],a[j]);
+/// é›·å¾·ç®—æ³•
+void Rader(vll & a){
+    auto n = a.size();    
+    assert(0 == (n & n - 1));
+    for(int i=1,j=n>>1,k;i+1<n;++i){
+        if(i < j) swap(a[i], a[j]);
         k = n >> 1;
-        while( j >= k ) j -= k, k >>= 1;
-        if ( j < k ) j += k;
-    }
+        while(j >= k) j -= k, k >>= 1;
+        if(j < k) j += k;
+    }   
 }
 
-
-//¿ìËÙÊıÂÛ±ä»»£¬aÎªÊäÈëÊä³ö²ÎÊı£¬nÎª³¤¶È£¬±ØĞëÊÇ2µÄÃİ
-void ntt(llt a[], int n, bool isInv=false){
-    Rader(a,n);
+/// å¿«é€Ÿæ•°è®ºå˜æ¢ï¼Œaæ˜¯è¾“å…¥è¾“å‡ºå‚æ•°ï¼ŒisInvä¸ºçœŸè¡¨ç¤ºé€†å˜æ¢
+void ntt(vll & a, bool isInv = false){
+    Rader(a);
+    const auto & omega = getOmega();
+    auto n = a.size();    
 
     for(int h=2,id=1;h<=n;h<<=1,++id){
-        for(int j = 0; j < n; j += h){
+        for(int j=0;j<n;j+=h){
             llt u,v,w = 1LL;
             for(int k=j,tmp=j+(h>>1);k<tmp;++k){
-                u = a[k] % NTT_MOD;
+                u = a[k];
                 v = w * a[k+(h>>1)] % NTT_MOD;
-                a[k] = ( u + v ) % NTT_MOD;
-                a[k+(h>>1)] = ( u - v + NTT_MOD) % NTT_MOD;
-                w = w * Omega[id] % NTT_MOD;
+                a[k] = (u + v) % NTT_MOD;
+                a[k + (h>>1)] = (u - v + NTT_MOD) % NTT_MOD;
+                (w *= omega[id]) %= NTT_MOD;
             }
         }
     }
     if(isInv){
-        for(int i=1,tmp=n>>1; i < tmp; ++i) swap(a[i], a[n-i]);
+        for(int i=1,tmp=n>>1;i<tmp;++i) swap(a[i], a[n-i]);
         llt invv = powerMod(n, NTT_MOD - 2LL);
-        for(int i=0;i<n;++i) a[i] = a[i] * invv % NTT_MOD;
+        for(int i=0;i<n;++i) (a[i] *= invv) %= NTT_MOD;
     }
+    return;
 }
 
-//¶àÏîÊ½³Ë·¨ans=a*b£¬naÎªaµÄ×î¸ß´Î£¬nbÎªbµÄ×î¸ß´Î
-//»á¸Ä±äaÓëbÖĞµÄÄÚÈİ
-void multi(llt a[],int na,llt b[],int nb,llt ans[]){
-    ++na,++nb;
-	int ff = 1;
-	while( ff < na + nb ) ff <<= 1;
+/// å¤šé¡¹å¼çš„ä¹˜æ³•
+void mul(const vll & a, const vll & b, vll & ans){
+    int an = a.size();
+    int bn = b.size();
+    int ff = 1;
+    while(ff < an + bn) ff <<= 1;
+    assert(ff <= SIZE);
 
-    ntt(a,ff);
-	ntt(b,ff);
+    ans.clear(); ans.assign(ff, 0);
+    copy(a.begin(), a.end(), ans.begin());
 
-	for(int i=0;i<ff;++i) ans[i] = a[i] * b[i] % NTT_MOD;
+    vll y(ff, 0);
+    copy(b.begin(), b.end(), y.begin());
 
-	ntt(ans,ff,true);
+    ntt(ans); ntt(y);
+
+    for(int i=0;i<ff;++i) (ans[i] *= y[i]) %= NTT_MOD;
+
+    ntt(ans, true);
+    ans.erase(ans.begin()+an+bn-1,ans.end());
+    return;
 }
 
-llt X[SIZE],Y[SIZE];
-
-int getUnsigned(){
-	char ch = getchar();
-	while( ch < '0' || ch > '9' ) ch = getchar();
-
-	int ret = (int)(ch-'0');
-	while( '0' <= ( ch = getchar() ) && ch <= '9' ) ret = ret * 10 + (int)(ch-'0');
-	return ret;
 }
+
+using llt = long long;
+using vll = vector<llt>;
+
+int N, M;
+vll A, B;
 
 int main(){
-    initOmega();
+#ifndef ONLINE_JUDGE
+    freopen("1.txt", "r", stdin);
+#endif
+    A.assign((N=getInt())+1, 0);
+    B.assign((M=getInt())+1, 0);
+    for(auto & i : A) i = getInt();
+    for(auto & i : B) i = getInt();
 
-	int n = getUnsigned();
-	int m = getUnsigned();
+    vll ans;
+    NTT::mul(A, B, ans);
 
-	for(int i=0;i<=n;++i)X[i]=getUnsigned();
-	for(int i=0;i<=m;++i)Y[i]=getUnsigned();
-
-	multi(X,n,Y,m,X);
-
-	n += m;
-	printf("%lld",X[0]);
-	for(int i=1;i<=n;++i){
-        printf(" %lld",X[i]);
-	}
-    putchar('\n');
-	return 0;
+    for(const auto & i : ans){
+        printf("%lld ", i);
+    }
+    printf("\n");
+    return 0;
 }
+
+
