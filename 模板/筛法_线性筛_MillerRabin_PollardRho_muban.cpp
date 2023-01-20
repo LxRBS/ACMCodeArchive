@@ -28,7 +28,11 @@ void run(){
 /// 线性筛, O(N), 可以同时筛出欧拉函数和莫比乌斯函数
 namespace Sieve{
 using llt = int;
-enum{SZ = 35000}; // 一般只筛到30000+即可
+#ifndef ONLINE_JUDGE
+int const SZ = 14;
+#else
+int const SZ = 1000100;
+#endif
 
 vector<bool> isComp; // isComp[i]表示i是否为合数
 vector<llt> primes; // primes[i]是第i个质数
