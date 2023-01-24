@@ -1,34 +1,34 @@
 /**
-1£ºÇø¼äÔö¼Ó
-2£ºÇø¼ä±¶³Ë
-3£ºÇø¼äÉèÖÃ
-4£ºÇø¼ä²éÑ¯ºÍ
-5£ºÇø¼ä²éÑ¯Æ½·½ºÍ
-6£ºÇø¼ä²éÑ¯Á¢·½ºÍ
-7£ºÇø¼ä²éÑ¯×î´óÖµ£¬²»È¡Ä£È«ÕıÊı¿ÉÒÔÕıÈ·´¦Àí£¬·ñÔòĞèÒªĞŞÕı
-8£ºÇø¼ä²éÑ¯×îĞ¡Öµ
-9£ºÇø¼ä·­×ª
-10£ºÇø¼äÑ­»·ÓÒÒÆ
-11£ºÇø¼äÒÆ¶¯
-12£ºÇø¼äÉ¾³ı
-13£ºµ¥µã²åÈë
+1ï¼šåŒºé—´å¢åŠ 
+2ï¼šåŒºé—´å€ä¹˜
+3ï¼šåŒºé—´è®¾ç½®
+4ï¼šåŒºé—´æŸ¥è¯¢å’Œ
+5ï¼šåŒºé—´æŸ¥è¯¢å¹³æ–¹å’Œ
+6ï¼šåŒºé—´æŸ¥è¯¢ç«‹æ–¹å’Œ
+7ï¼šåŒºé—´æŸ¥è¯¢æœ€å¤§å€¼ï¼Œä¸å–æ¨¡å…¨æ­£æ•°å¯ä»¥æ­£ç¡®å¤„ç†ï¼Œå¦åˆ™éœ€è¦ä¿®æ­£
+8ï¼šåŒºé—´æŸ¥è¯¢æœ€å°å€¼
+9ï¼šåŒºé—´ç¿»è½¬
+10ï¼šåŒºé—´å¾ªç¯å³ç§»
+11ï¼šåŒºé—´ç§»åŠ¨
+12ï¼šåŒºé—´åˆ é™¤
+13ï¼šå•ç‚¹æ’å…¥
 
-×¢ÒâÈ¡Ä£ÒâÒåÏÂµÄ×îÖµÊÇ²»ÕıÈ·µÄ£¬ÒòÎªÎŞ·¨ÕıÈ·´¦ÀíÑÓ³Ù²Ù×÷
-ÁíÍâÒª×¢Òâ²»È¡Ä£ÒâÒåÏÂ£¬×îÖµµÄ¼ÆËãÓëÕı¸ººÅÓĞ¹Ø
-´Ë´¦È«ÊÇÕıÊı
-²ÎÊı²»×öºÏ·¨ĞÔ¼ì²â£¬µ÷ÓÃÕßĞèÒª±£Ö¤²ÎÊıºÏ·¨
+æ³¨æ„å–æ¨¡æ„ä¹‰ä¸‹çš„æœ€å€¼æ˜¯ä¸æ­£ç¡®çš„ï¼Œå› ä¸ºæ— æ³•æ­£ç¡®å¤„ç†å»¶è¿Ÿæ“ä½œ
+å¦å¤–è¦æ³¨æ„ä¸å–æ¨¡æ„ä¹‰ä¸‹ï¼Œæœ€å€¼çš„è®¡ç®—ä¸æ­£è´Ÿå·æœ‰å…³
+æ­¤å¤„å…¨æ˜¯æ­£æ•°
+å‚æ•°ä¸åšåˆæ³•æ€§æ£€æµ‹ï¼Œè°ƒç”¨è€…éœ€è¦ä¿è¯å‚æ•°åˆæ³•
 
-void build(int n, valuet const a[]): ¸ø¶¨n¸öÊıµÄÊı×é£¬³õÊ¼»¯ÉìÕ¹Ê÷¡£³õÊ¼»¯²Ù×÷£¬±ØĞëµ÷ÓÃ¡£a[0],a[n+1]×îºÃ³õÊ¼»¯ÎªÌØÊâÊıÒÔ·½±ãµ÷ÊÔ£¬ÆäËûÊıÒ²²»Ó°Ïì½á¹û
-void insert(int &root, int pos, const valuet&value): ÔÚrootÊ÷ÉÏµÄµÚpos¸öÎ»ÖÃ²åÈëÒ»¸ö½Úµã£¬È¨ÖµÎªvalue¡£²åÈëÒÔºó£¬Ô­posÎ»ÖÃÉÏµÄÊı¼°ÆäºóÃæµÄÊı¾ùÍùºóÒÆ¶¯Ò»¸ñ
-value_t max(int &root, int s, int e): ÔÚrootÊ÷ÉÏ²éÑ¯[s, e]µÄ×î´óÖµ
-value_t max(int &root, int s, int e): ÔÚrootÊ÷ÉÏ²éÑ¯[s, e]µÄ×îĞ¡Öµ
-void modifyD(int &root, int s, int e, const value_t &delta): ÔÚrootÊ÷ÉÏ[s, e]È«²¿Ôö¼Ódelta
-void modifyM(int &root, int s, int e, const value_t &m): ÔÚrootÊ÷ÉÏ[s, e]È«²¿±¶³Ëm
-void modifyS(int &root, int s, int e, const value_t &newValue): ÔÚrootÊ÷ÉÏ[s, e]È«²¿Ôö¼ÓnewValue
-void move(int &root, int s, int e, int pos): ÔÚrootÊ÷ÉÏ£¬½«[s, e]ÒÆ¶¯µ½posÎ»ÖÃ£¬Ò²¾ÍÊÇËµÒÆ¶¯Ö®ºó£¬Ô­sÎ»ÖÃµÄÊı½«´ÓµÚposÎ»ÖÃ¿ªÊ¼£¬ÆäºóÒÀ´ÎÀàÍÆ
-void remove(int &root, int s, int e): ÔÚrootÊ÷ÉÏÉ¾³ı[s, e]£¬¿ÉÒÔÈ«²¿É¾¹â
-void reverse(int &root, int s, int e): ÔÚrootÉÏ£¬·­×ª[s, e]
-void rotate4(int &root, int s, int e, int k): ÔÚrootÊ÷ÉÏ£¬Ñ­»·ÓÒÒÆ[s, e]kÎ»£¬Èç¹ûkĞ¡ÓÚÁã£¬¾ÍÊÇÑ­»·×óÒÆ
+void build(int n, valuet const a[]): ç»™å®šnä¸ªæ•°çš„æ•°ç»„ï¼Œåˆå§‹åŒ–ä¼¸å±•æ ‘ã€‚åˆå§‹åŒ–æ“ä½œï¼Œå¿…é¡»è°ƒç”¨ã€‚a[0],a[n+1]æœ€å¥½åˆå§‹åŒ–ä¸ºç‰¹æ®Šæ•°ä»¥æ–¹ä¾¿è°ƒè¯•ï¼Œå…¶ä»–æ•°ä¹Ÿä¸å½±å“ç»“æœ
+void insert(int &root, int pos, const valuet&value): åœ¨rootæ ‘ä¸Šçš„ç¬¬posä¸ªä½ç½®æ’å…¥ä¸€ä¸ªèŠ‚ç‚¹ï¼Œæƒå€¼ä¸ºvalueã€‚æ’å…¥ä»¥åï¼ŒåŸposä½ç½®ä¸Šçš„æ•°åŠå…¶åé¢çš„æ•°å‡å¾€åç§»åŠ¨ä¸€æ ¼
+value_t max(int &root, int s, int e): åœ¨rootæ ‘ä¸ŠæŸ¥è¯¢[s, e]çš„æœ€å¤§å€¼
+value_t max(int &root, int s, int e): åœ¨rootæ ‘ä¸ŠæŸ¥è¯¢[s, e]çš„æœ€å°å€¼
+void modifyD(int &root, int s, int e, const value_t &delta): åœ¨rootæ ‘ä¸Š[s, e]å…¨éƒ¨å¢åŠ delta
+void modifyM(int &root, int s, int e, const value_t &m): åœ¨rootæ ‘ä¸Š[s, e]å…¨éƒ¨å€ä¹˜m
+void modifyS(int &root, int s, int e, const value_t &newValue): åœ¨rootæ ‘ä¸Š[s, e]å…¨éƒ¨å¢åŠ newValue
+void move(int &root, int s, int e, int pos): åœ¨rootæ ‘ä¸Šï¼Œå°†[s, e]ç§»åŠ¨åˆ°posä½ç½®ï¼Œä¹Ÿå°±æ˜¯è¯´ç§»åŠ¨ä¹‹åï¼ŒåŸsä½ç½®çš„æ•°å°†ä»ç¬¬posä½ç½®å¼€å§‹ï¼Œå…¶åä¾æ¬¡ç±»æ¨
+void remove(int &root, int s, int e): åœ¨rootæ ‘ä¸Šåˆ é™¤[s, e]ï¼Œå¯ä»¥å…¨éƒ¨åˆ å…‰
+void reverse(int &root, int s, int e): åœ¨rootä¸Šï¼Œç¿»è½¬[s, e]
+void rotate4(int &root, int s, int e, int k): åœ¨rootæ ‘ä¸Šï¼Œå¾ªç¯å³ç§»[s, e]kä½ï¼Œå¦‚æœkå°äºé›¶ï¼Œå°±æ˜¯å¾ªç¯å·¦ç§»
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -65,20 +65,20 @@ int const LEFT = 0;
 int const RIGHT = 1;
 
 struct node_t{
-    int parent;//¸¸½Úµã
-    int son[2];//×Ó½Úµã
-    int sn;    //±¾½ÚµãµÄÅÅĞĞ
-    int size;  //sizeÓò
-    value_t value; //Öµ
-    value_t peak;  //×î´óÖµ£¬×¢ÒâÈç¹ûÈ¡Ä££¬Ôò×îÖµ¿ÉÄÜ²»¶Ô
-    value_t valley;//×îĞ¡Öµ
-    llt sum;       //ºÍÖµ£¬Ö»ÓĞºÍÖµÓĞ¿ÉÄÜ³¬¹ıint32
-    llt sum2;      //Æ½·½ºÍ
-    llt sum3;      //Á¢·½ºÍ
-    value_t k;     //×¢Òâk±ØĞëÎªÕı£¬·ñÔò¼«Öµ¿ÉÄÜ²»¶Ô
+    int parent;//çˆ¶èŠ‚ç‚¹
+    int son[2];//å­èŠ‚ç‚¹
+    int sn;    //æœ¬èŠ‚ç‚¹çš„æ’è¡Œ
+    int size;  //sizeåŸŸ
+    value_t value; //å€¼
+    value_t peak;  //æœ€å¤§å€¼ï¼Œæ³¨æ„å¦‚æœå–æ¨¡ï¼Œåˆ™æœ€å€¼å¯èƒ½ä¸å¯¹
+    value_t valley;//æœ€å°å€¼
+    llt sum;       //å’Œå€¼ï¼Œåªæœ‰å’Œå€¼æœ‰å¯èƒ½è¶…è¿‡int32
+    llt sum2;      //å¹³æ–¹å’Œ
+    llt sum3;      //ç«‹æ–¹å’Œ
+    value_t k;     //æ³¨æ„kå¿…é¡»ä¸ºæ­£ï¼Œå¦åˆ™æå€¼å¯èƒ½ä¸å¯¹
     value_t b;
-    value_t x;     //ÑÓ³Ù±ê¼Ç£¬kÊÇ±¶³Ë£¬bÊÇÔö¼Ó£¬xÊÇÉèÖÃ
-    unsigned char flip;//µÚ0Î»±íÊ¾·­×ªµÄÑÓ³Ù±ê¼Ç£¬µÚ1Î»±íÊ¾setµÄÑÓ³Ù±ê¼Ç
+    value_t x;     //å»¶è¿Ÿæ ‡è®°ï¼Œkæ˜¯å€ä¹˜ï¼Œbæ˜¯å¢åŠ ï¼Œxæ˜¯è®¾ç½®
+    unsigned char flip;//ç¬¬0ä½è¡¨ç¤ºç¿»è½¬çš„å»¶è¿Ÿæ ‡è®°ï¼Œç¬¬1ä½è¡¨ç¤ºsetçš„å»¶è¿Ÿæ ‡è®°
 }Node[SIZE];
 int toUsed = 0;
 
@@ -115,18 +115,18 @@ void _f(int t,int size,int k,int b){
     llt k3 = mul(k2, k);
     llt b2 = mul(b, b);
     llt b3 = mul(b2, b);
-    //Á¢·½ºÍ
+    //ç«‹æ–¹å’Œ
     Node[t].sum3 = add(mul(k3, Node[t].sum3), mul(3, k2, b, Node[t].sum2), mul(3, k, b2, Node[t].sum), mul(size, b3));
-    //Æ½·½ºÍ
+    //å¹³æ–¹å’Œ
     Node[t].sum2 = add(mul(k2, Node[t].sum2), mul(2, k, b, Node[t].sum), mul(size, b2));
-    //ºÍ
+    //å’Œ
     Node[t].sum = add(mul(Node[t].sum, k), mul(size, b));
 }
 inline void _pushDown(int t){
     if (0==t) return;
 
     int son;
-    if(Node[t].flip & 1){//Ê×ÏÈ´¦Àí·­×ª
+    if(Node[t].flip & 1){//é¦–å…ˆå¤„ç†ç¿»è½¬
         swap(Node[t].son[LEFT],Node[t].son[RIGHT]);
         if(son=Node[t].son[LEFT]) Node[son].sn = LEFT, Node[son].flip ^= 1;
         if(son=Node[t].son[RIGHT]) Node[son].sn = RIGHT, Node[son].flip ^= 1;
@@ -136,111 +136,111 @@ inline void _pushDown(int t){
     value_t&k = Node[t].k;
     value_t&b = Node[t].b;
     value_t&x = Node[t].x;
-    if(Node[t].flip & 2){//ÔÙ´¦Àíset
+    if(Node[t].flip & 2){//å†å¤„ç†set
         llt tmp = add(mul(k, x), b);
 
         if(son = Node[t].son[LEFT]){
-            //ÑÓ³Ù±ê¼Ç
-            Node[son].flip |= 2;//´òsetÑÓ³Ù±ê¼Ç
+            //å»¶è¿Ÿæ ‡è®°
+            Node[son].flip |= 2;//æ‰“setå»¶è¿Ÿæ ‡è®°
             Node[son].k = 1;
             Node[son].b = 0;
             Node[son].x = tmp;
-            //¸üĞÂÖµ
+            //æ›´æ–°å€¼
             Node[son].value = Node[son].peak = Node[son].valley = tmp;
             Node[son].sum = mul(tmp, Node[son].size);
             Node[son].sum2 = mul(tmp, tmp, Node[son].size);
             Node[son].sum3 = mul(tmp, tmp, tmp, Node[son].size);
         }
         if(son = Node[t].son[RIGHT]){
-            //ÑÓ³Ù±ê¼Ç
-            Node[son].flip |= 2;//´òsetÑÓ³Ù±ê¼Ç
+            //å»¶è¿Ÿæ ‡è®°
+            Node[son].flip |= 2;//æ‰“setå»¶è¿Ÿæ ‡è®°
             Node[son].k = 1;
             Node[son].b = 0;
             Node[son].x = tmp;
-            //¸üĞÂÖµ
+            //æ›´æ–°å€¼
             Node[son].value = Node[son].peak = Node[son].valley = tmp;
             Node[son].sum = mul(tmp, Node[son].size);
             Node[son].sum2 = mul(tmp, tmp, Node[son].size);
             Node[son].sum3 = mul(tmp, tmp, tmp, Node[son].size);
         }
 
-        Node[t].flip ^= 2;//Çå³ıset±ê¼Ç
-    }else if (k!=1||b!=0){//×îºó´¦Àí
+        Node[t].flip ^= 2;//æ¸…é™¤setæ ‡è®°
+    }else if (k!=1||b!=0){//æœ€åå¤„ç†
         if(son = Node[t].son[LEFT]){
-            //ÑÓ³Ù±ê¼Ç
+            //å»¶è¿Ÿæ ‡è®°
             mulAss(Node[son].k, k);
             Node[son].b = add(mul(k, Node[son].b), b);
-            //¸üĞÂÖµ
+            //æ›´æ–°å€¼
             Node[son].value = add(mul(Node[son].value, k), b);
             _f(son, Node[son].size, k, b);
         }
 
         if(son=Node[t].son[RIGHT]){
-            //ÑÓ³Ù±ê¼Ç
+            //å»¶è¿Ÿæ ‡è®°
             mulAss(Node[son].k, k);
             Node[son].b = add(mul(k, Node[son].b), b);
-            //¸üĞÂÖµ
+            //æ›´æ–°å€¼
             Node[son].value = add(mul(Node[son].value, k), b);
             _f(son, Node[son].size, k, b);
         }
     }
     k=1;b=0;x=0;
 }
-//·ÖÅäÒ»¸öĞÂ½Úµã
+//åˆ†é…ä¸€ä¸ªæ–°èŠ‚ç‚¹
 inline int _newNode(value_t value=0){
     memset(Node+(++toUsed),0,sizeof(node_t));
-    //ÆäËûÓò²»ÓÃ¹Ü£¬ÔÚ¸÷×Ôº¯ÊıÖĞ´¦Àí
+    //å…¶ä»–åŸŸä¸ç”¨ç®¡ï¼Œåœ¨å„è‡ªå‡½æ•°ä¸­å¤„ç†
     Node[toUsed].value = value;
-    Node[toUsed].k = 1;//ÆäËû¶¼³õÊ¼»¯Îª0£¬Õâ¸öÒ»¶¨ÒªÊÇ1
+    Node[toUsed].k = 1;//å…¶ä»–éƒ½åˆå§‹åŒ–ä¸º0ï¼Œè¿™ä¸ªä¸€å®šè¦æ˜¯1
     return toUsed;
 }
-//½«parentµÄsn¶ù×ÓÉèÖÃÎªson
+//å°†parentçš„snå„¿å­è®¾ç½®ä¸ºson
 inline void _link(int parent,int sn,int son){
     Node[son].parent = parent;
     Node[son].sn = sn;
     Node[parent].son[sn] = son;
 }
-//Ğı×ª²Ù×÷,t²»ÄÜÊÇÊ÷¸ù
+//æ—‹è½¬æ“ä½œ,tä¸èƒ½æ˜¯æ ‘æ ¹
 void _rotate(int t){
     int p = Node[t].parent;
     int sn = Node[t].sn;
     int osn = sn ^ 1;
-    //Èç¹û±£Ö¤splay½ô¸úkthµ÷ÓÃ£¬Ôò²»ĞèÒªpushDown
-    //ÖØĞÂÈ·¶¨Èı¶Ô¸¸×Ó¹ØÏµ
+    //å¦‚æœä¿è¯splayç´§è·Ÿkthè°ƒç”¨ï¼Œåˆ™ä¸éœ€è¦pushDown
+    //é‡æ–°ç¡®å®šä¸‰å¯¹çˆ¶å­å…³ç³»
     _link(p,sn,Node[t].son[osn]);
     _link(Node[p].parent,Node[p].sn,t);
     _link(t,osn,p);
-    //Ö»Î¬»¤p¼´¿É£¬tÔİÊ±²»Î¬»¤
+    //åªç»´æŠ¤på³å¯ï¼Œtæš‚æ—¶ä¸ç»´æŠ¤
     _pushUp(p);
 }
-//ÔÚrootÊ÷ÖĞ£¬½«tÉìÕ¹ÎªpµÄ¶ù×Ó,pÎª0ÔòÉìÕ¹ÎªÊ÷¸ù
+//åœ¨rootæ ‘ä¸­ï¼Œå°†tä¼¸å±•ä¸ºpçš„å„¿å­,pä¸º0åˆ™ä¼¸å±•ä¸ºæ ‘æ ¹
 void _splay(int&root,int p,int t){
     int pp;
     while( (pp=Node[t].parent) != p ){
         if(Node[pp].parent!=p) Node[pp].sn==Node[t].sn?_rotate(pp):_rotate(t);
         _rotate(t);
     }
-    _pushUp(t);//×îºóÎ¬»¤t
-    if(0==p) root = t;//¸Ä¸ù
+    _pushUp(t);//æœ€åç»´æŠ¤t
+    if(0==p) root = t;//æ”¹æ ¹
 }
 
-//ÔÚt×ÓÊ÷ÉÏ²éÕÒµÚk¸öÔªËØ£¬´Ó0¿ªÊ¼£¬²ÎÊıÒ»¶¨ºÏ·¨
+//åœ¨tå­æ ‘ä¸ŠæŸ¥æ‰¾ç¬¬kä¸ªå…ƒç´ ï¼Œä»0å¼€å§‹ï¼Œå‚æ•°ä¸€å®šåˆæ³•
 int _kth(int t,int k){
     _pushDown(t);
     int son = Node[t].son[LEFT];
     int s = son?Node[son].size:0;
-    if(k<s) return _kth(son,k);//È¥×ó×ÓÊ÷ÕÒ
+    if(k<s) return _kth(son,k);//å»å·¦å­æ ‘æ‰¾
     return s < k ? _kth(Node[t].son[RIGHT],k-s-1) : t;
 }
 
-//ÔÚµÚposÎ»ÖÃ²åÈëÒ»¸öÖµvalue£¬²ÎÊıÒ»¶¨ºÏ·¨£¬pos´Ó1¿ªÊ¼
+//åœ¨ç¬¬posä½ç½®æ’å…¥ä¸€ä¸ªå€¼valueï¼Œå‚æ•°ä¸€å®šåˆæ³•ï¼Œposä»1å¼€å§‹
 void insert(int&root,int pos,value_t const&value){
     int t = _kth(root,pos-1);
-    _splay(root,0,t);//½«pos-1Ğıµ½Ê÷¸ù
+    _splay(root,0,t);//å°†pos-1æ—‹åˆ°æ ‘æ ¹
     int tt = _kth(root,pos);
-    _splay(root,root,tt);//½«posĞıµ½¸ùµÄÓÒ¶ù×Ó
-    //°ÑĞÂ½Úµã¹Òµ½¸ùµÄÓÒ¶ù×ÓµÄ×ó¶ù×Ó
-    //¸üĞÂÖµ
+    _splay(root,root,tt);//å°†posæ—‹åˆ°æ ¹çš„å³å„¿å­
+    //æŠŠæ–°èŠ‚ç‚¹æŒ‚åˆ°æ ¹çš„å³å„¿å­çš„å·¦å„¿å­
+    //æ›´æ–°å€¼
     t = _newNode(value);
     Node[t].peak = Node[t].valley = Node[t].sum = value;
     Node[t].size = 1;
@@ -248,7 +248,7 @@ void insert(int&root,int pos,value_t const&value){
     _link(tt,LEFT,t);
     _pushUp(tt);_pushUp(root);
 }
-//É¾³ıÇø¼ä[s,e]£¬²ÎÊıÒ»¶¨ºÏ·¨
+//åˆ é™¤åŒºé—´[s,e]ï¼Œå‚æ•°ä¸€å®šåˆæ³•
 void remove(int&root,int s,int e){
     int t = _kth(root,s-1);
     _splay(root,0,t);
@@ -258,61 +258,61 @@ void remove(int&root,int s,int e){
     Node[tt].son[LEFT] = 0;
     _pushUp(tt);_pushUp(root);
 }
-//[s,e]Çø¼äÈ«²¿Ôö¼Ódelta
+//[s,e]åŒºé—´å…¨éƒ¨å¢åŠ delta
 void modifyD(int&root,int s,int e,value_t const&delta){
     int t = _kth(root,s-1);
     _splay(root,0,t);
     int tt = _kth(root,e+1);
     _splay(root,root,tt);
-    //¸ùµÄ×ó¶ù×ÓµÄÓÒ¶ù×Ó´ò±ê¼Ç
+    //æ ¹çš„å·¦å„¿å­çš„å³å„¿å­æ‰“æ ‡è®°
     int son = Node[tt].son[LEFT];
-    //ÑÓ³Ù±ê¼Ç
+    //å»¶è¿Ÿæ ‡è®°
     addAss(Node[son].b, delta);
-    //¸üĞÂÖµ
+    //æ›´æ–°å€¼
     addAss(Node[son].value, delta);
     _f(son,Node[son].size,1, delta);
     _pushUp(tt);_pushUp(root);
 }
-//[s,e]Çø¼äÈ«²¿ÉèÖÃÎªnewValue
+//[s,e]åŒºé—´å…¨éƒ¨è®¾ç½®ä¸ºnewValue
 void modifyS(int&root,int s,int e,value_t const&newValue){
     int t = _kth(root,s-1);
     _splay(root,0,t);
     int tt = _kth(root,e+1);
     _splay(root,root,tt);
-    //¸ùµÄ×ó¶ù×ÓµÄÓÒ¶ù×Ó´ò±ê¼Ç
+    //æ ¹çš„å·¦å„¿å­çš„å³å„¿å­æ‰“æ ‡è®°
     int son = Node[tt].son[LEFT];
-    Node[son].flip |= 2;//´òsetÑÓ³Ù±ê¼Ç
+    Node[son].flip |= 2;//æ‰“setå»¶è¿Ÿæ ‡è®°
     Node[son].k = 1;
     Node[son].b = 0;
     Node[son].x = newValue;
-    //¸üĞÂÖµ
+    //æ›´æ–°å€¼
     Node[son].value = Node[son].peak = Node[son].valley = newValue;
     Node[son].sum = mul(Node[son].size, newValue);
     Node[son].sum2 = mul(Node[son].size, newValue, newValue);
     Node[son].sum3 = mul(Node[son].size, newValue, newValue, newValue);
     _pushUp(tt);_pushUp(root);
 }
-//[s,e]Çø¼äÈ«²¿³ËÒÔm
+//[s,e]åŒºé—´å…¨éƒ¨ä¹˜ä»¥m
 void modifyM(int&root,int s,int e,value_t const&m){
     int t = _kth(root,s-1);
     _splay(root,0,t);
     int tt = _kth(root,e+1);
     _splay(root,root,tt);
-    //¸ùµÄ×ó¶ù×ÓµÄÓÒ¶ù×Ó´ò±ê¼Ç
+    //æ ¹çš„å·¦å„¿å­çš„å³å„¿å­æ‰“æ ‡è®°
     int son = Node[tt].son[LEFT];
-    //ÑÓ³Ù±ê¼Ç
+    //å»¶è¿Ÿæ ‡è®°
     mulAss(Node[son].k, m);
     mulAss(Node[son].b, m);
-    //¸üĞÂÖµ
+    //æ›´æ–°å€¼
     mulAss(Node[son].value, m);
     _f(son,Node[son].size,m,0);
     _pushUp(tt);_pushUp(root);
 }
-//[s,e]Çø¼äÓÒÒÆÑ­»·ÒÆÎ»k
+//[s,e]åŒºé—´å³ç§»å¾ªç¯ç§»ä½k
 void rotate(int&root,int s,int e,int k){
     if(0==(k%=(e-s+1))) return;
     if(k<0) k = e-s+1+k;
-    //Ê×ÏÈÉ¾³ı[e-k+1,e]
+    //é¦–å…ˆåˆ é™¤[e-k+1,e]
     int t = _kth(root,e-k);
     _splay(root,0,t);
     int tt = _kth(root,e+1);
@@ -320,7 +320,7 @@ void rotate(int&root,int s,int e,int k){
     int son = Node[tt].son[LEFT];
     Node[tt].son[LEFT] = 0;
     _pushUp(tt);_pushUp(root);
-    //ÔÙ°Ñson²åÈëµ½sÎ»ÖÃ
+    //å†æŠŠsonæ’å…¥åˆ°sä½ç½®
     t = _kth(root,s-1);
     _splay(root,0,t);
     tt = _kth(root,s);
@@ -328,7 +328,7 @@ void rotate(int&root,int s,int e,int k){
     _link(tt,LEFT,son);
     _pushUp(tt);_pushUp(root);
 }
-//[s,e]Çø¼ä½øĞĞ·­×ª
+//[s,e]åŒºé—´è¿›è¡Œç¿»è½¬
 void reverse(int&root,int s,int e){
     int t = _kth(root,s-1);
     _splay(root,0,t);
@@ -339,7 +339,7 @@ void reverse(int&root,int s,int e){
     int ttt = Node[tt].son[LEFT];
     Node[ttt].flip ^= 1;
 }
-//½«[s,e]Çø¼äÒÆ¶¯µ½´ÓposÎ»ÖÃ¿ªÊ¼
+//å°†[s,e]åŒºé—´ç§»åŠ¨åˆ°ä»posä½ç½®å¼€å§‹
 void move(int&root ,int s,int e,int pos){
     int t = _kth(root,s-1);
     _splay(root,0,t);
@@ -351,7 +351,7 @@ void move(int&root ,int s,int e,int pos){
     Node[tt].son[LEFT] = 0;
     _pushUp(tt);_pushUp(root);
 
-    //ÕÒposÎ»ÖÃ
+    //æ‰¾posä½ç½®
     //if(pos>e) pos -= e - s + 1;
     t = _kth(root,pos-1);
     _splay(root,0,t);
@@ -412,7 +412,7 @@ value_t min(int&root,int s,int e){
     int son = Node[tt].son[LEFT];
     return Node[son].valley;
 }
-//ÀûÓÃÈ«¾ÖÊı×é½¨Ê÷
+//åˆ©ç”¨å…¨å±€æ•°ç»„å»ºæ ‘
 void _build(int&t,int parent,int sn,int s,int e,value_t const a[]){
     int mid = ( s + e ) >> 1;
 
@@ -434,7 +434,7 @@ inline int size(int root){
 }
 int Root;
 
-//ÀûÓÃÈ«¾ÖÊı×é½¨Ê÷,Ò»¹²n¸ö£¬×îºÃ±£Ö¤a[0],a[n+1]==0
+//åˆ©ç”¨å…¨å±€æ•°ç»„å»ºæ ‘,ä¸€å…±nä¸ªï¼Œæœ€å¥½ä¿è¯a[0],a[n+1]==0
 void build(int n, value_t const a[]){
     toUsed = 0;
     _build(Root,0,0,0,n+1,a);
@@ -445,21 +445,21 @@ value_t A[SIZE];
 void dispTree(FILE*,int);
 int main(){
     //freopen("1.std.in","r",stdin);
-    //freopen("ÉìÕ¹Ê÷Çø¼äÈ«²Ù×÷.std.in","r",stdin);
+    //freopen("ä¼¸å±•æ ‘åŒºé—´å…¨æ“ä½œ.std.in","r",stdin);
     //freopen("2.txt","w",stdout);
     //freopen("1.txt","r",stdin);
     int nofkase = getInt();
     for(int kase=1;kase<=nofkase;++kase){
-        //¶ÁÊı¾İ
+        //è¯»æ•°æ®
         int n = getInt();
         int m = getInt();
         for(int i=1;i<=n;++i)A[i]=getInt();
         A[0] = A[n+1] = 0;
 
-        //½¨Ê÷
+        //å»ºæ ‘
         build(n, A);
 
-        //´ğÎÊÌâ
+        //ç­”é—®é¢˜
         printf("Case #%d:\n",kase);
 
         int cmd,s,e;
@@ -474,43 +474,43 @@ int main(){
             if(13!=cmd) e = getInt();
             else e = -1;
             switch(cmd){
-            case 1:{//Ôö¼Ó
+            case 1:{//å¢åŠ 
                 modifyD(Root,s,e,w=getInt());
             }break;
-            case 2:{//±¶³Ë
+            case 2:{//å€ä¹˜
                 modifyM(Root,s,e,w=getInt());
             }break;
-            case 3:{//ÉèÖÃ
+            case 3:{//è®¾ç½®
                 modifyS(Root,s,e,w=getInt());
             }break;
-            case 4:{//ºÍ
+            case 4:{//å’Œ
                 ans = sum(Root,s,e);printf("%lld\n", ans);
             }break;
-            case 5:{//Æ½·½ºÍ
+            case 5:{//å¹³æ–¹å’Œ
                 ans = sum2(Root,s,e);printf("%lld\n", ans);
             }break;
-            case 6:{//Á¢·½ºÍ
+            case 6:{//ç«‹æ–¹å’Œ
                ans =  sum3(Root,s,e);printf("%lld\n", ans);
             }break;
-            case 7:{//×î´óÖµ
+            case 7:{//æœ€å¤§å€¼
                 ans = max(Root,s,e);printf("%lld\n", ans);
             }break;
-            case 8:{//×îĞ¡Öµ
+            case 8:{//æœ€å°å€¼
                 ans = min(Root,s,e);printf("%lld\n", ans);
             }break;
-            case 9:{//Çø¼ä·­×ª
+            case 9:{//åŒºé—´ç¿»è½¬
                 reverse(Root,s,e);
             }break;
-            case 10:{//Çø¼äÑ­»·ÓÒÒÆ£¬µ±²ÎÊıĞ¡ÓÚ0Ê±£¬×óÒÆ
+            case 10:{//åŒºé—´å¾ªç¯å³ç§»ï¼Œå½“å‚æ•°å°äº0æ—¶ï¼Œå·¦ç§»
                 rotate(Root,s,e,w=getInt());
             }break;
-            case 11:{//Çø¼äÒÆ¶¯
+            case 11:{//åŒºé—´ç§»åŠ¨
                 move(Root,s,e,w=getInt());
             }break;
-            case 12:{//Çø¼äÉ¾³ı
+            case 12:{//åŒºé—´åˆ é™¤
                 remove(Root,s,e);
             }break;
-            case 13:{//µ¥µã²åÈë
+            case 13:{//å•ç‚¹æ’å…¥
                 insert(Root,s,w=getInt());
             }break;
             default:throw runtime_error("wrong cmd");
