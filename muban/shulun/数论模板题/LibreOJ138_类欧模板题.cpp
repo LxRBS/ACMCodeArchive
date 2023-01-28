@@ -208,7 +208,7 @@ struct pqr01{
 /// 与uniEuclid配合使用，即可求出 SUM{floor(i), i=1...n}
 
 using INT = llt; // 不取模就直接用longlong
-// using INT = SHULUN::modint<>;
+// using INT = SHULUN::mint;
 
 /// 分别表示x的整点数量，y的整点数量，s即表示结果的和
 INT x, y, s;
@@ -261,7 +261,7 @@ struct pqr_suit{
 /// h(i) = i * f
 /// 分别计算 SUM{f}, SUM{g}, SUM{h}
 
-using INT = modint<>;
+using INT = mint;
 
 INT x, y; // x和y的整点数
 INT sigmax; // x的累加和，即从1加到x

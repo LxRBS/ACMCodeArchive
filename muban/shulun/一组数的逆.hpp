@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "modint.hpp"
+#include "mint.hpp"
 
 
 
@@ -13,13 +13,11 @@ template<typename T>struct AllNi{
 using llt = long long;
 using vt = vector<T>;
 
-
-llt const MOD;
 /// 求1到n的逆,O(n)
 /// 答案保存在data中, data[i] = i的逆，
 /// 令 p = kx + r, 两边同时乘以x^(-1)，并且对p取模有
 /// 0 = k + x^(-1) * r，所以x^(-1) = - k * r^(-1)
-AllNi(int n):MOD(T::mod()){
+AllNi(int n){
     data.assign(n + 1, T());
     data[1] = T::ONE();
     for(int i=2;i<=n;++i) data[i] = T(MOD - MOD / i) * data[MOD % i];
@@ -29,7 +27,7 @@ AllNi(int n):MOD(T::mod()){
 /// 给定数组，求数组的逆, begin为首元素地址，n为元素数量
 /// data[i]表示a[i]的逆，从0开始
 template<typename IT = vector<llt>::const_iterator>
-AllNi(IT begin, int n):MOD(T::mod()){
+AllNi(IT begin, int n){
 	assert(n > 0);
     vt tmp(n, T());
 	auto it = begin;

@@ -17,6 +17,7 @@ ve edges; // 边表，从0开始编号
 /// 如果是无向图，edgecnt需要等于题目给定边数的两倍
 void init(int nodecnt, int edgecnt){
     g.assign(nodecnt + 1, vi());
+    edges.clear();
     edges.reserve(edgecnt);
 }
 /// 单向边

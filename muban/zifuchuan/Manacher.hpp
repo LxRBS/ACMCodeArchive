@@ -2,7 +2,7 @@
 using namespace std;
 
 
-namespace zifuchuan{
+namespace ZIFUCHUAN{
 
 
 template<typename IT = const char *>

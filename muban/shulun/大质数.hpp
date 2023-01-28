@@ -4,13 +4,9 @@ using namespace std;
 
 namespace SHULUN{
 
-
-
 using llt = long long;
 using int128 = __int128_t;
 // using int128 = llt;
-
-template<typename T> T ABS(const T& a){return a>=0?a:-a;}
 
 llt powerMod(llt a, llt n, llt mod){
     llt ret = 1;
@@ -26,8 +22,6 @@ llt powerMod(llt a, llt n, llt mod){
     }
     return ret;
 }
-
-
 
 /// 判断n是否为质数，直接用费尔马小定理，选择基底可以保证在64位整数下正确
 bool MillerRabin(llt n, int repeat = 3){

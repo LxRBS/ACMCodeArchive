@@ -2,14 +2,14 @@
 using namespace std;
 
 
-#include "modint.hpp"
+#include "mint.hpp"
 
 namespace ZUHE{
 
 
 struct CSimple{ // 小规模计算组合数
 
-using T = SHULUN::modint<>;
+using T = SHULUN::mint;
 
 using vt = vector<T>;
 using vvt = vector<vt>;

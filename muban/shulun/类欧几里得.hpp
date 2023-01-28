@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "modint.hpp"
+#include "mint.hpp"
 #include "zuhe.hpp"
-
+#include "Matrix.hpp"
 
 namespace SHULUN{
 
@@ -56,7 +56,7 @@ struct pqr01{
 /// 与uniEuclid配合使用，即可求出 SUM{floor(i), i=1...n}
 
 using INT = llt; // 不取模就直接用longlong
-// using INT = SHULUN::modint<>;
+// using INT = SHULUN::mint;
 
 /// 分别表示x的整点数量，y的整点数量，s即表示结果的和
 INT x, y, s;
@@ -109,7 +109,7 @@ struct pqr_suit{
 /// h(i) = i * f
 /// 分别计算 SUM{f}, SUM{g}, SUM{h}
 
-using INT = modint<>;
+using INT = mint;
 
 INT x, y; // x和y的整点数
 INT sigmax; // x的累加和，即从1加到x
@@ -166,7 +166,7 @@ static int K2;
 static ZUHE::CSimple C;
 
 using llt = long long;
-using INT = modint<>;
+using INT = mint;
 using vt = vector<INT>;
 using vvt = vector<vt>;
 
@@ -218,6 +218,54 @@ pqr const operator * (llt n)const{pqr tmp(*this);return tmp *= n;}
 int pqr::K1;
 int pqr::K2;
 ZUHE::CSimple pqr::C;
+
+
+struct matrix_ab{
+/// f = floor((Pi+R)/Q)
+/// 求 SIGMA{A^i * B^f(i), A,B是方阵, i=1...N}
+
+using T = DAISHU::SquareMatrix;
+
+static T A, B;
+
+T x; // 表示A^x
+T y; // 表示B^y
+T s; // 表示结果
+
+matrix_ab(const T & xx, const T & yy, const T & ss):x(xx),y(yy),s(ss){}
+
+static matrix_ab su(){return matrix_ab(T::eye(A.data.size()), B, T::zero(A.data.size()));}
+static matrix_ab sr(){return matrix_ab(A, T::eye(A.data.size()), A);}
+
+matrix_ab & operator += (const matrix_ab & r){
+    this->s += this->x * r.s * this->y;
+	this->x *= r.x;
+	this->y *= r.y;
+    return *this;
+}
+
+const matrix_ab operator + (const matrix_ab & r)const{matrix_ab tmp(*this); return tmp += r;}
+
+matrix_ab & operator *= (long long n){
+	// assert(n > 0);
+	if(0 == n) {x = y = T::eye(x.data.size()); s = T::zero(A.data.size()); return *this;}
+	if(1 == n) {return *this;}
+	n -= 1;
+	matrix_ab tmp(*this);
+    while(n){
+		if(n & 1) *this += tmp;
+		tmp += tmp;
+		n >>= 1; 
+	}
+	return *this;
+}
+
+matrix_ab const operator * (long long n)const{matrix_ab tmp(*this); return tmp *= n;}
+
+};
+
+matrix_ab::T matrix_ab::A;
+matrix_ab::T matrix_ab::B;
 
 
 }
