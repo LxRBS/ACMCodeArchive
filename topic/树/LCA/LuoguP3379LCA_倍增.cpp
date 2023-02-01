@@ -1,5 +1,5 @@
 /**
-    LCAÄ£°åÌâ£¬±¶ÔöËã·¨
+    LCAæ¨¡æ¿é¢˜ï¼Œå€å¢ç®—æ³•
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -48,17 +48,17 @@ inline void mkEdge(int a,int b){
 	Vertex[b] = ECnt ++;
 }
 
-//Pij±íÊ¾µÚi¸ö½ÚµãµÄ2^j¼¶±ğµÄ×æÏÈ
-//ÀıÈçPi0¾ÍÊÇiµÄ¸¸½Úµã
+//Pijè¡¨ç¤ºç¬¬iä¸ªèŠ‚ç‚¹çš„2^jçº§åˆ«çš„ç¥–å…ˆ
+//ä¾‹å¦‚Pi0å°±æ˜¯içš„çˆ¶èŠ‚ç‚¹
 int Parent[SIZE_OF_VERTICES][22];
-int Depth[SIZE_OF_VERTICES];//¸ù½ÚµãµÄÉî¶ÈÊÇ1
-//Log2[i]¾ÍÊÇÒÔ2Îªµ×iµÄ¶ÔÊı¼Ó1£¬È¡Õû£¬ĞèÒªÔ¤ÏÈËã³öÀ´
+int Depth[SIZE_OF_VERTICES];//æ ¹èŠ‚ç‚¹çš„æ·±åº¦æ˜¯1
+//Log2[i]å°±æ˜¯ä»¥2ä¸ºåº•içš„å¯¹æ•°åŠ 1ï¼Œå–æ•´ï¼Œéœ€è¦é¢„å…ˆç®—å‡ºæ¥
 int Log2[SIZE_OF_VERTICES];
 
 void dfs(int u,int parent){
     Parent[u][0] = parent;
     Depth[u] = Depth[parent] + 1;
-    //È·¶¨uµÄ¸÷¼¶×æÏÈ
+    //ç¡®å®šuçš„å„çº§ç¥–å…ˆ
     for(int i=1,n=Log2[Depth[u]];i<=n;++i){
         Parent[u][i] = Parent[Parent[u][i-1]][i-1];
     }
@@ -69,10 +69,10 @@ void dfs(int u,int parent){
 
 int lca(int x,int y){
     if(Depth[x]<Depth[y]) swap(x,y);
-    //°ÑxºÍyµ÷Õûµ½Ò»¸öÉî¶ÈÇø¼äÄÚ
+    //æŠŠxå’Œyè°ƒæ•´åˆ°ä¸€ä¸ªæ·±åº¦åŒºé—´å†…
     while(Depth[x]>Depth[y]) x = Parent[x][Log2[Depth[x]-Depth[y]]-1];
     if(x==y) return x;
-    //Ò»ÆğÍùÉÏÌø
+    //ä¸€èµ·å¾€ä¸Šè·³
     for(int k=Log2[Depth[x]]-1;k>=0;--k){
         if(Parent[x][k]!=Parent[y][k]){
             x = Parent[x][k];
@@ -88,21 +88,20 @@ int main(){
     initGraph(N = getUnsigned());
     M = getUnsigned();
     S = getUnsigned();
-    //¶ÁÈëÊ÷µÄ½á¹¹
+    //è¯»å…¥æ ‘çš„ç»“æ„
     for(int i=1;i<N;++i){
         int a = getUnsigned();
         mkEdge(a, getUnsigned());
     }
-    //³õÊ¼»¯
+    //åˆå§‹åŒ–
     for(int i=1;i<=N;++i){
         Log2[i] = Log2[i-1] + ( (1 << Log2[i-1])==i?1:0 );
     }
     dfs(S,0);
-    //´ğÎÊÌâ
+    //ç­”é—®é¢˜
     for(int i=0;i<M;++i){
         int a = getUnsigned();
         printf("%d\n",lca(a, getUnsigned()));
     }
     return 0;
 }
-

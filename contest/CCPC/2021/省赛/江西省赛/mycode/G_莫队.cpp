@@ -1,14 +1,14 @@
 /**
- * ¸ø¶¨Êý×é£¬Çø¼ä²éÑ¯³öÏÖ×î¶àµÄ¹«Ô¼ÊýµÄ´ÎÊý£¬²»¿¼ÂÇ1
- * ÊýÁ¿¼¶Îª5E4£¬¿ÉÒÔ¿¼ÂÇÄª¶ÓËã·¨
- * Ê×ÏÈÈ·¶¨Ö»¿¼ÂÇÖÊÒò×Ó¼´¿É£¬Æä´ÎÊýÖµ·¶Î§ÔÚ1E6£¬Òò´ËÃ¿¸öÊý×î¶àº¬ÓÐ7¸öÖÊÒò×Ó
- * ¼ÇÂ¼µ±Ç°Çø¼äÖÊÒò×ÓµÄ³öÏÖµÄ´ÎÊý£¬ÒÔ¼°ÏàÓ¦´ÎÊýµÄÖÊÒò×Ó£¬
- * ¶ÔÃ¿¸ö±ä¶¯µÄÔªËØÎ¬»¤ÉÏÃæÁ½¸öÊý¾Ý¼´¿É
- * ¶ÔÃ¿¸ö±ä¶¯µÄÔªËØÐèÒªforËüµÄËùÓÐÖÊÒò×Ó£¬×î¶àÎª7¡£
- * Ê±¼ä±È½Ï½ô£¬²»ÄÜÂÒÓÃÊ±¼ä
- * Ê×ÏÈ²»ÐèÒªÓÃÉ¸·¨Çó³ö1E6µÄÖÊÒò×Ó£¬ÒòÎªÌâÄ¿×î¶àÖ»ÐèÒª5E4¸öÊýµÄÖÊÒò×ÓÊý¾Ý£¬ÌáÇ°É¸³öÀ´ÊÇÀË·Ñ
- * Æä´Î¶à×éÊý¾ÝÇå¿ÕµÄÊ±ºò²»Òªmemset£¬ÒòÎªÖÊÒò×Ó×î´ó½Ó½ü1E6£¬memsetÒ²ÊÇÕâ¸öÁ¿¼¶
- * Ö±½ÓÓÃÄª¶ÓËã·¨ÖÐµÄ²Ù×÷Çå¿Õ£¬Ö¸Õë×î¶àÒÆ¶¯5E4´Î£¬Ã¿´Î×î¶à7¸ö²Ù×÷£¬ÊýÁ¿¼¶Ö»ÓÐ3.5E5¡£
+ * ç»™å®šæ•°ç»„ï¼ŒåŒºé—´æŸ¥è¯¢å‡ºçŽ°æœ€å¤šçš„å…¬çº¦æ•°çš„æ¬¡æ•°ï¼Œä¸è€ƒè™‘1
+ * æ•°é‡çº§ä¸º5E4ï¼Œå¯ä»¥è€ƒè™‘èŽ«é˜Ÿç®—æ³•
+ * é¦–å…ˆç¡®å®šåªè€ƒè™‘è´¨å› å­å³å¯ï¼Œå…¶æ¬¡æ•°å€¼èŒƒå›´åœ¨1E6ï¼Œå› æ­¤æ¯ä¸ªæ•°æœ€å¤šå«æœ‰7ä¸ªè´¨å› å­
+ * è®°å½•å½“å‰åŒºé—´è´¨å› å­çš„å‡ºçŽ°çš„æ¬¡æ•°ï¼Œä»¥åŠç›¸åº”æ¬¡æ•°çš„è´¨å› å­ï¼Œ
+ * å¯¹æ¯ä¸ªå˜åŠ¨çš„å…ƒç´ ç»´æŠ¤ä¸Šé¢ä¸¤ä¸ªæ•°æ®å³å¯
+ * å¯¹æ¯ä¸ªå˜åŠ¨çš„å…ƒç´ éœ€è¦forå®ƒçš„æ‰€æœ‰è´¨å› å­ï¼Œæœ€å¤šä¸º7ã€‚
+ * æ—¶é—´æ¯”è¾ƒç´§ï¼Œä¸èƒ½ä¹±ç”¨æ—¶é—´
+ * é¦–å…ˆä¸éœ€è¦ç”¨ç­›æ³•æ±‚å‡º1E6çš„è´¨å› å­ï¼Œå› ä¸ºé¢˜ç›®æœ€å¤šåªéœ€è¦5E4ä¸ªæ•°çš„è´¨å› å­æ•°æ®ï¼Œæå‰ç­›å‡ºæ¥æ˜¯æµªè´¹
+ * å…¶æ¬¡å¤šç»„æ•°æ®æ¸…ç©ºçš„æ—¶å€™ä¸è¦memsetï¼Œå› ä¸ºè´¨å› å­æœ€å¤§æŽ¥è¿‘1E6ï¼Œmemsetä¹Ÿæ˜¯è¿™ä¸ªé‡çº§
+ * ç›´æŽ¥ç”¨èŽ«é˜Ÿç®—æ³•ä¸­çš„æ“ä½œæ¸…ç©ºï¼ŒæŒ‡é’ˆæœ€å¤šç§»åŠ¨5E4æ¬¡ï¼Œæ¯æ¬¡æœ€å¤š7ä¸ªæ“ä½œï¼Œæ•°é‡çº§åªæœ‰3.5E5ã€‚
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -84,7 +84,7 @@ int MoAns = 0;
 int Cnt2Prime[SIZE];
 int Prime2Cnt[(int)1E6+1];
 
-/// ²åÈënÔö¼ÓµÄÖÊÒò×ÓÊýÁ¿
+/// æ’å…¥nå¢žåŠ çš„è´¨å› å­æ•°é‡
 inline void insert(int n){
     for(auto i: Fac[n]){
         int & c = Prime2Cnt[i];
@@ -95,7 +95,7 @@ inline void insert(int n){
     }
 }
 
-/// É¾³ýn¼õÉÙµÄÖÊÒò×ÓÊýÁ¿
+/// åˆ é™¤nå‡å°‘çš„è´¨å› å­æ•°é‡
 inline void remove(int n){
     for(auto i: Fac[n]){
         int & c = Prime2Cnt[i];
@@ -107,7 +107,7 @@ inline void remove(int n){
     }
 }
 
-void proc(){ // Äª¶ÓËã·¨
+void proc(){ // èŽ«é˜Ÿç®—æ³•
     sort(Problem+1, Problem+Q+1);
 
     int curLeft = 1, curRight = 0;
@@ -121,7 +121,7 @@ void proc(){ // Äª¶ÓËã·¨
         Ans[Problem[i].idx] = MoAns;
     }
 
-    /// Ïàµ±ÓÚÇå¿ÕÊý¾Ý
+    /// ç›¸å½“äºŽæ¸…ç©ºæ•°æ®
     while(curLeft <= curRight) remove(A[curRight--]);
 
     return;
@@ -134,7 +134,7 @@ int main(){
     sieve();
     int nofkase = getInt();
     while(nofkase--){
-        /// ³õÊ¼»¯
+        /// åˆå§‹åŒ–
         // fill(Prime2Cnt, Prime2Cnt+1000001, MoAns=0);
         // memset(Cnt2Prime, 0, sizeof(Cnt2Prime));
 
