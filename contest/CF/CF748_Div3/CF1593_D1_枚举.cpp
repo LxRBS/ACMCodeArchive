@@ -1,14 +1,14 @@
 /**
- * ¸ø¶¨NÔªËØµÄÊý×éA£¬ÔÙÑ¡¶¨Ò»¸öK£¬Ã¿´ÎÑ¡ÔñÒ»¸öAiÁîAi-=K
- * ×îºÃÒªÇóÊ¹µÃËùÓÐµÄAiÏàµÈ£¬²Ù×÷´ÎÊý²»ÏÞ¡£
- * ÎÊ×î´óµÄ¿ÉÄÜµÄKÊÇ¶àÉÙ£¬Èç¹ûK¿ÉÒÔÈÎÒâ´ó£¬ÔòÊä³ö-1
+ * ç»™å®šNå…ƒç´ çš„æ•°ç»„Aï¼Œå†é€‰å®šä¸€ä¸ªKï¼Œæ¯æ¬¡é€‰æ‹©ä¸€ä¸ªAiä»¤Ai-=K
+ * æœ€å¥½è¦æ±‚ä½¿å¾—æ‰€æœ‰çš„Aiç›¸ç­‰ï¼Œæ“ä½œæ¬¡æ•°ä¸é™ã€‚
+ * é—®æœ€å¤§çš„å¯èƒ½çš„Kæ˜¯å¤šå°‘ï¼Œå¦‚æžœKå¯ä»¥ä»»æ„å¤§ï¼Œåˆ™è¾“å‡º-1
  * 
- * Ê×ÏÈÖ»ÓÐ³õÊ¼ÖµÈ«ÏàµÈ²ÅÊä³ö-1.
- * Áî×îÖÕ½á¹ûÎªd£¬ÔòAi-miK=d, Aj-mjK=d
- * ËùÒÔ Ai-Aj = (mi-mj)K
- * ËµÃ÷K±ØÈ»ÊÇ¶þÕßÖ®²îµÄÔ¼Êý
- * ËùÒÔK×î´óÊÇÁ½Á½Ö®²îµÄgcd
- *  * NÔÚ40£¬±©Á¦Ã¶¾Ù¼´¿É
+ * é¦–å…ˆåªæœ‰åˆå§‹å€¼å…¨ç›¸ç­‰æ‰è¾“å‡º-1.
+ * ä»¤æœ€ç»ˆç»“æžœä¸ºdï¼Œåˆ™Ai-miK=d, Aj-mjK=d
+ * æ‰€ä»¥ Ai-Aj = (mi-mj)K
+ * è¯´æ˜ŽKå¿…ç„¶æ˜¯äºŒè€…ä¹‹å·®çš„çº¦æ•°
+ * æ‰€ä»¥Kæœ€å¤§æ˜¯ä¸¤ä¸¤ä¹‹å·®çš„gcd
+ * Nåœ¨40ï¼Œæš´åŠ›æžšä¸¾å³å¯
 */
 #include <bits/stdc++.h>
 using namespace std;

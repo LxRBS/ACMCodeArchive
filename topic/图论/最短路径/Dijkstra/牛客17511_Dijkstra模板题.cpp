@@ -1,6 +1,6 @@
 /**
- * ×î¶ÌÂ·Ä£°åÌâ£¬ÎŞÏòÍ¼£¬ÇóSµ½TµÄ×î¶ÌÂ·¾¶
- * Ê¹ÓÃpair£¬°ÑÈ¨ÖµĞ´ÔÚÇ°Ãæ£¬¿ÉÒÔÖ±½ÓÊ¹ÓÃgreater½øĞĞ±È½Ï
+ * æœ€çŸ­è·¯æ¨¡æ¿é¢˜ï¼Œæ— å‘å›¾ï¼Œæ±‚Såˆ°Tçš„æœ€çŸ­è·¯å¾„
+ * ä½¿ç”¨pairï¼ŒæŠŠæƒå€¼å†™åœ¨å‰é¢ï¼Œå¯ä»¥ç›´æ¥ä½¿ç”¨greaterè¿›è¡Œæ¯”è¾ƒ
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -24,7 +24,7 @@ bool Flag[SIZE];
 int D[SIZE];
 
 int Dijkstra(){
-	/// DijµÄ³õÊ¼»¯
+	/// Dijçš„åˆå§‹åŒ–
     fill(Flag, Flag+N+1, false);
 	fill(D, D+N+1, INF);
 
@@ -35,10 +35,10 @@ int Dijkstra(){
 
 		auto h = Q.top(); Q.pop();
 		int v, u = h.second;
-		int tmp, w = h.first; // w¾ÍÊÇDu
+		int tmp, w = h.first; // wå°±æ˜¯Du
 		Flag[u] = true;
 
-		/// ÒòÎªÖ»Òª¼ÆËãT£¬ËùÒÔ¿ÉÒÔÌáÇ°ÍË³ö
+		/// å› ä¸ºåªè¦è®¡ç®—Tï¼Œæ‰€ä»¥å¯ä»¥æå‰é€€å‡º
 		if(u == T) break;
 
 		for(const auto &p: G[u]){
@@ -55,7 +55,7 @@ int main(){
     freopen("1.txt", "r", stdin);
 #endif
     while(4 == scanf("%d%d%d%d", &N, &M, &S, &T)){
-		/// Ã¿×écaseµÄ³õÊ¼»¯£¬ËäÈ»ÕâÀï²¢Ã»ÓĞ¶àcase
+		/// æ¯ç»„caseçš„åˆå§‹åŒ–ï¼Œè™½ç„¶è¿™é‡Œå¹¶æ²¡æœ‰å¤šcase
         while(!Q.empty()) Q.pop();
 		for(int i=1;i<=N;++i) G[i].clear();
 

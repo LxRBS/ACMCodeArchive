@@ -1,11 +1,11 @@
 /**
- * ����N���ȵ����ִ���Ҫ��Ⱦ�ɺ����ɫ��ͬʱ��ɫ���ִ�Ҫ������A����ɫҪ������B
- * �Һ�����ִ��ĳ���֮����С
- * N��40��������2^40����������ְ취��
- * ��һ���Ƿֳ������ѣ�������2^20log(2^20)����ɣ����ܻ�����Щlog���������ݽṹ�Ƚϸ���
- * �ڶ��ְ취�ǿ�����2^40������п϶���һЩ״̬���ڽ�����ظ��ģ����ʵ����û����ô��
- * ����(depth, rmod, bmod, rcnt)�ֱ��ʾ��depthλ������������������������
- * ��Ȼ����Ⱦɫ��һ���������Դ����ͬ��״̬�������һ�鼴�ɡ�������N^4��
+ * 给定N长度的数字串，要求染成红黑两色，同时红色数字串要能整除A，黑色要能整除B
+ * 且红黑数字串的长度之差最小
+ * N在40，所以有2^40情况。有两种办法，
+ * 第一种是分成两半搜，可以在2^20log(2^20)内完成，可能还会有些log，而且数据结构比较复杂
+ * 第二种办法是考虑着2^40种情况中肯定有一些状态对于结果是重复的，因此实际上没有那么多
+ * 考虑(depth, rmod, bmod, rcnt)分别表示第depth位，红余数，黑余数，红数量
+ * 虽然具体染色不一样，但可以达成相同的状态。因此搜一遍即可。总数是N^4。
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -59,7 +59,7 @@ void dfs(int depth, int rmod, int bmod, int rcnt){
         return;
     }
 
-    /// ֻ���������
+    /// 只有两种情况
     Tmp[depth] = 'R';
     dfs(depth+1, (rmod*10+S[depth])%A, bmod, rcnt+1);
     Tmp[depth] = 'B';

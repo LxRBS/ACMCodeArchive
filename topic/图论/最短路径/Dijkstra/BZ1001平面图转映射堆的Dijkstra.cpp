@@ -1,4 +1,4 @@
-//2248ms£¬Óë²ÉÓÃ×îĞ¡¶ÑµÄDijkstraËã·¨²î²»¶à
+//2248msï¼Œä¸é‡‡ç”¨æœ€å°å †çš„Dijkstraç®—æ³•å·®ä¸å¤š
 #include <cstdio>
 #include <algorithm>
 using namespace std;
@@ -8,20 +8,20 @@ struct MapHeap{
     enum {SIZE=2000010};
 
 	value_t data[SIZE];
-	int index[SIZE];//Ë÷Òı
-	int i2d[SIZE];//Ë÷Òıµ½Êı¾İµÄÓ³Éä£¬Ë÷ÒıÎªiµÄÊı¾İÊÇdata[i2d[idx]]
+	int index[SIZE];//ç´¢å¼•
+	int i2d[SIZE];//ç´¢å¼•åˆ°æ•°æ®çš„æ˜ å°„ï¼Œç´¢å¼•ä¸ºiçš„æ•°æ®æ˜¯data[i2d[idx]]
 	int cnt,toUsed,c;
 
 	MapHeap():cnt(0){}
 	void clear(){cnt=0;}
 
-	//Ö¸¶¨Ë÷Òı£¬²åÈëÒ»¸öÖµ£¬Ë÷ÒıĞè¸÷×Ô²»Í¬
+	//æŒ‡å®šç´¢å¼•ï¼Œæ’å…¥ä¸€ä¸ªå€¼ï¼Œç´¢å¼•éœ€å„è‡ªä¸åŒ
 	void insert(int idx,value_t const& value){
 		for (toUsed=++cnt;toUsed>1&&value<data[toUsed>>1];data[i2d[index[toUsed]=index[toUsed>>1]]=toUsed]=data[toUsed>>1],toUsed>>=1);
 		data[i2d[index[toUsed]=idx]=toUsed]=value;
 	}
 
-	//É¾³ıÒ»¸öË÷Òı£¬ÆäÖµÓÉ²ÎÊı´«»Ø
+	//åˆ é™¤ä¸€ä¸ªç´¢å¼•ï¼Œå…¶å€¼ç”±å‚æ•°ä¼ å›
 	int remove(int idx,value_t& value){
 		idx=i2d[idx];
 		if (idx<1||idx>cnt) return 0;
@@ -32,7 +32,7 @@ struct MapHeap{
 		--cnt;
 		return 1;
 	}
-	//µ¯³ö×îĞ¡Öµ¼°ÆäË÷Òı£¬ÓÉ²ÎÊı´«»Ø
+	//å¼¹å‡ºæœ€å°å€¼åŠå…¶ç´¢å¼•ï¼Œç”±å‚æ•°ä¼ å›
 	int pop(int& idx,value_t& value){
 		if (cnt<1) return 0;
 		idx=index[1];

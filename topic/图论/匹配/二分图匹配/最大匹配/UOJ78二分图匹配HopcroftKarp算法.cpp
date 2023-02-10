@@ -1,4 +1,4 @@
-//¶ş·ÖÍ¼×î´óÆ¥Åä£¬Ä£°åÌâ¡£Êä³ö×î´óÆ¥ÅäÊıÁ¿ÒÔ¼°¾ßÌåÆ¥Åä
+//äºŒåˆ†å›¾æœ€å¤§åŒ¹é…ï¼Œæ¨¡æ¿é¢˜ã€‚è¾“å‡ºæœ€å¤§åŒ¹é…æ•°é‡ä»¥åŠå…·ä½“åŒ¹é…
 #include <stdio.h>
 #include <string.h>
 #include <algorithm>
@@ -23,7 +23,7 @@ inline void initGraph(int n){
 	fill(Vertex,Vertex+n+1,0);
 }
 
-//µ¥Ïò±ß
+//å•å‘è¾¹
 inline void mkEdge(int a,int b){
 	//Edge[ECnt].from = a;
 	Edge[ECnt].to = b;
@@ -34,15 +34,15 @@ inline void mkEdge(int a,int b){
 int LinkA[SIZE_OF_VERTICES];//LinkAi is the link of Ai in B
 int LinkB[SIZE_OF_VERTICES];//LinkBi is the link of Bi in A
 
-int DA[SIZE_OF_VERTICES],DB[SIZE_OF_VERTICES];//A²¿·ÖµÄ¾àÀë£¬B²¿·ÖµÄ¾àÀë
-int Q[SIZE_OF_VERTICES];//¸¨Öú¶ÓÁĞ
+int DA[SIZE_OF_VERTICES],DB[SIZE_OF_VERTICES];//Aéƒ¨åˆ†çš„è·ç¦»ï¼ŒBéƒ¨åˆ†çš„è·ç¦»
+int Q[SIZE_OF_VERTICES];//è¾…åŠ©é˜Ÿåˆ—
 int _Dis;
 bool bfs(int na,int nb){
     fill(DA,DA+na+1,0);
     fill(DB,DB+nb+1,0);
 
     int *head = Q, *tail = Q;
-    for(int i=1;i<=na;++i) if ( !LinkA[i] ) *tail++ = i;//Èë¶Ó
+    for(int i=1;i<=na;++i) if ( !LinkA[i] ) *tail++ = i;//å…¥é˜Ÿ
 
     _Dis = INF;
     int u,v;
@@ -60,7 +60,7 @@ bool bfs(int na,int nb){
     return _Dis < INF;
 }
 
-bool _Flag[SIZE_OF_VERTICES];//¸¨Öú±ê¼ÇÊı×é
+bool _Flag[SIZE_OF_VERTICES];//è¾…åŠ©æ ‡è®°æ•°ç»„
 bool dfs(int u){
     int v;
     for(int p=Vertex[u];p;p=Edge[p].next){
@@ -75,7 +75,7 @@ bool dfs(int u){
     return false;
 }
 
-//naÊÇAµÄÊıÁ¿£¬nbÊÇBµÄÊıÁ¿
+//naæ˜¯Açš„æ•°é‡ï¼Œnbæ˜¯Bçš„æ•°é‡
 int HopcroftKarp(int na,int nb){
 	fill(LinkA,LinkA+na+1,0);
 	fill(LinkB,LinkB+nb+1,0);

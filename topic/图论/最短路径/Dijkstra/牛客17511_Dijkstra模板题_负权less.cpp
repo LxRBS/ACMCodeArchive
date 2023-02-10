@@ -1,6 +1,6 @@
 /**
- * ×î¶ÌÂ·Ä£°åÌâ£¬ÎŞÏòÍ¼£¬ÇóSµ½TµÄ×î¶ÌÂ·¾¶
- * ÓÃ¸ºÈ¨£¬¿ÉÒÔÖ±½ÓÊ¹ÓÃpairµÄless±È½Ï
+ * æœ€çŸ­è·¯æ¨¡æ¿é¢˜ï¼Œæ— å‘å›¾ï¼Œæ±‚Såˆ°Tçš„æœ€çŸ­è·¯å¾„
+ * ç”¨è´Ÿæƒï¼Œå¯ä»¥ç›´æ¥ä½¿ç”¨pairçš„lessæ¯”è¾ƒ
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -15,7 +15,7 @@ int const INF = 2000000000;
 
 typedef pair<int, int> pii;
 typedef vector<pii> vpii;
-/// ÓÃ¸ºÈ¨£¬ÕâÀï¾Í²»ÔÙĞèÒªÖ¸Ã÷±È½Ïº¯Êı
+/// ç”¨è´Ÿæƒï¼Œè¿™é‡Œå°±ä¸å†éœ€è¦æŒ‡æ˜æ¯”è¾ƒå‡½æ•°
 typedef priority_queue<pii> _queue_t;
 
 int N, M, S, T;
@@ -25,9 +25,9 @@ bool Flag[SIZE];
 int D[SIZE];
 
 int Dijkstra(){
-	/// DijµÄ³õÊ¼»¯
+	/// Dijçš„åˆå§‹åŒ–
     fill(Flag, Flag+N+1, false);
-	fill(D, D+N+1, -INF); // ¸ºÈ¨£¬ÕâÀïÒªÓÃ¸ºÎŞÇî´ó
+	fill(D, D+N+1, -INF); // è´Ÿæƒï¼Œè¿™é‡Œè¦ç”¨è´Ÿæ— ç©·å¤§
 
 	Q.push({D[S]=0, S});
 	while(1){
@@ -36,20 +36,20 @@ int Dijkstra(){
 
 		auto h = Q.top(); Q.pop();
 		int v, u = h.second;
-		int tmp, w = h.first; // w¾ÍÊÇDu
+		int tmp, w = h.first; // wå°±æ˜¯Du
 		Flag[u] = true;
 
-		/// ÒòÎªÖ»Òª¼ÆËãT£¬ËùÒÔ¿ÉÒÔÌáÇ°ÍË³ö
+		/// å› ä¸ºåªè¦è®¡ç®—Tï¼Œæ‰€ä»¥å¯ä»¥æå‰é€€å‡º
 		if(u == T) break;
 
 		for(const auto &p: G[u]){
-			/// ²ÉÓÃ¸ºÈ¨£¬ÕâÀïÒªÓÃ´óÓÚºÅ£¬¶øÇÒÒªÓÃ¼õºÅ
+			/// é‡‡ç”¨è´Ÿæƒï¼Œè¿™é‡Œè¦ç”¨å¤§äºå·ï¼Œè€Œä¸”è¦ç”¨å‡å·
 			if(Flag[v=p.second] || D[v] >= (tmp=w-p.first)) continue;
 			
 			Q.push({D[v]=tmp, v});
 		}
 	}
-	return -D[T]; // ·µ»ØµÄÊ±ºòÔÙ¸ºÒ»ÏÂ¼´¿É
+	return -D[T]; // è¿”å›çš„æ—¶å€™å†è´Ÿä¸€ä¸‹å³å¯
 }
 
 int main(){
@@ -57,7 +57,7 @@ int main(){
     freopen("1.txt", "r", stdin);
 #endif
     while(4 == scanf("%d%d%d%d", &N, &M, &S, &T)){
-		/// Ã¿×écaseµÄ³õÊ¼»¯£¬ËäÈ»ÕâÀï²¢Ã»ÓĞ¶àcase
+		/// æ¯ç»„caseçš„åˆå§‹åŒ–ï¼Œè™½ç„¶è¿™é‡Œå¹¶æ²¡æœ‰å¤šcase
         while(!Q.empty()) Q.pop();
 		for(int i=1;i<=N;++i) G[i].clear();
 
