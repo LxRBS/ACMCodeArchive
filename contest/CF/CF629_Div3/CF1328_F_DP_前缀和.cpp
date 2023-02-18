@@ -1,15 +1,15 @@
 /**
- * ����һ��N����A���ٸ���һ��K��ÿ�β������Խ�һ����СԪ�ؼ�1��Ҳ���Խ�һ�����Ԫ�ؼ�1
- * ������Ҫ���β�����ʹ��������������K����ȵ�Ԫ��
- * ����ȷ�������ȵ�Ԫ�ص�ȡֵһ�����Ѿ�������ԭ�����е�
- * ������Auniqueһ�£����Ҽ�¼ai������cnti
- * Bi��ʾ�������Ҽ��㵽λ��iʱ����Ҫ�Ĳ�������
- * BCnti��ʾ��iʱ��ֵ����ai����һ���ж��ٸ�
- * Ci��CCnti��ʾ�����������
- * Di��ʾ��aiΪĿ���������������С����������Di���ڼ��������
- * ���󲿷ּ��ɣ������ȫ�����ϲ��ִ���
- * ���Ҳ��ּ��ɣ����ҵ�ȫ�����ϲ��ִ���
- * minDi���Ǵ�
+ * 给定一个N数组A，再给定一个K，每次操作可以将一个最小元素加1，也可以将一个最大元素减1
+ * 问最少要几次操作，使得数组中至少有K个相等的元素
+ * 首先确定最后相等的元素的取值一定是已经数组中原来就有的
+ * 将数组Aunique一下，并且记录ai的数量cnti
+ * Bi表示从左往右计算到位置i时，需要的操作数量
+ * BCnti表示到i时，值等于ai的数一共有多少个
+ * Ci和CCnti表示从右向左计算
+ * Di表示以ai为目标的满足条件的最小操作数，则Di存在几种情况：
+ * 从左部分即可，从左的全部加上部分从右
+ * 从右部分即可，从右的全部加上部分从左
+ * minDi就是答案
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -70,14 +70,14 @@ int main(){
     llt ans = 0x3F3F3F3F3F3F3F3F;
     for(int tmp, i=1;i<=N;++i){
         tmp = BCnt[i] - K;
-        if(tmp >= 0){ // ���󲿷ּ���
+        if(tmp >= 0){ // 从左部分即可
             ans = min(ans, B[i]-tmp);
-        }else{ // ����ȫ�����ϴ��ҵĲ���
+        }else{ // 从左全部加上从右的部分
             tmp = CCnt[i] - Cnt[A[i]] + tmp;
             ans = min(ans, B[i] + C[i] - tmp);
         }
         tmp = CCnt[i] - K;
-        if(tmp >= 0){ // ���Ҳ��ּ��ɣ�������ҵ�ȫ���������� 
+        if(tmp >= 0){ // 从右部分即可，另外从右的全部不用算了 
             ans = min(ans, C[i] - tmp);
         }
     }

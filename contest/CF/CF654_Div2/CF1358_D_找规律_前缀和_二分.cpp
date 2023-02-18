@@ -1,9 +1,9 @@
 /**
-  n���£�ÿ������di�죬ÿһ��ķ������ǵ����ڵ��µ���š�
-  ����ѡ��������x�죬ʹ�÷����ܺ���󡣿��Կ���
-  �򵥿��Ǿ��ܷ��֣�����ֵ��Ȼ����ĩ��ͷ����������ĩ��β��
-  ��˼��2N�μ��ɡ����Կ��꣬�������Ϊԭ����2����
-  ע��x�Լ��������longlong��
+  n个月，每个月有di天，每一天的分数就是当天在当月的序号。
+  从中选出连续的x天，使得分数总和最大。可以跨年
+  简单考虑就能发现，最大的值必然以月末开头，或者以月末结尾。
+  因此检测2N次即可。可以跨年，则将数组变为原来的2倍。
+  注意x以及结果均是longlong。
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -44,12 +44,12 @@ llt X;
 llt S[SIZE], D[SIZE];
 
 llt proc(int idx){
-    /// �ҵ�kʹ�ã�Dk<=x-1+D[idx]<D[k+1] ��һ����
+    /// 找到k使得，Dk<=x-1+D[idx]<D[k+1] ，一定有
     int k = upper_bound(D, D+N+N, X-1+D[idx]) - D - 1;
     llt left = X-1+D[idx]-D[k];
     llt ans = A[idx] + S[k] - S[idx] + left * (left+1) / 2;
 
-    /// �ҵ�kʹ�� D[k-1]<D[idx+N]-x<=D[k]
+    /// 找到k使得 D[k-1]<D[idx+N]-x<=D[k]
     k = upper_bound(D, D+N+N, D[idx+N]-X) - D;
     left = X + D[k] - D[idx+N];
     llt tmp = S[idx+N]-S[k]+left*(A[k]+A[k]-left+1)/2;

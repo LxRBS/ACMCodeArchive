@@ -1,9 +1,9 @@
 """
-¸ø¶¨NºÍM£¬ÒªÇó¹¹ÔìÒ»¸öÊý×é£¬Ê¹µÃÆäºÍÎªM
-ÇÒSIGMA|ai-a[i+1]|×î´ó
+ç»™å®šNå’ŒMï¼Œè¦æ±‚æž„é€ ä¸€ä¸ªæ•°ç»„ï¼Œä½¿å¾—å…¶å’Œä¸ºM
+ä¸”SIGMA|ai-a[i+1]|æœ€å¤§
 
-¹Û²ìÑùÀý¼´¿ÉµÃµ½´ð°¸£¬Ò»°ãÎª2M
-ÔÙÅÐÌØÊâÇé¿ö
+è§‚å¯Ÿæ ·ä¾‹å³å¯å¾—åˆ°ç­”æ¡ˆï¼Œä¸€èˆ¬ä¸º2M
+å†åˆ¤ç‰¹æ®Šæƒ…å†µ
 """
 # encoding: utf-8
 import sys

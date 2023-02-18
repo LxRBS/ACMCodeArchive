@@ -1,9 +1,9 @@
 """
-¸ø¶¨Á½¸öÕýÊýÊý×éAºÍB£¬³¤¶ÈÎªN
-Ã¿´Î²Ù×÷½«AiºÍBj½øÐÐ½»»»£¨ij¿ÉÒÔÏàµÈ£©
-K´Î²Ù×÷ºó£¬AµÄ×î´óºÍ¿ÉÄÜÊÇ¶àÉÙ
+ç»™å®šä¸¤ä¸ªæ­£æ•°æ•°ç»„Aå’ŒBï¼Œé•¿åº¦ä¸ºN
+æ¯æ¬¡æ“ä½œå°†Aiå’ŒBjè¿›è¡Œäº¤æ¢ï¼ˆijå¯ä»¥ç›¸ç­‰ï¼‰
+Kæ¬¡æ“ä½œåŽï¼ŒAçš„æœ€å¤§å’Œå¯èƒ½æ˜¯å¤šå°‘
 
-Ì°ÐÄ£¬½«AµÄ×îÐ¡µÄ²¿·ÖÓëBµÄ×î´óµÄ²¿·Ö½»»»¼´¿É
+è´ªå¿ƒï¼Œå°†Açš„æœ€å°çš„éƒ¨åˆ†ä¸ŽBçš„æœ€å¤§çš„éƒ¨åˆ†äº¤æ¢å³å¯
 """
 # encoding: utf-8
 import sys
@@ -27,4 +27,3 @@ if __name__ == '__main__':
             i += 1
         ans += sum(a[i::])
         print(ans)
-

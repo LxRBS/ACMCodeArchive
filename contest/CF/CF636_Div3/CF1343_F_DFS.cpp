@@ -1,14 +1,14 @@
 /**
- * ÓÐÒ»¸öÎ´ÖªµÄNÅÅÁÐP£¬ÔÙ¸ø¶¨N-1¸öÆ¬¶Î
- * Ã¿¸öÆ¬¶Î°üº¬Èô¸É¸öÊý£¬±íÊ¾ÕâÐ©ÊýÔÚÅÅÁÐÖÐÊÇÁ¬ÐøµÄ£¬µ«Î´±Ø°´ÕÕ¸ø³öµÄË³Ðò
- * Çó¸ÃÅÅÁÐ¡£ÈÎÒâÒ»¸ö´ð°¸¾ù¿É¡£NÔÚ200
- * ÓÃËÑË÷
- * ¶ÔµÚi¸öÎ»ÖÃ£¬¼ì²éËùÓÐ¿ÉÒÔ·ÅÖÃµÄv£¬ÉîËÑ¡£
- * ÓÐÁ½ÖÖÇé¿ö£º
- * ¼ÙÉèÇ°Ò»¸öÊýÊÇprev£¬ÔòÓÐ¿ÉÄÜ´ÓÆ¬¶ÎÖÐËÑ³öÈô¸É¸ö¿ÉÄÜµÄv£¬½øÐÐ·ÅÖÃ
- * prev¶ÔºóÒ»¸öÊýÃ»ÓÐÓ°Ïì£¬Ôò´ÓÊ£ÏÂµÄÊýÖÐÕÒÒ»¸ö¿ÉÒÔ¿ªÍ·µÄ
- * ÑùÀýÃ»¹ý£¬µ«ÊÇÃ»¿´¶®ËµÃ÷¡£¸Ð¾õspjËÆºõÓÐÎÊÌâ£¬Äª·Ç¿´´íÌâÁË
- * ×Ô¼ì²éÁËÌâÄ¿Êý¾Ý£¬¸Ð¾õ¶¼¶Ô¡£
+ * æœ‰ä¸€ä¸ªæœªçŸ¥çš„NæŽ’åˆ—Pï¼Œå†ç»™å®šN-1ä¸ªç‰‡æ®µ
+ * æ¯ä¸ªç‰‡æ®µåŒ…å«è‹¥å¹²ä¸ªæ•°ï¼Œè¡¨ç¤ºè¿™äº›æ•°åœ¨æŽ’åˆ—ä¸­æ˜¯è¿žç»­çš„ï¼Œä½†æœªå¿…æŒ‰ç…§ç»™å‡ºçš„é¡ºåº
+ * æ±‚è¯¥æŽ’åˆ—ã€‚ä»»æ„ä¸€ä¸ªç­”æ¡ˆå‡å¯ã€‚Nåœ¨200
+ * ç”¨æœç´¢
+ * å¯¹ç¬¬iä¸ªä½ç½®ï¼Œæ£€æŸ¥æ‰€æœ‰å¯ä»¥æ”¾ç½®çš„vï¼Œæ·±æœã€‚
+ * æœ‰ä¸¤ç§æƒ…å†µï¼š
+ * å‡è®¾å‰ä¸€ä¸ªæ•°æ˜¯prevï¼Œåˆ™æœ‰å¯èƒ½ä»Žç‰‡æ®µä¸­æœå‡ºè‹¥å¹²ä¸ªå¯èƒ½çš„vï¼Œè¿›è¡Œæ”¾ç½®
+ * prevå¯¹åŽä¸€ä¸ªæ•°æ²¡æœ‰å½±å“ï¼Œåˆ™ä»Žå‰©ä¸‹çš„æ•°ä¸­æ‰¾ä¸€ä¸ªå¯ä»¥å¼€å¤´çš„
+ * æ ·ä¾‹æ²¡è¿‡ï¼Œä½†æ˜¯æ²¡çœ‹æ‡‚è¯´æ˜Žã€‚æ„Ÿè§‰spjä¼¼ä¹Žæœ‰é—®é¢˜ï¼ŒèŽ«éžçœ‹é”™é¢˜äº†
+ * è‡ªæ£€æŸ¥äº†é¢˜ç›®æ•°æ®ï¼Œæ„Ÿè§‰éƒ½å¯¹ã€‚
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -41,9 +41,9 @@ vector<int> V2Pos[SIZE];
 
 bool Flag[SIZE];
 
-/// ¼ì²éµ±Ç°ÊÇ·ñ¿ÉÒÔ·Åv
-/// Èç¹ûËùÓÐº¬vµÄseg¶¼°üº¬ÏàÍ¬µÄÔªËØ£¬Ôòv¿ÉÒÔ·Å
-/// Ö»º¬vµÄseg²»ÐèÒª¿¼ÂÇ
+/// æ£€æŸ¥å½“å‰æ˜¯å¦å¯ä»¥æ”¾v
+/// å¦‚æžœæ‰€æœ‰å«vçš„segéƒ½åŒ…å«ç›¸åŒçš„å…ƒç´ ï¼Œåˆ™vå¯ä»¥æ”¾
+/// åªå«vçš„segä¸éœ€è¦è€ƒè™‘
 bool isOK(int v){
     int flag[SIZE] = {0};
     int k = 0;
@@ -103,9 +103,9 @@ bool dfs(){
         return true;
     }
 
-    /// È¡³öÉÏÒ»¸öÊý
+    /// å–å‡ºä¸Šä¸€ä¸ªæ•°
     int prev = Ans.back();
-    /// ÕÒ¿ÉÒÔ·ÅÔÚprevºóÃæµÄÊý
+    /// æ‰¾å¯ä»¥æ”¾åœ¨prevåŽé¢çš„æ•°
     vector<int> vtmp;
     bool b = find(vtmp, prev);
     if(vtmp.empty() && b) return false;

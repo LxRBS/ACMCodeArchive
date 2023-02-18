@@ -1,11 +1,11 @@
 /**
- * ¸ø¶¨n£¬×Ö·û´®ÓÉn-2¸öaºÍ2¸öb¹¹³É
- * ÒªÇóÊä³öµÚkĞ¡µÄÕâÑùµÄ×Ö·û´®
- * ¹Û²ì¹æÂÉ¼´¿É
+ * ç»™å®šnï¼Œå­—ç¬¦ä¸²ç”±n-2ä¸ªaå’Œ2ä¸ªbæ„æˆ
+ * è¦æ±‚è¾“å‡ºç¬¬kå°çš„è¿™æ ·çš„å­—ç¬¦ä¸²
+ * è§‚å¯Ÿè§„å¾‹å³å¯
  * aa
- * aba  aab  ÈıÎ»µÄÓĞ2¸ö
- * abba abab aabb ËÄÎ»µÄÓĞ3¸ö
- * abbba ... aabbb ÕâÀïÓĞ4¸ö
+ * aba  aab  ä¸‰ä½çš„æœ‰2ä¸ª
+ * abba abab aabb å››ä½çš„æœ‰3ä¸ª
+ * abbba ... aabbb è¿™é‡Œæœ‰4ä¸ª
  * ...
 */
 #include <bits/stdc++.h>
@@ -20,7 +20,7 @@ int getUnsigned(){
 }
 
 typedef long long int llt;
-long long int f(llt k){//·µ»ØbµÄÊıÁ¿
+long long int f(llt k){//è¿”å›bçš„æ•°é‡
     double x = (sqrt(1.0+8.0*k)-1.0)*0.5 + 1E-4;
     long long int m = (long long int)x;
     if(m*m-m>=k+k) return m-2;
@@ -34,10 +34,10 @@ int main(){
     while(nofkase--){
         int n = getUnsigned();
         llt k = getUnsigned();
-        //mÊÇbÇ°ÃæaµÄÊıÁ¿
+        //mæ˜¯bå‰é¢açš„æ•°é‡
         llt m = f(k);
         //cout<<m<<endl;
-        //Ê×ÏÈÊä³öÇ°ÃæµÄa
+        //é¦–å…ˆè¾“å‡ºå‰é¢çš„a
         int idx=0;
         for(int i=0,t=n-m-2;i<t;++i)A[idx++]='a';
         A[idx++]='b';
