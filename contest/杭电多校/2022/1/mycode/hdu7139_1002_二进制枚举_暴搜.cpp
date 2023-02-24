@@ -1,10 +1,10 @@
 /**
- *  N*M�ķ�����K�º�ƽ��ֱ��ǽ
- *  ���������յ㣬�ʴ���㵽�յ�����Ҫ�������ǽ
- *  NMK����15��
- *  �ʼʹ�����·�����ǲ��ԣ���Ϊ���һ��ǽ���ܻ�Ӱ�������ӵ���ͨ��
- *  ���ڹ�ģ��С�����Ѿ��У���0��Kforÿһ����ѡ����for�����ǽ�ķ���
- *  �ڸ�������һ�����Ѽ��ɡ��ò��鼯Ҳ���ԡ�
+ *  N*M的方格，有K堵横平竖直的墙
+ *  给定起点和终点，问从起点到终点最少要打掉几堵墙
+ *  NMK都在15。
+ *  最开始使用最短路，但是不对，因为打掉一堵墙可能会影响多个格子的连通性
+ *  由于规模很小，暴搜就行，从0到Kfor每一个候选答案再for具体打墙的方案
+ *  在格子上做一个深搜即可。用并查集也可以。
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -44,7 +44,7 @@ int N, M, K;
 int XS, YS, XT, YT;
 bool Flag[300];
 
-/// �Һ���
+/// 找横线
 int findHeng(int y, int x1, int x2, int status){
     int ans = 0;
     for(const auto & p: Heng[y]){
@@ -151,7 +151,7 @@ int main() {
             int y1 = getInt();
             int x2 = getInt();
             int y2 = getInt();
-            if(x1 == x2){ // ����
+            if(x1 == x2){ // 竖线
                 if(y1 > y2) swap(y1, y2);
                 Shu[x1].emplace_back(pii({y1, y2}), i);
             }else{

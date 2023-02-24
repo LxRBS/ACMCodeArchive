@@ -1,5 +1,5 @@
 /**
- * 使用默认哈希会超时
+ * 使用默认哈希会被hack
  */
 #include <assert.h>
 #include <bits/stdc++.h>
