@@ -1,8 +1,8 @@
 /**
- * Taka´Ó×ø±ê0´¦¿ªÊ¼Ìø£¬µÚi²½¿ÉÒÔÌøai»òÕßbi
- * ÎÊNÌøÒÔºóÊÇ·ñÄÜ¹»µ½µ½X¡£
- * ¾ÍÊÇÎÊA»òBÖÐÒÀ´ÎÌôÒ»¸ö£¬ºÍÊÇ·ñÎªX£¬ÏÔÈ»ÊÇ±³°ü£¬Ã¿´ÎÑ¡A»òÕßÑ¡B
- * µ½µÚN¸ö£¬D[x]ÊÇ·ñÇ¡ºÃÎªx
+ * Takaä»Žåæ ‡0å¤„å¼€å§‹è·³ï¼Œç¬¬iæ­¥å¯ä»¥è·³aiæˆ–è€…bi
+ * é—®Nè·³ä»¥åŽæ˜¯å¦èƒ½å¤Ÿåˆ°åˆ°Xã€‚
+ * å°±æ˜¯é—®Aæˆ–Bä¸­ä¾æ¬¡æŒ‘ä¸€ä¸ªï¼Œå’Œæ˜¯å¦ä¸ºXï¼Œæ˜¾ç„¶æ˜¯èƒŒåŒ…ï¼Œæ¯æ¬¡é€‰Aæˆ–è€…é€‰B
+ * åˆ°ç¬¬Nä¸ªï¼ŒD[x]æ˜¯å¦æ°å¥½ä¸ºx
 */
 #include <bits/stdc++.h>
 using namespace std;

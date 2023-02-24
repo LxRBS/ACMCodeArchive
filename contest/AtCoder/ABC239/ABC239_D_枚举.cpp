@@ -1,8 +1,8 @@
 /**
- * ¸ø¶¨ABºÍCD£¬TakaÔÚ[A, B]ÖÐÑ¡Ò»¸öÊý
- * AokiÔÚ[C, D]ÖÐÑ¡Ò»¸öÊý£¬Èç¹ûÁ½ÊýÖ®ºÍÊÇÖÊÊý£¬ÔòAÊ¤£¬·ñÔòTÊ¤
- * ÎÊË­ÄÜÓ®¡£ABCD¹æÄ£Ö»ÓÐ100
- * Òò´Ë×öÒ»¸öË«ÖØÑ­»·¼´¿É
+ * ç»™å®šABå’ŒCDï¼ŒTakaåœ¨[A, B]ä¸­é€‰ä¸€ä¸ªæ•°
+ * Aokiåœ¨[C, D]ä¸­é€‰ä¸€ä¸ªæ•°ï¼Œå¦‚æžœä¸¤æ•°ä¹‹å’Œæ˜¯è´¨æ•°ï¼Œåˆ™Aèƒœï¼Œå¦åˆ™Tèƒœ
+ * é—®è°èƒ½èµ¢ã€‚ABCDè§„æ¨¡åªæœ‰100
+ * å› æ­¤åšä¸€ä¸ªåŒé‡å¾ªçŽ¯å³å¯
 */
 #include <bits/stdc++.h>
 using namespace std;

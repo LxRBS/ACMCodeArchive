@@ -1,8 +1,8 @@
 /**
- * Ò»¸ö¶şÎ¬Êı×é£¬#±íÊ¾ÕÏ°­Îï£¬µã±íÊ¾Í¨Â·£¬S±íÊ¾Æğµã
- * ÎÊÊÇ·ñ´æÔÚ´ÓS¿ªÊ¼ÇÒµ½S½áÊøµÄ¼òµ¥Â·¾¶£¬ÇÒ³¤¶È´óÓÚµÈÓÚ4
- * ¿¼ÂÇµ½¶şÎ¬Êı×éµÄÍ¼£¬Èç¹ûS×î¶à¹ØÁª4Ìõ±ß£¬Ö»ÒªÓĞÈÎÒâÁ½Ìõ±ßÊôÓÚÍ¬Ò»¸öµãË«£¬¼´ËµÃ÷Â·¾¶´æÔÚ
- * Ä£°åÌâ
+ * ä¸€ä¸ªäºŒç»´æ•°ç»„ï¼Œ#è¡¨ç¤ºéšœç¢ç‰©ï¼Œç‚¹è¡¨ç¤ºé€šè·¯ï¼ŒSè¡¨ç¤ºèµ·ç‚¹
+ * é—®æ˜¯å¦å­˜åœ¨ä»Så¼€å§‹ä¸”åˆ°Sç»“æŸçš„ç®€å•è·¯å¾„ï¼Œä¸”é•¿åº¦å¤§äºç­‰äº4
+ * è€ƒè™‘åˆ°äºŒç»´æ•°ç»„çš„å›¾ï¼Œå¦‚æœSæœ€å¤šå…³è”4æ¡è¾¹ï¼Œåªè¦æœ‰ä»»æ„ä¸¤æ¡è¾¹å±äºåŒä¸€ä¸ªç‚¹åŒï¼Œå³è¯´æ˜è·¯å¾„å­˜åœ¨
+ * æ¨¡æ¿é¢˜
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -49,7 +49,7 @@ inline void initGraph(int n){
 	fill(Vertex,Vertex+n+1,0);
 }
 
-//Ë«Ïò±ß
+//åŒå‘è¾¹
 inline void mkEdge(int a,int b,weight_t w=weight_t()){
 	Edge[ECnt].from = a;
 	Edge[ECnt].to = b;
@@ -64,12 +64,12 @@ inline void mkEdge(int a,int b,weight_t w=weight_t()){
 	Vertex[b] = ECnt ++;
 }
 
-int Stack[SIZE_OF_EDGES],StackTop;//¸¨ÖúÕ»£¬»ùÓÚ±ßµÄ
+int Stack[SIZE_OF_EDGES],StackTop;//è¾…åŠ©æ ˆï¼ŒåŸºäºè¾¹çš„
 int TimeStamp;
 int Dfn[SIZE_OF_VERTICES], Low[SIZE_OF_VERTICES];
-int Belong2BiCC[SIZE_OF_EDGES];//±ßiÊôÓÚµÚBi¸öË«Á¬Í¨·ÖÁ¿£¬´Ó1¿ªÊ¼£»¶ÔµãÀ´Ëµ£¬¸îµã¿ÉÄÜÍ¬Ê±ÊôÓÚ¶à¸öµãË«Á¬Í¨
-int Represent[SIZE_OF_EDGES];//Ri±íÊ¾µÚi¸öË«Á¬Í¨ÖĞ±ßÊı±àºÅ×îĞ¡µÄ±ß
-int BiCCCnt;//Ë«Á¬Í¨·ÖÁ¿µÄÊıÁ¿
+int Belong2BiCC[SIZE_OF_EDGES];//è¾¹iå±äºç¬¬Biä¸ªåŒè¿é€šåˆ†é‡ï¼Œä»1å¼€å§‹ï¼›å¯¹ç‚¹æ¥è¯´ï¼Œå‰²ç‚¹å¯èƒ½åŒæ—¶å±äºå¤šä¸ªç‚¹åŒè¿é€š
+int Represent[SIZE_OF_EDGES];//Riè¡¨ç¤ºç¬¬iä¸ªåŒè¿é€šä¸­è¾¹æ•°ç¼–å·æœ€å°çš„è¾¹
+int BiCCCnt;//åŒè¿é€šåˆ†é‡çš„æ•°é‡
 
 void dfs(int u,int pre){
     Dfn[u] = Low[u] = ++TimeStamp;
@@ -77,12 +77,12 @@ void dfs(int u,int pre){
     int v, edge = 0;
     for(int next=Vertex[u];next;next=Edge[next].next)if( (v=Edge[next].to) != pre ){
         if ( 0 == Dfn[v] ){
-            //ÈëÕ»
+            //å…¥æ ˆ
             Stack[StackTop++] = next;
             dfs(v,u);
             if ( Low[v] < Low[u] ) Low[u] = Low[v];
 
-            //ËµÃ÷uÊÇ¸îµã£¬Õ»ÄÚµÄ±ß¶¼ÊôÓÚÍ¬Ò»¸öµãË«Á¬Í¨
+            //è¯´æ˜uæ˜¯å‰²ç‚¹ï¼Œæ ˆå†…çš„è¾¹éƒ½å±äºåŒä¸€ä¸ªç‚¹åŒè¿é€š
             if ( Dfn[u] <= Low[v] ){
                 ++BiCCCnt;
                 do{
@@ -114,7 +114,7 @@ bool proc(){
     initGraph(vn);
     char * ch;
     int idx;
-    vector<int> es; // ±£´æ¸úÆğµãÓĞ¹ØµÄ±ßµÄ±àºÅ
+    vector<int> es; // ä¿å­˜è·Ÿèµ·ç‚¹æœ‰å…³çš„è¾¹çš„ç¼–å·
     for(int i=0;i<H;++i)for(int j=0;j<W;++j){
         if('#' == *(ch=A+(idx=i*W+j))) continue;
 

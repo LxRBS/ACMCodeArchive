@@ -1,8 +1,8 @@
 /**
- * Ò»¸ö¶şÎ¬Êı×é£¬#±íÊ¾ÕÏ°­Îï£¬µã±íÊ¾Í¨Â·£¬S±íÊ¾Æğµã
- * ÎÊÊÇ·ñ´æÔÚ´ÓS¿ªÊ¼ÇÒµ½S½áÊøµÄ¼òµ¥Â·¾¶£¬ÇÒ³¤¶È´óÓÚµÈÓÚ4
- * ¿¼ÂÇµ½¶şÎ¬Êı×éµÄÍ¼£¬Èç¹ûS´æÔÚÓÚÒ»¸öµãÊı²»ÉÙÓÚ4µÄ±ßË«Á¬Í¨·ÖÁ¿£¬ÔòÂ·¾¶´æÔÚ
- * Ä£°åÌâ
+ * ä¸€ä¸ªäºŒç»´æ•°ç»„ï¼Œ#è¡¨ç¤ºéšœç¢ç‰©ï¼Œç‚¹è¡¨ç¤ºé€šè·¯ï¼ŒSè¡¨ç¤ºèµ·ç‚¹
+ * é—®æ˜¯å¦å­˜åœ¨ä»Så¼€å§‹ä¸”åˆ°Sç»“æŸçš„ç®€å•è·¯å¾„ï¼Œä¸”é•¿åº¦å¤§äºç­‰äº4
+ * è€ƒè™‘åˆ°äºŒç»´æ•°ç»„çš„å›¾ï¼Œå¦‚æœSå­˜åœ¨äºä¸€ä¸ªç‚¹æ•°ä¸å°‘äº4çš„è¾¹åŒè¿é€šåˆ†é‡ï¼Œåˆ™è·¯å¾„å­˜åœ¨
+ * æ¨¡æ¿é¢˜
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -49,7 +49,7 @@ inline void initGraph(int n){
 	fill(Vertex,Vertex+n+1,0);
 }
 
-//Ë«Ïò±ß
+//åŒå‘è¾¹
 inline void mkEdge(int a,int b,weight_t w=weight_t()){
 	Edge[ECnt].from = a;
 	Edge[ECnt].to = b;
@@ -64,22 +64,22 @@ inline void mkEdge(int a,int b,weight_t w=weight_t()){
 	Vertex[b] = ECnt ++;
 }
 
-int Stack[SIZE_OF_VERTICES],StackTop;//¸¨ÖúÕ»
+int Stack[SIZE_OF_VERTICES],StackTop;//è¾…åŠ©æ ˆ
 int TimeStamp;
 int Dfn[SIZE_OF_VERTICES], Low[SIZE_OF_VERTICES];
-//bool IsBridge[SIZE_OF_EDGES];//±ßiÊÇ·ñÎªÇÅ
-bool IsVisited[SIZE_OF_EDGES];//±ßµÄ±ê¼ÇÊı×é£¬ÓĞÖØ±ßÊ±ĞèÓÃ´ËÊı×é½øĞĞÅĞ¶Ï
-int Belong2BiCC[SIZE_OF_VERTICES];//µãiÊôÓÚµÚBi¸öË«Á¬Í¨·ÖÁ¿£¬´Ó1¿ªÊ¼
-int Represent[SIZE_OF_VERTICES];//Ri±íÊ¾µÚi¸ö±ßË«µÄ´ú±í£¬Ò²¾ÍÊÇ±àºÅ×îĞ¡µÄÄÇ¸öµã
-int BiCCCnt;//Ë«Á¬Í¨·ÖÁ¿µÄÊıÁ¿
+//bool IsBridge[SIZE_OF_EDGES];//è¾¹iæ˜¯å¦ä¸ºæ¡¥
+bool IsVisited[SIZE_OF_EDGES];//è¾¹çš„æ ‡è®°æ•°ç»„ï¼Œæœ‰é‡è¾¹æ—¶éœ€ç”¨æ­¤æ•°ç»„è¿›è¡Œåˆ¤æ–­
+int Belong2BiCC[SIZE_OF_VERTICES];//ç‚¹iå±äºç¬¬Biä¸ªåŒè¿é€šåˆ†é‡ï¼Œä»1å¼€å§‹
+int Represent[SIZE_OF_VERTICES];//Riè¡¨ç¤ºç¬¬iä¸ªè¾¹åŒçš„ä»£è¡¨ï¼Œä¹Ÿå°±æ˜¯ç¼–å·æœ€å°çš„é‚£ä¸ªç‚¹
+int BiCCCnt;//åŒè¿é€šåˆ†é‡çš„æ•°é‡
 
 void dfs(int u,int pre){
     Dfn[u] = Low[u] = ++TimeStamp;
 
-    //ÈëÕ»
+    //å…¥æ ˆ
     Stack[StackTop++] = u;
 
-    //¶ÔuµÄÃ¿Ò»Ìõ±ß
+    //å¯¹uçš„æ¯ä¸€æ¡è¾¹
     int v,son=0;
     for(int next=Vertex[u];next;next=Edge[next].next)if( !IsVisited[next] ){
         IsVisited[next] = IsVisited[next^1] = true;
@@ -89,7 +89,7 @@ void dfs(int u,int pre){
             dfs(v,u);
             if ( Low[v] < Low[u] ) Low[u] = Low[v];
 
-            /*//ÇÅ
+            /*//æ¡¥
             if ( Dfn[u] < Low[v] ){
                 IsBridge[next] = IsBridge[next^1] = true;
             }
@@ -100,7 +100,7 @@ void dfs(int u,int pre){
         }
     }
 
-    if ( Low[u] == Dfn[u] ){//uºÍÆäÉÏµÄµãÔÚÍ¬Ò»¸ö·ÖÁ¿ÖĞ
+    if ( Low[u] == Dfn[u] ){//uå’Œå…¶ä¸Šçš„ç‚¹åœ¨åŒä¸€ä¸ªåˆ†é‡ä¸­
         Represent[Belong2BiCC[u] = ++BiCCCnt] = u;
         do{
             Belong2BiCC[v=Stack[--StackTop]] = BiCCCnt;

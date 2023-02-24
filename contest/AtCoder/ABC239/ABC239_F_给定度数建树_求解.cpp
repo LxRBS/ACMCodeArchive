@@ -1,10 +1,10 @@
 /**
- * ����һ�������������ߣ��Լ����ڵ�Ķ�����
- * ����һ�����ߵķ�����ʹ�����õ�һ���Ϸ���������������������������-1
- * ���ȼ�����б��Ƿ�Ͷ���ì�ܣ�Ȼ��������ʣ�����Ҫ�������
- * ��������ͨ���Ϊ�����࣬ʣ�����Ϊ1�ģ��Լ�ʣ���������1��
- * Ȼ��ÿһ�θ���һ���������ӣ�����ע��ɾ��
- * ����Ȼʣ����������Ϊ1�ĵ㣬����Ϊ������
+ * 给定一个树的若干条边，以及各节点的度数，
+ * 给出一个连边的方案，使得最后得到一个合法的树且满足度数，不存在则输出-1
+ * 首先检查已有边是否和度数矛盾，然后考虑连接剩余边且要满足度数
+ * 把所有连通块分为两大类，剩余度数为1的，以及剩余度数大于1的
+ * 然后每一次各挑一个进行连接，并且注意删除
+ * 最后必然剩下两个度数为1的点，否则即为不可能
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -41,8 +41,8 @@ typedef pair<int, int> pii;
 int N, M;
 vi Deg;
 vector<pii> Ans;
-vi One; // ���ֶ�Ϊ1�Ľڵ�
-unordered_map<int, vi> Two; // ����ʾFather�� si�洢����ͨ������нڵ�
+vi One; // 保持度为1的节点
+unordered_map<int, vi> Two; // 键表示Father， si存储本联通块的所有节点
 
 bool isOne(decltype(Two.end())it){
     if(1==it->second.size() && 1 == Deg[it->second.front()]){
@@ -76,7 +76,7 @@ void proc(){
             Two[p].push_back(i);
         }
     }
-    /// �����ж�Ϊ1����ͨ���ӵ�One�У���ʱ����ͨ��϶�ֻʣһ����δ����
+    /// 将所有度为1的连通块扔到One中，此时该连通块肯定只剩一个点未连接
     for(auto it=Two.begin();it!=Two.end();){
         if(isOne(it)){
             One.push_back(it->second.front());
@@ -85,17 +85,17 @@ void proc(){
             ++it;
         }
     }
-    /// ÿһ���ҵ�һ��One��һ��Two��������
+    /// 每一次找到一个One和一个Two进行连接
     while(!Two.empty()){
         if(One.empty()){
             return (void)puts("-1");
         }
-        /// ��Two�����ҵ�һ���� One���������һ��
+        /// 从Two里面找第一个， One里面找最后一个
         auto it = Two.begin();
         auto jt = --One.end();
         proc(it, jt);
     }
-    /// OneӦ��ֻʣ������
+    /// One应该只剩下两个
     if(2 != One.size()) return (void)puts("-1");
 
     int a = One.front(), b = One.back();

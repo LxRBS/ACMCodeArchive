@@ -1,7 +1,7 @@
 /**
- * multiset£¬ÈıÖÖ²Ù×÷£º²åÈë£¬multiÉ¾³ı£¬²éÑ¯
- * ÓÃSTLmultiset¾ÍÄÜÍê³É
- * ÕâÀïÓÃÉìÕ¹Ê÷ 
+ * multisetï¼Œä¸‰ç§æ“ä½œï¼šæ’å…¥ï¼Œmultiåˆ é™¤ï¼ŒæŸ¥è¯¢
+ * ç”¨STLmultisetå°±èƒ½å®Œæˆ
+ * è¿™é‡Œç”¨ä¼¸å±•æ ‘ 
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -22,9 +22,9 @@ struct _t{
     int parent;
     int son[2];
     int sn;
-    int size;   // sizeÓò£¬±¾×ÓÊ÷µÄ½ÚµãÊıÁ¿
-    int key;    // ÅÅĞòµÄ¼ü
-    int cnt;    // ÏàÍ¬¼üÖµµÄÊıÁ¿
+    int size;   // sizeåŸŸï¼Œæœ¬å­æ ‘çš„èŠ‚ç‚¹æ•°é‡
+    int key;    // æ’åºçš„é”®
+    int cnt;    // ç›¸åŒé”®å€¼çš„æ•°é‡
 }Node[SIZE];
 int toUsed = 0;
 
@@ -35,42 +35,42 @@ inline void _pushUp(int t){
     son = Node[t].son[RIGHT];
     if(son) Node[t].size += Node[son].size;
 }
-/// ·ÖÅäÒ»¸öĞÂ½Úµã
+/// åˆ†é…ä¸€ä¸ªæ–°èŠ‚ç‚¹
 inline int _newNode(int key){
     memset(Node+(++toUsed), 0, sizeof(_t));
-    /// ÆäËûÓò²»ÓÃ¹Ü£¬ÔÚ¸÷×Ôº¯ÊıÖĞ´¦Àí
+    /// å…¶ä»–åŸŸä¸ç”¨ç®¡ï¼Œåœ¨å„è‡ªå‡½æ•°ä¸­å¤„ç†
     Node[toUsed].key = key;
     return toUsed;
 }
-/// pµÄsn¶ù×ÓÉèÖÃÎªson
+/// pçš„snå„¿å­è®¾ç½®ä¸ºson
 inline void _link(int p, int sn, int son){
     Node[Node[p].son[Node[son].sn = sn] = son].parent = p;    
 }
 
-/// Ğı×ªt£¬t²»ÄÜÊÇÊ÷¸ù
+/// æ—‹è½¬tï¼Œtä¸èƒ½æ˜¯æ ‘æ ¹
 inline void _rotate(int t){
     int p = Node[t].parent;
     int sn = Node[t].sn;
     int osn = sn ^ 1;
-    /// ÖØĞÂÈ·¶¨Èı¶Ô¸¸×Ó¹ØÏµ
+    /// é‡æ–°ç¡®å®šä¸‰å¯¹çˆ¶å­å…³ç³»
     _link(p, sn, Node[t].son[osn]);
     _link(Node[p].parent, Node[p].sn, t);
     _link(t, osn, p);
-    /// Ö»Î¬»¤p¼´¿É£¬t×îºóÎ¬»¤
+    /// åªç»´æŠ¤på³å¯ï¼Œtæœ€åç»´æŠ¤
     _pushUp(p);
 }
-/// ÔÚrootÊ÷ÉÏ£¬½«tÉìÕ¹ÎªpµÄ¶ù×Ó£¬pÎª0Ôò½«tÉìÕ¹ÎªÊ÷¸ù
+/// åœ¨rootæ ‘ä¸Šï¼Œå°†tä¼¸å±•ä¸ºpçš„å„¿å­ï¼Œpä¸º0åˆ™å°†tä¼¸å±•ä¸ºæ ‘æ ¹
 void _splay(int & root, int p, int t){
     int pp;
     while((pp = Node[t].parent) != p){
         if(Node[pp].parent != p) Node[pp].sn == Node[t].sn ? _rotate(pp) : _rotate(t);
         _rotate(t);
     }
-    _pushUp(t); // ×îºóÎ¬»¤t
-    if(0 == p) root = t; // ¸Ä¸ù
+    _pushUp(t); // æœ€åç»´æŠ¤t
+    if(0 == p) root = t; // æ”¹æ ¹
 }
 
-/// ÔÚrootÊ÷ÉÏÕÒ¼üÖµÎªkeyµÄ½Úµã£¬Èç¹ûÕÒ²»µ½Ôò·µ»Ø0£¬ÇÒpÊÇÓ¦²åÈëÎ»ÖÃµÄ¸¸½Úµã
+/// åœ¨rootæ ‘ä¸Šæ‰¾é”®å€¼ä¸ºkeyçš„èŠ‚ç‚¹ï¼Œå¦‚æœæ‰¾ä¸åˆ°åˆ™è¿”å›0ï¼Œä¸”pæ˜¯åº”æ’å…¥ä½ç½®çš„çˆ¶èŠ‚ç‚¹
 int _advance(int root, int & p, int key){
     int t = root;
     while(t && Node[t].key != key){
@@ -80,7 +80,7 @@ int _advance(int root, int & p, int key){
     return t;
 }
 
-/// ÔÚt×ÓÊ÷ÉÏÕÒµÚk¸öÔªËØ£¬k´Ó1¿ªÊ¼
+/// åœ¨tå­æ ‘ä¸Šæ‰¾ç¬¬kä¸ªå…ƒç´ ï¼Œkä»1å¼€å§‹
 int _kth(int t, int k){
     int son = Node[t].son[LEFT];
     int s = son ? Node[son].size : 0;
@@ -89,11 +89,11 @@ int _kth(int t, int k){
     return t;
 }
 
-/// ÔÚrootÊ÷ÉÏ²åÈëkey£¬·µ»Ø²åÈëÒÔºókeyÖµµÄÊıÁ¿
+/// åœ¨rootæ ‘ä¸Šæ’å…¥keyï¼Œè¿”å›æ’å…¥ä»¥åkeyå€¼çš„æ•°é‡
 int insert(int & root, int key){
     int p;
     int t = _advance(root, p, key);
-    if(0 == t){ // ËµÃ÷Ô­À´Ã»ÓĞkey½Úµã
+    if(0 == t){ // è¯´æ˜åŸæ¥æ²¡æœ‰keyèŠ‚ç‚¹
         t = _newNode(key);
         _link(p, key < Node[p].key ? LEFT : RIGHT, t);
     }
@@ -101,13 +101,13 @@ int insert(int & root, int key){
     _splay(root, 0, t);
     return Node[t].cnt;
 }
-/// ÔÚrootÊ÷ÉÏÉ¾³ıcnt¸ökey£¬cnt±ÈÏÖÓĞÊıÁ¿»¹¶à£¬ÔòÉ¾¹â¼´¿É
+/// åœ¨rootæ ‘ä¸Šåˆ é™¤cntä¸ªkeyï¼Œcntæ¯”ç°æœ‰æ•°é‡è¿˜å¤šï¼Œåˆ™åˆ å…‰å³å¯
 void remove(int & root, int key, int cnt){
     int p;
     int t = _advance(root, p, key);    
-    if(0 == t) return; // ±¾À´¾ÍÃ»ÓĞkey
+    if(0 == t) return; // æœ¬æ¥å°±æ²¡æœ‰key
 
-    /// ½«t±äÎªÊ÷¸ù
+    /// å°†tå˜ä¸ºæ ‘æ ¹
     _splay(root, 0, t);
     if(Node[t].cnt > cnt){
         Node[t].cnt -= cnt;
@@ -115,31 +115,31 @@ void remove(int & root, int key, int cnt){
         return;
     }
 
-    /// ´ËÊ±ÒªÈ·ÊµÉ¾³ı¸Ã½Úµã£¬Ê×ÏÈÕÒµ½×ó¶ù×Ó£¬ÓÉÓÚÉÚ±øµÄ´æ£¬×ó¶ù×ÓÒ»¶¨´æÔÚ
+    /// æ­¤æ—¶è¦ç¡®å®åˆ é™¤è¯¥èŠ‚ç‚¹ï¼Œé¦–å…ˆæ‰¾åˆ°å·¦å„¿å­ï¼Œç”±äºå“¨å…µçš„å­˜ï¼Œå·¦å„¿å­ä¸€å®šå­˜åœ¨
     int son = Node[t].son[LEFT];
-    /// ÕÒµ½×ó¶ù×ÓµÄ×î´óµã½«Æä±äÎªÊ÷¸ùµÄ¶ù×Ó
+    /// æ‰¾åˆ°å·¦å„¿å­çš„æœ€å¤§ç‚¹å°†å…¶å˜ä¸ºæ ‘æ ¹çš„å„¿å­
     int tt = _kth(son, Node[son].size);
     _splay(t, t, tt);
-    /// ´ËÊ±×ó¶ù×ÓÃ»ÓĞÓÒ¶ù×Ó£¬½«ÓÒ¶ù×Ó¹Òµ½×ó¶ù×ÓµÄÓÒ¶ù×Ó¼´¿É
+    /// æ­¤æ—¶å·¦å„¿å­æ²¡æœ‰å³å„¿å­ï¼Œå°†å³å„¿å­æŒ‚åˆ°å·¦å„¿å­çš„å³å„¿å­å³å¯
     _link(tt, RIGHT, Node[t].son[RIGHT]);
     _pushUp(tt);
     Node[root = tt].parent = 0;
     return;
 }
 
-/// ÔÚrootÊ÷ÉÏ²éÕÒÅÅÃûµÚkµÄ½Úµã£¬k´Ó1¿ªÊ¼
+/// åœ¨rootæ ‘ä¸ŠæŸ¥æ‰¾æ’åç¬¬kçš„èŠ‚ç‚¹ï¼Œkä»1å¼€å§‹
 int kth(int & root, int k){
-    /// ×¢ÒâÓĞÉÚ±øµÄ´æÔÚ£¬ËùÒÔÖ®ÀàÒª¼Ó1
+    /// æ³¨æ„æœ‰å“¨å…µçš„å­˜åœ¨ï¼Œæ‰€ä»¥ä¹‹ç±»è¦åŠ 1
     int t = _kth(root, k+1);
     _splay(root, 0, t);
     return t;
 }
 
-/// rootÊ÷ÉÏ×îĞ¡Öµ
+/// rootæ ‘ä¸Šæœ€å°å€¼
 inline int min(int & root){
     return Node[kth(root, 1)].key;
 }
-/// rootÊ÷ÉÏ×î´óÖµ
+/// rootæ ‘ä¸Šæœ€å¤§å€¼
 inline int max(int & root){
     return Node[kth(root, Node[root].size-2)].key;
 }
@@ -160,7 +160,7 @@ int main() {
     ios::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     
-    /// ÏÈ³õÊ¼»¯
+    /// å…ˆåˆå§‹åŒ–
     initTree(Root);
 
     cin >> Q;

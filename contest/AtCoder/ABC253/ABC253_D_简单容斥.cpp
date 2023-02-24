@@ -1,6 +1,6 @@
 /**
- * ��[1, N]�в���A�ı���Ҳ����B�ı�������֮��
- * ��һ��A��B�ı���֮�ͣ��򵥵��ݳ�
+ * 求[1, N]中不是A的倍数也不是B的倍数的数之和
+ * 求一下A或B的倍数之和，简单的容斥
  */
 #include <bits/stdc++.h>
 using namespace std;

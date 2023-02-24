@@ -1,13 +1,13 @@
 /**
- * ¸ø¶¨³¤¶ÈÎªNµÄÊý×éA£¬ÔÚA[1...i]µÈ¸ÅÂÊÖØ¸´³éÑùÁ½¸öÊý£¬¼Ç×÷xºÍy
- * Çómax(x, y)µÄÆÚÍû
- * ÐèÒª¶ÔÃ¿Ò»¸öi=1,2,...,N¾ù»Ø´ðÉÏÊöÎÊÌâ£¬Òò´ËÒ»¹²ÊÇN¸ö´ð°¸
- * ËùÓÐ¼ÆËãÔÚÄ£ÒâÒåÏÂ
- * ¶ÔÓÚÇ°i¸öÊý£¬Ei=SS{max(Ax, Ay)}/(i*i)
- * ÁîDi=SS{max(Ax, Ay)}£¬¿ÉÒÔ·¢ÏÖDiÓÉÈý²¿·Ö×é³É
+ * ç»™å®šé•¿åº¦ä¸ºNçš„æ•°ç»„Aï¼Œåœ¨A[1...i]ç­‰æ¦‚çŽ‡é‡å¤æŠ½æ ·ä¸¤ä¸ªæ•°ï¼Œè®°ä½œxå’Œy
+ * æ±‚max(x, y)çš„æœŸæœ›
+ * éœ€è¦å¯¹æ¯ä¸€ä¸ªi=1,2,...,Nå‡å›žç­”ä¸Šè¿°é—®é¢˜ï¼Œå› æ­¤ä¸€å…±æ˜¯Nä¸ªç­”æ¡ˆ
+ * æ‰€æœ‰è®¡ç®—åœ¨æ¨¡æ„ä¹‰ä¸‹
+ * å¯¹äºŽå‰iä¸ªæ•°ï¼ŒEi=SS{max(Ax, Ay)}/(i*i)
+ * ä»¤Di=SS{max(Ax, Ay)}ï¼Œå¯ä»¥å‘çŽ°Diç”±ä¸‰éƒ¨åˆ†ç»„æˆ
  * Di = D[i-1] + A[i] + 2 * (c * A[i] + s)
- * ÆäÖÐcÊÇA[1...i-1]ÖÐÐ¡ÓÚµÈÓÚAiµÄÊýµÄÊýÁ¿£¬sÊÇ¸ÃÇø¼äÖÐ´óÓÚAiµÄËùÓÐÔªËØÖ®ºÍ
- * cºÍs·Ö±ðÓÃÁ½¸öÊ÷×´Êý×éÎ¬»¤¼´¿É
+ * å…¶ä¸­cæ˜¯A[1...i-1]ä¸­å°äºŽç­‰äºŽAiçš„æ•°çš„æ•°é‡ï¼Œsæ˜¯è¯¥åŒºé—´ä¸­å¤§äºŽAiçš„æ‰€æœ‰å…ƒç´ ä¹‹å’Œ
+ * cå’Œsåˆ†åˆ«ç”¨ä¸¤ä¸ªæ ‘çŠ¶æ•°ç»„ç»´æŠ¤å³å¯
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -100,8 +100,8 @@ int main(){
     V.modify(A[1], A[1]);
     
     for(int i=2;i<=N;++i){
-        llt c = U.query(A[i]); // Ð¡ÓÚµÈÓÚAiµÄÊýÁ¿
-        llt s = V.query(A[i]+1, maxv); // ´óÓÚµÈÓÚAiµÄËùÓÐÊýÖ®ºÍ
+        llt c = U.query(A[i]); 
+        llt s = V.query(A[i]+1, maxv); 
         D[i] = mul(2LL, add(mul(c, A[i]), s));
         D[i] = add(D[i], A[i], D[i-1]);
         llt ans = mul(D[i], inv(mul(i, i)));

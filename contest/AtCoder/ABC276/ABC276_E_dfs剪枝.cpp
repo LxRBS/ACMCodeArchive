@@ -1,9 +1,9 @@
 /**
- * һ����ά���飬#��ʾ�ϰ�����ʾͨ·��S��ʾ���
- * ���Ƿ���ڴ�S��ʼ�ҵ�S�����ļ�·�����ҳ��ȴ��ڵ���4
- * ֱ�Ӵ�S��ʼ�ѣ�������ѻ����Ϳ����ˡ�
- * ע���֦
- * ��������һ����֦���³�ʱ������ֱ�ӻ����˴��˫��ģ��
+ * 一个二维数组，#表示障碍物，点表示通路，S表示起点
+ * 问是否存在从S开始且到S结束的简单路径，且长度大于等于4
+ * 直接从S开始搜，如果能搜回来就可以了。
+ * 注意剪枝
+ * 当场少了一个剪枝导致超时，于是直接换成了打边双的模板
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -55,7 +55,7 @@ bool dfs(int r, int c, int cur){
             if(b) return true;
         } 
     }
-    Flag[r*W+c] = true; // �������֦����ʾ�õ�϶��ǲ�ͨ��
+    Flag[r*W+c] = true; // 加这个剪枝，表示该点肯定是不通的
     return false;
 }
 
