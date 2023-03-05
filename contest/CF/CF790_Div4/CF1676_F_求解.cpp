@@ -1,7 +1,7 @@
 /**
- * ¸ø¶¨Êý×éºÍK£¬Çó×î³¤µÄÇø¼ä[L, R]Âú×ã£º
- * ¸ÃÇø¼äÄÚËùÓÐµÄÊýÔÚÊý×éÖÐ¾ù³öÏÖÁËÖÁÉÙK´Î
- * ÓÃmap×öÒ»¸ö¼ÆÊýÆ÷£¬È»ºó±éÀú¼´¿É
+ * ç»™å®šæ•°ç»„å’ŒKï¼Œæ±‚æœ€é•¿çš„åŒºé—´[L, R]æ»¡è¶³ï¼š
+ * è¯¥åŒºé—´å†…æ‰€æœ‰çš„æ•°åœ¨æ•°ç»„ä¸­å‡å‡ºçŽ°äº†è‡³å°‘Kæ¬¡
+ * ç”¨mapåšä¸€ä¸ªè®¡æ•°å™¨ï¼Œç„¶åŽéåŽ†å³å¯
  */
 #include <bits/stdc++.h>
 #include <memory>
