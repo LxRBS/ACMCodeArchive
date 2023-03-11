@@ -3,7 +3,7 @@
 namespace TULUN{
 
 
-/// 网络流
+/// 网络流，最大流是对的，但是方案是错的。待查
 struct NetworkMaxFlow_HLPP{
 
 
