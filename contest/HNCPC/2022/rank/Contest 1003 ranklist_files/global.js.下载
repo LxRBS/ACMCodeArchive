@@ -1,0 +1,209 @@
+var g_submitDelayInfo = 500; //提交后通知延迟跳转
+var g_submitDelayOper = 5; //提交后延迟下次操作
+
+function button_delay(button, delay, ori, tips) {
+    button.attr('disabled', true);
+    if (ori !== null)
+        button.text(tips ? (tips + "(" + delay + ")") : ('you can submit again after ' + delay + 's'));
+    var timer = setInterval(
+        function() {
+            delay--;
+            if (delay <= 0) {
+                if (ori !== null)
+                    button.text(ori);
+                button.removeAttr('disabled');
+                clearInterval(timer);
+                return;
+            }
+            if (ori !== null)
+                button.text(tips ? (tips + "(" + delay + ")") : ('you can submit again after ' + delay + 's'));
+        },
+        1000
+    );
+}
+
+
+jQuery.validator.addMethod("user_id_validate", function(value, element)
+{
+    return this.optional( element ) || /^[a-zA-Z0-9_]+$/.test($.trim(value));
+}, "Only number, letters and underlines are allowed");
+
+
+function DoUploadFile(upload_file_input, upload_file_form, upload_file_button)
+{
+    upload_file_form.ajaxForm({
+        beforeSend: function() {
+            upload_file_button.attr('disabled', true);
+            var percentVal = '0%';
+            upload_file_button.text('Uploading'+percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            upload_file_button.text('Uploading'+percentVal);
+        },
+        success: function() {
+            var percentVal = '100%';
+            upload_file_button.text("Uploaded");
+        },
+        complete: function(e) {
+            ret = JSON.parse(e.responseText);
+            if(ret['code'] == 1)
+            {
+                alertify.success("Uploaded.");
+                button_delay(upload_file_button, 1, 'Upload File', 'Upload File');
+                return true;
+            }
+            else
+            {
+                alertify.error(ret['msg']);
+                button_delay(upload_file_button, 1, 'Upload File', 'Upload File');
+                return false;
+            }
+        }
+    });
+    upload_file_form.submit();
+    upload_file_input.val('');
+}
+
+
+function checkfile(upload_input, maxfilesize) {
+    var maxsizeMB = Math.ceil(maxfilesize / 1024 / 1024);
+    var errMsg = "Filesize must not exceed " + maxsizeMB + "Mb";
+    var tipMsg = "Your browser does not support the size of the uploaded file before uploading. Please make sure that the uploaded file does not exceed" + maxfilesize + "Mb.";
+    var browserCfg = {};
+    var ua = window.navigator.userAgent;
+    if (ua.indexOf("MSIE") >= 1) {
+        browserCfg.ie = true;
+    } else if (ua.indexOf("Firefox") >= 1) {
+        browserCfg.firefox = true;
+    } else if (ua.indexOf("Chrome") >= 1) {
+        browserCfg.chrome = true;
+    }
+    try {
+        var obj_file = upload_input;
+        if (obj_file.value == "") {
+            return [false, "Please chose a file."];
+        }
+        var filesize = 0;
+        if (browserCfg.firefox || browserCfg.chrome) {
+            filesize = obj_file.files[0].size;
+        } else if (browserCfg.ie) {
+            var obj_img = document.getElementById('tempimg');
+            obj_img.dynsrc = obj_file.value;
+            filesize = obj_img.fileSize;
+        } else {
+            return [true, tipMsg];
+        }
+        if (filesize == -1) {
+            return [true, tipMsg];
+        } else if (filesize > maxfilesize) {
+            return [false, errMsg];
+        } else {
+            return [true, null];
+        }
+    } catch (e) {
+        return [true, null];
+    }
+}
+function pad0left(num, n, padcontent)
+{
+    if(padcontent == null)
+        padcontent = ' ';
+    return (new Array(n).join(padcontent) + num).slice(-n);
+}
+function GetAnchor(name=null) {
+    let anchor_str = window.location.hash.substr(1);
+    if(name === null) return anchor_str;
+    var reg = new RegExp("(^|#)" + name + "=([^#]*?)(#|$)");
+    var r = anchor_str.match(reg);
+    if (r != null) return decodeURI(r[2]); return null;
+}
+function SetAnchor(val, name=null) {
+    let anchor_str = "";
+    if(name === null) anchor_str = val;
+    else {
+        anchor_str = window.location.hash.substr(1);
+        var reg = new RegExp("(^|#)" + name + "=([^#]*?)(#|$)");
+        var r = anchor_str.match(reg);
+        if(val === null || val === "") {
+            if(r !== null) {
+                anchor_str = anchor_str.replace(reg, "");
+			}
+        } else {
+            if (r != null) {
+                anchor_str = anchor_str.replace(reg, "$1" + name + "=" + val + "$3");
+            }
+            else {
+                if(anchor_str === "") anchor_str = name + '=' + val;
+                else anchor_str += '#' + name + '=' + val;
+            }
+        }
+    }
+    window.location.hash = '#' + anchor_str;
+}
+// **************************************************
+// Bootstrap Table 相关
+function AutoId(value, row, index) {
+    return index + 1;
+}
+// **************************************************
+// cookie 封装，可处理中文
+function SetCookie(key, value, exp={})
+{
+    window.localStorage.setItem(key, window.btoa(encodeURIComponent(JSON.stringify(value))));
+}
+function GetCookie(key)
+{
+    let cookiestr = window.localStorage.getItem(key);
+    if(typeof(cookiestr) == "undefined" || !cookiestr)
+        return false;
+    let cookieobj = JSON.parse(unescape(decodeURIComponent(window.atob(cookiestr))));
+    return cookieobj;
+}
+function DelCookie(key)
+{
+    window.localStorage.removeItem(key);
+}
+// **************************************************
+// 时间日期格式相关
+function DateFormat(date, fmt='yyyy-MM-dd HH:mm:ss') {
+    const opt = {
+        "Y+": date.getFullYear().toString(),      
+        "m+": (date.getMonth() + 1).toString(),   
+        "d+": date.getDate().toString(),          
+        "H+": date.getHours().toString(),         
+        "M+": date.getMinutes().toString(),       
+        "S+": date.getSeconds().toString()        
+    };
+    for (let k in opt) {
+        ret = new RegExp("(" + k + ")").exec(fmt);
+        if (ret) {
+            fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+        };
+    };
+    return fmt;
+}
+function TimestampToTime(timestamp, fmt='yyyy-MM-dd HH:mm:ss') {
+    if(timestamp.toString().length < 13)
+        timestamp *= 1000;
+    let date = new Date(timestamp);
+    return DateFormat(date, fmt);
+}
+function TimeLocal(timestr, fmt='yyyy-MM-dd HH:mm:ss')
+{
+    let date = new Date(timestr);
+    return DateFormat(date, fmt);
+}
+Number.prototype.Pad = function(size) {
+    var s = String(this);
+    while (s.length < (size || 2)) {s = "0" + s;}
+    return s;
+}
+$(document).ready(function(){
+    $('.bootstrap_table_table').on('post-body.bs.table', function(){
+        //处理table宽度，不出现横向scrollbar
+        var bootstrap_table_div = $('.bootstrap_table_div');
+        if(this.scrollWidth > bootstrap_table_div.width())
+            bootstrap_table_div.width(this.scrollWidth + 20);
+    });
+});
