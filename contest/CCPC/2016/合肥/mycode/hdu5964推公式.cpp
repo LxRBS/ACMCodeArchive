@@ -1,31 +1,31 @@
 /**
-  N¸öµãºÍ2ÌõÖ±Ïß
-  ÔÚN¸öµãÖÐÑ¡Á½¸öµãÎªB¡¢B'
-  Ö±ÏßÉÏ¸÷Ñ¡Ò»¸öµãÎªA¡¢A'
-  ÇÒABA'B'ÊÇÆ½ÐÐËÄ±ßÐÎ
-  ÇóÃæ»ý×î´ó
-  NÔÚ100Íò
+  Nä¸ªç‚¹å’Œ2æ¡ç›´çº¿
+  åœ¨Nä¸ªç‚¹ä¸­é€‰ä¸¤ä¸ªç‚¹ä¸ºBã€B'
+  ç›´çº¿ä¸Šå„é€‰ä¸€ä¸ªç‚¹ä¸ºAã€A'
+  ä¸”ABA'B'æ˜¯å¹³è¡Œå››è¾¹å½¢
+  æ±‚é¢ç§¯æœ€å¤§
+  Nåœ¨100ä¸‡
 
-  »ù±¾µÄÏë·¨ÊÇÔÚµã¼¯ÖÐÃ¶¾Ù2¸öµã£¬ÐèÒªO(N^2)£¬¿Ï¶¨³¬Ê±
-  ËùÒÔÓ¦¸ÃÓÐO(NlogN)»òÕßO(N)£¬
-  Èç¹ûÊÇlogN£¬Ò»°ãµÃ¿¼ÂÇ·ÖÖÎ¡¢¶þ·Ö¡¢±¶Ôö£¬¸ü¶àµÄÊÇÆ«ÏòËã·¨Éè¼Æ
-  ×îºó¾­¹ýÊýÑ§ÍÆµ¼£¬·¢ÏÖÆäÊµÊÇO(N)
+  åŸºæœ¬çš„æƒ³æ³•æ˜¯åœ¨ç‚¹é›†ä¸­æžšä¸¾2ä¸ªç‚¹ï¼Œéœ€è¦O(N^2)ï¼Œè‚¯å®šè¶…æ—¶
+  æ‰€ä»¥åº”è¯¥æœ‰O(NlogN)æˆ–è€…O(N)ï¼Œ
+  å¦‚æžœæ˜¯logNï¼Œä¸€èˆ¬å¾—è€ƒè™‘åˆ†æ²»ã€äºŒåˆ†ã€å€å¢žï¼Œæ›´å¤šçš„æ˜¯åå‘ç®—æ³•è®¾è®¡
+  æœ€åŽç»è¿‡æ•°å­¦æŽ¨å¯¼ï¼Œå‘çŽ°å…¶å®žæ˜¯O(N)
 
-  ÁîB(x1,y1),B'(x2,y2)
-  ÁîA(u,v),ÔòA'(x1+x2-u,y1+y2-v)
-  ÓÉÓÚAºÍA'¸÷×ÔÒªÂú×ãÖ±Ïß·½³Ì
+  ä»¤B(x1,y1),B'(x2,y2)
+  ä»¤A(u,v),åˆ™A'(x1+x2-u,y1+y2-v)
+  ç”±äºŽAå’ŒA'å„è‡ªè¦æ»¡è¶³ç›´çº¿æ–¹ç¨‹
   au+bv=0
   a'(x1+x2-u)+b'(y1+y2-v)=0
-  ËùÒÔ½â³ö
+  æ‰€ä»¥è§£å‡º
   u=b(a'(x1+x2)+b'(y1+y2))/(a'b-ab')
   v=a(a'(x1+x2)+b'(y1+y2))/(ab'-a'b)
-  Æ½ÐÐËÄ±ßÐÎµÄÃæ»ýµÈÓÚÏòÁ¿µÄ²æ³Ë£¬¼´|A'-A|¡Á|B'-B|
+  å¹³è¡Œå››è¾¹å½¢çš„é¢ç§¯ç­‰äºŽå‘é‡çš„å‰ä¹˜ï¼Œå³|A'-A|Ã—|B'-B|
   S=2x1y2-2x2y1+2u(y1-y2)+2v(x2-x1)
   =[(aa'x1x1+bb'y1y1+(ab'+a'b)x1y1)-(aa'x2x2+bb'y2y2+(ab'+a'b)x2y2)]/(ab'-a'b)
-  Áîf(x,y)=aa'xx+bb'yy+(ab'+a'b)xy
-  ÔòS=(f(x1,y1)-f(x2,y2))/(ab'-a'b)
-  Òò´ËÇó³öf(x,y)µÄ×î´óÖµÓë×îÐ¡Öµ¼´¿É
-  ËùÒÔO(N)
+  ä»¤f(x,y)=aa'xx+bb'yy+(ab'+a'b)xy
+  åˆ™S=(f(x1,y1)-f(x2,y2))/(ab'-a'b)
+  å› æ­¤æ±‚å‡ºf(x,y)çš„æœ€å¤§å€¼ä¸Žæœ€å°å€¼å³å¯
+  æ‰€ä»¥O(N)
 */
 #include <stdio.h>
 #include <math.h>

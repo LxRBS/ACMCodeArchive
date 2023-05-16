@@ -1,11 +1,11 @@
 /*
-   Æ½ÃæÉÏÓÐN¸öÕ¨µ¯£¬ÓÐ¸÷×ÔµÄÆð±¬·ÑÓÃ
-   Èç¹û±¬Õ¨·¶Î§ÄÚÓÐÆäËûÕ¨µ¯£¬ÔòÕâÐ©Õ¨µ¯Ò²»áÒý±¬
-   ÎÊÒý±¬ËùÓÐÕ¨µ¯ËùÐèµÄ×îÐ¡·ÑÓÃ
-   ÏÔÈ»Èç¹ûAÄÜÒý±¬B£¬ÔòAµ½BÓÐÒ»Ìõ±ß
-   ½ÚµãAÒý±¬ºó£¬ÆäËùÓÐ¿É´ïºó¼Ì¶¼»áÒý±¬£¬Òò´ËÒªÒý±¬Èë¶ÈÎª0µÄµã
-   µ«Ò²ÓÐ¿ÉÄÜÊÇÒ»¸öÇ¿Á¬Í¨·ÖÁ¿£¬Òò´ËÒªËõµã£¬µÃµ½DAG
-   ÔÙ°ÑËùÓÐÈë¶ÈÎª0µÄµãµÄ·ÑÓÃ¼ÓÆðÀ´
+   å¹³é¢ä¸Šæœ‰Nä¸ªç‚¸å¼¹ï¼Œæœ‰å„è‡ªçš„èµ·çˆ†è´¹ç”¨
+   å¦‚æžœçˆ†ç‚¸èŒƒå›´å†…æœ‰å…¶ä»–ç‚¸å¼¹ï¼Œåˆ™è¿™äº›ç‚¸å¼¹ä¹Ÿä¼šå¼•çˆ†
+   é—®å¼•çˆ†æ‰€æœ‰ç‚¸å¼¹æ‰€éœ€çš„æœ€å°è´¹ç”¨
+   æ˜¾ç„¶å¦‚æžœAèƒ½å¼•çˆ†Bï¼Œåˆ™Aåˆ°Bæœ‰ä¸€æ¡è¾¹
+   èŠ‚ç‚¹Aå¼•çˆ†åŽï¼Œå…¶æ‰€æœ‰å¯è¾¾åŽç»§éƒ½ä¼šå¼•çˆ†ï¼Œå› æ­¤è¦å¼•çˆ†å…¥åº¦ä¸º0çš„ç‚¹
+   ä½†ä¹Ÿæœ‰å¯èƒ½æ˜¯ä¸€ä¸ªå¼ºè¿žé€šåˆ†é‡ï¼Œå› æ­¤è¦ç¼©ç‚¹ï¼Œå¾—åˆ°DAG
+   å†æŠŠæ‰€æœ‰å…¥åº¦ä¸º0çš„ç‚¹çš„è´¹ç”¨åŠ èµ·æ¥
 */
 #include <stdio.h>
 #include <algorithm>
@@ -42,23 +42,23 @@ inline void mkEdge(int a,int b){
 	Edge[ECnt].next = Vertex[a];
 	Vertex[a] = ECnt ++;
 }
-int Stack[1100], StackTop;//¸¨ÖúÕ»
+int Stack[1100], StackTop;//è¾…åŠ©æ ˆ
 bool IsInStack[1100];
 
 int TimeStamp;
 int Dfn[1100], Low[1100];
 
-int SCCCnt;//Á¬Í¨·ÖÁ¿µÄ×ÜÊýÁ¿
-int Belong[1100];//µÚi¸ö¶¥µãÊôÓÚµÚBelong[i]¸öÇ¿Á¬Í¨·ÖÁ¿
-int SCCSize[1100];//µÚi¸öÁ¬Í¨·ÖÁ¿µÄ´óÐ¡£¬ÏÂ±ê´Ó1¿ªÊ¼
+int SCCCnt;//è¿žé€šåˆ†é‡çš„æ€»æ•°é‡
+int Belong[1100];//ç¬¬iä¸ªé¡¶ç‚¹å±žäºŽç¬¬Belong[i]ä¸ªå¼ºè¿žé€šåˆ†é‡
+int SCCSize[1100];//ç¬¬iä¸ªè¿žé€šåˆ†é‡çš„å¤§å°ï¼Œä¸‹æ ‡ä»Ž1å¼€å§‹
 
 void dfs(int u){
     Dfn[u] = Low[u] = ++TimeStamp;
 
-    //ÈëÕ»
+    //å…¥æ ˆ
     IsInStack[ Stack[StackTop++] = u ] = true;
 
-    //¶ÔuµÄÃ¿Ò»Ìõ±ß
+    //å¯¹uçš„æ¯ä¸€æ¡è¾¹
     int v;
     for(int next=Vertex[u];next;next=Edge[next].next){
         if ( 0 == Dfn[ v = Edge[next].to ] ){
@@ -69,7 +69,7 @@ void dfs(int u){
         }
     }
 
-    //ÕÒµ½Ò»¸öSCC
+    //æ‰¾åˆ°ä¸€ä¸ªSCC
     if ( Dfn[u] == Low[u] ){
         ++SCCCnt;
         do{
@@ -97,7 +97,7 @@ int Cost[1100];
 int X[1100],Y[1100],R[1100];
 int N;
 
-//idxµ½jdxÓÐÒ»Ìõ±ß
+//idxåˆ°jdxæœ‰ä¸€æ¡è¾¹
 bool f(int idx,int jdx){
     long long int x = X[idx] - X[jdx];
     long long int y = Y[idx] - Y[jdx];
@@ -123,26 +123,26 @@ void read(){
 int Degree[1100];
 int Ans[1100];
 int proc(){
-    //ÇóÇ¿Á¬Í¨·ÖÁ¿
+    //æ±‚å¼ºè¿žé€šåˆ†é‡
     Tarjan(N);
 
-    //ÇóÃ¿Ò»¸öÇ¿Á¬Í¨·ÖÁ¿µÄ×îÐ¡È¨Öµ
+    //æ±‚æ¯ä¸€ä¸ªå¼ºè¿žé€šåˆ†é‡çš„æœ€å°æƒå€¼
     fill(Ans,Ans+SCCCnt+1,1000000);
     for(int i=1;i<=N;++i){
         if(Cost[i]<Ans[Belong[i]]){
             Ans[Belong[i]] = Cost[i];
         }
     }
-    //½¨Á¢KDAG£¬¼ÇÂ¼¶ÈÊý¼´¿É
+    //å»ºç«‹KDAGï¼Œè®°å½•åº¦æ•°å³å¯
     int from,to;
     fill(Degree,Degree+SCCCnt+1,0);
     for(int i=2;i<ECnt;++i){
-        //fromµ½toÓÐÒ»Ìõ±ß
+        //fromåˆ°toæœ‰ä¸€æ¡è¾¹
         if ( (from=Belong[Edge[i].from]) != (to=Belong[Edge[i].to]) ){
                 ++Degree[to];
         }
     }
-    //½«Èë¶ÈÎª0µÄÀÛ¼Ó
+    //å°†å…¥åº¦ä¸º0çš„ç´¯åŠ 
     int ret = 0;
     for(int i=1;i<=SCCCnt;++i){
         if(0==Degree[i]){

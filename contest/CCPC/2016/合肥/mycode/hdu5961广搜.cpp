@@ -1,9 +1,9 @@
 /*
-  ��һ����ȫͼ�����������ͼ���޹����ߣ�
-  ������ͼ�Ƿ��Ǵ��ݵġ�
-  ��ν���ݾ��ǣ�ab�бߡ�bc�бߣ���ac�����б�
-  ����Ǵ��ݵģ�����ab��bc��ac�бߣ����cd���бߣ���bd��Ȼ�бߣ���ad��Ȼ�б�
-  Ҳ����˵��a��ʼ�������������ĵ㣬·�����Ϊ1
+  将一个完全图拆成两个有向图（无公共边）
+  问两个图是否都是传递的。
+  所谓传递就是：ab有边、bc有边，则ac必须有边
+  如果是传递的，则有ab、bc、ac有边，如果cd还有边，则bd必然有边，则ad必然有边
+  也就是说从a开始，到其他相连的点，路径最多为1
 */
 #include <stdio.h>
 #include <vector>
@@ -25,13 +25,13 @@ bool bfs(int s,vector<int> v[]){
     int *head = Q, *tail = Q;
     fill(Flag,Flag+N+1,false);
 
-    //���Ƚ�s����һ���ڵ���������
+    //首先将s的下一级节点塞到队列
     for(vector<int>::const_iterator it=v[s].begin();it!=v[s].end();++it){
         Flag[*tail++ = *it] = true;
     }
 
-    //Ȼ�󰤸�����Ƿ��ж����ڵ����
-    //�����һ���ڵ��������ֲ��ڶ����У����Ȼ�Ƕ����ڵ㣬���Ȼ���Ǵ��ݵ�
+    //然后挨个检查是否有二级节点存在
+    //如果与一级节点相连，又不在队列中，则必然是二级节点，则必然不是传递的
     while(head<tail){
         int u = *head++;
         for(vector<int>::const_iterator it=v[u].begin();it!=v[u].end();++it){

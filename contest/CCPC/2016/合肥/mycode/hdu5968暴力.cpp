@@ -1,8 +1,8 @@
 /**
-  ³¤¶ÈÎªNµÄÊý×é£¬¸ø¶¨M¸öx£¬¶ÔÃ¿Ò»¸öx£¬
-  ÒªÇóÕÒµ½Êý×éÖÐµÄÁ¬Ðø×ÓÐòÁÐ£¬Ê¹µÃÒì»òºÍÓëx×î½Ó½ü
-  Èç¹ûÓÐ¶à¸ö´ð°¸£¬È¡×î³¤µÄ
-  NÔÚ100ÒÔÄÚ£¬ËùÒÔ±©Á¦
+  é•¿åº¦ä¸ºNçš„æ•°ç»„ï¼Œç»™å®šMä¸ªxï¼Œå¯¹æ¯ä¸€ä¸ªxï¼Œ
+  è¦æ±‚æ‰¾åˆ°æ•°ç»„ä¸­çš„è¿žç»­å­åºåˆ—ï¼Œä½¿å¾—å¼‚æˆ–å’Œä¸Žxæœ€æŽ¥è¿‘
+  å¦‚æžœæœ‰å¤šä¸ªç­”æ¡ˆï¼Œå–æœ€é•¿çš„
+  Nåœ¨100ä»¥å†…ï¼Œæ‰€ä»¥æš´åŠ›
 */
 
 #include <stdio.h>
@@ -36,7 +36,7 @@ int main(){
         scanf("%d",&n);
         for(int i=0;i<n;++i)scanf("%d",A+i);
 
-        //Ô¤´¦Àí
+        //é¢„å¤„ç†
         for(int i=0;i<n;++i){
             B[i][i] = A[i];
             for(int j=i+1;j<n;++j){

@@ -1,8 +1,8 @@
 /**
-  ¸ø¶¨µ±Ç°³ÇÊÐµÄÊ±¼ä£¬ÇóÁíÒ»¸ö³ÇÊÐ´ËÊ±µÄÊ±¼ä
-  ÀýÈç£ºLondon 12:00AM£¬MoscowÊÇ3:00AM£¬ÒÑÖªMoscowÊÇ¶«ÈýÇø
-  °ÑÃ¿Ò»ÖÖÇé¿ö¶¼·Ö¿ªÐ´£¬²»ÒªºÏ²¢ÅÐ¶ÏÑ¡Ïî£¬ÕâÑù¸ü²»ÈÝÒ×³ö´í
-  ÌØÊâÊ±¿ÌÒ»¶¨Òª²âÊÔ
+  ç»™å®šå½“å‰åŸŽå¸‚çš„æ—¶é—´ï¼Œæ±‚å¦ä¸€ä¸ªåŸŽå¸‚æ­¤æ—¶çš„æ—¶é—´
+  ä¾‹å¦‚ï¼šLondon 12:00AMï¼ŒMoscowæ˜¯3:00AMï¼Œå·²çŸ¥Moscowæ˜¯ä¸œä¸‰åŒº
+  æŠŠæ¯ä¸€ç§æƒ…å†µéƒ½åˆ†å¼€å†™ï¼Œä¸è¦åˆå¹¶åˆ¤æ–­é€‰é¡¹ï¼Œè¿™æ ·æ›´ä¸å®¹æ˜“å‡ºé”™
+  ç‰¹æ®Šæ—¶åˆ»ä¸€å®šè¦æµ‹è¯•
 */
 
 #include <stdio.h>
@@ -41,45 +41,45 @@ int main(){
 
         int newHour = hour + Map[*c1][*c2];
 
-        if(newHour>24){//Ã÷Ìì
+        if(newHour>24){//æ˜Žå¤©
             day = 2;
             newHour -= 24;
-            if(newHour>12){//Ã÷ÌìÏÂÎç
+            if(newHour>12){//æ˜Žå¤©ä¸‹åˆ
                 *mm = 'P';
                 newHour -= 12;
-            }else if(12==newHour){//Ã÷ÌìÕýÎç
+            }else if(12==newHour){//æ˜Žå¤©æ­£åˆ
                 *mm = 'P';
-            }else{//Ã÷ÌìÉÏÎç
+            }else{//æ˜Žå¤©ä¸Šåˆ
                 *mm = 'A';
             }
-        }else if(24==newHour){//Ç¡ºÃÊÇÁãµã
+        }else if(24==newHour){//æ°å¥½æ˜¯é›¶ç‚¹
             newHour = 12;
             *mm = 'A';
             day = 2;
-        }else if(newHour>12){//½ñÌìÏÂÎç
+        }else if(newHour>12){//ä»Šå¤©ä¸‹åˆ
             newHour -= 12;
             *mm = 'P';
             day = 1;
-        }else if(12==newHour){//Ç¡ºÃÊÇÕýÎç
+        }else if(12==newHour){//æ°å¥½æ˜¯æ­£åˆ
             *mm = 'P';
             day = 1;
-        }else if(newHour>0){//½ñÌìÉÏÎç
+        }else if(newHour>0){//ä»Šå¤©ä¸Šåˆ
             *mm = 'A';
             day = 1;
-        }else if(0==newHour){//Áãµã
+        }else if(0==newHour){//é›¶ç‚¹
             newHour = 12;
             *mm = 'A';
             day = 1;
-        }else if(newHour<0){//×òÌì
+        }else if(newHour<0){//æ˜¨å¤©
             day = 0;
             newHour += 24;
 
-            if(newHour>12){//×òÌìÏÂÎç
+            if(newHour>12){//æ˜¨å¤©ä¸‹åˆ
                 *mm = 'P';
                 newHour -= 12;
-            }else if(12==newHour){//×òÌìÕýÎç
+            }else if(12==newHour){//æ˜¨å¤©æ­£åˆ
                 *mm = 'P';
-            }else{//×òÌìÉÏÎç
+            }else{//æ˜¨å¤©ä¸Šåˆ
                 *mm = 'A';
             }
         }

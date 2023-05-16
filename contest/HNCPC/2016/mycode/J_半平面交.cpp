@@ -1,4 +1,4 @@
-//ÇóÈı½ÇĞÎºÍ¾ØĞÎ½»µÄÃæ»ı£¬Ê¹ÓÃ°ëÆ½ÃæÏà½»À´×ö
+//æ±‚ä¸‰è§’å½¢å’ŒçŸ©å½¢äº¤çš„é¢ç§¯ï¼Œä½¿ç”¨åŠå¹³é¢ç›¸äº¤æ¥åš
 #include <cstdio>
 #include <algorithm>
 using namespace std;
@@ -34,15 +34,15 @@ double cross(point64f_t const&O,point64f_t const&A,point64f_t const&B){
 struct hp_t{
 	double a;
 	double b;
-	double c;//ax+by+c>=0£¬·¨ÏòÁ¿Ê¼ÖÕÊÇ(a,b)
+	double c;//ax+by+c>=0ï¼Œæ³•å‘é‡å§‹ç»ˆæ˜¯(a,b)
 };
-//¸ù¾İ·¨ÏòÁ¿µÄ¼«½ÇÅÅĞò(-180,180]£¬¼«½ÇÏàÍ¬£¬Ô½¿¿½ü·¨ÏòÁ¿µÄÔ½Ğ¡
+//æ ¹æ®æ³•å‘é‡çš„æè§’æ’åº(-180,180]ï¼Œæè§’ç›¸åŒï¼Œè¶Šé è¿‘æ³•å‘é‡çš„è¶Šå°
 bool operator < (hp_t const&l,hp_t const&r){
-	//·¨ÏòÁ¿·Ö±ğÎ»ÓÚxÖáÉÏÏÂ£¬¿ÉÒÔÖ±½ÓµÃµ½½á¹û
+	//æ³•å‘é‡åˆ†åˆ«ä½äºxè½´ä¸Šä¸‹ï¼Œå¯ä»¥ç›´æ¥å¾—åˆ°ç»“æœ
 	int ly = l.b >= 0 ? 1 : -1;
 	int ry = r.b >= 0 ? 1 : -1;
 	if ( ly != ry ) return ly < ry;
-	//Èç¹û¶¼Î»ÓÚxÖáÉÏ
+	//å¦‚æœéƒ½ä½äºxè½´ä¸Š
 	if ( is0(l.b) && is0(r.b) && l.a * r.a < 0 )
 		return l.a > r.a;
 
@@ -50,20 +50,20 @@ bool operator < (hp_t const&l,hp_t const&r){
 
 	if ( !is0(chaji) ) return chaji > 0;
 
-	//·¨ÏòÁ¿ÍêÈ«Æ½ĞĞ£¬µ±aÎªÕıÊ±
+	//æ³•å‘é‡å®Œå…¨å¹³è¡Œï¼Œå½“aä¸ºæ­£æ—¶
 	if ( l.a > EPS ){
-		//Èôhp1±Èhp2¸ü¿¿½ü·¨ÏòÁ¿£¬Ôò±ØÓĞa1x+b1y+c1=0¶øa2x+b2y+c2>0
+		//è‹¥hp1æ¯”hp2æ›´é è¿‘æ³•å‘é‡ï¼Œåˆ™å¿…æœ‰a1x+b1y+c1=0è€Œa2x+b2y+c2>0
 		return l.c * r.a < l.a * r.c;
 	}
 
 	if ( l.a < - EPS )return l.c * r.a > l.a * r.c;
 
-	//aÈç¹ûÎª0£¬b±ØÈ»²»Îª0
+	//aå¦‚æœä¸º0ï¼Œbå¿…ç„¶ä¸ä¸º0
 	if ( l.b > EPS ) return l.c * r.b < l.b * r.c;
 	return l.c * r.b > l.b * r.c;
 }
 
-//ÅĞ¶Ï°ëÆ½ÃæÊÇ·ñÆ½ĞĞ
+//åˆ¤æ–­åŠå¹³é¢æ˜¯å¦å¹³è¡Œ
 bool isPara(hp_t const&l,hp_t const&r){
 	int ly = l.b >= 0 ? 1 : -1;
 	int ry = r.b >= 0 ? 1 : -1;
@@ -71,60 +71,60 @@ bool isPara(hp_t const&l,hp_t const&r){
 	if ( is0(l.b) && is0(r.b) ) return l.a * r.a > 0;
 	return is0( l.a * r.b - r.a * l.b );
 }
-//´Ólµ½r£¬±£Ö¤ÊÇË³Ê±Õë·½Ïò£¬a¡¢bÊÇÎ¨Ò»È·¶¨µÄ
+//ä»låˆ°rï¼Œä¿è¯æ˜¯é¡ºæ—¶é’ˆæ–¹å‘ï¼Œaã€bæ˜¯å”¯ä¸€ç¡®å®šçš„
 inline void genHP(point_t const&l,point_t const&r,hp_t&hp){
 	hp.a = - (double)( l.y - r.y );
 	hp.b = - (double)( r.x - l.x );
 	hp.c = - (double)( l.x * r.y - l.y * r.x );
 }
-//°ëÆ½ÃæÏà½»Çó½»µã£¬±£Ö¤ÓĞÇÒÖ»ÓĞÒ»¸ö½»µã
+//åŠå¹³é¢ç›¸äº¤æ±‚äº¤ç‚¹ï¼Œä¿è¯æœ‰ä¸”åªæœ‰ä¸€ä¸ªäº¤ç‚¹
 inline void inter(hp_t const&l,hp_t const&r,point64f_t&p){
 	double xishu = l.a * r.b - r.a * l.b;
 	p.x = ( l.b * r.c - r.b * l.c ) / xishu;
 	p.y = ( l.c * r.a - l.a * r.c ) / xishu;
 }
-//ÅĞ¶ÏµãÊÇ·ñÔÚ°ëÆ½ÃæÄÚ
+//åˆ¤æ–­ç‚¹æ˜¯å¦åœ¨åŠå¹³é¢å†…
 inline bool isIn(point64f_t const&p,hp_t const&hp){
 	double v = hp.a * p.x + hp.b * p.y + hp.c;
 	return v >= - EPS;
 }
 
-//ÅÅĞòÔöÁ¿·¨£¬»á¸Ä±ähpÀïÃæµÄÄÚÈİ
+//æ’åºå¢é‡æ³•ï¼Œä¼šæ”¹å˜hpé‡Œé¢çš„å†…å®¹
 int sandi(hp_t hp[],int n,point64f_t ans[]){
 	int bot = 0;
 	int top = 1;
 	for(int i=2;i<n;++i){
-		//×îÇ°¶ËµÄÁ½¸ö°ëÆ½ÃæÏà½»
+		//æœ€å‰ç«¯çš„ä¸¤ä¸ªåŠå¹³é¢ç›¸äº¤
 		while( bot < top ){
 			point64f_t p;
 			inter(hp[top-1],hp[top],p);
-			//pÔÚµ±Ç°°ëÆ½ÃæÍâ£¬³ö¶ÓÁĞ
+			//påœ¨å½“å‰åŠå¹³é¢å¤–ï¼Œå‡ºé˜Ÿåˆ—
 			if ( isIn(p,hp[i]) ) break;
 			else                 --top;
 		}
-		//×îµ×¶ËµÄÁ½¸ö°ëÆ½ÃæÏà½»
+		//æœ€åº•ç«¯çš„ä¸¤ä¸ªåŠå¹³é¢ç›¸äº¤
 		while( bot < top ){
 			point64f_t p;
 			inter(hp[bot],hp[bot+1],p);
-			//pÔÚµ±Ç°°ëÆ½ÃæÍâ£¬³ö¶ÓÁĞ
+			//påœ¨å½“å‰åŠå¹³é¢å¤–ï¼Œå‡ºé˜Ÿåˆ—
 			if ( isIn(p,hp[i]) ) break;
 			else                 ++bot;
 		}
-		//¸³Öµ
+		//èµ‹å€¼
 		hp[++top] = hp[i];
 	}
-	//ºó´¦Àí
+	//åå¤„ç†
 	while( bot < top ){
 		point64f_t p;
 		inter(hp[top-1],hp[top],p);
-		//pÔÚµ±Ç°°ëÆ½ÃæÍâ£¬³ö¶ÓÁĞ
+		//påœ¨å½“å‰åŠå¹³é¢å¤–ï¼Œå‡ºé˜Ÿåˆ—
 		if ( isIn(p,hp[bot]) ) break;
 		else                   --top;
 	}
 	while( bot < top ){
 		point64f_t p;
 		inter(hp[bot],hp[bot+1],p);
-		//pÔÚµ±Ç°°ëÆ½ÃæÍâ£¬³ö¶ÓÁĞ
+		//påœ¨å½“å‰åŠå¹³é¢å¤–ï¼Œå‡ºé˜Ÿåˆ—
 		if ( isIn(p,hp[top]) ) break;
 		else                   ++bot;
 	}

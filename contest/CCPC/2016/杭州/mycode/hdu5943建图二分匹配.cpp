@@ -1,20 +1,20 @@
 /*
-  ¸ø¶¨NºÍS£¬È·¶¨Ò»¸öÇø¼ä[S+1,S+N]
-  ÎÊÄÜ·ñ°ÑÕâN¸öÊı½øĞĞ°²ÅÅ£¬
-  Âú×ãÊıxÅÅÔÚµÚy¸öÎ»ÖÃÇÒx%y=0
+  ç»™å®šNå’ŒSï¼Œç¡®å®šä¸€ä¸ªåŒºé—´[S+1,S+N]
+  é—®èƒ½å¦æŠŠè¿™Nä¸ªæ•°è¿›è¡Œå®‰æ’ï¼Œ
+  æ»¡è¶³æ•°xæ’åœ¨ç¬¬yä¸ªä½ç½®ä¸”x%y=0
 
-  ÊµÖÊ¾ÍÊÇ[S+1,S+N]µ½[1,N]½¨Á¢Ò»¸öÒ»Ò»Ó³Éä
-  Âú×ãxÊÇyµÄ±¶Êı
+  å®è´¨å°±æ˜¯[S+1,S+N]åˆ°[1,N]å»ºç«‹ä¸€ä¸ªä¸€ä¸€æ˜ å°„
+  æ»¡è¶³xæ˜¯yçš„å€æ•°
 
-  ÖÊÊıÏÔÈ»Ö»ÓĞ2¸öÎ»ÖÃ¿ÉÒÔÅÅ
-  Èç¹ûÇø¼äÓĞÖØºÏ£¬¼´S<=N£¬Ôò
-  Èç¹û[N+1,S+N]ÖĞÓĞ2¸öÖÊÊı¾Í¿Ï¶¨ÅÅ²»ÏÂÁË
-  ¶øÇÒÖ»Ğè°Ñ[N+1,S+N]ÅÅµ½[1,S]ÖĞ¼´¿É
-  µ±È»£¬S<=1ÏÔÈ»ÊÇ¿ÉĞĞµÄ
-  Èç¹ûÇø¼ä²»ÖØºÏ£¬¼´S>N£¬Ôò[S+1,S+N]ÓĞ2¸öÖÊÊı¾ÍÅÅ²»ÁË
+  è´¨æ•°æ˜¾ç„¶åªæœ‰2ä¸ªä½ç½®å¯ä»¥æ’
+  å¦‚æœåŒºé—´æœ‰é‡åˆï¼Œå³S<=Nï¼Œåˆ™
+  å¦‚æœ[N+1,S+N]ä¸­æœ‰2ä¸ªè´¨æ•°å°±è‚¯å®šæ’ä¸ä¸‹äº†
+  è€Œä¸”åªéœ€æŠŠ[N+1,S+N]æ’åˆ°[1,S]ä¸­å³å¯
+  å½“ç„¶ï¼ŒS<=1æ˜¾ç„¶æ˜¯å¯è¡Œçš„
+  å¦‚æœåŒºé—´ä¸é‡åˆï¼Œå³S>Nï¼Œåˆ™[S+1,S+N]æœ‰2ä¸ªè´¨æ•°å°±æ’ä¸äº†
 
-  ÔÚ7E13µÄ·¶Î§ÄÚ×î´óÖÊÊı¼ä¸ôÊÇ777
-  ËùÒÔÈç¹ûÔÚ777·¶Î§ÄÚ£¬×öÒ»¸öÆ¥Åä¼´¿É
+  åœ¨7E13çš„èŒƒå›´å†…æœ€å¤§è´¨æ•°é—´éš”æ˜¯777
+  æ‰€ä»¥å¦‚æœåœ¨777èŒƒå›´å†…ï¼Œåšä¸€ä¸ªåŒ¹é…å³å¯
 */
 #include <stdio.h>
 #include <algorithm>
@@ -48,7 +48,7 @@ inline void initGraph(int n){
 	fill(Vertex,Vertex+n+1,0);
 }
 
-//µ¥Ïò±ß
+//å•å‘è¾¹
 inline void mkEdge(int a,int b){
 	//Edge[ECnt].from = a;
 	Edge[ECnt].to = b;
@@ -59,15 +59,15 @@ inline void mkEdge(int a,int b){
 int LinkA[SIZE_OF_VERTICES];//LinkAi is the link of Ai in B
 int LinkB[SIZE_OF_VERTICES];//LinkBi is the link of Bi in A
 
-int DA[SIZE_OF_VERTICES],DB[SIZE_OF_VERTICES];//A²¿·ÖµÄ¾àÀë£¬B²¿·ÖµÄ¾àÀë
-int _Q[SIZE_OF_VERTICES];//¸¨Öú¶ÓÁĞ
+int DA[SIZE_OF_VERTICES],DB[SIZE_OF_VERTICES];//Aéƒ¨åˆ†çš„è·ç¦»ï¼ŒBéƒ¨åˆ†çš„è·ç¦»
+int _Q[SIZE_OF_VERTICES];//è¾…åŠ©é˜Ÿåˆ—
 int _Dis;
 bool bfs(int na,int nb){
     fill(DA,DA+na+1,0);
     fill(DB,DB+nb+1,0);
 
     int *head = _Q, *tail = _Q;
-    for(int i=1;i<=na;++i) if ( !LinkA[i] ) *tail++ = i;//Èë¶Ó
+    for(int i=1;i<=na;++i) if ( !LinkA[i] ) *tail++ = i;//å…¥é˜Ÿ
 
     _Dis = INF;
     int u,v;
@@ -85,7 +85,7 @@ bool bfs(int na,int nb){
     return _Dis < INF;
 }
 
-bool _Flag[SIZE_OF_VERTICES];//¸¨Öú±ê¼ÇÊı×é
+bool _Flag[SIZE_OF_VERTICES];//è¾…åŠ©æ ‡è®°æ•°ç»„
 bool dfs(int u){
     int v;
     for(int p=Vertex[u];p;p=Edge[p].next){
@@ -100,7 +100,7 @@ bool dfs(int u){
     return false;
 }
 
-//naÊÇAµÄÊıÁ¿£¬nbÊÇBµÄÊıÁ¿
+//naæ˜¯Açš„æ•°é‡ï¼Œnbæ˜¯Bçš„æ•°é‡
 int HopcroftKarp(int na,int nb){
 	fill(LinkA,LinkA+na+1,0);
 	fill(LinkB,LinkB+nb+1,0);
@@ -123,7 +123,7 @@ int proc(){
     if(S<=N){
         if(S>777) return 0;
 
-        //½¨Í¼,Ò»¹²(S,S)¸öµã
+        //å»ºå›¾,ä¸€å…±(S,S)ä¸ªç‚¹
         initGraph(S+S);
         for(int i=1;i<=S;++i){
             for(int j=1;j<=S;++j){
@@ -135,7 +135,7 @@ int proc(){
         return HopcroftKarp(S,S)==S?1:0;
     }else{
         if(N>777) return 0;
-        //½¨Í¼,Ò»¹²(N,N)¸öµã
+        //å»ºå›¾,ä¸€å…±(N,N)ä¸ªç‚¹
         initGraph(N+N);
         for(int i=1;i<=N;++i){
             for(int j=1;j<=N;++j){

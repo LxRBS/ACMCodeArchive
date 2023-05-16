@@ -1,12 +1,12 @@
 /*
-    Áîf(y,K)=SIGMA(yµÄÃ¿¸öÊý×ÖµÄK´Î·½)
-    ÀýÈç f(233,2) = 2^2 + 3^2 + 3^2
-    ÔÙÁî x = f(y,K) - y
-    ¸ø¶¨xºÍK£¬ÎÊÓÐ¶àÉÙ¸öyÂú×ãÌõ¼þ
-    ¿¼ÂÇÊ¹ÓÃËÑË÷£¬¾­¹ý¼ÆËã¿ÉÖª×î¶àÓÐ10Î»Êý
-    ÁîA¼ÇÂ¼Ç°5Î»ÊýµÄfÖµ£¬B¼ÇÂ¼ºó5Î»ÊýµÄfÖµ
-    Ô­Ìâ±äÎªÓÐ¶àÉÙ¸öAiºÍBjÂú×ãAi+Bj==x
-    ¶ÔA×öÒ»¸öÅÅÐò£¬¿ÉÒÔÔÚ10Íòlog(10Íò)Íê³É
+    ä»¤f(y,K)=SIGMA(yçš„æ¯ä¸ªæ•°å­—çš„Kæ¬¡æ–¹)
+    ä¾‹å¦‚ f(233,2) = 2^2 + 3^2 + 3^2
+    å†ä»¤ x = f(y,K) - y
+    ç»™å®šxå’ŒKï¼Œé—®æœ‰å¤šå°‘ä¸ªyæ»¡è¶³æ¡ä»¶
+    è€ƒè™‘ä½¿ç”¨æœç´¢ï¼Œç»è¿‡è®¡ç®—å¯çŸ¥æœ€å¤šæœ‰10ä½æ•°
+    ä»¤Aè®°å½•å‰5ä½æ•°çš„få€¼ï¼ŒBè®°å½•åŽ5ä½æ•°çš„få€¼
+    åŽŸé¢˜å˜ä¸ºæœ‰å¤šå°‘ä¸ªAiå’ŒBjæ»¡è¶³Ai+Bj==x
+    å¯¹Aåšä¸€ä¸ªæŽ’åºï¼Œå¯ä»¥åœ¨10ä¸‡log(10ä¸‡)å®Œæˆ
 */
 #include <stdio.h>
 #include <algorithm>
@@ -14,13 +14,13 @@
 using namespace std;
 typedef long long int llt;
 
-//A[i][j]±íÊ¾jµÄi´Î·½¼õÈ¥j
+//A[i][j]è¡¨ç¤ºjçš„iæ¬¡æ–¹å‡åŽ»j
 llt A[10][100000];
-//B[i][j]±íÊ¾jµÄi´Î·½¼õÈ¥j*100000
+//B[i][j]è¡¨ç¤ºjçš„iæ¬¡æ–¹å‡åŽ»j*100000
 llt B[10][100000];
-//Pow[i][j]±íÊ¾iµÄj´Î·½
+//Pow[i][j]è¡¨ç¤ºiçš„jæ¬¡æ–¹
 llt Pow[10][10];
-//Flag[i]±íÊ¾A¡¢BµÄµÚiÐÐÊÇ·ñ¼ÆËã¹ý
+//Flag[i]è¡¨ç¤ºAã€Bçš„ç¬¬iè¡Œæ˜¯å¦è®¡ç®—è¿‡
 bool Flag[10];
 
 llt f(llt y,int k,llt t10){
@@ -44,7 +44,7 @@ void init(int k){
     if(Flag[k]) return;
 
     Flag[k] = true;
-    //¼ÆËãAºÍBµÄµÚkÐÐ
+    //è®¡ç®—Aå’ŒBçš„ç¬¬kè¡Œ
     for(int n=1;n<100000;++n){
         A[k][n] = f(n,k,1);
         B[k][n] = f(n,k,100000);
@@ -55,7 +55,7 @@ void init(int k){
 
 int main(){
     //freopen("1.txt","r",stdin);
-    //¼ÆËãPow
+    //è®¡ç®—Pow
     for(int i=1;i<10;++i){
         Pow[i][0] = 1;
         for(int j=1;j<10;++j){
@@ -71,7 +71,7 @@ int main(){
 
         init(k);
 
-        //ÔÚA[k]ºÍB[k]ÖÐËÑË÷ÓÐ¶àÉÙA[k][i]+B[k][j]==x
+        //åœ¨A[k]å’ŒB[k]ä¸­æœç´¢æœ‰å¤šå°‘A[k][i]+B[k][j]==x
         int ans = 0;
         for(int i=0;i<100000;++i){
             llt tmp = x - B[k][i];
@@ -79,7 +79,7 @@ int main(){
             int tt = pp.second - pp.first;
             if(tt>0){
                 ans += tt;
-                //Èç¹û¹ýÁãµÄ»°ÐèÒª¼õ1
+                //å¦‚æžœè¿‡é›¶çš„è¯éœ€è¦å‡1
                 if(*pp.first<=0&&(0<*pp.second||pp.second==A[k]+100000)){
                     --ans;
                 }

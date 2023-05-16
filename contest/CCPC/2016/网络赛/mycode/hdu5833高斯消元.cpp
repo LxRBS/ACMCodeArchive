@@ -1,10 +1,10 @@
 /*
-  ¸ø¶¨n¸öÊý£¬´ÓÖÐÌôÑ¡Ò»Ð©Ê¹Æä³Ë»ýÎªÍêÈ«Æ½·½Êý£¬ÎÊÒ»¹²ÓÐ¶àÉÙÖÖÌô·¨
-  ÏÔÈ»ÒªÌô³É¶ÔµÄÖÊÒò×Ó£¬Ê¹ÓÃÒì»ò¸ßË¹ÏûÔª·¨
-  ÓÃ01ÁÐÏòÁ¿X±íÊ¾ÊÇ·ñÑ¡ÔñÄ³¸öÊý£¬
-  ÉèÖÊÒò×Ó×ÜÊýÎªm¸ö£¬Ôò¶ÔÃ¿Ò»¸öÖÊÒò×Ó¿ÉÒÔÁÐ³öÒ»¸ö·½³Ì£¬ÓÐ£º
+  ç»™å®šnä¸ªæ•°ï¼Œä»Žä¸­æŒ‘é€‰ä¸€äº›ä½¿å…¶ä¹˜ç§¯ä¸ºå®Œå…¨å¹³æ–¹æ•°ï¼Œé—®ä¸€å…±æœ‰å¤šå°‘ç§æŒ‘æ³•
+  æ˜¾ç„¶è¦æŒ‘æˆå¯¹çš„è´¨å› å­ï¼Œä½¿ç”¨å¼‚æˆ–é«˜æ–¯æ¶ˆå…ƒæ³•
+  ç”¨01åˆ—å‘é‡Xè¡¨ç¤ºæ˜¯å¦é€‰æ‹©æŸä¸ªæ•°ï¼Œ
+  è®¾è´¨å› å­æ€»æ•°ä¸ºmä¸ªï¼Œåˆ™å¯¹æ¯ä¸€ä¸ªè´¨å› å­å¯ä»¥åˆ—å‡ºä¸€ä¸ªæ–¹ç¨‹ï¼Œæœ‰ï¼š
   AX = 0
-  ÏµÊý¾ØÕóaijµÄº­ÒåÊÇÈç¹ûµÚj¸öÊýÄÜ¹»´øÀ´ÆæÊý¸öµÚi¸öÖÊÒò×Ó£¬ÔòÎª1£¬·ñÔòÎª0
+  ç³»æ•°çŸ©é˜µaijçš„æ¶µä¹‰æ˜¯å¦‚æžœç¬¬jä¸ªæ•°èƒ½å¤Ÿå¸¦æ¥å¥‡æ•°ä¸ªç¬¬iä¸ªè´¨å› å­ï¼Œåˆ™ä¸º1ï¼Œå¦åˆ™ä¸º0
 */
 #include <stdio.h>
 #include <string.h>
@@ -14,11 +14,11 @@ using namespace std;
 typedef long long int llt;
 llt const MOD = 1000000007LL;
 
-//ÏßÐÔÉ¸·¨
+//çº¿æ€§ç­›æ³•
 int const SIZE = 2000;//
-bool isComp[SIZE] = {false};//isComp[i]ÎªÕæËµÃ÷iÊÇºÏÊý
-int P[SIZE];//P[i]ÎªµÚi¸öËØÊý£¬i´Ó0¿ªÊ¼
-int PCnt = 0;//PCnt¼ÇÂ¼1~SIZEÖ®¼äµÄËØÊýµÄ¸öÊý
+bool isComp[SIZE] = {false};//isComp[i]ä¸ºçœŸè¯´æ˜Žiæ˜¯åˆæ•°
+int P[SIZE];//P[i]ä¸ºç¬¬iä¸ªç´ æ•°ï¼Œiä»Ž0å¼€å§‹
+int PCnt = 0;//PCntè®°å½•1~SIZEä¹‹é—´çš„ç´ æ•°çš„ä¸ªæ•°
 void sieve(){
     for(int i=2;i<SIZE;++i){
         if ( !isComp[i] ) P[PCnt++] = i;
@@ -55,30 +55,30 @@ void disp(int(*a)[SIZE_OF_COLUMN],int row,int col){
     printf("\n");
 }
 
-//aÊÇÔö¹ã¾ØÕó
-//cntOfEqÊÇ·½³ÌµÄ¸öÊý£¬cntOfUnknownÊÇÎ´ÖªÊýµÄ¸öÊý
-//ÊäÈë±£Ö¤ÓÐ½â
+//aæ˜¯å¢žå¹¿çŸ©é˜µ
+//cntOfEqæ˜¯æ–¹ç¨‹çš„ä¸ªæ•°ï¼ŒcntOfUnknownæ˜¯æœªçŸ¥æ•°çš„ä¸ªæ•°
+//è¾“å…¥ä¿è¯æœ‰è§£
 int Gauss(int(*a)[SIZE_OF_COLUMN],int cntOfEq,int cntOfUnknown){
     int row = 0, col = 0;
     for(;row<cntOfEq&&col<cntOfUnknown;++row,++col){
-        //ÕÒÁÐÖ÷Ôª£¬´Ë´¦Îª1¼´¿É
+        //æ‰¾åˆ—ä¸»å…ƒï¼Œæ­¤å¤„ä¸º1å³å¯
         int maxr = row;
         while( maxr < cntOfEq && 0 == a[maxr][col] ) ++maxr;
 
-        //¸ÃÔªÓÐ¿ÉÄÜÎª×ÔÓÉ±äÔª
+        //è¯¥å…ƒæœ‰å¯èƒ½ä¸ºè‡ªç”±å˜å…ƒ
         if ( maxr == cntOfEq ){
             --row;
             continue;
         }
 
-        //½»»»
+        //äº¤æ¢
         if ( maxr != row ){
             for(int j=col;j<=cntOfUnknown;++j){
                 swap(a[row][j],a[maxr][j]);
             }
         }
 
-        //½«µÚrowÐÐÒÔÏÂµÄÐÐµÄµÚcolÁÐÇåÁã
+        //å°†ç¬¬rowè¡Œä»¥ä¸‹çš„è¡Œçš„ç¬¬colåˆ—æ¸…é›¶
         for(int i=row+1;i<cntOfEq;++i)if(a[i][col]){
             for(int j=col;j<=cntOfUnknown;++j){
                 a[i][j] ^= a[row][j];
@@ -88,7 +88,7 @@ int Gauss(int(*a)[SIZE_OF_COLUMN],int cntOfEq,int cntOfUnknown){
 
     //disp(a,cntOfEq,cntOfUnknown);
 
-    return cntOfUnknown - row;//·µ»Ø×ÔÓÉ±äÔªµÄÊýÁ¿
+    return cntOfUnknown - row;//è¿”å›žè‡ªç”±å˜å…ƒçš„æ•°é‡
 }
 
 int N,M;
@@ -104,7 +104,7 @@ void read(){
     llt a;
     for(int i=0;i<N;++i){
         scanf("%I64d",&a);
-        //¹¹ÔìÏµÊý¾ØÕó
+        //æž„é€ ç³»æ•°çŸ©é˜µ
         //*
         for(int k=0;a!=1;++k){
             if ( a % P[k] ) continue;

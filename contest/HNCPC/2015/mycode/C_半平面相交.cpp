@@ -1,6 +1,6 @@
 /**
-  ����͹����Σ����Ƿ����������0�Ĺ�������
-  ��ƽ���ཻ��ģ���⡣
+  两个凸多边形，问是否有面积大于0的公共部分
+  半平面相交。模板题。
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -26,39 +26,39 @@ double cross(point64f_t const&O, point64f_t const&A, point64f_t const&B){
 }
 
 struct hp_t{
-    double a,b,c;//ax+by+c>=0,������ʼ����(a,b)
+    double a,b,c;//ax+by+c>=0,法向量始终是(a,b)
 };
 
-//���ݷ������ļ��Ǳȴ�С(-180,180]��������ͬ��Խ������������ԽС
+//根据法向量的极角比大小(-180,180]，极角相同，越靠近法向量的越小
 bool operator < (hp_t const&l,hp_t const&r){
-    //�������ֱ�λ��x�����£�����ֱ�ӵõ����
+    //法向量分别位于x轴上下，可以直接得到结果
 	int ly = l.b >= 0 ? 1 : -1;
 	int ry = r.b >= 0 ? 1 : -1;
 	if ( ly != ry ) return ly < ry;
 
-	//�����λ��x���ϣ���һ������һ������
+	//如果都位于x轴上，且一个朝东一个朝西
 	if ( is0(l.b) && is0(r.b) && l.a * r.a < 0 ) return l.a > r.a;
 
-	//����������������Ϊ��
+	//计算叉积，如果叉积不为零
     double chaji = l.a * r.b - l.b * r.a;
     if ( !is0(chaji) ) return chaji > 0;
 
-    //�ܵ��˴�˵��������ƽ��
+    //能到此处说明法向量平行
 
-    //��a����0ʱ
+    //当a大于0时
     if ( l.a > EPS ){
-		//��hp1��hp2�������������������a1x+b1y+c1=0��a2x+b2y+c2>0
+		//若hp1比hp2更靠近法向量，则必有a1x+b1y+c1=0而a2x+b2y+c2>0
 		return l.c * r.a < l.a * r.c;
 	}
 
 	if ( l.a < - EPS ) return l.c * r.a > l.a * r.c;
 
-	//a���Ϊ0��b��Ȼ��Ϊ0
+	//a如果为0，b必然不为0
 	if ( l.b > EPS ) return l.c * r.b < l.b * r.c;
 	return l.c * r.b > l.b * r.c;
 }
 
-//�жϰ�ƽ���Ƿ�ƽ��
+//判断半平面是否平行
 bool isPara(hp_t const&l,hp_t const&r){
 	int ly = l.b >= 0 ? 1 : -1;
 	int ry = r.b >= 0 ? 1 : -1;
@@ -67,68 +67,68 @@ bool isPara(hp_t const&l,hp_t const&r){
 	return is0( l.a * r.b - r.a * l.b );
 }
 
-//��l��r����֤����ʱ�뷽��a��b��Ψһȷ����
+//从l到r，保证是逆时针方向，a、b是唯一确定的
 inline void genHP(point_t const&l,point_t const&r,hp_t&hp){
 	hp.a = (double)( l.y - r.y );
 	hp.b = (double)( r.x - l.x );
 	hp.c = (double)( l.x * r.y - l.y * r.x );
 }
 
-//��ƽ���ཻ�󽻵㣬��֤����ֻ��һ������
+//半平面相交求交点，保证有且只有一个交点
 inline void inter(hp_t const&l,hp_t const&r,point64f_t&p){
 	double xishu = l.a * r.b - r.a * l.b;
 	p.x = ( l.b * r.c - r.b * l.c ) / xishu;
 	p.y = ( l.c * r.a - l.a * r.c ) / xishu;
 }
 
-//�жϵ��Ƿ��ڰ�ƽ����
+//判断点是否在半平面内
 inline bool isIn(point64f_t const&p,hp_t const&hp){
 	double v = hp.a * p.x + hp.b * p.y + hp.c;
 	return v >= - EPS;
 }
 
-//������������
-//����İ�ƽ������Ϊ3������Ϊ��Ӱ�Χ��
-//��ı�hp���������,hp��󱣴�ʣ�µİ�ƽ��
+//排序增量法，
+//输入的半平面至少为3个，因为会加包围盒
+//会改变hp里面的内容,hp最后保存剩下的半平面
 int sandi(hp_t hp[],int n,int&bot,int&top){
-    //����
+    //排序
     sort(hp,hp+n);
 
-    //��ȫƽ�еİ�ƽ��ֻȡһ��
+    //完全平行的半平面只取一个
     n = unique(hp,hp+n,isPara) - hp;
 
     bot = 0, top = 1;
 
     point64f_t p;
     for(int i=2;i<n;++i){
-        //��ǰ�˵�������ƽ���ཻ
+        //最前端的两个半平面相交
         while( bot < top ){
             inter(hp[top-1],hp[top],p);
-            //p�ڵ�ǰ��ƽ���⣬������
+            //p在当前半平面外，出队列
 			if ( isIn(p,hp[i]) ) break;
 			else                 --top;
         }
-        //��׶˵�������ƽ���ཻ
+        //最底端的两个半平面相交
 		while( bot < top ){
 			inter(hp[bot],hp[bot+1],p);
-			//p�ڵ�ǰ��ƽ���⣬������
+			//p在当前半平面外，出队列
 			if ( isIn(p,hp[i]) ) break;
 			else                 ++bot;
 		}
-		//��ֵ
+		//赋值
 		hp[++top] = hp[i];
     }
 
-    //����
+    //后处理
 	while( bot < top ){
 		inter(hp[top-1],hp[top],p);
-		//p�ڵ�ǰ��ƽ���⣬������
+		//p在当前半平面外，出队列
 		if ( isIn(p,hp[bot]) ) break;
 		else                   --top;
 	}
 	while( bot < top ){
 		inter(hp[bot],hp[bot+1],p);
-		//p�ڵ�ǰ��ƽ���⣬������
+		//p在当前半平面外，出队列
 		if ( isIn(p,hp[top]) ) break;
 		else                   ++bot;
 	}
