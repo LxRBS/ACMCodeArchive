@@ -1,11 +1,11 @@
 /*
-  �������飬���Ƿ��ܹ���
-  ���ֻ�Ƴ�һ����ʹ��ʣ�µ�������
+  给定数组，问是否能够：
+  最多只移除一个数使得剩下的数有序
 
-  ������ɨ��һ�齵��ɨ��һ��
-  ����˳��һ�£��򵱳���������ȻҪɾ��һ��
-  ������ȷ��ɾ������
-  �ڶ���ɨ��ʱҪע�⻹ԭ������ֱ�Ӹ���һ������
+  按增序扫描一遍降序扫描一遍
+  假设顺序不一致，则当场两个数必然要删掉一个
+  很容易确定删除条件
+  第二遍扫描时要注意还原，或者直接复制一遍数组
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,11 +30,11 @@ bool proc(){
 
     if(k>=N-3) return true;
 
-    //��k��ʼ�ж�
-    //��ԭ�õı���
+    //从k开始判断
+    //还原用的变量
     int ov1 = -1, ovi = -1;
     int op = -1;
-    //�Ȱ������ж�һ��
+    //先按递增判断一遍
     int cnt = 0;
     bool flag = true;
     for(int i=k+1;i<N;++i){
@@ -44,25 +44,25 @@ bool proc(){
                 break;
             }
             ++cnt;
-            if(1==i){//ֻ��ȥ��A[0]
+            if(1==i){//只能去掉A[0]
                 continue;
             }
-            if(A[i]<A[i-2]){//ֻ��ȥ��Ai
-                //��¼ԭʼ����
+            if(A[i]<A[i-2]){//只能去掉Ai
+                //记录原始数据
                 ovi = A[op=i],ov1 = A[i-1];
                 A[i] = A[i-1];
                 A[i-1] = A[i-2];
-            }else{//ȥ��A[i-1]����
+            }else{//去掉A[i-1]即可
                 ovi = A[op=i-1];
                 A[i-1] = A[i-2];
             }
         }
     }
     if(flag) return true;
-    //��ԭ
+    //还原
     A[op] = ovi;
     if(-1!=ov1) A[op-1] = ov1;
-    //�ٰ��ݼ���һ��
+    //再按递减来一遍
     cnt = 0;
     flag = true;
     for(int i=k+1;i<N;++i){
@@ -72,13 +72,13 @@ bool proc(){
                 break;
             }
             ++cnt;
-            if(1==i){//ֻ��ȥ��A[0]
+            if(1==i){//只能去掉A[0]
                 continue;
             }
-            if(A[i]>A[i-2]){//ֻ��ȥ��Ai
+            if(A[i]>A[i-2]){//只能去掉Ai
                 A[i] = A[i-1];
                 A[i-1] = A[i-2];
-            }else{//ȥ��A[i-1]����
+            }else{//去掉A[i-1]即可
                 A[i-1] = A[i-2];
             }
         }
@@ -97,5 +97,4 @@ int main(){
     }
     return 0;
 }
-
 

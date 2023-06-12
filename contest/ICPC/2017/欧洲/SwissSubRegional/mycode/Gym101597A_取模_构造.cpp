@@ -1,22 +1,22 @@
 /**
-   2µÄÃÝ´ÎÐòÁÐ£¬¶ÔÄ³¸öÊýMÈ¡Ä££¬µÃµ½Ò»¸öÊý×é
-   È»ºó½«Õâ¸öÊý×é´òÂÒË³Ðò£¬¸ø³ö¡£
-   Çó×îÐ¡µÄ¿ÉÄÜµÄM¡£
-   ´ò±í·¢ÏÖÖ»Ðè½â¾öMÎªÆæÊýµÄÇé¿ö
-   µ±MÎª80µÄÊ±ºò£¬È¡Ä£½á¹ûÎª
+   2çš„å¹‚æ¬¡åºåˆ—ï¼Œå¯¹æŸä¸ªæ•°Må–æ¨¡ï¼Œå¾—åˆ°ä¸€ä¸ªæ•°ç»„
+   ç„¶åŽå°†è¿™ä¸ªæ•°ç»„æ‰“ä¹±é¡ºåºï¼Œç»™å‡ºã€‚
+   æ±‚æœ€å°çš„å¯èƒ½çš„Mã€‚
+   æ‰“è¡¨å‘çŽ°åªéœ€è§£å†³Mä¸ºå¥‡æ•°çš„æƒ…å†µ
+   å½“Mä¸º80çš„æ—¶å€™ï¼Œå–æ¨¡ç»“æžœä¸º
    1 2 4 8 16 32 64 48 16 32 64 48
-   È¥µôµ¥¶ÀµÄ1248£¬Ñ­»·½Ú³ýÒÔ16µÃµ½1243£¬ÕâÇ¡ºÃÊÇ5µÄÑ­»·½Ú
-   Èç¹ûÄ£Êý×éÖÐÆæÊýµÄÊýÁ¿²»Ö¹1¸ö£¬ÔòM±ØÈ»ÎªÆæÊý
-   ·ñÔò£¬Ä£Êý×éÖÐ±ØÈ»Ö»ÓÐ1¸ö1£¬´ËÊ±MÊÇÅ¼Êý¡£
-   ÕÒµ½Ê£ÏÂµÄÊýµÄ×î´ó2µÄÃÝµÄ¹«Ô¼Êý£¬È»ºó½«ËùÓÐÊý¶¼³ýµôÕâ¸ö×î´ó2ÃÝ¹«Ô¼Êý
-   ´ËÊ±µÄÄ£Êý×éÆæÊýÊýÁ¿±ØÈ»²»Ö¹1¸ö£¨·ñÔòÊÇÒ»ÖÖÌØÊâÇé¿ö¿ÉÒÔÌØÅÐ£©£¬¿ÉÒÔÓÃÓÚÇóÆæÊýM
-   ½ÓÏÂÀ´¿¼ÂÇÈçºÎÇóÆæÊýM¡£¼ÙÉèMÊÇÆæÊý£¬
-   Ä£Êý×éÒ»¶¨ÊÇ1, 2, 4, Å¼Êý, ..., Å¼Êý, ÆæÊý, Å¼Êý, ..., Å¼Êý, ÆæÊý, ...
-   ÔÚ{Å¼Êý, ..., Å¼Êý, ÆæÊý}ÍêÕûµÄÇé¿öÏÂ£¬×î´óµÄÆæÊýÏÔÈ»ÓÉ×î´óµÄÅ¼ÊýÉú³É
-   µ«Ä£Êý×é¸ø³öµÄ¿ÉÄÜÊÇ½Ø¶ÏµÄÇé¿ö£¬¼´£ºÊý, ..., Å¼Êý, ÆæÊý, Å¼Êý, ..., Å¼Êý, {ÕâÀïÈ±ÁËÒ»¸öÆæÊý}
-   ÕâÖÖÇé¿öÏÂ£¬ÓÉ×î´óÅ¼ÊýÉú³ÉµÄ×î´óÆæÊý²¢Ã»ÓÐ¸ø³ö£¬ÄÇÒ»¶¨ÓÐ´Î´óÅ¼ÊýºÍ´Î´óÆæÊý¡£
-   ×¢Òâ´Î´óÆæÊýÊÇÖ¸ÍêÕûÇé¿öÏÂµÄ´Î´ó£¬´ËÊ±¸ÃÊýÊµ¼ÊÉÏÊÇÒÑ¸ø³öÊý×éÖÐµÄ×î´óÆæÊý¡£
-   ËùÒÔ¶ÔÒÑÖªÊý×éÇó³ö×î´óÅ¼Êý¡¢´Î´óÅ¼ÊýºÍ×î´óÆæÊý¡£ÔòM±ØÈ»ÊÇ¶þÕßÖ®Ò»£¬ÑéÖ¤Ò»ÏÂ¼´¿É¡£
+   åŽ»æŽ‰å•ç‹¬çš„1248ï¼Œå¾ªçŽ¯èŠ‚é™¤ä»¥16å¾—åˆ°1243ï¼Œè¿™æ°å¥½æ˜¯5çš„å¾ªçŽ¯èŠ‚
+   å¦‚æžœæ¨¡æ•°ç»„ä¸­å¥‡æ•°çš„æ•°é‡ä¸æ­¢1ä¸ªï¼Œåˆ™Må¿…ç„¶ä¸ºå¥‡æ•°
+   å¦åˆ™ï¼Œæ¨¡æ•°ç»„ä¸­å¿…ç„¶åªæœ‰1ä¸ª1ï¼Œæ­¤æ—¶Mæ˜¯å¶æ•°ã€‚
+   æ‰¾åˆ°å‰©ä¸‹çš„æ•°çš„æœ€å¤§2çš„å¹‚çš„å…¬çº¦æ•°ï¼Œç„¶åŽå°†æ‰€æœ‰æ•°éƒ½é™¤æŽ‰è¿™ä¸ªæœ€å¤§2å¹‚å…¬çº¦æ•°
+   æ­¤æ—¶çš„æ¨¡æ•°ç»„å¥‡æ•°æ•°é‡å¿…ç„¶ä¸æ­¢1ä¸ªï¼ˆå¦åˆ™æ˜¯ä¸€ç§ç‰¹æ®Šæƒ…å†µå¯ä»¥ç‰¹åˆ¤ï¼‰ï¼Œå¯ä»¥ç”¨äºŽæ±‚å¥‡æ•°M
+   æŽ¥ä¸‹æ¥è€ƒè™‘å¦‚ä½•æ±‚å¥‡æ•°Mã€‚å‡è®¾Mæ˜¯å¥‡æ•°ï¼Œ
+   æ¨¡æ•°ç»„ä¸€å®šæ˜¯1, 2, 4, å¶æ•°, ..., å¶æ•°, å¥‡æ•°, å¶æ•°, ..., å¶æ•°, å¥‡æ•°, ...
+   åœ¨{å¶æ•°, ..., å¶æ•°, å¥‡æ•°}å®Œæ•´çš„æƒ…å†µä¸‹ï¼Œæœ€å¤§çš„å¥‡æ•°æ˜¾ç„¶ç”±æœ€å¤§çš„å¶æ•°ç”Ÿæˆ
+   ä½†æ¨¡æ•°ç»„ç»™å‡ºçš„å¯èƒ½æ˜¯æˆªæ–­çš„æƒ…å†µï¼Œå³ï¼šæ•°, ..., å¶æ•°, å¥‡æ•°, å¶æ•°, ..., å¶æ•°, {è¿™é‡Œç¼ºäº†ä¸€ä¸ªå¥‡æ•°}
+   è¿™ç§æƒ…å†µä¸‹ï¼Œç”±æœ€å¤§å¶æ•°ç”Ÿæˆçš„æœ€å¤§å¥‡æ•°å¹¶æ²¡æœ‰ç»™å‡ºï¼Œé‚£ä¸€å®šæœ‰æ¬¡å¤§å¶æ•°å’Œæ¬¡å¤§å¥‡æ•°ã€‚
+   æ³¨æ„æ¬¡å¤§å¥‡æ•°æ˜¯æŒ‡å®Œæ•´æƒ…å†µä¸‹çš„æ¬¡å¤§ï¼Œæ­¤æ—¶è¯¥æ•°å®žé™…ä¸Šæ˜¯å·²ç»™å‡ºæ•°ç»„ä¸­çš„æœ€å¤§å¥‡æ•°ã€‚
+   æ‰€ä»¥å¯¹å·²çŸ¥æ•°ç»„æ±‚å‡ºæœ€å¤§å¶æ•°ã€æ¬¡å¤§å¶æ•°å’Œæœ€å¤§å¥‡æ•°ã€‚åˆ™Må¿…ç„¶æ˜¯äºŒè€…ä¹‹ä¸€ï¼ŒéªŒè¯ä¸€ä¸‹å³å¯ã€‚
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -74,7 +74,7 @@ bool check1(){
     return true;
 }
 
-//ÔÚmËùÓÐµÄ¼üÖÐ£¬ÕÒµ½×î´óµÄÅ¼ÊýºÍÆæÊý£¬ÒÔ¼°´Î´óµÄÅ¼Êý
+//åœ¨mæ‰€æœ‰çš„é”®ä¸­ï¼Œæ‰¾åˆ°æœ€å¤§çš„å¶æ•°å’Œå¥‡æ•°ï¼Œä»¥åŠæ¬¡å¤§çš„å¶æ•°
 void maxEvenOdd(hash_t const&m,llt&m1,llt&m2,llt&m4){
     m1 = m2 = m4 = 0;
     for(hash_t::const_iterator it=m.begin();it!=m.end();++it){
@@ -87,7 +87,7 @@ void maxEvenOdd(hash_t const&m,llt&m1,llt&m2,llt&m4){
     }
 }
 
-//¼ì²éansÊÇ·ñ¿ÉÒÔÎª´ð°¸
+//æ£€æŸ¥ansæ˜¯å¦å¯ä»¥ä¸ºç­”æ¡ˆ
 bool check2(hash_t&m, llt ans){
     llt x = 1;
     int n = m.size();
@@ -100,54 +100,54 @@ bool check2(hash_t&m, llt ans){
 
 
 llt dfs(hash_t &m){
-    //¼ì²é1µÄÊýÁ¿
+    //æ£€æŸ¥1çš„æ•°é‡
     hash_t::const_iterator it = m.find(1);
     if(it==m.end()||it->se==0) throw runtime_error("XXXXXX");
 
     llt m1 = 0, m2 = 0, m4;
     maxEvenOdd(m, m1, m2, m4);
 
-    //Èç¹û1²»Ö¹1¸ö£¬´ð°¸Ò»¶¨ÊÇÆæÊý1Ö»ÓÐ1¸ö;
-    //ÇÒ×î´óµÄÆæÊý²»ÊÇ1£¬ËµÃ÷Ö»ÓÐÒ»¸öÑ­»·½Ú£¬´ð°¸Ò»Ñù
+    //å¦‚æžœ1ä¸æ­¢1ä¸ªï¼Œç­”æ¡ˆä¸€å®šæ˜¯å¥‡æ•°1åªæœ‰1ä¸ª;
+    //ä¸”æœ€å¤§çš„å¥‡æ•°ä¸æ˜¯1ï¼Œè¯´æ˜Žåªæœ‰ä¸€ä¸ªå¾ªçŽ¯èŠ‚ï¼Œç­”æ¡ˆä¸€æ ·
     if(it->se>1 || m1>1){
         llt tmp = m4 + m4 - m1;
         if(tmp>m1&&tmp>m2&&check2(m, tmp)) return tmp;
         return m2 + m2 - m1;
     }
 
-    //1Ö»ÓÐ1¸ö£¬ÆäËûÈ«ÊÇÅ¼Êý£¬ÐèÒªÏÈ°Ñ2È¥µô
+    //1åªæœ‰1ä¸ªï¼Œå…¶ä»–å…¨æ˜¯å¶æ•°ï¼Œéœ€è¦å…ˆæŠŠ2åŽ»æŽ‰
     int pmax = 100;
     for(hash_t::iterator it=m.begin();it!=m.end();++it){
         if(it->fi!=1)pmax = min(pmax, get2(it->fi));
     }
 
     hash_t mmm;
-    //ÔìÒ»¸öÐÂmap
+    //é€ ä¸€ä¸ªæ–°map
     for(hash_t::iterator it=m.begin();it!=m.end();++it){
         if(it->fi!=1){
             mmm.insert(mp(it->fi/Pow2[pmax], it->se));
         }
     }
-    return dfs(mmm) * Pow2[pmax];//Êµ¼ÊÉÏÖ»µÝ¹éÒ»´Î
+    return dfs(mmm) * Pow2[pmax];//å®žé™…ä¸Šåªé€’å½’ä¸€æ¬¡
 }
 
 llt proc(){
     int powmax = 0;
     while(Pow2[powmax]<=MMax) ++powmax;
     --powmax;
-    //´ð°¸Ò»¶¨ÔÚ(2^powmax,2^(powmax+1)]Ö®¼ä
+    //ç­”æ¡ˆä¸€å®šåœ¨(2^powmax,2^(powmax+1)]ä¹‹é—´
 
 
-    if(Map.find(0)!=Map.end()){//Èç¹ûÓÐ0£¬´ð°¸Ò»¶¨ÊÇ2µÄÃÝ
+    if(Map.find(0)!=Map.end()){//å¦‚æžœæœ‰0ï¼Œç­”æ¡ˆä¸€å®šæ˜¯2çš„å¹‚
         return Pow2[powmax+1];
     }
 
-    //Èç¹ûÇ¡ºÃÊÇ2µÄÃÝÊýÁÐ£¬ÇÒÃ¿¸öÊýÖ»ÓÐ1¸ö£¬´ð°¸ÊÇ2^powmax+1
+    //å¦‚æžœæ°å¥½æ˜¯2çš„å¹‚æ•°åˆ—ï¼Œä¸”æ¯ä¸ªæ•°åªæœ‰1ä¸ªï¼Œç­”æ¡ˆæ˜¯2^powmax+1
     if(check1()){
         return Pow2[powmax] + 1;
     }
 
-    //ÒÔÏÂ½øµ½Õý³£Á÷³Ì
+    //ä»¥ä¸‹è¿›åˆ°æ­£å¸¸æµç¨‹
     return dfs(Map);
 }
 

@@ -1,16 +1,16 @@
 /**
-   ÓÐÏòÎÞ»·Í¼£¬N¸öµã£¬MÌõ±ß
-   »ñµÃÄ³¸öµãÒ»¹²ÓÐ3ÖÖ·½·¨
-   1 »ñµÃÆäËùÓÐÇ°Çý£¬Ã¿¸öµãÓÐÒ»¸ö´ú¼Û£¬¼Ç×÷Wi
-   2 É¾³ýÆäËùÓÐÈë±ß£¬Ã¿Ìõ±ßÓÐÒ»¸ö´ú¼Û£¬¼Ç×÷wij
-   3 ¸¶³öÖ±½Ó·ÑÓÃ£¬¼Ç×÷Ke
-   3ÖÖ·½·¨¿ÉÒÔ»ìºÏÊ¹ÓÃ£¬ÎÊ»ñµÃSµÄ×îÐ¡´ú¼ÛÊÇ¶àÉÙ
-   ÓÃ×îÐ¡¸îÀ´½¨Ä££¬µ«ÊÇÓÃ×î´óÁ÷À´ÊµÏÖ
-   ¶ÔÓÚÃ¿¸öµãu½«Æä²ðµã³ÉuºÍu'
-   1 Ô´µ½uÓÐÒ»Ìõ±ß£¬ÈÝÁ¿ÎªWu
-   2 Èç¹ûvÊÇuµÄÇ°Çý£¬Ôòv'µ½uÓÐÒ»Ìõ±ß£¬ÈÝÁ¿ÊÇwij
-   3 uµ½u'ÓÐÌõ±ß£¬ÈÝÁ¿ÊÇKe[u]
-   ×îºóÇóÔ´µ½S'µÄ×î´óÁ÷¼´¿É
+   æœ‰å‘æ— çŽ¯å›¾ï¼ŒNä¸ªç‚¹ï¼ŒMæ¡è¾¹
+   èŽ·å¾—æŸä¸ªç‚¹ä¸€å…±æœ‰3ç§æ–¹æ³•
+   1 èŽ·å¾—å…¶æ‰€æœ‰å‰é©±ï¼Œæ¯ä¸ªç‚¹æœ‰ä¸€ä¸ªä»£ä»·ï¼Œè®°ä½œWi
+   2 åˆ é™¤å…¶æ‰€æœ‰å…¥è¾¹ï¼Œæ¯æ¡è¾¹æœ‰ä¸€ä¸ªä»£ä»·ï¼Œè®°ä½œwij
+   3 ä»˜å‡ºç›´æŽ¥è´¹ç”¨ï¼Œè®°ä½œKe
+   3ç§æ–¹æ³•å¯ä»¥æ··åˆä½¿ç”¨ï¼Œé—®èŽ·å¾—Sçš„æœ€å°ä»£ä»·æ˜¯å¤šå°‘
+   ç”¨æœ€å°å‰²æ¥å»ºæ¨¡ï¼Œä½†æ˜¯ç”¨æœ€å¤§æµæ¥å®žçŽ°
+   å¯¹äºŽæ¯ä¸ªç‚¹uå°†å…¶æ‹†ç‚¹æˆuå’Œu'
+   1 æºåˆ°uæœ‰ä¸€æ¡è¾¹ï¼Œå®¹é‡ä¸ºWu
+   2 å¦‚æžœvæ˜¯uçš„å‰é©±ï¼Œåˆ™v'åˆ°uæœ‰ä¸€æ¡è¾¹ï¼Œå®¹é‡æ˜¯wij
+   3 uåˆ°u'æœ‰æ¡è¾¹ï¼Œå®¹é‡æ˜¯Ke[u]
+   æœ€åŽæ±‚æºåˆ°S'çš„æœ€å¤§æµå³å¯
 */
 #include <stdio.h>
 #include <queue>
@@ -29,27 +29,27 @@ int getUnsigned(){
 //*
 typedef int weight_t;
 
-int const SIZE_OF_VERTICES = 1200;//µãÊýµÄ×î´óÖµ
-int const SIZE_OF_EDGES = 10010<<2;//±ßÊýµÄ×î´óÖµ
+int const SIZE_OF_VERTICES = 1200;//ç‚¹æ•°çš„æœ€å¤§å€¼
+int const SIZE_OF_EDGES = 10010<<2;//è¾¹æ•°çš„æœ€å¤§å€¼
 weight_t const INF = 0x3f3f3f3f;
 
 struct edge_t{
     int to;
-    weight_t cap;//ÈÝÁ¿
-    weight_t flow;//Á÷Á¿
+    weight_t cap;//å®¹é‡
+    weight_t flow;//æµé‡
     int next;
 }Edge[SIZE_OF_EDGES];
 int ECnt;
 
 int Vertex[SIZE_OF_VERTICES];
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 inline void initGraph(int n){
-    ECnt = 2;//ECnt´Ó2¿ªÊ¼£¬¿ÕÖ¸ÕëÓÃ0±íÊ¾£¬·´Ïò±ßÓÃ^1¼ÆËã
+    ECnt = 2;//ECntä»Ž2å¼€å§‹ï¼Œç©ºæŒ‡é’ˆç”¨0è¡¨ç¤ºï¼Œåå‘è¾¹ç”¨^1è®¡ç®—
     fill(Vertex,Vertex+n+1,0);
 }
 
-//Éú³É±ß
+//ç”Ÿæˆè¾¹
 inline void mkEdge(int a,int b,weight_t w){
     Edge[ECnt].to = b;
     Edge[ECnt].cap = w;
@@ -58,17 +58,17 @@ inline void mkEdge(int a,int b,weight_t w){
     Vertex[a] = ECnt++;
 
     Edge[ECnt].to = a;
-    Edge[ECnt].cap = 0;//ÓÐÏòÍ¼µÄ·´Ïò±ßÎª0£¬ÎÞÏòÍ¼µÄ·´Ïò±ßÍ¬ÕýÏò±ß
+    Edge[ECnt].cap = 0;//æœ‰å‘å›¾çš„åå‘è¾¹ä¸º0ï¼Œæ— å‘å›¾çš„åå‘è¾¹åŒæ­£å‘è¾¹
     Edge[ECnt].flow = 0;
     Edge[ECnt].next = Vertex[b];
     Vertex[b] = ECnt++;
 }
 
-int __D[SIZE_OF_VERTICES];//Di±íÊ¾iµ½»ãµÄ¾àÀë
-int __Cnt[SIZE_OF_VERTICES];//Cnti±íÊ¾¾àÀëÎªiµÄ¶¥µãµÄ¸öÊý
-int Queue[SIZE_OF_VERTICES];//¸¨Öú¶ÓÁÐ
+int __D[SIZE_OF_VERTICES];//Diè¡¨ç¤ºiåˆ°æ±‡çš„è·ç¦»
+int __Cnt[SIZE_OF_VERTICES];//Cntiè¡¨ç¤ºè·ç¦»ä¸ºiçš„é¡¶ç‚¹çš„ä¸ªæ•°
+int Queue[SIZE_OF_VERTICES];//è¾…åŠ©é˜Ÿåˆ—
 
-//·´ÏòBFS£¬ËÑË÷¸÷µãµ½»ãµÄ¾àÀë£¬tÎª»ã£¬nÎª¶¥µã×ÜÊý
+//åå‘BFSï¼Œæœç´¢å„ç‚¹åˆ°æ±‡çš„è·ç¦»ï¼Œtä¸ºæ±‡ï¼Œnä¸ºé¡¶ç‚¹æ€»æ•°
 void bfs(int t,int n){
     fill(__D,__D+n+1,-1);
     fill(__Cnt,__Cnt+n+1,0);
@@ -85,11 +85,11 @@ void bfs(int t,int n){
     }
 }
 
-int Cur[SIZE_OF_VERTICES];//µ±Ç°»¡
-int Stack[SIZE_OF_VERTICES];//¸¨ÖúÕ»
+int Cur[SIZE_OF_VERTICES];//å½“å‰å¼§
+int Stack[SIZE_OF_VERTICES];//è¾…åŠ©æ ˆ
 
 //Improved shortest argument path algorithm
-//sÎªÔ´£¬tÎª»ã£¬nÎª¶¥µã¸öÊý
+//sä¸ºæºï¼Œtä¸ºæ±‡ï¼Œnä¸ºé¡¶ç‚¹ä¸ªæ•°
 weight_t isap(int s,int t,int n){
     bfs(t,n);
     copy(Vertex,Vertex+n+1,Cur);
@@ -98,15 +98,15 @@ weight_t isap(int s,int t,int n){
     int u = s, top = 0;
 
     while(__D[s] < n){
-        if(u == t){//ÕÒµ½Ò»ÌõÔö¹ãÂ·
+        if(u == t){//æ‰¾åˆ°ä¸€æ¡å¢žå¹¿è·¯
             int inser,flow = INF;
             weight_t wtmp;
             for(int i=0;i<top;++i)if( flow > ( wtmp = Edge[Stack[i]].cap - Edge[Stack[i]].flow ) ){
                 flow = wtmp, inser = i;
             }
             for(int i=0;i<top;++i){
-                Edge[Stack[i]].flow += flow;  //ÕýÏò±ß
-                Edge[Stack[i]^1].flow -= flow;//·´Ïò±ß
+                Edge[Stack[i]].flow += flow;  //æ­£å‘è¾¹
+                Edge[Stack[i]^1].flow -= flow;//åå‘è¾¹
             }
             ans += flow;
             top = inser;
@@ -114,7 +114,7 @@ weight_t isap(int s,int t,int n){
             continue;
         }
 
-        //²éÕÒ¿ÉÐÐ»¡
+        //æŸ¥æ‰¾å¯è¡Œå¼§
         int v, ava = 0;
         for(int p=Cur[u];p;p=Edge[p].next){
             if(Edge[p].cap - Edge[p].flow && __D[ v = Edge[p].to ] + 1 == __D[u]){
@@ -123,13 +123,13 @@ weight_t isap(int s,int t,int n){
             }
         }
 
-        if(ava){//ÕÒµ½¿ÉÐÐ»¡ÒÔºó£¬ÍÆ½ø
+        if(ava){//æ‰¾åˆ°å¯è¡Œå¼§ä»¥åŽï¼ŒæŽ¨è¿›
             Stack[top++] = Cur[u];
             u = v;
             continue;
         }
 
-        //ÕÒ²»µ½¿ÉÐÐ»¡£¬»ØËÝ
+        //æ‰¾ä¸åˆ°å¯è¡Œå¼§ï¼Œå›žæº¯
         int tmpd = n;
         for(int p=Vertex[u];p;p=Edge[p].next)
         if( Edge[p].cap - Edge[p].flow && __D[Edge[p].to] < tmpd ){
@@ -159,7 +159,7 @@ int main(){
         M = getUnsigned();
         S = getUnsigned();
 
-        //n±íÊ¾Í¼µÄ¶¥µã×ÜÊý
+        //nè¡¨ç¤ºå›¾çš„é¡¶ç‚¹æ€»æ•°
         int n = (N<<1)|1;
         initGraph(n);
 
@@ -167,15 +167,15 @@ int main(){
         for(int i=0;i<M;++i){
             a = getUnsigned();
             b = getUnsigned();
-            //a'µ½bÓÐÒ»Ìõ±ß
+            //a'åˆ°bæœ‰ä¸€æ¡è¾¹
             mkEdge(a+N,b,getUnsigned());
         }
         for(int i=1;i<=N;++i){
-            //Ô´µ½iÓÐÒ»Ìõ±ß
+            //æºåˆ°iæœ‰ä¸€æ¡è¾¹
             mkEdge(n,i,getUnsigned());
         }
         for(int i=1;i<=N;++i){
-            //iµ½i'ÓÐÒ»Ìõ±ß
+            //iåˆ°i'æœ‰ä¸€æ¡è¾¹
             mkEdge(i,i+N,getUnsigned());
         }
 

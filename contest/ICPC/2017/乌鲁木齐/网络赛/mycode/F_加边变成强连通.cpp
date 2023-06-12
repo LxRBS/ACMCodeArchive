@@ -1,8 +1,8 @@
 /*
-    Ìí¼Ó×îÉÙµÄ±ßÊ¹µÃÍ¼±ä³ÉÇ¿Á¬Í¨µÄ
-    ÇóÇ¿Á¬Í¨·ÖÁ¿£¬È»ºóËõµã£¬½¨Á¢ºËÐÄDAG¡£
-    ÔÚDAGÉÏ£¬ÁîÈë¶ÈÎª0µÄµãÊýÁ¿Îªa£¬³ö¶ÈÎª0µÄµãµÄÊýÁ¿Îªb£¬´ð°¸Îªmax(a,b)
-    ×¢Òâµ±Í¼±¾Éí¾ÍÊÇÇ¿Á¬Í¨µÄ£¬´ð°¸Îª0
+    æ·»åŠ æœ€å°‘çš„è¾¹ä½¿å¾—å›¾å˜æˆå¼ºè¿žé€šçš„
+    æ±‚å¼ºè¿žé€šåˆ†é‡ï¼Œç„¶åŽç¼©ç‚¹ï¼Œå»ºç«‹æ ¸å¿ƒDAGã€‚
+    åœ¨DAGä¸Šï¼Œä»¤å…¥åº¦ä¸º0çš„ç‚¹æ•°é‡ä¸ºaï¼Œå‡ºåº¦ä¸º0çš„ç‚¹çš„æ•°é‡ä¸ºbï¼Œç­”æ¡ˆä¸ºmax(a,b)
+    æ³¨æ„å½“å›¾æœ¬èº«å°±æ˜¯å¼ºè¿žé€šçš„ï¼Œç­”æ¡ˆä¸º0
 */
 
 #include <stdio.h>
@@ -41,23 +41,23 @@ inline void mkEdge(int a,int b,weight_t w=weight_t()){
 	Vertex[a] = ECnt ++;
 }
 
-int Stack[SIZE_OF_VERTICES], StackTop;//¸¨ÖúÕ»
+int Stack[SIZE_OF_VERTICES], StackTop;//ï¿½ï¿½ï¿½ï¿½Õ»
 bool IsInStack[SIZE_OF_VERTICES];
 
 int TimeStamp;
 int Dfn[SIZE_OF_VERTICES], Low[SIZE_OF_VERTICES];
 
-int SCCCnt;//Á¬Í¨·ÖÁ¿µÄ×ÜÊýÁ¿
-int Belong[SIZE_OF_VERTICES];//µÚi¸ö¶¥µãÊôÓÚµÚBelong[i]¸öÇ¿Á¬Í¨·ÖÁ¿
-int SCCSize[SIZE_OF_VERTICES];//µÚi¸öÁ¬Í¨·ÖÁ¿µÄ´óÐ¡£¬ÏÂ±ê´Ó1¿ªÊ¼
+int SCCCnt;//ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+int Belong[SIZE_OF_VERTICES];//ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½Belong[i]ï¿½ï¿½Ç¿ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½
+int SCCSize[SIZE_OF_VERTICES];//ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½Ð¡ï¿½ï¿½ï¿½Â±ï¿½ï¿½1ï¿½ï¿½Ê¼
 
 void dfs(int u){
     Dfn[u] = Low[u] = ++TimeStamp;
 
-    //ÈëÕ»
+    //ï¿½ï¿½Õ»
     IsInStack[ Stack[StackTop++] = u ] = true;
 
-    //¶ÔuµÄÃ¿Ò»Ìõ±ß
+    //ï¿½ï¿½uï¿½ï¿½Ã¿Ò»ï¿½ï¿½ï¿½ï¿½
     int v;
     for(int next=Vertex[u];next;next=Edge[next].next){
         if ( 0 == Dfn[ v = Edge[next].to ] ){
@@ -68,7 +68,7 @@ void dfs(int u){
         }
     }
 
-    //ÕÒµ½Ò»¸öSCC
+    //ï¿½Òµï¿½Ò»ï¿½ï¿½SCC
     if ( Dfn[u] == Low[u] ){
         ++SCCCnt;
         do{
@@ -124,7 +124,7 @@ int main(){
         read();
         Tarjan(N);
 
-        //Ëõµã
+        //ï¿½ï¿½ï¿½ï¿½
         fill(InDeg,InDeg+SCCCnt+1,0);
         fill(OutDeg,OutDeg+SCCCnt+1,0);
         int a,b;

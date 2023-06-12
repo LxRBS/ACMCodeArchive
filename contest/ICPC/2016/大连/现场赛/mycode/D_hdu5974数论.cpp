@@ -1,13 +1,13 @@
 /**
-   ¸ø¶¨aºÍb£¬ÇóÁ½¸öÊýx¡¢y£¬Ê¹µÃ
+   ç»™å®šaå’Œbï¼Œæ±‚ä¸¤ä¸ªæ•°xã€yï¼Œä½¿å¾—
    x+y=a
    lcm(x,y)=b
-   Áîg=gcd(x,y)£¬ÔòxºÍy¿ÉÒÔ±íÊ¾³ÉugÓëvg£¬
-   ÆäÖÐ£¬uv»¥ÖÊ£¬ÇÒ
+   ä»¤g=gcd(x,y)ï¼Œåˆ™xå’Œyå¯ä»¥è¡¨ç¤ºæˆugä¸Žvgï¼Œ
+   å…¶ä¸­ï¼Œuväº’è´¨ï¼Œä¸”
    (u+v)g = a
    uvg = b
-   ÕâËµÃ÷gÊÇa¡¢bµÄ¹«Òò×Ó£¬Ã¶¾ÙÃ¿Ò»¸ög
-   ½âÒ»¸öÒ»Ôª¶þ´Î·½³Ì¼´¿É
+   è¿™è¯´æ˜Žgæ˜¯aã€bçš„å…¬å› å­ï¼Œæžšä¸¾æ¯ä¸€ä¸ªg
+   è§£ä¸€ä¸ªä¸€å…ƒäºŒæ¬¡æ–¹ç¨‹å³å¯
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -69,4 +69,3 @@ int main(){
     }
     return 0;
 }
-

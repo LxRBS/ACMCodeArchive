@@ -1,6 +1,6 @@
 /**
-   ¾ÍÊÇÅÐ¶Ï¶þ·ÖÍ¼£¬È¾É«¼´¿É¡£
-   ¸ù¾ÝÑùÀý£¬¹ÂÁ¢µãÓ¦¸Ã·µ»Øfalse
+   å°±æ˜¯åˆ¤æ–­äºŒåˆ†å›¾ï¼ŒæŸ“è‰²å³å¯ã€‚
+   æ ¹æ®æ ·ä¾‹ï¼Œå­¤ç«‹ç‚¹åº”è¯¥è¿”å›žfalse
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -48,9 +48,9 @@ bool f(){
         }
     }
     for(int i=1;i<=N;++i)if(!Flag[i]){
-        //¹ÂÁ¢µã·µ»Øfalse£¬°´ÕÕÑùÀý
+        //å­¤ç«‹ç‚¹è¿”å›žfalseï¼ŒæŒ‰ç…§æ ·ä¾‹
         if(Graph[i].empty()) return false;
-        //·ñÔòËæ±ãÈ¾Ò»¸öÑÕÉ«
+        //å¦åˆ™éšä¾¿æŸ“ä¸€ä¸ªé¢œè‰²
         Flag[i] = 1;
         q.push(i);
         while(!q.empty()){

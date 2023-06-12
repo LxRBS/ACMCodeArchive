@@ -1,12 +1,12 @@
 /**
-   Ö»°üº¬Êý×Ö1-6µÄ×Ö·û´®£¬Ö§³Ö2ÖÖ²Ù×÷
-   1. Ò»¸öÊý×Ö±ä³ÉÁíÒ»¸öÊý×Ö
-   2. Ò»ÖÖÊý×Ö±ä³ÉÁíÒ»ÖÖÊý×Ö
-   ¸ø¶¨Ô´ºÍÄ¿±ê£¬ÎÊ×îÉÙÒª¶àÉÙ²Ù×÷
-   ³¤¶È²»³¬¹ý110
-   ²Â²â1/2²Ù×÷µÄË³Ðò²¢²»ÖØÒª
-   Òò´ËÖ»ËÑË÷2²Ù×÷£¬1²Ù×÷Ö±½Ó¼ÆËã¼´¿É
-   Ô¤´¦ÀíÖ»ÓÃ2²Ù×÷´Ó123456µ½ÆäËûËùÓÐ¿ÉÄÜµÄÇé¿ö
+   åªåŒ…å«æ•°å­—1-6çš„å­—ç¬¦ä¸²ï¼Œæ”¯æŒ2ç§æ“ä½œ
+   1. ä¸€ä¸ªæ•°å­—å˜æˆå¦ä¸€ä¸ªæ•°å­—
+   2. ä¸€ç§æ•°å­—å˜æˆå¦ä¸€ç§æ•°å­—
+   ç»™å®šæºå’Œç›®æ ‡ï¼Œé—®æœ€å°‘è¦å¤šå°‘æ“ä½œ
+   é•¿åº¦ä¸è¶…è¿‡110
+   çŒœæµ‹1/2æ“ä½œçš„é¡ºåºå¹¶ä¸é‡è¦
+   å› æ­¤åªæœç´¢2æ“ä½œï¼Œ1æ“ä½œç›´æŽ¥è®¡ç®—å³å¯
+   é¢„å¤„ç†åªç”¨2æ“ä½œä»Ž123456åˆ°å…¶ä»–æ‰€æœ‰å¯èƒ½çš„æƒ…å†µ
 */
 
 #include <stdio.h>
@@ -15,7 +15,7 @@
 #include <algorithm>
 using namespace std;
 
-//¼ÆËã×Ö·û´®a¡¢b²»Í¬µÄ×ÖÄ¸¸öÊý
+//è®¡ç®—å­—ç¬¦ä¸²aã€bä¸åŒçš„å­—æ¯ä¸ªæ•°
 int cha(char a[],char b[]){
     int ans = 0;
     for(char *pa=a,*pb=b;*pa;++pa,++pb){
@@ -26,7 +26,7 @@ int cha(char a[],char b[]){
     return ans;
 }
 
-//°ÑËùÓÐµÄold±ä³Énv
+//æŠŠæ‰€æœ‰çš„oldå˜æˆnv
 int f(int const a[],int old,int nv){
     int ans = 0;
     for(int i=5;i>=0;--i){
@@ -35,7 +35,7 @@ int f(int const a[],int old,int nv){
     return ans;
 }
 
-//Ò»¹²ÓÐ6^6¸ö×´Ì¬£¬´Ó111111µ½666666
+//ä¸€å…±æœ‰6^6ä¸ªçŠ¶æ€ï¼Œä»Ž111111åˆ°666666
 int State[50000];
 int SCnt = 0;
 int D[674322];
@@ -58,7 +58,7 @@ void bfs(){
             h /= 10;
         }
 
-        //×î¶à36ÖÖ±ä»¯
+        //æœ€å¤š36ç§å˜åŒ–
         for(int newValue,old=1;old<=6;++old)if(flag[old])for(int nv=1;nv<=6;++nv){
              if(-1==D[newValue = f(a,old,nv)]){
                 D[newValue] = step + 1;
@@ -70,7 +70,7 @@ void bfs(){
 
 char A[120],B[120];
 
-//½«BÖÐµÄ123456±ä³Éstate£¬È»ºó¿´ÓëAÏà²î¶àÉÙ
+//å°†Bä¸­çš„123456å˜æˆstateï¼Œç„¶åŽçœ‹ä¸ŽAç›¸å·®å¤šå°‘
 int f(int state){
     char tmp[120];
     strcpy(tmp,B);
@@ -96,10 +96,10 @@ int main(){
         int ans = cha(A,B);
 
         for(int i=0;i<SCnt;++i){
-            //°ÑBÖÐµÄ123456±ä³Éstate
+            //æŠŠBä¸­çš„123456å˜æˆstate
             int state = State[i];
             
-            //È»ºó¿´±äÍêÒÔºóµÄBÓëA²î¶àÉÙ
+            //ç„¶åŽçœ‹å˜å®Œä»¥åŽçš„Bä¸ŽAå·®å¤šå°‘
             int tmp = D[state]+f(state);
             if(tmp<ans){
                 ans = tmp;

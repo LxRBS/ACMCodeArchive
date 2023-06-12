@@ -1,7 +1,7 @@
 /*
-  ¸ø¶¨N¸öµã£¬ÎÊÄÜ·ñ¹¹³ÉÕıN±ßĞÎ
+  ç»™å®šNä¸ªç‚¹ï¼Œé—®èƒ½å¦æ„æˆæ­£Nè¾¹å½¢
 
-  Ê×ÏÈ×öÒ»¸ö¼«½ÇÅÅĞò£¬È»ºóÒÀ´ÎÑéÖ¤
+  é¦–å…ˆåšä¸€ä¸ªæè§’æ’åºï¼Œç„¶åä¾æ¬¡éªŒè¯
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -22,7 +22,7 @@ struct point_t{
 }P[110];
 int N;
 
-//²æ»ıOA¡ÁOB
+//å‰ç§¯OAÃ—OB
 int cross(point_t const&O,point_t const&A,point_t const&B){
 	int xoa = A.x - O.x;
 	int yoa = A.y - O.y;
@@ -37,13 +37,13 @@ int dist2(point_t const&A,point_t const&B){
     return x*x+y*y;
 }
 
-//ÅĞ¶ÏµãlÊÇ·ñ±Èµãr¸üÏÂ¸ü×ó
+//åˆ¤æ–­ç‚¹læ˜¯å¦æ¯”ç‚¹ræ›´ä¸‹æ›´å·¦
 bool isBottomLeft(point_t const&l,point_t const&r){
 	if ( l.y != r.y ) return l.y < r.y;
 	return l.x < r.x;
 }
 
-//ÎªGrahamÅÅĞò×ö×¼±¸
+//ä¸ºGrahamæ’åºåšå‡†å¤‡
 point_t* pOrigin;
 bool is4Graham(point_t const&l,point_t const&r){
 	int t = cross(*pOrigin,l,r);
@@ -52,26 +52,26 @@ bool is4Graham(point_t const&l,point_t const&r){
 }
 
 bool proc(){
-    //Çó×îÏÂ×î×óµã
+    //æ±‚æœ€ä¸‹æœ€å·¦ç‚¹
 	point_t* t = min_element(P,P+N,isBottomLeft);
 
-	//Óë0µã½»»»Î»ÖÃ
+	//ä¸0ç‚¹äº¤æ¢ä½ç½®
 	point_t ptmp(*t);
 	*t = P[0];
 	P[0] = ptmp;
 
-	//Ïà¶ÔÓÚ0µãÅÅĞò
+	//ç›¸å¯¹äº0ç‚¹æ’åº
 	pOrigin = P;
 	sort(P+1,P+N,is4Graham);
 
 	int tmp = dist2(P[N-1],P[0]);
-	//ÒÀ´Î¼ÆËã¾àÀëÊÇ·ñÏàµÈ
+	//ä¾æ¬¡è®¡ç®—è·ç¦»æ˜¯å¦ç›¸ç­‰
 	for(int i=1;i<N;++i){
         if(dist2(P[i-1],P[i])!=tmp){
             return false;
         }
 	}
-	//ÒÀ´Î¼ÆËã½Ç¶ÈÊÇ·ñÏàµÈ
+	//ä¾æ¬¡è®¡ç®—è§’åº¦æ˜¯å¦ç›¸ç­‰
 	tmp = cross(P[N-2],P[N-1],P[0]);
 	if(cross(P[N-1],P[0],P[1])!=tmp)return false;
 	for(int i=2;i<N;++i)if(cross(P[i-2],P[i-1],P[i])!=tmp) return false;
@@ -89,5 +89,4 @@ int main(){
     }
     return 0;
 }
-
 

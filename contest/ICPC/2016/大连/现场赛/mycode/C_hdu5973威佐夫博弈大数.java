@@ -1,10 +1,10 @@
 /*
  * Wythoff Game
- * Á½¶ÑÊ¯×ÓµÄÓÎÏ·£¬Áîa=(sqrt(5)+1)/2, b = a + 1
- * Áî(an,bn)Îª±Ø°Üµã
- * Ôò
+ * ä¸¤å †çŸ³å­çš„æ¸¸æˆï¼Œä»¤a=(sqrt(5)+1)/2, b = a + 1
+ * ä»¤(an,bn)ä¸ºå¿…è´¥ç‚¹
+ * åˆ™
  * an = floor(a^n), bn = floor(b^n)
- * ÇÒ
+ * ä¸”
  * ( bn - an ) * a == an
  */
 import java.io.ByteArrayInputStream;
@@ -43,14 +43,14 @@ public class Main {
 	}
 
 
-	//Ê¹ÓÃÅ£¶Ù·¨½«sqrt(5)¼ÆËãµ½Ð¡Êýµãºó100Î»
+	//ä½¿ç”¨ç‰›é¡¿æ³•å°†sqrt(5)è®¡ç®—åˆ°å°æ•°ç‚¹åŽ100ä½
 	static String PreString;
 	static BigDecimal EPS;
 	static BigDecimal FIVE = BigDecimal.valueOf(5);
 	static BigDecimal TWO = BigDecimal.valueOf(2);
 	static MathContext MC = new MathContext(105);
 	static BigDecimal SQRT5;
-	static BigDecimal GOLD;//»Æ½ð·Ö¸îÂÊ
+	static BigDecimal GOLD;//é»„é‡‘åˆ†å‰²çŽ‡
 	static BigDecimal Newton(){
 		BigDecimal x = BigDecimal.valueOf(Math.sqrt(5));
 		while ( f(x).abs().compareTo(EPS) > 0 ){
@@ -59,14 +59,13 @@ public class Main {
 		return x;
 	}
 	
-	//º¯Êý(x) = x * x - 5
+	//å‡½æ•°(x) = x * x - 5
 	static BigDecimal f(BigDecimal x){
 		return x.multiply(x,MC).subtract(FIVE, MC);
 	}
-	//µ¼Êý f'(x) = 2x
+	//å¯¼æ•° f'(x) = 2x
 	static BigDecimal fp(BigDecimal x){
 		return TWO.multiply(x, MC);
 	}
 
 }
-

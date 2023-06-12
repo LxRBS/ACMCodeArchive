@@ -1,15 +1,15 @@
 /*
-    ¸ø¶¨Í¼£¬Í¼ÉÏÓÐ3¸öÌØÊâµãA/B/C
-    ÒªÇóÕÒµ½Ò»Ìõ´ÓAµ½CÔÙµ½BµÄ×î¶ÌÂ·¾¶£¬ÇÒÃ»ÓÐµã»á±»ÖØ¸´¾­¹ý
-    ×îÐ¡·ÑÓÃ×î´óÁ÷
-    Ã¿¸öµã²ð³ÉiºÍi'¡£
-    Ô­Í¼ÖÐaµ½bÓÐÒ»Ìõ±ß³¤¶ÈÎªw£¬µÈ¼ÛÓÚa'µ½bÓÐÒ»Ìõ±ßÈÝÁ¿Îª1£¬·ÑÓÃÎªw¡£
-    Ã¿¸öiµ½i'ÓÐÒ»Ìõ±ßÈÝÁ¿Îª1·ÑÓÃÎª0¡£
-    ½¨Á¢Ò»¸ö³¬¼¶Ô´S£¬Sµ½AÓÐÒ»Ìõ±ß£¬ÈÝÁ¿Îª1·ÑÓÃÎª0£¬Sµ½BÓÐÒ»Ìõ±ß£¬ÈÝÁ¿Îª1·ÑÓÃÎª0¡£
-    ×îºó£¬°ÑCµ½C'µÄ±ßÈÝÁ¿ÉèÖÃÎª2£¬·ÑÓÃÎª0¡£
-    ÅÜÒ»±é×îÐ¡·ÑÓÃ×î´óÁ÷£¬Èç¹û×î´óÁ÷Îª2£¬Ôò×îÐ¡·ÑÓÃÎª´ð°¸¡£
-    ·ñÔòÎÞ½â¡£
-    ½¨Í¼¿ÉÒÔÊ¹ÓÃ×ÖµäÊ÷»òÕßhash¡£Ä¿²â×Ö·û´®³¤¶È²»³¬¹ý1000£¬ÇÒÖ»º¬´óÐ¡Ð´×ÖÄ¸¡£
+    ç»™å®šå›¾ï¼Œå›¾ä¸Šæœ‰3ä¸ªç‰¹æ®Šç‚¹A/B/C
+    è¦æ±‚æ‰¾åˆ°ä¸€æ¡ä»ŽAåˆ°Cå†åˆ°Bçš„æœ€çŸ­è·¯å¾„ï¼Œä¸”æ²¡æœ‰ç‚¹ä¼šè¢«é‡å¤ç»è¿‡
+    æœ€å°è´¹ç”¨æœ€å¤§æµ
+    æ¯ä¸ªç‚¹æ‹†æˆiå’Œi'ã€‚
+    åŽŸå›¾ä¸­aåˆ°bæœ‰ä¸€æ¡è¾¹é•¿åº¦ä¸ºwï¼Œç­‰ä»·äºŽa'åˆ°bæœ‰ä¸€æ¡è¾¹å®¹é‡ä¸º1ï¼Œè´¹ç”¨ä¸ºwã€‚
+    æ¯ä¸ªiåˆ°i'æœ‰ä¸€æ¡è¾¹å®¹é‡ä¸º1è´¹ç”¨ä¸º0ã€‚
+    å»ºç«‹ä¸€ä¸ªè¶…çº§æºSï¼ŒSåˆ°Aæœ‰ä¸€æ¡è¾¹ï¼Œå®¹é‡ä¸º1è´¹ç”¨ä¸º0ï¼ŒSåˆ°Bæœ‰ä¸€æ¡è¾¹ï¼Œå®¹é‡ä¸º1è´¹ç”¨ä¸º0ã€‚
+    æœ€åŽï¼ŒæŠŠCåˆ°C'çš„è¾¹å®¹é‡è®¾ç½®ä¸º2ï¼Œè´¹ç”¨ä¸º0ã€‚
+    è·‘ä¸€éæœ€å°è´¹ç”¨æœ€å¤§æµï¼Œå¦‚æžœæœ€å¤§æµä¸º2ï¼Œåˆ™æœ€å°è´¹ç”¨ä¸ºç­”æ¡ˆã€‚
+    å¦åˆ™æ— è§£ã€‚
+    å»ºå›¾å¯ä»¥ä½¿ç”¨å­—å…¸æ ‘æˆ–è€…hashã€‚ç›®æµ‹å­—ç¬¦ä¸²é•¿åº¦ä¸è¶…è¿‡1000ï¼Œä¸”åªå«å¤§å°å†™å­—æ¯ã€‚
 */
 
 #include <stdio.h>
@@ -63,27 +63,27 @@ void initTrie(){
 }
 
 typedef int weight_t;
-int const SIZE_OF_VERTICES = 20010<<1;//µãÊýµÄ×î´óÖµ
-int const SIZE_OF_EDGES = 100010<<2;//±ßÊýµÄ×î´óÖµ
+int const SIZE_OF_VERTICES = 20010<<1;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+int const SIZE_OF_EDGES = 100010<<2;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
 weight_t const INF = 0x3f3f3f3f;
 
 struct edge_t{
     int from,to;
-    weight_t cap;//ÈÝÁ¿
-    weight_t cost;//·ÑÓÃ
+    weight_t cap;//ï¿½ï¿½ï¿½ï¿½
+    weight_t cost;//ï¿½ï¿½ï¿½ï¿½
     int next;
 }Edge[SIZE_OF_EDGES];
 int ECnt;
 
 int Vertex[SIZE_OF_VERTICES];
 
-//³õÊ¼»¯
+//ï¿½ï¿½Ê¼ï¿½ï¿½
 inline void initGraph(int n){
-    ECnt = 2;//ECnt´Ó2¿ªÊ¼£¬¿ÕÖ¸ÕëÓÃ0±íÊ¾£¬·´Ïò±ßÓÃ^1¼ÆËã
+    ECnt = 2;//ECntï¿½ï¿½2ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½^1ï¿½ï¿½ï¿½ï¿½
     fill(Vertex,Vertex+n+1,0);
 }
 
-//Éú³É±ß
+//ï¿½ï¿½ï¿½É±ï¿½
 inline void mkEdge(int a,int b,weight_t capa,weight_t cost){
     Edge[ECnt].from = a;
     Edge[ECnt].to = b;
@@ -100,7 +100,7 @@ inline void mkEdge(int a,int b,weight_t capa,weight_t cost){
     Vertex[b] = ECnt++;
 }
 
-//s±íÊ¾Ô´£¬vnÎª¶¥µãÊýÁ¿£¬ÆäÓàÎª¸¨ÖúÊý×é
+//sï¿½ï¿½Ê¾Ô´ï¿½ï¿½vnÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void spfa(int s,int vn,weight_t d[],int pre[],bool flag[]){
     fill(d,d+vn+1,INF);
     fill(flag,flag+vn+1,false);
@@ -127,27 +127,27 @@ void spfa(int s,int vn,weight_t d[],int pre[],bool flag[]){
     }
 }
 
-//×îÐ¡·ÑÓÃ×î´óÁ÷£¬sÎªÔ´£¬tÎª»ã£¬vnÎª×ÜµãÊý
-//ÆäÓàÎª¸¨ÖúÊý×é
+//ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sÎªÔ´ï¿½ï¿½tÎªï¿½ã£¬vnÎªï¿½Üµï¿½ï¿½ï¿½
+//ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 pair<weight_t,weight_t> mcmf(int s,int t,int vn,weight_t d[],int pre[],bool flag[]){
     weight_t miniCost = 0;
     weight_t maxFlow = 0;
     while(1){
         spfa(s,vn,d,pre,flag);
-        //ËµÃ÷ÕÒ²»µ½Ôö¹ãÂ·
+        //Ëµï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·
         if ( INF == d[t] ) break;
 
-        //ÕÒ³ö¸ÃÔö¹ãÂ·ÉÏµÄ¿ÉÐÐÁ÷
+        //ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ÏµÄ¿ï¿½ï¿½ï¿½ï¿½ï¿½
         weight_t curFlow = INF;
         for(int p=pre[t];p;p=pre[Edge[p].from])if(curFlow>Edge[p].cap)curFlow = Edge[p].cap;
 
-        //±ä¶¯Á÷Á¿
+        //ï¿½ä¶¯ï¿½ï¿½ï¿½ï¿½
         for(int p=pre[t];p;p=pre[Edge[p].from]){
             Edge[p].cap -= curFlow;
             Edge[p^1].cap += curFlow;
         }
 
-        //¸üÐÂÁ÷Á¿ºÍ·ÑÓÃ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½
         miniCost += d[t] * curFlow;
         maxFlow += curFlow;
     }
@@ -207,7 +207,7 @@ void read(){
     for(int i=1;i<=N+N;i+=2) mkEdge(i,i+1,1,0);
     mkEdge(C,C+1,1,0);
 
-    //³¬¼¶Ô´
+    //ï¿½ï¿½ï¿½ï¿½Ô´
     mkEdge(N+N+1,A,1,0);
     mkEdge(N+N+1,B,1,0);
 }

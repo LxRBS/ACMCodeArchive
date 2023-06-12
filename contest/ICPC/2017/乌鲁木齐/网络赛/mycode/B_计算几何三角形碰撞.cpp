@@ -1,8 +1,8 @@
 /*
-    2¸öÈý½ÇÐÎ·Ö±ðÒÔ¸÷×ÔµÄËÙ¶ÈÇ°½ø£¬ÎÊÊÇ·ñÏà×²
-    ÒÔÆäÖÐÒ»¸öÈý½ÇÐÎÎª²ÎÕÕÏµ£¬¿´ÁíÍâÒ»¸öÈý½ÇÐÎµÄÔË¶¯¹ì¼£ÊÇ·ñÓëÖ®Ïà½»
-    ÔÙ½»»»2¸öÈý½ÇÐÎµÄ½ÇÉ«£¬ÔÙËãÒ»±é
-    µ«ÊÇ²»ÄÜÊ¹ÓÃlonglong£¬ÒªÊ¹ÓÃdouble
+    2ä¸ªä¸‰è§’å½¢åˆ†åˆ«ä»¥å„è‡ªçš„é€Ÿåº¦å‰è¿›ï¼Œé—®æ˜¯å¦ç›¸æ’ž
+    ä»¥å…¶ä¸­ä¸€ä¸ªä¸‰è§’å½¢ä¸ºå‚ç…§ç³»ï¼Œçœ‹å¦å¤–ä¸€ä¸ªä¸‰è§’å½¢çš„è¿åŠ¨è½¨è¿¹æ˜¯å¦ä¸Žä¹‹ç›¸äº¤
+    å†äº¤æ¢2ä¸ªä¸‰è§’å½¢çš„è§’è‰²ï¼Œå†ç®—ä¸€é
+    ä½†æ˜¯ä¸èƒ½ä½¿ç”¨longlongï¼Œè¦ä½¿ç”¨double
 */
 #include <stdio.h>
 #include <iostream>
@@ -34,7 +34,7 @@ bool isInter(Point const&A,Point const&B,Point const&C,Point const&D){
         && cross(C,B,D) * cross(C,D,A) >= 0LL;
 }
 
-//pÎª¶¨µã£¬Çó³öÉäÏß·½ÏòµÄ×îÔ¶µã
+//pÎªï¿½ï¿½ï¿½ã£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½
 Point mkLimit(Point const p,llt const speed[]){
     if ( 0LL == speed[0] && 0LL == speed[1] ) return p;
     if ( 0LL == speed[0] ) return Point(p.x,speed[1]>0?MAX:-MAX);
@@ -60,7 +60,7 @@ Point mkLimit(Point const p,llt const speed[]){
 Point A[3],B[3];
 llt SpeedA[2],SpeedB[2];
 
-//a¾²Ö¹²»¶¯£¬bÒÔspeedËÙ¶ÈÔË¶¯£¬Ïà×²·µ»Øtrue
+//aï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½bï¿½ï¿½speedï¿½Ù¶ï¿½ï¿½Ë¶ï¿½ï¿½ï¿½ï¿½ï¿½×²ï¿½ï¿½ï¿½ï¿½true
 bool f(Point const a[],Point const b[],llt const speed[]){
     for(int i=0;i<3;++i){
         Point inf = mkLimit(b[i],speed);
