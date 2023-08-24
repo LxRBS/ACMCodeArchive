@@ -1,7 +1,7 @@
 /**
- * ǰA�����϶����·���B���Ժ�϶�û���·�
- * AB֮��ѡC���˵ȸ��ʵķ��·�
- * �ʵ�X���õ��·��ĸ����Ƕ��١�
+ * 前A名，肯定发衣服。B名以后肯定没有衣服
+ * AB之间选C个人等概率的发衣服
+ * 问第X名拿到衣服的概率是多少。
 */
 #include <bits/stdc++.h>
 using namespace std;

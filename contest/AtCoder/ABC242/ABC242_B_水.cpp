@@ -1,6 +1,6 @@
 /**
- * 给定字符串，求同样排列中最小的那个
- * 就是排序
+ * 缁欏畾瀛楃涓诧紝姹傚悓鏍锋帓鍒椾腑鏈�灏忕殑閭ｄ釜
+ * 灏辨槸鎺掑簭
 */
 #include <bits/stdc++.h>
 using namespace std;
