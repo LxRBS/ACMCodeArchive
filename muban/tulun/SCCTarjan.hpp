@@ -1,22 +1,41 @@
-#include "graph.hpp"
-
-namespace TULUN{
-
 struct SCCTarjan{
 
+using weight_t = int; // 权值类型
 using vi = vector<int>;
 
-const Graph & g;
+struct edge_t{
+    int from;
+    int to;
+    weight_t w;
+    edge_t(int a, int b, weight_t c):from(a),to(b),w(c){}
+};
+
+vector<edge_t> edges;
+vector<vi> g;
+
+SCCTarjan() = default;
+
+/// 点数和边数
+void init(int n, int m){
+    g.assign(n + 1, vi());
+    edges.clear();
+    edges.reserve(m);
+}
+
+/// a到b建一条有向边
+void mkDiEdge(int a, int b, weight_t w = 0){    
+    g[a].emplace_back(edges.size());
+    edges.emplace_back(edge_t(a, b, w));
+}
+
 
 int SCCCnt; // 连通分量的总数
 vi Belong;  // 第i个定点属于第Belong[i]个SCC
 vi SCCSize; // 第i个连通分量的大小是SCCSize[i]，从0开始编号
 
-SCCTarjan() = delete;
-
-/// 对graph做SCC，不改变graph的内容
-SCCTarjan(const Graph & graph):g(graph){
-    auto vn = g.node_size();
+/// SCC主函数
+void Tarjan(){
+    auto vn = g.size() - 1;
 
     Dfn.assign(vn + 1, TimeStamp = SCCCnt = StackTop = 0);
     IsInStack.assign(vn + 1, false);
@@ -38,8 +57,8 @@ void dfs(int u){
 
     int v;
     for(auto i : g[u]){
-        const auto & e = g.edges[i];
-        if(0 == Dfn[v = get<1>(e)]){
+        const auto & e = edges[i];
+        if(0 == Dfn[v = e.to]){
             dfs(v);
             if(Low[v] < Low[u]) Low[u] = Low[v];
         }else if(IsInStack[v] && Dfn[v] < Low[u]){
@@ -57,6 +76,23 @@ void dfs(int u){
     }
 }
 
+/// 求kdag，由参数返回,从0开始编号
+void kdag(vector<vector<int>>&kdag)const{
+    kdag.assign(SCCCnt, vi());
+    for(const auto & e : edges){
+        int a = Belong[e.from];
+        int b = Belong[e.to];
+        if(a != b){
+            kdag[a].emplace_back(b);
+        }
+    }
+    for(auto & vec : kdag){
+        sort(vec.begin(), vec.end());
+        vec.erase(unique(vec.begin(), vec.end()), vec.end());
+    }
+    return;
+}
+
 vi Stack;
 vector<bool> IsInStack;
 int StackTop; // 辅助栈
@@ -65,5 +101,3 @@ vi Dfn, Low;
 int TimeStamp; // 辅助数组
 
 };
-
-}

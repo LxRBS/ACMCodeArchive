@@ -1,5 +1,25 @@
+/**
+ * 本质上就是问两点是否处于同一个SCC中
+ */
 #include <bits/stdc++.h>
 using namespace std;
+
+#include <bits/extc++.h>
+using namespace __gnu_pbds;
+
+using Real = long double;
+using llt = long long;
+using ull = unsigned long long;
+using pii = pair<int, int>;
+using vi = vector<int>;
+using vvi = vector<vi>;
+
+#ifndef ONLINE_JUDGE
+int const SZ = 101;
+#else
+int const SZ = 110;
+#endif
+
 
 struct SCCTarjan{
 
@@ -79,10 +99,9 @@ void dfs(int u){
     }
 }
 
-/// 求kdag，由参数返回,从0开始编号, pdeg记录KDAG的入度
-void kdag(vector<vector<int>>&kdag, vector<int>&deg)const{
+/// 求kdag，由参数返回,从0开始编号
+void kdag(vector<vector<int>>&kdag)const{
     kdag.assign(SCCCnt, vi());
-    deg.assign(SCCCnt, 0);
     for(const auto & e : edges){
         int a = Belong[e.from];
         int b = Belong[e.to];
@@ -93,7 +112,6 @@ void kdag(vector<vector<int>>&kdag, vector<int>&deg)const{
     for(auto & vec : kdag){
         sort(vec.begin(), vec.end());
         vec.erase(unique(vec.begin(), vec.end()), vec.end());
-        for(int i : vec) ++deg[i];
     }
     return;
 }
@@ -107,57 +125,48 @@ int TimeStamp; // 辅助数组
 
 };
 
-
 int N, M;
-vector<int> W;
+map<string, int> Map;
 SCCTarjan SCC;
+vector<pair<int, int>> Questions;
 
-int proc(){
+int get(const string & s){
+    auto it = Map.find(s);
+    if(it == Map.end()) it = Map.insert(it, {s, Map.size()});
+    return it->second;
+}
+
+void proc(){
     SCC.Tarjan();
-	/// 首先把SCC的权值计算出来
-	vector<int> w(SCC.SCCCnt, 0);
-	for(int i=1;i<=N;++i) w[SCC.Belong[i]] += W[i];
-
-    vector<vector<int>> kdag;
-    vector<int> deg;
-    SCC.kdag(kdag, deg);
-
-	/// 有向无环图上做个dp
-	vector<int> d(SCC.SCCCnt, 0);
-	queue<int> q;
-	for(int i=0;i<SCC.SCCCnt;++i)if(0==deg[i]){
-		d[i] = w[i]; q.push(i); 
-	}
-    
-    while(!q.empty()){
-		auto h = q.front(); q.pop();
-		for(int v : kdag[h]){
-			d[v] = max(d[h], d[v]);
-            if(0 == --deg[v]) {
-				q.push(v);
-				d[v] += w[v];
-			}
-		}
-	}
-
-    auto ans = *max_element(d.begin(), d.end());
-    return ans;    
+    for(const auto &p :Questions){
+        int a = SCC.Belong[p.first];
+        int b = SCC.Belong[p.second];
+        cout << (a == b ? "Unsafe" : "Safe") << endl;
+    }
+    return;
 }
 
 int main(){
 #ifndef ONLINE_JUDGE
-    freopen("1.txt", "r", stdin);
+    freopen("z.txt", "r", stdin);
 #endif
-    ios::sync_with_stdio(0); 
-    cin.tie(0); cout.tie(0);
-    cin >> N >> M;
-    W.assign(N + 1, 0);
-    for(int i=1;i<=N;++i) cin >> W[i];
-    SCC.init(N, M);
-	for(int a,b,i=0;i<M;++i){
-        cin >> a >> b;
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    cin >> N;
+    SCC.init(N+N, N);
+    for(int i=1;i<=N;++i){
+        string girl, boy;
+        cin >> girl >> boy;
+        int a = get(girl), b = get(boy);
         SCC.mkDiEdge(a, b, 0);
+        Questions.emplace_back(a, b);
     }
-    cout << proc() << endl;
+    cin >> M;
+    for(int i=0;i<M;++i){
+        string girl, boy;
+        cin >> girl >> boy;
+        SCC.mkDiEdge(get(boy), get(girl), 0);
+    }
+    proc();
+    // cout << proc() << endl;
     return 0;
 }

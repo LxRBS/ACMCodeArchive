@@ -1,3 +1,25 @@
+/**
+ * 给定多个字符串，求最长公共子串的长度
+ */
+#include <bits/stdc++.h>
+using namespace std;
+
+#include <bits/extc++.h>
+using namespace __gnu_pbds;
+
+using Real = long double;
+using llt = long long;
+using ull = unsigned long long;
+using pii = pair<int, int>;
+using vi = vector<int>;
+using vvi = vector<vi>;
+
+#ifndef ONLINE_JUDGE
+int const SZ = 101;
+#else
+int const SZ = 110;
+#endif
+
 struct SuffixArray{
 
 using vi = vector<int>;
@@ -77,5 +99,68 @@ vi _wv, _ws;
 
 };
 
+int N;
+vector<string> A;
+vi Pos;
 
+int f(int pos){
+    auto pp = equal_range(Pos.begin(), Pos.end(), pos);
+    return pp.first - Pos.begin();
+}
 
+bool check(int x, const SuffixArray & sa){
+    int n = sa.sa.size();
+    int cur = 0;
+    while(1){
+        int tmp = cur + 1;
+        vi flag(N, 0);
+        flag[f(sa.sa[cur])] = 1;
+        while(tmp < n and sa.height[tmp] >= x){
+            flag[f(sa.sa[tmp])] = 1;
+            ++tmp;
+        }
+        if(N == accumulate(flag.begin(), flag.end(), 0)) return true;
+        if((cur = tmp) == n) break;
+    }
+    return false;
+}
+
+int proc(){
+    vi v;
+    v.reserve(N * 1E4);
+    Pos.clear(); Pos.reserve(N);
+    int right = 1E5;
+    for(int i=0;i<N;++i){
+        for(char ch : A[i]){
+            v.push_back(ch - 'a' + 1);
+        }
+        if(i + 1 != N) v.push_back(i + 27);
+        else v.push_back(0);
+        right = min(right, (int)A[i].length());
+        if(Pos.empty()) Pos.push_back(A[i].length());
+        else Pos.push_back(A[i].length() + 1 + Pos.back());
+    }
+    SuffixArray sa(v, N + 26);
+    int left = 0, mid;
+    do{
+        mid = (left + right) >> 1;
+        if(check(mid, sa)) left = mid + 1;
+        else right = mid - 1;
+    }while(left <= right);
+    return right;
+}
+
+int main(){
+#ifndef ONLINE_JUDGE
+    freopen("z.txt", "r", stdin);
+#endif
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    int nofkase; cin >> nofkase;
+    while(nofkase--){
+        cin >> N;
+        A.assign(N, "");
+        for(auto & s : A) cin >> s;
+        cout << proc() << endl;
+    }
+    return 0;
+}

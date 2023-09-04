@@ -1,3 +1,25 @@
+/**
+ * 问不同子串的数量。
+ */
+#include <bits/stdc++.h>
+using namespace std;
+
+#include <bits/extc++.h>
+using namespace __gnu_pbds;
+
+using Real = long double;
+using llt = long long;
+using ull = unsigned long long;
+using pii = pair<int, int>;
+using vi = vector<int>;
+using vvi = vector<vi>;
+
+#ifndef ONLINE_JUDGE
+int const SZ = 101;
+#else
+int const SZ = 110;
+#endif
+
 struct SuffixArray{
 
 using vi = vector<int>;
@@ -77,5 +99,36 @@ vi _wv, _ws;
 
 };
 
+int N;
+vi A;
+string S;
 
+long long proc(){
+    N = S.length();
+    A.clear(); A.reserve(N + 1);
+    for(char ch : S) {
+        if(islower(ch)) A.push_back(ch - 'a' + 1);
+        else A.push_back(ch - 'A' + 27);
+    }
+    A.push_back(0);
+    SuffixArray sa(A, 53);
+    long long ans = - N;
+    for(int i=1;i<N+1;++i){
+        ans += N + 1 - sa.sa[i];
+        ans -= sa.height[i];
+    }
+    return ans;
+}
 
+int main(){
+#ifndef ONLINE_JUDGE
+    freopen("z.txt", "r", stdin);
+#endif
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    int nofkase; cin >> nofkase;
+    while(nofkase--){
+        cin >> S;
+        cout << proc() << endl;
+    }
+    return 0;
+}

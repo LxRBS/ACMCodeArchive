@@ -1,3 +1,25 @@
+/**
+ * 至少重复出现K次的可重叠最长重复子串的长度
+ */
+#include <bits/stdc++.h>
+using namespace std;
+
+#include <bits/extc++.h>
+using namespace __gnu_pbds;
+
+using Real = long double;
+using llt = long long;
+using ull = unsigned long long;
+using pii = pair<int, int>;
+using vi = vector<int>;
+using vvi = vector<vi>;
+
+#ifndef ONLINE_JUDGE
+int const SZ = 101;
+#else
+int const SZ = 110;
+#endif
+
 struct SuffixArray{
 
 using vi = vector<int>;
@@ -77,5 +99,56 @@ vi _wv, _ws;
 
 };
 
+int N, K;
+vi A;
+map<int, int> Map;
 
+int f(int x){
+    auto it = Map.find(x);
+    if(it == Map.end()) it = Map.insert(it, {x, Map.size() + 1});
+    return it->second;
+}
 
+bool check(int x, const SuffixArray & sa){
+    int n = sa.sa.size();
+    int cur = 0;
+    while(1){
+        int tmp = cur + 1;
+        int k = 1;
+        while(tmp < n and sa.height[tmp] >= x){
+            ++tmp;
+            ++k;
+            if(k >= K) return true;
+        }
+        if((cur = tmp) == n) break;
+    }
+    return false;
+}
+
+int proc(){
+    int m = Map.size();
+    SuffixArray sa(A, m + 1);
+
+    int left = 0, right = N / K, mid;
+    do{
+        mid = (left + right) >> 1;
+        if(check(mid, sa)) left = mid + 1;
+        else right = mid - 1;
+    }while(left <= right);
+    return right;
+}
+
+int main(){
+#ifndef ONLINE_JUDGE
+    freopen("z.txt", "r", stdin);
+#endif
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    cin >> N >> K;
+    A.assign(N + 1, 0);
+    for(int a,i=0;i<N;++i){
+        cin >> a;
+        A[i] = f(a);
+    }
+    cout << proc() << endl;
+    return 0;
+}

@@ -1,3 +1,25 @@
+/**
+ * 本质上就是问不可重叠的最长重复子串的长度
+ */
+#include <bits/stdc++.h>
+using namespace std;
+
+#include <bits/extc++.h>
+using namespace __gnu_pbds;
+
+using Real = long double;
+using llt = long long;
+using ull = unsigned long long;
+using pii = pair<int, int>;
+using vi = vector<int>;
+using vvi = vector<vi>;
+
+#ifndef ONLINE_JUDGE
+int const SZ = 101;
+#else
+int const SZ = 110;
+#endif
+
 struct SuffixArray{
 
 using vi = vector<int>;
@@ -77,5 +99,55 @@ vi _wv, _ws;
 
 };
 
+bool check(int x, const SuffixArray & sa){
+    int n = sa.sa.size();
+    int cur = 0;
+    while(1){
+        int tmp = cur + 1;
+        int m1 = sa.sa[cur], m2 = sa.sa[cur];
+        while(tmp < n and sa.height[tmp] >= x){
+            m1 = min(m1, sa.sa[tmp]);
+            m2 = max(m2, sa.sa[tmp]);
+            ++tmp;
+            /// 因为是在差分数组上做不重叠的子串，所以这里要多加1
+            if(m2 >= m1 + x + 1) return true;
+        }
+        if((cur = tmp) == n) break;
+    }
+    return false;
+}
 
+int N;
+vi A;
 
+int proc(){
+    int offset = 100;
+    for(int i=0;i+1<N;++i) offset = min(offset, A[i]);
+    if(offset <= 0)for(int i=0;i+1<N;++i) A[i] -= offset - 1;
+    int m = *max_element(A.begin(), A.end());
+    SuffixArray sa(A, m + 1);
+
+    int left = 0, right = N / 2, mid;
+    do{
+        mid = (left + right) >> 1;
+        if(check(mid, sa)) left = mid + 1;
+        else right = mid - 1;
+    }while(left <= right);
+    return right >= 4 ? right + 1 : 0;
+}
+
+int main(){
+#ifndef ONLINE_JUDGE
+    freopen("z.txt", "r", stdin);
+#endif
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    cin >> N; A.assign(N, 0);
+    int pre; cin >> pre;
+    for(int a,i=1;i<N;++i){
+        cin >> a;
+        A[i - 1] = a - pre;
+        pre = a;
+    }
+    cout << proc() << endl;
+    return 0;
+}

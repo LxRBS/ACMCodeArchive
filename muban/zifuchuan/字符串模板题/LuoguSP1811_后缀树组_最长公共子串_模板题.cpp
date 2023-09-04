@@ -1,3 +1,25 @@
+/**
+ * 求两个子串的最长公共子串长度
+ */
+#include <bits/stdc++.h>
+using namespace std;
+
+#include <bits/extc++.h>
+using namespace __gnu_pbds;
+
+using Real = long double;
+using llt = long long;
+using ull = unsigned long long;
+using pii = pair<int, int>;
+using vi = vector<int>;
+using vvi = vector<vi>;
+
+#ifndef ONLINE_JUDGE
+int const SZ = 101;
+#else
+int const SZ = 110;
+#endif
+
 struct SuffixArray{
 
 using vi = vector<int>;
@@ -77,5 +99,48 @@ vi _wv, _ws;
 
 };
 
+string A, B;
 
+bool check(int x, const SuffixArray & sa){
+    int na = A.length();
+    int n = A.length() + B.length() + 2;
+    int cur = 0;
+    while(1){
+        int tmp = cur + 1;
+        int st = sa.sa[cur] < na ? 1 : (sa.sa[cur] > na ? 2 : 0);
+        while(tmp < n and sa.height[tmp] >= x){
+            st |= sa.sa[tmp] < na ? 1 : (sa.sa[tmp] > na ? 2 : 0);
+            ++tmp;
+            if(3 == st) return true;
+        }
+        if((cur = tmp) == n) break;
+    }
+    return false;
+}
 
+int proc(){
+    int na = A.length(), nb = B.length();
+    vi vec; vec.reserve(na + nb + 2);
+    for(char ch : A) vec.push_back(ch - 'a' + 1);
+    vec.push_back(27);
+    for(char ch : B) vec.push_back(ch - 'a' + 1);
+    vec.push_back(0);
+    SuffixArray sa(vec, 28);
+    int left = 0, right = min(na, nb), mid;
+    do{
+        mid = (left + right) >> 1;
+        if(check(mid, sa)) left = mid + 1;
+        else right = mid - 1;
+    }while(left <= right);
+    return right;
+}
+
+int main(){
+#ifndef ONLINE_JUDGE
+    freopen("z.txt", "r", stdin);
+#endif
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    cin >> A >> B;
+    cout << proc() << endl;
+    return 0;
+}
