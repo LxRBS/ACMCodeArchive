@@ -1,3 +1,26 @@
+/**
+ * 二分图最大匹配给方案
+ * 
+ */
+#include <bits/stdc++.h>
+using namespace std;
+
+#include <bits/extc++.h>
+using namespace __gnu_pbds;
+
+using Real = long double;
+using llt = long long;
+using ull = unsigned long long;
+using pii = pair<int, int>;
+using vi = vector<int>;
+using vvi = vector<vi>;
+
+#ifndef ONLINE_JUDGE
+int const SZ = 101;
+#else
+int const SZ = 110;
+#endif
+
 struct Match_HopcroftKarp{
 
 using vi = vector<int>;
@@ -108,4 +131,30 @@ int _dis; // 辅助数据
 
 };
 
+int NA, NB, M;
+Match_HopcroftKarp Match;
 
+void proc(){
+    auto ans = Match.HopcroftKarp(NA, NB);
+    cout << ans << endl;
+    for(int i=1;i<=NA;++i){
+        cout << Match.edges[Match.linka[i]].to << " ";
+    }
+    cout << endl;
+    return;
+}
+
+int main(){
+#ifndef ONLINE_JUDGE
+    freopen("z.txt", "r", stdin);
+#endif
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    cin >> NA >> NB >> M;
+    Match.init(NA, M);
+    for(int a,b,i=0;i<M;++i){
+        cin >> a >> b;
+        Match.mkDiEdge(a, b);
+    }
+    proc();
+    return 0;
+}
