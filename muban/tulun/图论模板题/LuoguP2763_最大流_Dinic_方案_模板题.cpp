@@ -1,3 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#include <bits/extc++.h>
+using namespace __gnu_pbds;
+
+using Real = long double;
+using llt = long long;
+using ull = unsigned long long;
+using pii = pair<int, int>;
+using vi = vector<int>;
+using vvi = vector<vi>;
+
+#ifndef ONLINE_JUDGE
+int const SZ = 101;
+#else
+int const SZ = 110;
+#endif
+
+
+
 struct MaxFlow_Dinic{
 
 
@@ -13,11 +34,10 @@ struct edge_t{
 vector<vector<int>> g; // 从1开始编号
 vector<edge_t> edges; // 边表
 
-/// 点数和不考虑反向边的边数
 void init(int ncnt, int ecnt=0){
-    this->g.assign(ncnt+1, {});
+    this->g.assign(ncnt+1, vi());
     this->edges.clear();
-    this->edges.reserve(ecnt << 1);
+    this->edges.reserve(ecnt);
 }
 
 // 生成a到b的一条边，如果是无向图要连续调用该函数两次
@@ -110,3 +130,56 @@ vector<int> q; // 队列
 int S, T; // 源汇
 
 };
+
+int K, N;
+int M;
+MaxFlow_Dinic Dinic;
+
+void proc(){
+    auto ans = Dinic.maxflow(N + K + 1, N + K + 2);
+    if(ans != M) return (void)(cout << "No Solution!" << endl);
+
+    vvi results(K + 1, vi());
+    Dinic.forEachUsed([&](int index, MaxFlow_Dinic::weight_t usedw){
+        const auto & e = Dinic.edges[index];
+        if(1 <= e.from and e.from <= K and K + 1 <= e.to and e.to <= N + K){
+            assert(e.w == 0 and usedw == 1);
+            results[e.from].push_back(e.to - K);
+        }
+    });
+    for(int i=1;i<=K;++i){
+        sort(results[i].begin(), results[i].end());
+        cout << i << ":";
+        for(int j : results[i]) cout << " " << j;
+        cout << endl;
+    }
+    return;
+}
+
+int main(){
+#ifndef ONLINE_JUDGE
+    freopen("z.txt", "r", stdin);
+#endif
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    cin >> K >> N;
+
+    M = 0;
+    Dinic.init(N + K + 2);
+    for(int a,i=1;i<=K;++i){
+        cin >> a;
+        Dinic.mkDirectEdge(N + K + 1, i, a);
+        M += a;
+    }
+    
+    for(int i=1;i<=N;++i){
+        int p; cin >> p;
+        for(int type,j=0;j<p;++j){
+            cin >> type;
+            Dinic.mkDirectEdge(type, K + i, 1);
+        }
+        Dinic.mkDirectEdge(K + i, N + K + 2, 1);
+    }
+
+    proc();
+    return 0;
+}

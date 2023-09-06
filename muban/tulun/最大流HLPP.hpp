@@ -1,10 +1,4 @@
-
-
-namespace TULUN{
-
-
-/// 网络流，最大流是对的，但是方案是错的。待查
-struct NetworkMaxFlow_HLPP{
+struct MaxFlow_HLPP{ // 方案似乎没错
 
 
 enum{INF=0x7F7F7F7F7F7F7F7F}; 
@@ -19,7 +13,7 @@ using ve = vector<edge_t>;
 vvi g; // 邻接表
 ve edges; // 边表
 
-NetworkMaxFlow_HLPP() = default;
+MaxFlow_HLPP() = default;
 
 /// 参数为题目给定的点数和边数
 void init(int ncnt, int ecnt=0){
@@ -37,7 +31,7 @@ void mkDirectEdge(int a, int b, weight_t w){
     this->edges.push_back({b, a, 0});
 }
 
-weight_t hlpp(int s, int t){
+weight_t maxflow(int s, int t){
 	int n = this->g.size() - 1;
 	int mxh, szh;
 	
@@ -151,8 +145,13 @@ weight_t hlpp(int s, int t){
 }
 
 
-};
-
-
-
+void forEachUsed(function<void(int index, weight_t usedw)> f){
+    for(int i=0,n=edges.size();i<n;i+=2){
+        if(get<2>(edges[i ^ 1]) > 0){
+            f(i, get<2>(edges[i ^ 1]));
+        }
+    }
+    return;
 }
+
+};

@@ -1,48 +1,47 @@
 
-namespace TULUN{
-
-struct NetworkMaxFlow_ISAP{
+struct MaxFlow_ISAP{
 
 enum{INF = 0x7F7F7F7FFFFFFFFF};
 
 #ifndef ONLINE_JUDGE
-enum{SIZE_OF_VERTICES = 12};
-enum{SIZE_OF_EDGES = 12 << 2};
+enum{SIZE_OF_VERTICES = 120};
+enum{SIZE_OF_edgesS = 120 << 2};
 #else
 enum{SIZE_OF_VERTICES = 100020};
-enum{SIZE_OF_EDGES = 1200000 << 2};
+enum{SIZE_OF_edgesS = 1200000 << 2};
 #endif
 
 using weight_t = long long;
 
-struct edge_t{
+struct edges_t{
     int to;
     weight_t cap;//容量
     weight_t flow;//流量
     int next;
-}Edge[SIZE_OF_EDGES];
+}edges[SIZE_OF_edgesS];
 int ECnt;
 
+int n;
 int Vertex[SIZE_OF_VERTICES];
 
 //初始化
-inline void init(int n, int m){
+inline void init(int n){
     ECnt = 2;//ECnt从2开始，空指针用0表示，反向边用^1计算
-    fill(Vertex,Vertex+n+1,0);
+    fill(Vertex,Vertex+(this->n=n)+1,0);
 }
 
 //生成边
 inline void mkDirectEdge(int a,int b,weight_t w){
-    Edge[ECnt].to = b;
-    Edge[ECnt].cap = w;
-    Edge[ECnt].flow = 0;
-    Edge[ECnt].next = Vertex[a];
+    edges[ECnt].to = b;
+    edges[ECnt].cap = w;
+    edges[ECnt].flow = 0;
+    edges[ECnt].next = Vertex[a];
     Vertex[a] = ECnt++;
 
-    Edge[ECnt].to = a;
-    Edge[ECnt].cap = 0;//有向图的反向边为0，无向图的反向边同正向边
-    Edge[ECnt].flow = 0;
-    Edge[ECnt].next = Vertex[b];
+    edges[ECnt].to = a;
+    edges[ECnt].cap = 0;//有向图的反向边为0，无向图的反向边同正向边
+    edges[ECnt].flow = 0;
+    edges[ECnt].next = Vertex[b];
     Vertex[b] = ECnt++;
 }
 
@@ -51,7 +50,7 @@ int __Cnt[SIZE_OF_VERTICES];//Cnti表示距离为i的顶点的个数
 int Queue[SIZE_OF_VERTICES];//辅助队列
 
 //反向BFS，搜索各点到汇的距离，t为汇，n为顶点总数
-void bfs(int t,int n){
+void bfs(int t){
     fill(__D,__D+n+1,-1);
     fill(__Cnt,__Cnt+n+1,0);
 
@@ -59,8 +58,8 @@ void bfs(int t,int n){
     __Cnt[ __D[ Queue[tail++]=t ] = 0 ] = 1;
 
     while(head != tail){
-        for(int p = Vertex[ u = Queue[head++] ]; p ; p = Edge[p].next){
-            if ( -1 == __D[ v = Edge[p].to ] ){
+        for(int p = Vertex[ u = Queue[head++] ]; p ; p = edges[p].next){
+            if ( -1 == __D[ v = edges[p].to ] ){
                 ++ __Cnt[ __D[ Queue[tail++]=v ] = __D[u] + 1 ];
             }
         }
@@ -71,9 +70,9 @@ int Cur[SIZE_OF_VERTICES];//当前弧
 int Stack[SIZE_OF_VERTICES];//辅助栈
 
 //Improved shortest argument path algorithm
-//s为源，t为汇，n为顶点个数
-weight_t isap(int s,int t,int n){
-    bfs(t,n);
+//s为源，t为汇
+weight_t maxflow(int s,int t){
+    bfs(t);
     copy(Vertex,Vertex+n+1,Cur);
 
     weight_t ans = 0;
@@ -83,23 +82,23 @@ weight_t isap(int s,int t,int n){
         if(u == t){//找到一条增广路
             int inser;
             weight_t wtmp,flow = INF;
-            for(int i=0;i<top;++i)if( flow > ( wtmp = Edge[Stack[i]].cap - Edge[Stack[i]].flow ) ){
+            for(int i=0;i<top;++i)if( flow > ( wtmp = edges[Stack[i]].cap - edges[Stack[i]].flow ) ){
                 flow = wtmp, inser = i;
             }
             for(int i=0;i<top;++i){
-                Edge[Stack[i]].flow += flow;  //正向边
-                Edge[Stack[i]^1].flow -= flow;//反向边
+                edges[Stack[i]].flow += flow;  //正向边
+                edges[Stack[i]^1].flow -= flow;//反向边
             }
             ans += flow;
             top = inser;
-            u = Edge[Stack[top]^1].to;
+            u = edges[Stack[top]^1].to;
             continue;
         }
 
         //查找可行弧
         int v, ava = 0;
-        for(int p=Cur[u];p;p=Edge[p].next){
-            if(Edge[p].cap - Edge[p].flow && __D[ v = Edge[p].to ] + 1 == __D[u]){
+        for(int p=Cur[u];p;p=edges[p].next){
+            if(edges[p].cap > edges[p].flow && __D[ v = edges[p].to ] + 1 == __D[u]){
                 Cur[u] = ava = p;
                 break;
             }
@@ -113,9 +112,9 @@ weight_t isap(int s,int t,int n){
 
         //找不到可行弧，回溯
         int tmpd = n;
-        for(int p=Vertex[u];p;p=Edge[p].next)
-        if( Edge[p].cap - Edge[p].flow && __D[Edge[p].to] < tmpd ){
-            tmpd = __D[Edge[p].to];
+        for(int p=Vertex[u];p;p=edges[p].next)
+        if( edges[p].cap > edges[p].flow && __D[edges[p].to] < tmpd ){
+            tmpd = __D[edges[p].to];
             Cur[u] = p;
         }
         --__Cnt[__D[u]];
@@ -124,14 +123,20 @@ weight_t isap(int s,int t,int n){
 
         ++__Cnt[ __D[u] = tmpd + 1 ];
 
-        if(u != s) u = Edge[Stack[--top]^1].to;
+        if(u != s) u = edges[Stack[--top]^1].to;
     }
 
     return ans;
 }
 
+void forEachUsed(function<void(int p, weight_t usedw)> f){
+    for(int p=2;p<ECnt;p+=2){
+        if(edges[p].flow > 0){
+            f(p, edges[p].flow);
+        }
+    }
+    return;
+}
+
 
 };
-
-
-}

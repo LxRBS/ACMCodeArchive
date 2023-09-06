@@ -1,3 +1,27 @@
+/**
+ * 建模跑最大流输出方案
+ */
+#include <bits/stdc++.h>
+using namespace std;
+
+#include <bits/extc++.h>
+using namespace __gnu_pbds;
+
+using Real = long double;
+using llt = long long;
+using ull = unsigned long long;
+using pii = pair<int, int>;
+using vi = vector<int>;
+using vvi = vector<vi>;
+
+#ifndef ONLINE_JUDGE
+int const SZ = 101;
+#else
+int const SZ = 110;
+#endif
+
+
+
 struct MaxFlow_Dinic{
 
 
@@ -110,3 +134,52 @@ vector<int> q; // 队列
 int S, T; // 源汇
 
 };
+
+int Total;
+int M, N, S, T;
+MaxFlow_Dinic Dinic;
+
+void proc(){
+    auto ans = Dinic.maxflow(S, T);
+    if(ans != Total) return (void)(cout << 0 << endl);
+
+    cout << 1 << endl;
+    vvi results(M + 1, vi());
+    Dinic.forEachUsed([&](int index, MaxFlow_Dinic::weight_t usedw){
+        const auto & e = Dinic.edges[index];
+        if(1 <= e.from and e.from <= M and M + 1 <= e.to and e.to <= N + M){
+            assert(usedw == 1 and e.w == 0);
+            results[e.from].push_back(e.to - M);
+        }
+    });
+    for(int i=1;i<=M;++i){
+        sort(results[i].begin(), results[i].end());
+        for(auto j : results[i]) cout << j << " ";
+        cout << endl;
+    }
+    return;
+}
+
+int main(){
+#ifndef ONLINE_JUDGE
+    freopen("z.txt", "r", stdin);
+#endif
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    cin >> M >> N;
+    Total = 0;
+    Dinic.init(T = 1 + (S = N + M + 1));
+    for(int r,i=1;i<=M;++i){
+        cin >> r;
+        Dinic.mkDirectEdge(S, i, r);
+        Total += r;
+    }
+    for(int r,i=1;i<=N;++i){
+        cin >> r;
+        Dinic.mkDirectEdge(i + M, T, r);
+    }
+    for(int i=1;i<=M;++i)for(int j=1;j<=N;++j){
+        Dinic.mkDirectEdge(i, j + M, 1);
+    }
+    proc();
+    return 0;
+}

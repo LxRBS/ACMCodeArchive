@@ -1,3 +1,6 @@
+/**
+ * 建模跑最大流输出方案
+ */
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -16,8 +19,6 @@ int const SZ = 101;
 #else
 int const SZ = 110;
 #endif
-
-
 struct MaxFlow_HLPP{ // 方案似乎没错
 
 
@@ -177,22 +178,53 @@ void forEachUsed(function<void(int index, weight_t usedw)> f){
 };
 
 
-int N, M, S, T;
+int Total;
+int M, N, S, T;
 MaxFlow_HLPP HLPP;
 
+void proc(){
+    auto ans = HLPP.maxflow(S, T);
+    if(ans != Total) return (void)(cout << 0 << endl);
 
+    cout << 1 << endl;
+    vvi results(M + 1, vi());
+    HLPP.forEachUsed([&](int index, MaxFlow_HLPP::weight_t usedw){
+        int from, to;
+        decltype(usedw) w;
+        std::tie(from, to, w) = HLPP.edges[index];
+        if(1 <= from and from <= M and M + 1 <= to and to <= N + M){
+            assert(usedw == 1 and w == 0);
+            results[from].push_back(to - M);
+        }
+    });
+    for(int i=1;i<=M;++i){
+        sort(results[i].begin(), results[i].end());
+        for(auto j : results[i]) cout << j << " ";
+        cout << endl;
+    }
+    return;
+}
 
 int main(){
 #ifndef ONLINE_JUDGE
     freopen("z.txt", "r", stdin);
 #endif
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-    cin >> N >> M >> S >> T;
-    HLPP.init(N, M);
-    for(int a,b,w,i=0;i<M;++i){
-        cin >> a >> b >> w;
-        HLPP.mkDirectEdge(a, b, w);
+    cin >> M >> N;
+    Total = 0;
+    HLPP.init(T = 1 + (S = N + M + 1));
+    for(int r,i=1;i<=M;++i){
+        cin >> r;
+        HLPP.mkDirectEdge(S, i, r);
+        Total += r;
     }
-    cout << HLPP.maxflow(S, T) << endl;
+    for(int r,i=1;i<=N;++i){
+        cin >> r;
+        HLPP.mkDirectEdge(i + M, T, r);
+    }
+    for(int i=1;i<=M;++i)for(int j=1;j<=N;++j){
+        HLPP.mkDirectEdge(i, j + M, 1);
+    }
+    proc();
     return 0;
 }

@@ -17,8 +17,7 @@ int const SZ = 101;
 int const SZ = 110;
 #endif
 
-
-struct MaxFlow_HLPP{ // 方案似乎没错
+struct MaxFlow_HLPP{
 
 
 enum{INF=0x7F7F7F7F7F7F7F7F}; 
@@ -177,22 +176,57 @@ void forEachUsed(function<void(int index, weight_t usedw)> f){
 };
 
 
-int N, M, S, T;
+int K, N;
+int M;
 MaxFlow_HLPP HLPP;
 
+void proc(){
+    auto ans = HLPP.maxflow(N + K + 1, N + K + 2);
+    if(ans != M) return (void)(cout << "No Solution!" << endl);
 
+    vvi results(K + 1, vi());
+    HLPP.forEachUsed([&](int index, MaxFlow_HLPP::weight_t usedw){
+        int from, to;
+        MaxFlow_HLPP::weight_t w;
+        std::tie(from, to, w) = HLPP.edges[index];
+        if(1 <= from and from <= K and K + 1 <= to and to <= N + K){
+            assert(w == 0 and usedw == 1);
+            results[from].push_back(to - K);
+        }
+    });
+    for(int i=1;i<=K;++i){
+        sort(results[i].begin(), results[i].end());
+        cout << i << ":";
+        for(int j : results[i]) cout << " " << j;
+        cout << endl;
+    }
+    return;
+}
 
 int main(){
 #ifndef ONLINE_JUDGE
     freopen("z.txt", "r", stdin);
 #endif
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-    cin >> N >> M >> S >> T;
-    HLPP.init(N, M);
-    for(int a,b,w,i=0;i<M;++i){
-        cin >> a >> b >> w;
-        HLPP.mkDirectEdge(a, b, w);
+    cin >> K >> N;
+
+    M = 0;
+    HLPP.init(N + K + 2);
+    for(int a,i=1;i<=K;++i){
+        cin >> a;
+        HLPP.mkDirectEdge(N + K + 1, i, a);
+        M += a;
     }
-    cout << HLPP.maxflow(S, T) << endl;
+    
+    for(int i=1;i<=N;++i){
+        int p; cin >> p;
+        for(int type,j=0;j<p;++j){
+            cin >> type;
+            HLPP.mkDirectEdge(type, K + i, 1);
+        }
+        HLPP.mkDirectEdge(K + i, N + K + 2, 1);
+    }
+
+    proc();
     return 0;
 }
