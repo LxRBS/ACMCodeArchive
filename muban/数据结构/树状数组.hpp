@@ -1,8 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
-namespace DS{
-
 struct FenwickTree{ // 树状数组
 
 using value_type = long long int;
@@ -30,5 +25,3 @@ value_type query(int pos)const{
 value_type query(int s, int e)const{return this->query(e) - this->query(s - 1);}
 
 };
-
-}
