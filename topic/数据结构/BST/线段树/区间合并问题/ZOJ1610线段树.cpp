@@ -1,9 +1,9 @@
 /*
-    ÔÚÊýÖáÉÏ£¬Ò»´Î¸øÒ»¸öÏß¶ÎÍ¿ÉÏÑÕÉ«
-    ºóÃæµÄÑÕÉ«»á¸²¸ÇÇ°ÃæµÄÑÕÉ«
-    ÎÊ×îºóÃ¿¸öÑÕÉ«µÄÏß¶ÎÓÐ¶àÉÙ¸ö
+    åœ¨æ•°è½´ä¸Šï¼Œä¸€æ¬¡ç»™ä¸€ä¸ªçº¿æ®µæ¶‚ä¸Šé¢œè‰²
+    åŽé¢çš„é¢œè‰²ä¼šè¦†ç›–å‰é¢çš„é¢œè‰²
+    é—®æœ€åŽæ¯ä¸ªé¢œè‰²çš„çº¿æ®µæœ‰å¤šå°‘ä¸ª
 
-    ÏÔÈ»ÊÇ³É¶Î¸üÐÂ£¬Ïß¶ÎÊ÷
+    æ˜¾ç„¶æ˜¯æˆæ®µæ›´æ–°ï¼Œçº¿æ®µæ ‘
 */
 
 #include <stdio.h>
@@ -16,8 +16,8 @@ int const SIZE = 8010;
 inline int lson(int x){return x<<1;}
 inline int rson(int x){return lson(x)|1;}
 
-int ST[SIZE<<2];//¶ÎÊý
-int L[SIZE<<2],R[SIZE<<2];//×óÓÒ±ß½çµÄÑÕÉ«
+int ST[SIZE<<2];//ï¿½ï¿½ï¿½ï¿½
+int L[SIZE<<2],R[SIZE<<2];//ï¿½ï¿½ï¿½Ò±ß½ï¿½ï¿½ï¿½ï¿½É«
 int Lazy[SIZE<<2];
 
 struct _t{
@@ -91,7 +91,7 @@ int main(){
         while(n--){
             scanf("%d%d%d",&a,&b,&color);
 
-            //Ê¹ÓÃ×ó±ÕÓÒ¿ª±íÊ¾Ïß¶Î
+            //Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½Ê¾ï¿½ß¶ï¿½
             ++a;++color;
             //++b,--b;
             first = min(first,a);
@@ -100,13 +100,13 @@ int main(){
             modify(1,1,8001,a,b,color);
         }
 
-        //¼ì²éÃ¿ÖÖÑÕÉ«µÄ¶ÎÊý
+        //ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½É«ï¿½Ä¶ï¿½ï¿½ï¿½
         fill(Ans,Ans+SIZE,0);
         int color = 0, cnt = 0;
         for(int i=first;i<=last;++i){
             _t ans = query(1,1,8001,first,i);
 
-            if ( ans.cnt > cnt && ans.right != 0 ){//¼ÓÈëÁËÐÂµÄÓÐÑÕÉ«µÄÒ»¶Î
+            if ( ans.cnt > cnt && ans.right != 0 ){//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½Ò»ï¿½ï¿½
                 cnt = ans.cnt;
                 ++Ans[ans.right];
             }

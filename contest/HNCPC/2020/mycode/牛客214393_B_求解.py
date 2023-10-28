@@ -1,7 +1,7 @@
 # encoding: utf-8
 """
-  �õ��Ȧд��һ��ͼ��ͼ�е�����Ҫô��2020Ҫô��2018��Ҫ������ж�
-  ������ͨ�Լ��ɡ�2018��3���������2020ֻ��2���� 
+  用点和圈写了一幅图，图中的内容要么是2020要么是2018，要求进行判断
+  利用连通性即可。2018有3个封闭区域，2020只有2个。 
 """
 from math import sqrt, gcd, log10, log2
 from queue import Queue

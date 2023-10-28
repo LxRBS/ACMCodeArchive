@@ -1,7 +1,7 @@
 /**
- * ÈıÎ¬¿Õ¼äÄÚ¸ø¶¨Á½¸öÔ²£¬Çó½»ÏßµÄ³¤¶È
- * Ê×ÏÈÇóÁ½Ô²ËùÔÚÆ½ÃæµÄ½»Ïß
- * È»ºó·Ö±ğÇó³ö¸Ã½»ÏßÓëÁ½¸öÔ²µÄ½»µã£¬È»ºó¸ù¾İ½»µãÇé¿ö¼ÆËãÒ»ÏÂ
+ * ä¸‰ç»´ç©ºé—´å†…ç»™å®šä¸¤ä¸ªåœ†ï¼Œæ±‚äº¤çº¿çš„é•¿åº¦
+ * é¦–å…ˆæ±‚ä¸¤åœ†æ‰€åœ¨å¹³é¢çš„äº¤çº¿
+ * ç„¶ååˆ†åˆ«æ±‚å‡ºè¯¥äº¤çº¿ä¸ä¸¤ä¸ªåœ†çš„äº¤ç‚¹ï¼Œç„¶åæ ¹æ®äº¤ç‚¹æƒ…å†µè®¡ç®—ä¸€ä¸‹
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -13,30 +13,30 @@ int const SIZE = 2E3+10;
 #endif
 
 /**
- * @brief Á¢Ìå¼¸ºÎ£¬µãÏßÃæÏòÁ¿Ä£°å
- * 1. typedefºÍ³£Êı
- * 2. ´¦Àí±ß½çµÄÊıÑ§¿âº¯Êı
- * 3. µãÓëÏòÁ¿µÄ½á¹¹ÌåÒÔ¼°»ù±¾ÔËËã£¬ÏàµÈ£¬¼Ó¼õ³Ë£¬²æ»ı£¬µã»ı
- * 4. ÏßÃæµÄ½á¹¹Ìå
- * 5. Î»ÖÃ¹ØÏµº¯Êı£¬Ò»ÂÉÓÃrelation×öº¯ÊıÃû£¬³£Êı£¬µãÏß£¬µãÃæ£¬ÏßÏß£¬ÏßÃæ£¬ÃæÃæ
- * 6. Çó¾àÀë£¬Ò»ÂÉÓÃdist×öº¯ÊıÃû£¬·µ»ØReal£¬µãµã£¬µãÏß£¬µãÃæ£¬ÏßÏß£¬ÏßÃæ£¬ÃæÃæ
- * 7. Ïà½»Çó¹«¹²²¿·Ö£¬Ò»ÂÉÓÃinter×öº¯ÊıÃû£¬ÏßÏß£¬ÏßÃæ£¬ÃæÃæ
- * 8. Çó¼Ğ½Ç£¬Ò»ÂÉÓÃangle×öº¯ÊıÃû£¬ ÏßÏß£¬ÏßÃæ£¬ÃæÃæ
- * 9. ËÄÔªÊıÓëÈıÎ¬·½Õó£¬ÓÃÓÚ¿Õ¼äĞı×ª£¬°üÀ¨Ğı×ª£¬µÃµ½Ğı×ª±íÊ¾ÒÔ¼°Ïà»¥×ª»¯
+ * @brief ç«‹ä½“å‡ ä½•ï¼Œç‚¹çº¿é¢å‘é‡æ¨¡æ¿
+ * 1. typedefå’Œå¸¸æ•°
+ * 2. å¤„ç†è¾¹ç•Œçš„æ•°å­¦åº“å‡½æ•°
+ * 3. ç‚¹ä¸å‘é‡çš„ç»“æ„ä½“ä»¥åŠåŸºæœ¬è¿ç®—ï¼Œç›¸ç­‰ï¼ŒåŠ å‡ä¹˜ï¼Œå‰ç§¯ï¼Œç‚¹ç§¯
+ * 4. çº¿é¢çš„ç»“æ„ä½“
+ * 5. ä½ç½®å…³ç³»å‡½æ•°ï¼Œä¸€å¾‹ç”¨relationåšå‡½æ•°åï¼Œå¸¸æ•°ï¼Œç‚¹çº¿ï¼Œç‚¹é¢ï¼Œçº¿çº¿ï¼Œçº¿é¢ï¼Œé¢é¢
+ * 6. æ±‚è·ç¦»ï¼Œä¸€å¾‹ç”¨diståšå‡½æ•°åï¼Œè¿”å›Realï¼Œç‚¹ç‚¹ï¼Œç‚¹çº¿ï¼Œç‚¹é¢ï¼Œçº¿çº¿ï¼Œçº¿é¢ï¼Œé¢é¢
+ * 7. ç›¸äº¤æ±‚å…¬å…±éƒ¨åˆ†ï¼Œä¸€å¾‹ç”¨interåšå‡½æ•°åï¼Œçº¿çº¿ï¼Œçº¿é¢ï¼Œé¢é¢
+ * 8. æ±‚å¤¹è§’ï¼Œä¸€å¾‹ç”¨angleåšå‡½æ•°åï¼Œ çº¿çº¿ï¼Œçº¿é¢ï¼Œé¢é¢
+ * 9. å››å…ƒæ•°ä¸ä¸‰ç»´æ–¹é˜µï¼Œç”¨äºç©ºé—´æ—‹è½¬ï¼ŒåŒ…æ‹¬æ—‹è½¬ï¼Œå¾—åˆ°æ—‹è½¬è¡¨ç¤ºä»¥åŠç›¸äº’è½¬åŒ–
  */
 
-/** 1. typdefºÍ³£Êı **/
+/** 1. typdefå’Œå¸¸æ•° **/
 using Real = long double;
 using llt = long long;
-using coordinate_type = Real; // µã×ø±êµÄÀàĞÍ£¬Ò»°ã¶¼ÓÃReal
+using coordinate_type = Real; // ç‚¹åæ ‡çš„ç±»å‹ï¼Œä¸€èˆ¬éƒ½ç”¨Real
 
-Real const EPS = 1E-6; // ¸ù¾İĞèÒªµ÷Õû
+Real const EPS = 1E-6; // æ ¹æ®éœ€è¦è°ƒæ•´
 Real const PI = acos(-1);
 
 inline int sgn(Real x){return x >= EPS ? 1 : (x <= -EPS ? -1 : 0);}
 inline bool is0(Real x){return 0 == sgn(x);}
 
-/** 2. ´¦Àí±ß½çµÄÊıÑ§¿âº¯Êı **/
+/** 2. å¤„ç†è¾¹ç•Œçš„æ•°å­¦åº“å‡½æ•° **/
 inline Real mysqrt(Real x){
     assert(sgn(x) >= 0);
     if(0 == sgn(x)) return 0;
@@ -57,22 +57,22 @@ inline Real myasin(Real x){
     return asin(x);
 }
 
-/** 3. µãÓëÏòÁ¿µÄ½á¹¹ÌåÒÔ¼°»ù±¾ÔËËã£¬ÏàµÈ£¬¼Ó¼õ³Ë£¬²æ»ı£¬µã»ı **/
-/// µã
+/** 3. ç‚¹ä¸å‘é‡çš„ç»“æ„ä½“ä»¥åŠåŸºæœ¬è¿ç®—ï¼Œç›¸ç­‰ï¼ŒåŠ å‡ä¹˜ï¼Œå‰ç§¯ï¼Œç‚¹ç§¯ **/
+/// ç‚¹
 struct Point{
     coordinate_type x, y, z;
     Point(coordinate_type a=0, coordinate_type b=0, coordinate_type c=0):x(a),y(b),z(c){}
-    Real length() const { // ÏòÁ¿µÄ³¤¶È
+    Real length() const { // å‘é‡çš„é•¿åº¦
         return mysqrt(this->x * this->x + this->y * this->y + this->z * this->z);
     }
-    bool isZero() const { // ÊÇ·ñÎªÁãÏòÁ¿
+    bool isZero() const { // æ˜¯å¦ä¸ºé›¶å‘é‡
         return is0(this->x) && is0(this->y) && is0(this->z);
     }
-    bool input(){ // ÊäÈëº¯Êı
+    bool input(){ // è¾“å…¥å‡½æ•°
         if(cin >> x >> y >> z) return true;
         return false;
     }
-    void normSelf(){ // µ¥Î»»¯£¬×ø±êÀàĞÍ±ØĞëÊÇReal²ÅÄÜµ÷ÓÃÕâ¸öº¯Êı
+    void normSelf(){ // å•ä½åŒ–ï¼Œåæ ‡ç±»å‹å¿…é¡»æ˜¯Realæ‰èƒ½è°ƒç”¨è¿™ä¸ªå‡½æ•°
         assert(!this->isZero());
         Real tmp = this->length();
         this->x /= tmp;
@@ -80,7 +80,7 @@ struct Point{
         this->z /= tmp;
     }
 };
-/// ÏòÁ¿£¬¾ÍÊÇµã
+/// å‘é‡ï¼Œå°±æ˜¯ç‚¹
 using Vector = Point;
 
 bool operator == (const Point &a, const Point &b){
@@ -95,12 +95,12 @@ const Vector operator - (const Vector &a, const Vector &b){
     return Vector(a.x - b.x, a.y - b.y, a.z - b.z);
 }
 
-/// ±¶³Ë£¬¾ÍÊÇËõ·Å
+/// å€ä¹˜ï¼Œå°±æ˜¯ç¼©æ”¾
 const Vector operator * (const Vector &a, coordinate_type k){
     return Vector(a.x * k, a.y *k, a.z * k);
 }
 
-/// ²æ»ı£¬ÓÒÊÖÂİĞı
+/// å‰ç§¯ï¼Œå³æ‰‹èºæ—‹
 const Vector cross(const Vector &a, const Vector &b){
     return Vector(
         a.y * b.z - a.z * b.y, 
@@ -109,61 +109,61 @@ const Vector cross(const Vector &a, const Vector &b){
     );
 }
 
-/// µã»ı
+/// ç‚¹ç§¯
 coordinate_type dot(const Vector &a, const Vector &b){
     return a.x * b.x + a.y * b.y + a.z * b.z;
 }
 
-/// Ïß£¬¿Õ¼äÖ±ÏßÓÉ»ùµãºÍ·½ÏòÏòÁ¿¹¹³É
+/// çº¿ï¼Œç©ºé—´ç›´çº¿ç”±åŸºç‚¹å’Œæ–¹å‘å‘é‡æ„æˆ
 struct Line{
     Point base;
-    Vector direction; // Èç¹û²ÉÓÃÊµÊı×ø±ê£¬·½ÏòÏòÁ¿×îºÃµ¥Î»»¯
+    Vector direction; // å¦‚æœé‡‡ç”¨å®æ•°åæ ‡ï¼Œæ–¹å‘å‘é‡æœ€å¥½å•ä½åŒ–
     Line():base(), direction(){}
-    /// ×¢ÒâÊÇ»ùµã¡¢·½ÏòÏòÁ¿£¬¶ø²»ÊÇÁ½µãÈ·¶¨Ò»ÌõÖ±Ïß
+    /// æ³¨æ„æ˜¯åŸºç‚¹ã€æ–¹å‘å‘é‡ï¼Œè€Œä¸æ˜¯ä¸¤ç‚¹ç¡®å®šä¸€æ¡ç›´çº¿
     Line(const Point&a, const Vector&b): base(a), direction(b){}
 };
 
-/// Ãæ, Ax+By+Cz+D=0
+/// é¢, Ax+By+Cz+D=0
 struct Plane{
     coordinate_type A, B, C, D;
-    const Point inner; // Æ½ÃæÄÚÒ»µã 
+    const Point inner; // å¹³é¢å†…ä¸€ç‚¹ 
     Plane():A(0), B(0), C(0), D(0), inner(){}
-    /// Æ½ÃæÄÚÒ»µãpÒÔ¼°·¨ÏòÁ¿n£¬È·¶¨Ò»¸öÆ½Ãæ£¬ n²»ÄÜÎªÁãÏòÁ¿
+    /// å¹³é¢å†…ä¸€ç‚¹pä»¥åŠæ³•å‘é‡nï¼Œç¡®å®šä¸€ä¸ªå¹³é¢ï¼Œ nä¸èƒ½ä¸ºé›¶å‘é‡
     Plane(const Point &p, const Vector&n):inner(p){
         this->create(p, n);
     }    
-    /// ÒìÏßÈıµãÈ·¶¨Ò»¸öÆ½Ãæ
+    /// å¼‚çº¿ä¸‰ç‚¹ç¡®å®šä¸€ä¸ªå¹³é¢
     Plane(const Point &a, const Point &b, const Point &c):inner(a){
         this->create(a, cross(b - a, c - a));
     }
-    /// ¸ø¶¨µãºÍ·½ÏòÏòÁ¿£¬Éú³ÉÆ½Ãæ
+    /// ç»™å®šç‚¹å’Œæ–¹å‘å‘é‡ï¼Œç”Ÿæˆå¹³é¢
     void create(const Point &p, const Vector&n){
         assert(!n.isZero());
         this->A = n.x; this->B = n.y; this->C = n.z;
         this->D = -(this->A * p.x + this->B * p.y + this->C * p.z);        
     }
-    Vector norm()const{ // ·¨ÏòÁ¿
+    Vector norm()const{ // æ³•å‘é‡
         return Vector(this->A, this->B, this->C);
     }    
-    /// ·µ»ØÆ½ÃæÄÚÒ»µã
+    /// è¿”å›å¹³é¢å†…ä¸€ç‚¹
     Point one()const{return this->inner;}
 };
 
-/** 5. Î»ÖÃ¹ØÏµº¯Êı **/
-/// ³£Êı
-int const OUT = 0; // ±íÊ¾²»ÔÚ£¬µãÏß
-int const IN = 1;  // ±íÊ¾ÔÚ£¬µãÏß£¬ÏßÃæ
-int const CHONGHE = 2; // ÖØºÏ£¬ÏßÏß£¬ÃæÃæ
-int const PINGXING = 4; // Æ½ĞĞ£¬ÏßÏß£¬ÏßÃæ
-int const YIMIAN = 8; // ÒìÃæ,ÏßÏß
-int const INTER = 0x10; // Ïà½»£¬ÏßÏß£¬ÏßÃæ£¬ÃæÃæ
+/** 5. ä½ç½®å…³ç³»å‡½æ•° **/
+/// å¸¸æ•°
+int const OUT = 0; // è¡¨ç¤ºä¸åœ¨ï¼Œç‚¹çº¿
+int const IN = 1;  // è¡¨ç¤ºåœ¨ï¼Œç‚¹çº¿ï¼Œçº¿é¢
+int const CHONGHE = 2; // é‡åˆï¼Œçº¿çº¿ï¼Œé¢é¢
+int const PINGXING = 4; // å¹³è¡Œï¼Œçº¿çº¿ï¼Œçº¿é¢
+int const YIMIAN = 8; // å¼‚é¢,çº¿çº¿
+int const INTER = 0x10; // ç›¸äº¤ï¼Œçº¿çº¿ï¼Œçº¿é¢ï¼Œé¢é¢
 
-/// µãÏß£¬µãpÓëÖ±ÏßlineµÄÎ»ÖÃ¹ØÏµ£¬Èç¹ûµãÔÚÖ±ÏßÉÏ£¬»¹ÄÜ·µ»ØpÔÚ¸ÃÖ±ÏßÉÏµÄ²ÎÊı
-/// ¼´ p = line.base + line.direction * k
-/// ×¢ÒâkÊÇ±¾Ö±Ïß·½ÏòÏòÁ¿³¤¶ÈµÄ±¶Êı£¬²»Í¬Ö±ÏßÖ±½Ó±È½Ï£¬±ØĞëÊÂÏÈ½«ËùÓĞ·½ÏòÏòÁ¿µ¥Î»»¯
-/// Èç¹û²»ÏëÒªÕâ¸ö²ÎÊıÖµ£¬²»´«pk¼´¿É
+/// ç‚¹çº¿ï¼Œç‚¹pä¸ç›´çº¿lineçš„ä½ç½®å…³ç³»ï¼Œå¦‚æœç‚¹åœ¨ç›´çº¿ä¸Šï¼Œè¿˜èƒ½è¿”å›påœ¨è¯¥ç›´çº¿ä¸Šçš„å‚æ•°
+/// å³ p = line.base + line.direction * k
+/// æ³¨æ„kæ˜¯æœ¬ç›´çº¿æ–¹å‘å‘é‡é•¿åº¦çš„å€æ•°ï¼Œä¸åŒç›´çº¿ç›´æ¥æ¯”è¾ƒï¼Œå¿…é¡»äº‹å…ˆå°†æ‰€æœ‰æ–¹å‘å‘é‡å•ä½åŒ–
+/// å¦‚æœä¸æƒ³è¦è¿™ä¸ªå‚æ•°å€¼ï¼Œä¸ä¼ pkå³å¯
 int relation(const Point &p, const Line &line, Real *pk=nullptr){
-    if(p == line.base) return pk != nullptr ? (*pk = 0, IN) : IN; // µãÔÚÖ±ÏßÉÏ
+    if(p == line.base) return pk != nullptr ? (*pk = 0, IN) : IN; // ç‚¹åœ¨ç›´çº¿ä¸Š
 
     Vector tmp = p - line.base;
     Real t;
@@ -176,29 +176,29 @@ int relation(const Point &p, const Line &line, Real *pk=nullptr){
     return p == line.base + line.direction * t ? IN : OUT;
 }
 
-/// µãÃæ¹ØÏµ
+/// ç‚¹é¢å…³ç³»
 int relation(const Point &p, const Plane &plane){
     Real tmp = plane.A * p.x + plane.B * p.y + plane.C * p.z + plane.D;
     return is0(tmp) ? IN : OUT;
 }
 
-/// ÏßÏß¹ØÏµ£¬ÖØºÏ£¬Æ½ĞĞ£¬Ïà½»£¬ÒìÃæ£¬ÆäÖĞÇ°ÈıÏîÊÇ¹²Ãæ
+/// çº¿çº¿å…³ç³»ï¼Œé‡åˆï¼Œå¹³è¡Œï¼Œç›¸äº¤ï¼Œå¼‚é¢ï¼Œå…¶ä¸­å‰ä¸‰é¡¹æ˜¯å…±é¢
 int relation(const Line &a, const Line &b){
     Vector chaji = cross(a.direction, b.direction);
     if(chaji.isZero()){
         if(IN == relation(a.base, b)){
             assert(IN == relation(b.base, a));
-            return CHONGHE; // Á½ÌõÖ±ÏßÖØºÏ
+            return CHONGHE; // ä¸¤æ¡ç›´çº¿é‡åˆ
         }
-        return PINGXING; // Á½Ö±ÏßÆ½ĞĞ
+        return PINGXING; // ä¸¤ç›´çº¿å¹³è¡Œ
     }
-    /// Á½Ö±ÏßÉÏ¸÷È¡Ò»µã£¬MºÍN
+    /// ä¸¤ç›´çº¿ä¸Šå„å–ä¸€ç‚¹ï¼ŒMå’ŒN
     Point M = a.base + a.direction;
     Point N = b.base + b.direction;
     if(M == N) return INTER;
     
-    /// ¼ÆËã(MN x a).b£¬Èç¹ûÎª0£¬ËµÃ÷Á½Ö±ÏßÏà½»
-    /// MN x a Êµ¼ÊÉÏ¾ÍÊÇÁ½ÌõÖ±ÏßµÄ¹«´¹ÏòÁ¿
+    /// è®¡ç®—(MN x a).bï¼Œå¦‚æœä¸º0ï¼Œè¯´æ˜ä¸¤ç›´çº¿ç›¸äº¤
+    /// MN x a å®é™…ä¸Šå°±æ˜¯ä¸¤æ¡ç›´çº¿çš„å…¬å‚å‘é‡
     Vector MN = N - M;
     if(is0(dot(b.direction, cross(a.direction, MN)))){
         return INTER;
@@ -206,23 +206,23 @@ int relation(const Line &a, const Line &b){
     return YIMIAN;
 }
 
-/// ÏßÃæ¹ØÏµ£¬ÔÚ£¬Æ½ĞĞ£¬Ïà½»
+/// çº¿é¢å…³ç³»ï¼Œåœ¨ï¼Œå¹³è¡Œï¼Œç›¸äº¤
 int relation(const Line &line, const Plane &plane){
     Vector n = plane.norm();
-    if(is0(dot(n, line.direction))){ // ËµÃ÷Ö±Ïß´¹Ö±ÓÚÆ½ÃæµÄ·¨ÏòÁ¿
+    if(is0(dot(n, line.direction))){ // è¯´æ˜ç›´çº¿å‚ç›´äºå¹³é¢çš„æ³•å‘é‡
         if(IN == relation(line.base, plane)){ 
-            return IN; // Ö±ÏßÔÚÆ½ÃæÄÚ
+            return IN; // ç›´çº¿åœ¨å¹³é¢å†…
         }
-        return PINGXING; // Ö±ÏßÆ½ĞĞÓÚÆ½Ãæ
+        return PINGXING; // ç›´çº¿å¹³è¡Œäºå¹³é¢
     }
-    return INTER; // Ö±ÏßÓëÆ½ÃæÏà½»
+    return INTER; // ç›´çº¿ä¸å¹³é¢ç›¸äº¤
 }
 
-/// ÃæÃæ¹ØÏµ£¬ÖØºÏ£¬Æ½ĞĞ£¬Ïà½»
+/// é¢é¢å…³ç³»ï¼Œé‡åˆï¼Œå¹³è¡Œï¼Œç›¸äº¤
 int relation(const Plane &a, const Plane &b){
 	Vector chaji = cross(a.norm(), b.norm());
 	if(chaji.isZero()){
-		Real dist(const Point &, const Plane &); // Ç°ÖÃÉùÃ÷
+		Real dist(const Point &, const Plane &); // å‰ç½®å£°æ˜
 		Real d = dist(a.one(), b);
 		if(is0(d)){
 			assert(is0(dist(b.one(), b)));
@@ -233,7 +233,7 @@ int relation(const Plane &a, const Plane &b){
     return INTER;
 }
 
-/** 6. Çó¾àÀë£¬Ò»ÂÉÓÃdist×öº¯ÊıÃû£¬µãµã£¬µãÏß£¬µãÃæ£¬ÏßÏß£¬ÏßÃæ£¬ÃæÃæ **/
+/** 6. æ±‚è·ç¦»ï¼Œä¸€å¾‹ç”¨diståšå‡½æ•°åï¼Œç‚¹ç‚¹ï¼Œç‚¹çº¿ï¼Œç‚¹é¢ï¼Œçº¿çº¿ï¼Œçº¿é¢ï¼Œé¢é¢ **/
 inline Real dist(const Point &a, const Point &b){
     return (a - b).length(); 
 }
@@ -242,32 +242,32 @@ inline Real dist(const Point &p, const Line &line){
     return cross(p - line.base, line.direction).length() / line.direction.length();
 }
 
-/// µãÃæ¾àÀë
+/// ç‚¹é¢è·ç¦»
 Real dist(const Point &p, const Plane &plane){
     Real tmp = fabs(plane.A * p.x + plane.B * p.y + plane.C * p.z + plane.D);   
     tmp /= mysqrt(plane.A*plane.A+plane.B*plane.B+plane.C*plane.C);
     return sgn(tmp) ? tmp : 0;
 }
 
-/// ÖØºÏÓëÏà½»Ö±Ïß¾àÀëÎª0
-/// ÒìÃæÖ±ÏßµÄ¾àÀë = ¹«´¹ÏòÁ¿ . Á¬½ÓÏòÁ¿ / |¹«´¹ÏòÁ¿|
+/// é‡åˆä¸ç›¸äº¤ç›´çº¿è·ç¦»ä¸º0
+/// å¼‚é¢ç›´çº¿çš„è·ç¦» = å…¬å‚å‘é‡ . è¿æ¥å‘é‡ / |å…¬å‚å‘é‡|
 inline Real dist(const Line &a, const Line &b){
     int r = relation(a, b);
     if(r & (CHONGHE | INTER)) return 0;
-    /// Æ½ĞĞÖ±Ïß£¬ÈÎÈ¡Ò»µã¼ÆËãµãÏß¾àÀë¼´¿É
+    /// å¹³è¡Œç›´çº¿ï¼Œä»»å–ä¸€ç‚¹è®¡ç®—ç‚¹çº¿è·ç¦»å³å¯
     if(r & PINGXING){
         Real tmp = dist(a.base, b);
         assert(is0(tmp - dist(b.base, a)));
         return tmp;
     }
-    /// ÒìÃæÖ±ÏßÇó¾àÀë
+    /// å¼‚é¢ç›´çº¿æ±‚è·ç¦»
     Vector gongchui = cross(a.direction, b.direction);
     Vector lianjie = b.base - a.base;
     Real tmp = dot(gongchui, lianjie) / gongchui.length();
     return tmp;
 }
 
-/// ÏßÃæ¾àÀë£¬Æ½ĞĞ²ÅÓĞ¾àÀë£¬Ïà½»»òÕßÔÚÃæÄÚ¾àÀëÎª0
+/// çº¿é¢è·ç¦»ï¼Œå¹³è¡Œæ‰æœ‰è·ç¦»ï¼Œç›¸äº¤æˆ–è€…åœ¨é¢å†…è·ç¦»ä¸º0
 inline Real dist(const Line &line, const Plane &plane){
     int r = relation(line, plane);
     if(r & (IN | INTER)){
@@ -278,7 +278,7 @@ inline Real dist(const Line &line, const Plane &plane){
     return tmp;
 }
 
-/// ÃæÃæ¾àÀë
+/// é¢é¢è·ç¦»
 inline Real dist(const Plane &a, const Plane &b){
     int r = relation(a, b);
     if(r & (CHONGHE | INTER)){
@@ -290,26 +290,26 @@ inline Real dist(const Plane &a, const Plane &b){
     return tmp;
 }
 
-/** 7. Ïà½»Çó¹«¹²²¿·Ö£¬Ò»ÂÉÓÃinter×öº¯ÊıÃû£¬ÏßÏß£¬ÏßÃæ£¬ÃæÃæ£¬ÊÂÏÈĞèÒª±£Ö¤Ïà½» **/
-/// ÏßÏßÏà½»Çó½»µã
+/** 7. ç›¸äº¤æ±‚å…¬å…±éƒ¨åˆ†ï¼Œä¸€å¾‹ç”¨interåšå‡½æ•°åï¼Œçº¿çº¿ï¼Œçº¿é¢ï¼Œé¢é¢ï¼Œäº‹å…ˆéœ€è¦ä¿è¯ç›¸äº¤ **/
+/// çº¿çº¿ç›¸äº¤æ±‚äº¤ç‚¹
 Point inter(const Line &a, const Line &b){
-    Real d = dist(b.base, a); // Çó³öb.baseµ½Ö±ÏßaµÄ¾àÀë     
-    /// ÇóÁ½Ö±ÏßµÄ¼Ğ½ÇµÄÕıÏÒÖµ
+    Real d = dist(b.base, a); // æ±‚å‡ºb.baseåˆ°ç›´çº¿açš„è·ç¦»     
+    /// æ±‚ä¸¤ç›´çº¿çš„å¤¹è§’çš„æ­£å¼¦å€¼
     Real sinvalue = cross(a.direction, b.direction).length() / (a.direction.length() * b.direction.length());
-    /// b.baseµ½½»µãµÄ¾àÀë¿ÉÒÔÇó³ö
+    /// b.baseåˆ°äº¤ç‚¹çš„è·ç¦»å¯ä»¥æ±‚å‡º
     Real tmp = d / sinvalue;
-	tmp /= b.direction.length(); // Ò»¶¨ÒªÏà¶Ô·½ÏòÏòÁ¿µ¥Î»»¯
+	tmp /= b.direction.length(); // ä¸€å®šè¦ç›¸å¯¹æ–¹å‘å‘é‡å•ä½åŒ–
     Point p = b.base + b.direction * tmp;
-    if(relation(p, a) & IN){ // Èç¹ûpÒ²ÔÚaÉÏ£¬½»µã¾ÍÊÇp
+    if(relation(p, a) & IN){ // å¦‚æœpä¹Ÿåœ¨aä¸Šï¼Œäº¤ç‚¹å°±æ˜¯p
         return p;
     }
-    /// ±ØĞëÊÇÁíÒ»¸öpµã
+    /// å¿…é¡»æ˜¯å¦ä¸€ä¸ªpç‚¹
     p = b.base + b.direction * -tmp;
     assert(relation(p, a) & IN);
     return p;
 }
 
-/// ÏßÃæÇó½»µã£¬½»µãµÄ²ÎÊı = dot(Ãæ·¨ÏòÁ¿, Æ½Ãæµã-Ö±Ïßµã) / dot(Ãæ·¨ÏòÁ¿£¬Ïß·½ÏòÏòÁ¿)
+/// çº¿é¢æ±‚äº¤ç‚¹ï¼Œäº¤ç‚¹çš„å‚æ•° = dot(é¢æ³•å‘é‡, å¹³é¢ç‚¹-ç›´çº¿ç‚¹) / dot(é¢æ³•å‘é‡ï¼Œçº¿æ–¹å‘å‘é‡)
 Point inter(const Line &line, const Plane &plane){
     Real tmp = dot(plane.norm(), plane.one() - line.base) / dot(plane.norm(), line.direction);
     Point p = line.base + line.direction * tmp; 
@@ -317,32 +317,32 @@ Point inter(const Line &line, const Plane &plane){
     return p;
 }
 
-/// ÃæÃæÏà½»Çó½»Ïß
+/// é¢é¢ç›¸äº¤æ±‚äº¤çº¿
 Line inter(const Plane &a, const Plane &b){
-    /// Ê×ÏÈÇó³ö½»ÏßµÄ·½ÏòÏòÁ¿
+    /// é¦–å…ˆæ±‚å‡ºäº¤çº¿çš„æ–¹å‘å‘é‡
     Vector d = cross(a.norm(), b.norm());
-    /// È»ºóÇó³öÆ½ÃæaÄÚÓë½»Ïß´¹Ö±µÄÄ³ÌõÖ±Ïß
+    /// ç„¶åæ±‚å‡ºå¹³é¢aå†…ä¸äº¤çº¿å‚ç›´çš„æŸæ¡ç›´çº¿
     Line mou(a.one(), cross(a.norm(), d));
-    /// Çó³öÄ³Ö±ÏßÓëÆ½ÃæbµÄ½»µã
+    /// æ±‚å‡ºæŸç›´çº¿ä¸å¹³é¢bçš„äº¤ç‚¹
     Point jiaodian = inter(mou, b);
     Line line(jiaodian, d);
     assert((IN & relation(line, a)) && (IN & relation(line, b)));
     return line;
 }
 
-/** 8. Çó¼Ğ½Ç£¬Ò»ÂÉÓÃangle×öº¯ÊıÃû **/
-/// ¿Õ¼äÏòÁ¿¼Ğ½Ç£¬·µ»ØÔÚ[0, Pi]
+/** 8. æ±‚å¤¹è§’ï¼Œä¸€å¾‹ç”¨angleåšå‡½æ•°å **/
+/// ç©ºé—´å‘é‡å¤¹è§’ï¼Œè¿”å›åœ¨[0, Pi]
 inline Real angle(const Vector &a, const Vector &b){
     Real cosvalue = dot(a, b) / (a.length() * b.length());
     return myacos(cosvalue);
 }
-/// Ö±Ïß¼Ğ½Ç£¬·µ»ØÔÚ[0, PI/2]
+/// ç›´çº¿å¤¹è§’ï¼Œè¿”å›åœ¨[0, PI/2]
 inline Real angle(const Line &a, const Line &b){
     Real tmp = angle(a.direction, b.direction);
     if(sgn(tmp - 0.5 * PI) > 0) tmp = PI - tmp;
     return tmp;
 }
-/// ÏßÃæ¼Ğ½Ç£¬·µ»ØÔÚ[0, PI/2]
+/// çº¿é¢å¤¹è§’ï¼Œè¿”å›åœ¨[0, PI/2]
 inline Real angle(const Line &a, const Plane &plane){
     Real tmp = angle(a.direction, plane.norm());
     if(sgn(tmp - 0.5 * PI) > 0){
@@ -351,7 +351,7 @@ inline Real angle(const Line &a, const Plane &plane){
     tmp = 0.5 * PI - tmp;
     return tmp;
 }
-/// ÃæÃæ¼Ğ½Ç
+/// é¢é¢å¤¹è§’
 inline Real angle(const Plane &a, const Plane &b){
     if(relation(a, b) & (CHONGHE | PINGXING)){
         return 0;
@@ -363,7 +363,7 @@ inline Real angle(const Plane &a, const Plane &b){
     return tmp;
 }
 
-/** 9. ËÄÔªÊıÓëÈıÎ¬·½Õó **/
+/** 9. å››å…ƒæ•°ä¸ä¸‰ç»´æ–¹é˜µ **/
 struct Matrix{
     Real data[3][3];    
 };
@@ -371,18 +371,18 @@ struct Matrix{
 struct Quat{
     Real w, x, y, z;
     Quat(Real a=0, Real b=0, Real c=0, Real d=0):w(a),x(b),y(c),z(d){}
-    Quat conj()const{ // ·µ»Ø¹²éî
+    Quat conj()const{ // è¿”å›å…±è½­
         return Quat(w, -x, -y, -z);
     }
-    /// ´ÓÏòÁ¿aĞı×ªµ½ÏòÁ¿b£¬µÃµ½±íÊ¾¸ÃĞı×ªµÄËÄÔªÊı£¬a¡¢b±ØĞëÊÇµ¥Î»ÏòÁ¿
-    /// Ö»×ª180¶È¼°ÒÔÄÚµÄ½Ç¶È
-    /// Êµ¼ÊÉÏ¸ø¶¨ÆğµãºÍÖÕµãÓĞÎŞÊıÖÖĞı×ª·½Ê½£¬ÕâÀïÖ»ÊÇ¸ø³öÁËÆäÖĞÒ»ÖÖ
+    /// ä»å‘é‡aæ—‹è½¬åˆ°å‘é‡bï¼Œå¾—åˆ°è¡¨ç¤ºè¯¥æ—‹è½¬çš„å››å…ƒæ•°ï¼Œaã€bå¿…é¡»æ˜¯å•ä½å‘é‡
+    /// åªè½¬180åº¦åŠä»¥å†…çš„è§’åº¦
+    /// å®é™…ä¸Šç»™å®šèµ·ç‚¹å’Œç»ˆç‚¹æœ‰æ— æ•°ç§æ—‹è½¬æ–¹å¼ï¼Œè¿™é‡Œåªæ˜¯ç»™å‡ºäº†å…¶ä¸­ä¸€ç§
     Quat(const Vector &a, const Vector &b){
         assert(is0(a.length() - 1) && is0(b.length() - 1));
         Real theta = angle(a, b);
         if(is0(theta)){
             w = 1, x = y = z = 0;
-        }else if(0 == sgn(theta - PI)){ // ×ª180¶È
+        }else if(0 == sgn(theta - PI)){ // è½¬180åº¦
             Point axis;
 			if(is0(a.x)){
 				axis.x = 1, axis.y = axis.z = 0;
@@ -392,9 +392,9 @@ struct Quat{
 			}
 			axis.normSelf();
             w = 0; x = axis.x; y = axis.y; z = axis.z;   
-        }else{ // ÆÕÍ¨Ğı×ª
+        }else{ // æ™®é€šæ—‹è½¬
             theta *= 0.5;
-			Point axis = cross(a, b); // Ê×ÏÈÈ·¶¨Ğı×ªÖá			
+			Point axis = cross(a, b); // é¦–å…ˆç¡®å®šæ—‹è½¬è½´			
 			axis.normSelf();
             w = cos(theta); 
 			x = axis.x * sin(theta);
@@ -405,7 +405,7 @@ struct Quat{
     }
 };
 
-/// ËÄÔªÊıµÄ³Ë·¨
+/// å››å…ƒæ•°çš„ä¹˜æ³•
 const Quat operator * (const Quat&lhs, const Quat&rhs){
     return Quat(
         lhs.w*rhs.w-lhs.x*rhs.x-lhs.y*rhs.y-lhs.z*rhs.z,
@@ -415,7 +415,7 @@ const Quat operator * (const Quat&lhs, const Quat&rhs){
     );
 }
 
-/// ¸ø¶¨ÏòÁ¿v£¬Ğı×ªrºóµÃµ½µÄÏòÁ¿
+/// ç»™å®šå‘é‡vï¼Œæ—‹è½¬råå¾—åˆ°çš„å‘é‡
 Vector rotate(const Vector &v, const Quat &r){
     Quat origin(0, v.x, v.y, v.z);
     Quat after = r * origin * r.conj();
@@ -423,7 +423,7 @@ Vector rotate(const Vector &v, const Quat &r){
     return Vector(after.x, after.y, after.z);
 }
 
-/// ¸ø¶¨ÏòÁ¿v£¬¸ø¶¨Ğı×ª¾ØÕóm£¬ÇóĞı×ªºóµÄÏòÁ¿
+/// ç»™å®šå‘é‡vï¼Œç»™å®šæ—‹è½¬çŸ©é˜µmï¼Œæ±‚æ—‹è½¬åçš„å‘é‡
 Vector rotate(const Vector &v, const Matrix &m){
     return Vector(
         m.data[0][0] * v.x + m.data[0][1] * v.y + m.data[0][2] * v.z,
@@ -432,7 +432,7 @@ Vector rotate(const Vector &v, const Matrix &m){
     );
 }
 
-/// ¸ù¾İĞı×ª¾ØÕóµÃµ½µÈ¼ÛµÄËÄÔªÊı£¬À´×ÔÄ³±¾ÊéµÄ¹«Ê½
+/// æ ¹æ®æ—‹è½¬çŸ©é˜µå¾—åˆ°ç­‰ä»·çš„å››å…ƒæ•°ï¼Œæ¥è‡ªæŸæœ¬ä¹¦çš„å…¬å¼
 void matrix2Quat(const Matrix &mat, Quat &q){
     Real tq[4];
     tq[0] = 1. + mat.data[0][0] + mat.data[1][1] + mat.data[2][2];
@@ -471,7 +471,7 @@ void matrix2Quat(const Matrix &mat, Quat &q){
     q.w *= s, q.x *= s, q.y *= s, q.z *= s;    
 }
 
-/// µÈ¼ÛĞı×ªµÄËÄÔªÊı×ªĞı×ª¾ØÕó
+/// ç­‰ä»·æ—‹è½¬çš„å››å…ƒæ•°è½¬æ—‹è½¬çŸ©é˜µ
 void quat2Matrix(const Quat &q, Matrix &m){
     m.data[0][0] = 1 - 2.0 * (q.y * q.y + q.z * q.z);
     m.data[0][1] = 2.0 * (q.x * q.y + q.w * q.z);
@@ -486,8 +486,8 @@ void quat2Matrix(const Quat &q, Matrix &m){
     m.data[2][2] = 1 - 2.0 * (q.y * q.y + q.x * q.x);
 }
 
-Point A;   // AµÄÔ²ĞÄ
-Vector Na; // AµÄ·¨ÏòÁ¿
+Point A;   // Açš„åœ†å¿ƒ
+Vector Na; // Açš„æ³•å‘é‡
 Point B;
 Vector Nb;
 Real Ra, Rb;
@@ -502,19 +502,19 @@ bool read(){
     return false;
 }
 
-/// ÇóÈıÎ¬¿Õ¼ä¹²ÃæÔ²ÓëÖ±ÏßµÄ½»µã£¬·µ»Ø½»µãÔÚÖ±ÏßÉÏµÄ²ÎÊı
+/// æ±‚ä¸‰ç»´ç©ºé—´å…±é¢åœ†ä¸ç›´çº¿çš„äº¤ç‚¹ï¼Œè¿”å›äº¤ç‚¹åœ¨ç›´çº¿ä¸Šçš„å‚æ•°
 int inter(const Point & center, Real r, const Vector &n, const Line &line, Real ans[]){
-    /// Ê×ÏÈÇóÔ²ĞÄµ½Ö±ÏßµÄ¾àÀë
+    /// é¦–å…ˆæ±‚åœ†å¿ƒåˆ°ç›´çº¿çš„è·ç¦»
 	Real d = dist(center, line);
 	int t = sgn(d - r);
-	if(t > 0){ // Ã»ÓĞ½»µã
+	if(t > 0){ // æ²¡æœ‰äº¤ç‚¹
 		return 0;
 	}
-    /// ÔÚÍ¬Ò»¸öÆ½ÃæÄÚ×ö¹ıÔ²ĞÄÓëÖ±Ïß´¹Ö±µÄÖ±Ïß
+    /// åœ¨åŒä¸€ä¸ªå¹³é¢å†…åšè¿‡åœ†å¿ƒä¸ç›´çº¿å‚ç›´çš„ç›´çº¿
 	Line chui(center, cross(n, line.direction));
-	/// Çó´¹ÏßÓëÖ±ÏßµÄ½»µã
+	/// æ±‚å‚çº¿ä¸ç›´çº¿çš„äº¤ç‚¹
 	Point zhongdian = inter(chui, line);
-	/// Çó¸Ã½»µãÔÚÖ±ÏßÉÏµÄ²ÎÊı
+	/// æ±‚è¯¥äº¤ç‚¹åœ¨ç›´çº¿ä¸Šçš„å‚æ•°
 	Real k;
 	if(OUT == relation(zhongdian, line, &k)){
 		throw runtime_error("sth must be wrong.");
@@ -523,7 +523,7 @@ int inter(const Point & center, Real r, const Vector &n, const Line &line, Real 
 		ans[0] = k;
 		return 1;
 	}
-	/// Çó³öÁ½¸ö½»µãµÄ²ÎÊı
+	/// æ±‚å‡ºä¸¤ä¸ªäº¤ç‚¹çš„å‚æ•°
 	Real tmp = mysqrt(r * r - d  * d);
 	tmp /= line.direction.length();
 
@@ -539,15 +539,15 @@ inline Real proc(Real a, Real b, Real c, Real d){
 }
 
 Real proc(){
-	/// È·¶¨AºÍBÁ½¸öÆ½Ãæ£¬ÌâÄ¿±£Ö¤²»ÖØºÏÒ²²»Æ½ĞĞ
+	/// ç¡®å®šAå’ŒBä¸¤ä¸ªå¹³é¢ï¼Œé¢˜ç›®ä¿è¯ä¸é‡åˆä¹Ÿä¸å¹³è¡Œ
 	Plane pa(A, Na), pb(B, Nb);
-	/// ÇóÁ½¸öÆ½ÃæµÄ½»Ïß
+	/// æ±‚ä¸¤ä¸ªå¹³é¢çš„äº¤çº¿
 	Line line = inter(pa, pb);
 	line.direction.normSelf();
-	/// Çó½»ÏßÓëÔ²µÄ½»µãµÄ²ÎÊı
+	/// æ±‚äº¤çº¿ä¸åœ†çš„äº¤ç‚¹çš„å‚æ•°
 	Real a[2], b[2];
 	int ka = inter(A, Ra, Na, line, a);
-	if(ka != 2){ // Ã»ÓĞ2¸ö½»µã£¬¿Ï¶¨Îª0
+	if(ka != 2){ // æ²¡æœ‰2ä¸ªäº¤ç‚¹ï¼Œè‚¯å®šä¸º0
 		return 0;
 	}
 	int kb = inter(B, Rb, Nb, line, b);
@@ -555,7 +555,7 @@ Real proc(){
         return 0;
 	}
 
-	/// ¼ÆËãÖØºÏ¶ÎµÄ¾àÀë	
+	/// è®¡ç®—é‡åˆæ®µçš„è·ç¦»	
 	return proc(a[0], a[1], b[0], b[1]);
 }
 

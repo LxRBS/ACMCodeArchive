@@ -1,6 +1,6 @@
 /**
-   ¸ø¶¨Ò»¸öÊýÁÐA£¬´Ó1~N£¬µ«ÊÇ²»°üº¬3µÄ±¶Êý£¬Ò²²»°üº¬Ä©Î²Îª3µÄÊý
-   ÎÊAiÊÇ¶àÉÙ¡£´ò±í
+   ç»™å®šä¸€ä¸ªæ•°åˆ—Aï¼Œä»Ž1~Nï¼Œä½†æ˜¯ä¸åŒ…å«3çš„å€æ•°ï¼Œä¹Ÿä¸åŒ…å«æœ«å°¾ä¸º3çš„æ•°
+   é—®Aiæ˜¯å¤šå°‘ã€‚æ‰“è¡¨
 */
 #include<bits/stdc++.h>
 using namespace std;

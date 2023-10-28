@@ -1,8 +1,8 @@
 /**
- * ÇóºÍ£¬¾­¹ý¼òµ¥±ä»»·¢ÏÖ¾ÍÊÇÇó
- * SIGMA{(M+i)!/i!, i´Ó0µ½N-1}
- * Ô¤´¦Àí½×³Ë¼°ÆäÄæÔª¼´¿É
- * NºÍMÔÚ1E6
+ * æ±‚å’Œï¼Œç»è¿‡ç®€å•å˜æ¢å‘çŽ°å°±æ˜¯æ±‚
+ * SIGMA{(M+i)!/i!, iä»Ž0åˆ°N-1}
+ * é¢„å¤„ç†é˜¶ä¹˜åŠå…¶é€†å…ƒå³å¯
+ * Nå’ŒMåœ¨1E6
 */
 #include <bits/stdc++.h>
 using namespace std;

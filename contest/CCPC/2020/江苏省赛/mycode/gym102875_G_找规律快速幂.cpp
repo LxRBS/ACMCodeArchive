@@ -1,19 +1,19 @@
 /**
-   ±©Á¦·¨·¢ÏÖµ±ĞĞÊı´óÓÚµÈÓÚ4Ê±£¬´ğ°¸¹Ì¶¨
-   Ö»Ğè¼ÆËãĞĞÊıÎª123¼´¿É
-   µ±ĞĞÊıÎª1Ê±:
-   Di = D[i-1]+D[i-2]£¬D0=0, D1=2£¬¿ìËÙÃİ
-   µ±ĞĞÊıÎª2Ê±£º
-   D[2][i] = D[1][i]µÄÆ½·½
-   µ±ĞĞÊıÎª3Ê±£º
-   ÏµÊı¾ØÕóÊÇ
+   æš´åŠ›æ³•å‘ç°å½“è¡Œæ•°å¤§äºç­‰äº4æ—¶ï¼Œç­”æ¡ˆå›ºå®š
+   åªéœ€è®¡ç®—è¡Œæ•°ä¸º123å³å¯
+   å½“è¡Œæ•°ä¸º1æ—¶:
+   Di = D[i-1]+D[i-2]ï¼ŒD0=0, D1=2ï¼Œå¿«é€Ÿå¹‚
+   å½“è¡Œæ•°ä¸º2æ—¶ï¼š
+   D[2][i] = D[1][i]çš„å¹³æ–¹
+   å½“è¡Œæ•°ä¸º3æ—¶ï¼š
+   ç³»æ•°çŸ©é˜µæ˜¯
    010000
    110000
    011000
    001100
    000110
    000011
-   ´ÓµÚ6¸öÊı¿ªÊ¼¼ÆËã£¬Ç°5¸öÖ±½Ó±©Á¦
+   ä»ç¬¬6ä¸ªæ•°å¼€å§‹è®¡ç®—ï¼Œå‰5ä¸ªç›´æ¥æš´åŠ›
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -25,7 +25,7 @@ llt const MOD = 1000000007LL;
 inline llt add(llt a,llt b){return (a+b)%MOD;}
 inline llt mul(llt a,llt b){return a*b%MOD;}
 
-//ÓÃÓÚ¼ÆËã¾ØÕó¿ìËÙÃİµÄ·½Õó
+//ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İµÄ·ï¿½ï¿½ï¿½
 struct matrix_t{
     typedef llt value_t;
     enum{SIZE=10};
@@ -34,7 +34,7 @@ struct matrix_t{
 
     matrix_t(int s=0):size(s){memset(data,0,sizeof(data));}
 
-    //°Ñ×Ô¼º±ä³És¡ÁsµÄµ¥Î»¾ØÕó
+    //ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½sï¿½Äµï¿½Î»ï¿½ï¿½ï¿½ï¿½
     void i(int s){
         size = s;
         for(int i=0;i<size;++i){
@@ -43,7 +43,7 @@ struct matrix_t{
         }
     }
 
-    //Éî¿½±´
+    //ï¿½î¿½ï¿½ï¿½
     void copy(matrix_t const &rhs){
         size = rhs.size;
         for(int i=0;i<size;++i){
@@ -51,7 +51,7 @@ struct matrix_t{
         }
     }
 
-    //ÓÃÓÚ¾ØÕó¿ìËÙÃİ£¬²ÎÊıĞè¸÷²»ÏàÍ¬
+    //ï¿½ï¿½ï¿½Ú¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬
     static void multiply(matrix_t const&lhs,matrix_t const&rhs,matrix_t&ret){
         ret.size = lhs.size;
         for(int i=0;i<ret.size;++i)for(int j=0;j<ret.size;++j){
@@ -60,7 +60,7 @@ struct matrix_t{
         }
     }
 
-    //´øÄ£³Ë·¨
+    //ï¿½ï¿½Ä£ï¿½Ë·ï¿½
     static void mulMod(matrix_t const&lhs,matrix_t const&rhs,matrix_t &ret,value_t const mod){
         ret.size = lhs.size;
         for(int i=0;i<ret.size;++i)for(int j=0;j<ret.size;++j){
@@ -69,10 +69,10 @@ struct matrix_t{
         }
     }
 
-    //ÓÃÓÚ¼ÆËã¿ìËÙÃİµÄÖĞ¼ä±äÁ¿
+    //ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İµï¿½ï¿½Ğ¼ï¿½ï¿½ï¿½ï¿½
     static matrix_t t1,t2,t3;
 
-    //¼ÆËãmatµÄn´Î·½
+    //ï¿½ï¿½ï¿½ï¿½matï¿½ï¿½nï¿½Î·ï¿½
     static matrix_t& power(matrix_t const& mat,value_t n){
         matrix_t *rp = &t1, *tp = &t2, *mp = &t3;
         rp->i(mat.size);mp->copy(mat);
@@ -91,7 +91,7 @@ struct matrix_t{
         return *rp;
     }
 
-    //´øÄ£Ãİ
+    //ï¿½ï¿½Ä£ï¿½ï¿½
     static matrix_t& powerMod(matrix_t const& mat,value_t n,value_t const mod){
         matrix_t *rp = &t1, *tp = &t2, *mp = &t3;
         rp->i(mat.size);mp->copy(mat);

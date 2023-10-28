@@ -1,7 +1,6 @@
-
 """
-¸ø¶¨×Ö·û´®sºÍÒ»¸ödistanceÊı×é£¬ÎÊ
-distance[ai]ÊÇ·ñÇ¡ºÃÊÇsÖĞ×ÖÄ¸aiµÄ¾àÀë
+ç»™å®šå­—ç¬¦ä¸²så’Œä¸€ä¸ªdistanceæ•°ç»„ï¼Œé—®
+distance[ai]æ˜¯å¦æ°å¥½æ˜¯sä¸­å­—æ¯aiçš„è·ç¦»
 """
 
 class Solution(object):

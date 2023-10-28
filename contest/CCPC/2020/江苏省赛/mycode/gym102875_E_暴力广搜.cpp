@@ -1,8 +1,8 @@
 /**
-   Ò»¸öÍ¼×î¶à16¸ö½Úµã£¬³õÊ¼£¬ËùÓĞ½Úµã¶¼±»¸ĞÈ¾¡£È»ºó°´ÈçÏÂÁ÷³Ì½øĞĞ£¬
-   Ñ¡ÔñK¸ö½Úµã½øĞĞ¾»»¯£¬È»ºóÃ¿¸ö¸ĞÈ¾½Úµã»á°ÑÆäÁÚ¾Ó¸ĞÈ¾£¬ÇÒ±¾Éí»á±äºÃ¡£
-   Èç´Ë½øĞĞ£¬ÎÊÄÜ·ñÔÚ100²½ÄÚ½«ËùÓĞ½Úµã¾»»¯¡£
-   ±©Á¦¹ãËÑ
+   ä¸€ä¸ªå›¾æœ€å¤š16ä¸ªèŠ‚ç‚¹ï¼Œåˆå§‹ï¼Œæ‰€æœ‰èŠ‚ç‚¹éƒ½è¢«æ„ŸæŸ“ã€‚ç„¶åæŒ‰å¦‚ä¸‹æµç¨‹è¿›è¡Œï¼Œ
+   é€‰æ‹©Kä¸ªèŠ‚ç‚¹è¿›è¡Œå‡€åŒ–ï¼Œç„¶åæ¯ä¸ªæ„ŸæŸ“èŠ‚ç‚¹ä¼šæŠŠå…¶é‚»å±…æ„ŸæŸ“ï¼Œä¸”æœ¬èº«ä¼šå˜å¥½ã€‚
+   å¦‚æ­¤è¿›è¡Œï¼Œé—®èƒ½å¦åœ¨100æ­¥å†…å°†æ‰€æœ‰èŠ‚ç‚¹å‡€åŒ–ã€‚
+   æš´åŠ›å¹¿æœ
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -34,7 +34,7 @@ void mkVector(int status,vector<int>&vec,vector<int>&vp){
             vec.push_back(i);
         }
     }
-    /// vpÇ°Ãæ¶¼ÊÇ0£¬ºóÃæÓĞk¸ö1
+    /// vpÇ°ï¿½æ¶¼ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½kï¿½ï¿½1
     int n = vec.size();
     if(K>=n){
         vp.assign(n, 1);
@@ -44,11 +44,11 @@ void mkVector(int status,vector<int>&vec,vector<int>&vp){
     fill(vp.begin(),vp.begin()+n-K,0);
 }
 
-/// ´«²¥
+/// ï¿½ï¿½ï¿½ï¿½
 int go2step(int oldstatus){
     int status = 0;
     for(int i=0;i<N;++i){
-        if((1<<i)&oldstatus){ // ËùÓĞÁÚ¾Ó
+        if((1<<i)&oldstatus){ // ï¿½ï¿½ï¿½ï¿½ï¿½Ú¾ï¿½
             for(int j=1;j<=N;++j){
                 if(Graph[i+1][j]){
                     status |= (1<<(j-1));
@@ -59,7 +59,7 @@ int go2step(int oldstatus){
     return status;
 }
 
-/// Ñ¡ÔñvpÖĞµÄ½Úµã½øĞĞÏû¶¾
+/// Ñ¡ï¿½ï¿½vpï¿½ĞµÄ½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 int go1step(int oldstatus, vector<int>const&vec,vector<int>const&vp,string&step){
     assert(vec.size()==vp.size());
     step.clear();

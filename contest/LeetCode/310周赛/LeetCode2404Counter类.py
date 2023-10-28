@@ -1,6 +1,6 @@
 """
-�������飬�ҳ��ִ�����������ֵ��С��ż��
-�ֵ䣬Ҳ����ֱ��ʹ��Counter��
+给定数组，找出现次数最多的且数值最小的偶数
+字典，也可以直接使用Counter类
 """
 
 class Solution(object):

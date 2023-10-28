@@ -1,6 +1,6 @@
 /**
- * 在一个升序数组里，对每个Ai问是否存在j和k满足2Ai=Aj+Ak
- * 用hash，接近O(N^2)
+ * 鍦ㄤ竴涓崌搴忔暟缁勯噷锛屽姣忎釜Ai闂槸鍚﹀瓨鍦╦鍜宬婊¤冻2Ai=Aj+Ak
+ * 鐢╤ash锛屾帴杩慜(N^2)
 */
 #include <bits/stdc++.h>
 using namespace std;

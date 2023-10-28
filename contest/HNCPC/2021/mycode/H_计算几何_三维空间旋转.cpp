@@ -1,10 +1,10 @@
 /**
- * ÇóÈıÎ¬¿Õ¼äÁ½¸öÔ²Ïà½»
- * ×ø±êÏµ±ä»»£¬½«µÚÒ»¸öÔ²µÄÔ²ĞÄ×÷ÎªÔ­µã£¬·¨ÏòÁ¿×÷ÎªzÖáÕı·½Ïò
- * µÚ¶ş¸öÔ²µÄÆ½Ãæ·½³ÌÎªAx+By+Cz+D=0
- * ÓÚÊÇ½»Ïß±ØÔÚxyÆ½ÃæÉÏÇÒ·½³ÌÎªAx+By+D=0
- * ÓÚÊÇ±äÎªÁË¶şÎ¬Æ½ÃæÄÚÖ±ÏßºÍÔ²Ïà½»¡£Çó³ö½»µãºó£¬ÔÙ×öÒ»¸öÄæ±ä»»»Øµ½Ô­Ê¼×ø±êÏµ
- * ÕâÑù¾ÍÄÜÇóµ½4¸ö½»µã£¬ÔÙ´¦ÀíÒ»ÏÂ¼´¿É
+ * æ±‚ä¸‰ç»´ç©ºé—´ä¸¤ä¸ªåœ†ç›¸äº¤
+ * åæ ‡ç³»å˜æ¢ï¼Œå°†ç¬¬ä¸€ä¸ªåœ†çš„åœ†å¿ƒä½œä¸ºåŸç‚¹ï¼Œæ³•å‘é‡ä½œä¸ºzè½´æ­£æ–¹å‘
+ * ç¬¬äºŒä¸ªåœ†çš„å¹³é¢æ–¹ç¨‹ä¸ºAx+By+Cz+D=0
+ * äºæ˜¯äº¤çº¿å¿…åœ¨xyå¹³é¢ä¸Šä¸”æ–¹ç¨‹ä¸ºAx+By+D=0
+ * äºæ˜¯å˜ä¸ºäº†äºŒç»´å¹³é¢å†…ç›´çº¿å’Œåœ†ç›¸äº¤ã€‚æ±‚å‡ºäº¤ç‚¹åï¼Œå†åšä¸€ä¸ªé€†å˜æ¢å›åˆ°åŸå§‹åæ ‡ç³»
+ * è¿™æ ·å°±èƒ½æ±‚åˆ°4ä¸ªäº¤ç‚¹ï¼Œå†å¤„ç†ä¸€ä¸‹å³å¯
  */ 
 #include <bits/stdc++.h>
 using namespace std;
@@ -24,7 +24,7 @@ inline Real mysqrt(Real x){
 	return sqrt(x);
 }
 
-/// ¿Õ¼äµãºÍÏòÁ¿
+/// ç©ºé—´ç‚¹å’Œå‘é‡
 struct Point{
     Real x, y, z;
     Point(Real a=0,Real b=0,Real c=0):x(a),y(b),z(c){}
@@ -63,13 +63,13 @@ struct Point{
 
 typedef Point Vector;
 
-/// ¿Õ¼äÖ±ÏßµÄ²ÎÊı·½³Ì
+/// ç©ºé—´ç›´çº¿çš„å‚æ•°æ–¹ç¨‹
 struct Line{
-	Point base;       // »ùµã
-	Vector direction; // ·½Ïò
+	Point base;       // åŸºç‚¹
+	Vector direction; // æ–¹å‘
     Line(){}
 	Line(const Point &p, const Vector &v):base(p), direction(v){direction.normSelf();}
-    Line(Real a, Real b, Real c):direction(b,-a,0){ // È·¶¨ax+by+c=0µÄÖ±Ïß
+    Line(Real a, Real b, Real c):direction(b,-a,0){ // ç¡®å®šax+by+c=0çš„ç›´çº¿
         direction.normSelf();
         if(is0(a)){
             base.x = 0, base.y = -c / b, base.z = 0;
@@ -91,27 +91,27 @@ struct Line{
     }
 };
 
-/// ÈıÎ¬¿Õ¼äÆ½Ãæ
+/// ä¸‰ç»´ç©ºé—´å¹³é¢
 struct Plane{
     Real A, B, C, D; // Ax + By + Cz + D = 0
 	Plane(Real a=0,Real b=0,Real c=0,Real d=0):A(a),B(b),C(c),D(d){}
-    Plane(const Point &p, const Vector &v){ // ¹ıµãpÇÒ´¹Ö±ÓÚÏòÁ¿v£¬Î¨Ò»È·¶¨Ò»¸öÆ½Ãæ
+    Plane(const Point &p, const Vector &v){ // è¿‡ç‚¹pä¸”å‚ç›´äºå‘é‡vï¼Œå”¯ä¸€ç¡®å®šä¸€ä¸ªå¹³é¢
         A = v.x; B = v.y; C = v.z;
 		D = - (A * p.x + B * p.y + C * p.z);
 	}
 };
 
-/// Á½¸öÏòÁ¿µÄ²æ»ı
+/// ä¸¤ä¸ªå‘é‡çš„å‰ç§¯
 Point cross(const Vector &a, const Vector &b){
     return Point(a.y * b.z - a.z * b.y, b.x * a.z - a.x * b.z, a.x * b.y - b.x * a.y);
 }
 
-/// Á½¸öÏòÁ¿µÄµã»ı
+/// ä¸¤ä¸ªå‘é‡çš„ç‚¹ç§¯
 Real dot(const Vector &a, const Vector &b){
     return a.x*b.x + a.y*b.y + a.z*b.z;
 }
 
-/// ¿Õ¼äÏòÁ¿µÄ¼Ğ½Ç
+/// ç©ºé—´å‘é‡çš„å¤¹è§’
 Real interAngle(const Vector &a, const Vector &b){
 	assert(!a.isZero() && !b.isZero());
     Real cosValue = dot(a, b) / (a.length() * b.length());
@@ -119,7 +119,7 @@ Real interAngle(const Vector &a, const Vector &b){
 	return ans;
 }
 
-/// µãÊÇ·ñÔÚÖ±ÏßÉÏ
+/// ç‚¹æ˜¯å¦åœ¨ç›´çº¿ä¸Š
 bool isIn(const Point &p, const Line &line){
     if(p == line.base) return true;
 
@@ -134,30 +134,30 @@ bool isIn(const Point &p, const Line &line){
 	return p == line.base + line.direction * t; 
 }
 
-/// Ö±ÏßÊÇ·ñÔÚÆ½ÃæÉÏ£¬Ö±ÏßµÄ·½ÏòÏòÁ¿ÓëÆ½ÃæµÄ·¨ÏòÁ¿´¹Ö±ÇÒ»ùµãÔÚÆ½ÃæÄÚ
+/// ç›´çº¿æ˜¯å¦åœ¨å¹³é¢ä¸Šï¼Œç›´çº¿çš„æ–¹å‘å‘é‡ä¸å¹³é¢çš„æ³•å‘é‡å‚ç›´ä¸”åŸºç‚¹åœ¨å¹³é¢å†…
 bool isIn(const Line &line, const Plane &plane){
 	return is0(dot(line.direction, Vector(plane.A,plane.B,plane.C)))
 	    && is0(plane.A*line.base.x+plane.B*line.base.y+plane.C*line.base.z+plane.D);
 }
 
-/// µãÊÇ·ñÔÚÆ½ÃæÉÏ
+/// ç‚¹æ˜¯å¦åœ¨å¹³é¢ä¸Š
 inline bool isIn(const Point &p, const Plane &plane){
     return 0 == sgn(plane.A*p.x + plane.B*p.y + plane.C*p.z + plane.D);
 }
 
-/// ËÄÔªÊı
+/// å››å…ƒæ•°
 struct Quat{
     Real w, x, y, z;
     Quat(Real a=0, Real b=0, Real c=0, Real d=0):w(a),x(b),y(c),z(d){}
     Quat conj()const{return Quat(w, -x, -y, -z);}
 
-	Quat(const Vector&a, const Vector&b):w(0),x(0),y(0),z(0){ // ´Óaµ½bµÄĞı×ª±íÊ¾
-        assert(a.isNorm() && b.isNorm()); // µ¥Î»ÏòÁ¿
-        /// Çó¼Ğ½Ç
+	Quat(const Vector&a, const Vector&b):w(0),x(0),y(0),z(0){ // ä»aåˆ°bçš„æ—‹è½¬è¡¨ç¤º
+        assert(a.isNorm() && b.isNorm()); // å•ä½å‘é‡
+        /// æ±‚å¤¹è§’
 		Real theta = interAngle(a, b);
-		if(is0(theta)){ // ²»ÓÃĞı×ª
+		if(is0(theta)){ // ä¸ç”¨æ—‹è½¬
             w = 1; x = y = z = 0;
-		}else if(0==sgn(theta-PI)){ // ¸ÕºÃ·´Ïò
+		}else if(0==sgn(theta-PI)){ // åˆšå¥½åå‘
             Point axis;
 			if(is0(a.x)){
 				axis.x = 1, axis.y = axis.z = 0;
@@ -167,7 +167,7 @@ struct Quat{
 			}
 			axis.normSelf();
             w = 0; x = axis.x; y = axis.y; z = axis.z;
-		}else{ // ÆÕÍ¨Ğı×ª£¬È·¶¨Ğı×ªÖá
+		}else{ // æ™®é€šæ—‹è½¬ï¼Œç¡®å®šæ—‹è½¬è½´
             theta *= 0.5;
 			Point axis = cross(a, b);			
 			axis.normSelf();
@@ -188,7 +188,7 @@ const Quat operator * (const Quat&lhs, const Quat&rhs){
         );
 }
 
-/// ¸ø¶¨ÏòÁ¿p£¬»òÕßµãp£¬¾­¹ırĞı×ªÒÔºóµÄÏòÁ¿
+/// ç»™å®šå‘é‡pï¼Œæˆ–è€…ç‚¹pï¼Œç»è¿‡ræ—‹è½¬ä»¥åçš„å‘é‡
 Point rotate(const Vector &p, const Quat &r){
     Quat origin(0, p.x, p.y, p.z);
     Quat after = r * origin * r.conj();
@@ -196,7 +196,7 @@ Point rotate(const Vector &p, const Quat &r){
     return Vector(after.x, after.y, after.z);
 }
 
-/// ½âÒ»Ôª¶ş´Î·½³Ì
+/// è§£ä¸€å…ƒäºŒæ¬¡æ–¹ç¨‹
 int f(Real a, Real b, Real c, Real&x1, Real&x2){
     Real d = b*b - 4.0*a*c;
     int t = sgn(d);
@@ -231,7 +231,7 @@ int proc(Point tobeO, Vector tobeZ, Point circle, Vector n, Real radius, Point &
     p1 = line.base + line.direction * t1;
     p2 = line.base + line.direction * t2;
 
-    /// Äæ±ä»»
+    /// é€†å˜æ¢
     ro = ro.conj();
     p1 = rotate(p1, ro);
     p1 = p1 + tobeO;
@@ -242,8 +242,8 @@ int proc(Point tobeO, Vector tobeZ, Point circle, Vector n, Real radius, Point &
 }
 
 Real proc(const Point&p1, const Point&p2, const Point&p3, const Point&p4){
-    /// Ê×ÏÈÈ·¶¨Ö±Ïß
-    Vector direction(p1 - p2); // p1 p2¿Ï¶¨²»ÏàµÈ
+    /// é¦–å…ˆç¡®å®šç›´çº¿
+    Vector direction(p1 - p2); // p1 p2è‚¯å®šä¸ç›¸ç­‰
     
     Line line(p1, direction);
     assert(isIn(p3, line));
@@ -263,8 +263,8 @@ Real proc(const Point&p1, const Point&p2, const Point&p3, const Point&p4){
     return min(t2, t4) - max(t1, t3);
 }
 
-Point C1, C2; // Ô²ĞÄ
-Vector N1, N2; // ·¨ÏòÁ¿
+Point C1, C2; // åœ†å¿ƒ
+Vector N1, N2; // æ³•å‘é‡
 Real R1, R2;
 
 bool read(){

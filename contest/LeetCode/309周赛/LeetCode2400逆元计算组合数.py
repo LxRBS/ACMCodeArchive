@@ -1,16 +1,16 @@
 """
-ÊýÖáÆðµãÎªstartPos£¬ÖÕµãÎªendPos£¬ÎÊ×ßk²½Ç¡ºÃ´ÓÆðµãµ½ÖÕµãµÄ·½°¸×ÜÊýÊÇ¶àÉÙ
-Ê×ÏÈÒª»¨endPos-startPos²½£¬È»ºóÊ£ÏÂµÄ²½ÊýÏÔÈ»±ØÐëÊÇÅ¼Êý£¬ÇÒÒ»°ë³¯ÓÒÒ»°ë³¯×ó
-Áîleft = k - (endPos-startPos)
-ÓÚÊÇ¿ÉÖªÏòÕý·½ÏòÒ»¹²Òª×ßa=k-left/2²½£¬Ïò¸º·½ÏòÒ»¹²Òª×ßb=left/2²½£¬Ö»ÒªÂú×ãÕâ¸öÌõ¼þ
-¾ÍÒ»¶¨ÄÜ×ßµ½£¬ÏÈ×ßÕý»¹ÊÇÏÈ×ß¸ºÆäÊµÎÞËùÎ½¡£ËùÒÔ±¾ÖÊÉÏ¾ÍÊÇÎÊa¸ö+1ºÍb¸ö-1²»Í¬µÄÅÅÁÐ×ÜÊýÊÇ¶àÉÙ
-ÔÙ×ª»¯ÎªÆäÊµ¾ÍÊÇÎÊ´Óa+b¸öÎ»ÖÃÑ¡³öb¸öÎ»ÖÃÉèÖÃ³É-1µÄ·½·¨ÊýÊÇ¶àÉÙ£¬¾ÍÊÇ×éºÏÊýC(a+b, b)
-×éºÏÊý¿ÉÒÔÓÃÑî»ÔÈý½ÇÐÎ¼ÆËã(1000*1000¹»ÁË)
-ÄæÔª¼ÆËã×éºÏÊý£¬»¹Ã»ÓÐÖ±½ÓÊ¹ÓÃ´óÊý¿é£¬¿ÉÄÜÊÇÊý¾Ý²»¹»´ó
+æ•°è½´èµ·ç‚¹ä¸ºstartPosï¼Œç»ˆç‚¹ä¸ºendPosï¼Œé—®èµ°kæ­¥æ°å¥½ä»Žèµ·ç‚¹åˆ°ç»ˆç‚¹çš„æ–¹æ¡ˆæ€»æ•°æ˜¯å¤šå°‘
+é¦–å…ˆè¦èŠ±endPos-startPosæ­¥ï¼Œç„¶åŽå‰©ä¸‹çš„æ­¥æ•°æ˜¾ç„¶å¿…é¡»æ˜¯å¶æ•°ï¼Œä¸”ä¸€åŠæœå³ä¸€åŠæœå·¦
+ä»¤left = k - (endPos-startPos)
+äºŽæ˜¯å¯çŸ¥å‘æ­£æ–¹å‘ä¸€å…±è¦èµ°a=k-left/2æ­¥ï¼Œå‘è´Ÿæ–¹å‘ä¸€å…±è¦èµ°b=left/2æ­¥ï¼Œåªè¦æ»¡è¶³è¿™ä¸ªæ¡ä»¶
+å°±ä¸€å®šèƒ½èµ°åˆ°ï¼Œå…ˆèµ°æ­£è¿˜æ˜¯å…ˆèµ°è´Ÿå…¶å®žæ— æ‰€è°“ã€‚æ‰€ä»¥æœ¬è´¨ä¸Šå°±æ˜¯é—®aä¸ª+1å’Œbä¸ª-1ä¸åŒçš„æŽ’åˆ—æ€»æ•°æ˜¯å¤šå°‘
+å†è½¬åŒ–ä¸ºå…¶å®žå°±æ˜¯é—®ä»Ža+bä¸ªä½ç½®é€‰å‡ºbä¸ªä½ç½®è®¾ç½®æˆ-1çš„æ–¹æ³•æ•°æ˜¯å¤šå°‘ï¼Œå°±æ˜¯ç»„åˆæ•°C(a+b, b)
+ç»„åˆæ•°å¯ä»¥ç”¨æ¨è¾‰ä¸‰è§’å½¢è®¡ç®—(1000*1000å¤Ÿäº†)
+é€†å…ƒè®¡ç®—ç»„åˆæ•°ï¼Œè¿˜æ²¡æœ‰ç›´æŽ¥ä½¿ç”¨å¤§æ•°å—ï¼Œå¯èƒ½æ˜¯æ•°æ®ä¸å¤Ÿå¤§
 """
 
 class Solution(object):
-    mod = 1000000007 # Ä£Êý
+    mod = 1000000007 # Ä£ï¿½ï¿½
     def numberOfWays(self, startPos, endPos, k):
         """
         :type startPos: int
@@ -22,18 +22,18 @@ class Solution(object):
         if left < 0 or left % 2 == 1: return 0
         return self.C(k, left//2)
 
-    def pow(self, a, n): # ¿ìËÙÃÝ¼ÆËãa^n%mod
+    def pow(self, a, n): # ï¿½ï¿½ï¿½ï¿½ï¿½Ý¼ï¿½ï¿½ï¿½a^n%mod
         ans = 1
         while n != 0:
             if n & 1: ans = ans * a % self.mod
             a = a * a % self.mod
             n >>= 1
         return ans
-    def inv(self, a): # ¼ÆËãaµÄÄæ£¬¼´ a^(-1)*a%mod==1
+    def inv(self, a): # ï¿½ï¿½ï¿½ï¿½aï¿½ï¿½ï¿½æ£¬ï¿½ï¿½ a^(-1)*a%mod==1
         return self.pow(a, self.mod-2)
-    def fac(self, n): # ¼ÆËã½×³ËÈ¡Ä£
+    def fac(self, n): # ï¿½ï¿½ï¿½ï¿½×³ï¿½È¡Ä£
         ans = 1
         for i in range(1, n+1): ans = ans * i % self.mod
         return ans
-    def C(self, n, m): # ¼ÆËã×éºÏÊý
+    def C(self, n, m): # ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         return self.fac(n) * self.inv(self.fac(m)) % self.mod * self.inv(self.fac(n-m)) % self.mod

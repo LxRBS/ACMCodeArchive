@@ -1,13 +1,13 @@
 """
-ÊýÖáÆðµãÎªstartPos£¬ÖÕµãÎªendPos£¬ÎÊ×ßk²½Ç¡ºÃ´ÓÆðµãµ½ÖÕµãµÄ·½°¸×ÜÊýÊÇ¶àÉÙ
-Ê×ÏÈÒª»¨endPos-startPos²½£¬È»ºóÊ£ÏÂµÄ²½ÊýÏÔÈ»±ØÐëÊÇÅ¼Êý£¬ÇÒÒ»°ë³¯ÓÒÒ»°ë³¯×ó
-Áîleft = k - (endPos-startPos)
-ÓÚÊÇ¿ÉÖªÏòÕý·½ÏòÒ»¹²Òª×ßa=k-left/2²½£¬Ïò¸º·½ÏòÒ»¹²Òª×ßb=left/2²½£¬Ö»ÒªÂú×ãÕâ¸öÌõ¼þ
-¾ÍÒ»¶¨ÄÜ×ßµ½£¬ÏÈ×ßÕý»¹ÊÇÏÈ×ß¸ºÆäÊµÎÞËùÎ½¡£ËùÒÔ±¾ÖÊÉÏ¾ÍÊÇÎÊa¸ö+1ºÍb¸ö-1²»Í¬µÄÅÅÁÐ×ÜÊýÊÇ¶àÉÙ
-ÔÙ×ª»¯ÎªÆäÊµ¾ÍÊÇÎÊ´Óa+b¸öÎ»ÖÃÑ¡³öb¸öÎ»ÖÃÉèÖÃ³É-1µÄ·½·¨ÊýÊÇ¶àÉÙ£¬¾ÍÊÇ×éºÏÊýC(a+b, b)
-×éºÏÊý¿ÉÒÔÓÃÑî»ÔÈý½ÇÐÎ¼ÆËã(1000*1000¹»ÁË)
-Ò²¿ÉÒÔÖ±½Ó¼ÆËã£¬pythonÖ§³Ö´óÊý£¬ËùÒÔ¿ÉÒÔËãÍêÁËÔÙÈ¡Ä££¬µ«ÊÇÕâÑù¿ÉÄÜ»á±È½ÏÂý£¬µÃ¿´¾ßÌåÐ§¹û
-ÕâµÀÌâÔÚLeetCodeÉÏÊÇ¿ÉÒÔ¹ýµÄ
+æ•°è½´èµ·ç‚¹ä¸ºstartPosï¼Œç»ˆç‚¹ä¸ºendPosï¼Œé—®èµ°kæ­¥æ°å¥½ä»Žèµ·ç‚¹åˆ°ç»ˆç‚¹çš„æ–¹æ¡ˆæ€»æ•°æ˜¯å¤šå°‘
+é¦–å…ˆè¦èŠ±endPos-startPosæ­¥ï¼Œç„¶åŽå‰©ä¸‹çš„æ­¥æ•°æ˜¾ç„¶å¿…é¡»æ˜¯å¶æ•°ï¼Œä¸”ä¸€åŠæœå³ä¸€åŠæœå·¦
+ä»¤left = k - (endPos-startPos)
+äºŽæ˜¯å¯çŸ¥å‘æ­£æ–¹å‘ä¸€å…±è¦èµ°a=k-left/2æ­¥ï¼Œå‘è´Ÿæ–¹å‘ä¸€å…±è¦èµ°b=left/2æ­¥ï¼Œåªè¦æ»¡è¶³è¿™ä¸ªæ¡ä»¶
+å°±ä¸€å®šèƒ½èµ°åˆ°ï¼Œå…ˆèµ°æ­£è¿˜æ˜¯å…ˆèµ°è´Ÿå…¶å®žæ— æ‰€è°“ã€‚æ‰€ä»¥æœ¬è´¨ä¸Šå°±æ˜¯é—®aä¸ª+1å’Œbä¸ª-1ä¸åŒçš„æŽ’åˆ—æ€»æ•°æ˜¯å¤šå°‘
+å†è½¬åŒ–ä¸ºå…¶å®žå°±æ˜¯é—®ä»Ža+bä¸ªä½ç½®é€‰å‡ºbä¸ªä½ç½®è®¾ç½®æˆ-1çš„æ–¹æ³•æ•°æ˜¯å¤šå°‘ï¼Œå°±æ˜¯ç»„åˆæ•°C(a+b, b)
+ç»„åˆæ•°å¯ä»¥ç”¨æ¨è¾‰ä¸‰è§’å½¢è®¡ç®—(1000*1000å¤Ÿäº†)
+ä¹Ÿå¯ä»¥ç›´æŽ¥è®¡ç®—ï¼Œpythonæ”¯æŒå¤§æ•°ï¼Œæ‰€ä»¥å¯ä»¥ç®—å®Œäº†å†å–æ¨¡ï¼Œä½†æ˜¯è¿™æ ·å¯èƒ½ä¼šæ¯”è¾ƒæ…¢ï¼Œå¾—çœ‹å…·ä½“æ•ˆæžœ
+è¿™é“é¢˜åœ¨LeetCodeä¸Šæ˜¯å¯ä»¥è¿‡çš„
 """
 
 class Solution(object):
@@ -22,7 +22,7 @@ class Solution(object):
         if left < 0 or left % 2 == 1: return 0
         return self.C(k, left//2) % 1000000007
 
-    def C(self, a, b): # ¼ÆËãC(a, b)
+    def C(self, a, b): # ï¿½ï¿½ï¿½ï¿½C(a, b)
         return self.fac(a) // self.fac(b) // self.fac(a - b)
     def fac(self, n):
         ans = 1

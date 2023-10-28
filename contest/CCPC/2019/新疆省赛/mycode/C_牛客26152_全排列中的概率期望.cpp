@@ -1,13 +1,13 @@
 /**
-  ¸ø¶¨Ò»¸öÓÐÏòÎÞ»·Í¼¡£ÔÙµÈ¸ÅÂÊ¸ø¶¨Ò»¸ö¶¥µãµÄÅÅÁÐP
-  ´ÓP1µ½PnÒÀ´Î´¦Àí£ºÈç¹ûPiµÄÁÚ¾ÓÃ»ÓÐ±»Ñ¡¹ý£¬Ôò°ÑPiÑ¡³öÀ´
-  ÎÊ×îºóÑ¡³öÀ´µÄ¼¯ºÏµÄ³¤¶ÈÆÚÍûÊÇ¶àÉÙ
-  ¾Ù¸ö×î¼òµ¥µÄÀý×Ó£¬¼ÙÉèxÖ»ÓëyÓÐ±ß£¬¿¼ÂÇx±»Ñ¡µ½¼¯ºÏµÄ×Ü´ÎÊýÊÇ¶àÉÙ£¿
-  Òò´Ëx±»Ñ¡ÖÐµÄ²»Í¬Çé¿öµÄ×ÜÊýÊÇ
+  ç»™å®šä¸€ä¸ªæœ‰å‘æ— çŽ¯å›¾ã€‚å†ç­‰æ¦‚çŽ‡ç»™å®šä¸€ä¸ªé¡¶ç‚¹çš„æŽ’åˆ—P
+  ä»ŽP1åˆ°Pnä¾æ¬¡å¤„ç†ï¼šå¦‚æžœPiçš„é‚»å±…æ²¡æœ‰è¢«é€‰è¿‡ï¼Œåˆ™æŠŠPié€‰å‡ºæ¥
+  é—®æœ€åŽé€‰å‡ºæ¥çš„é›†åˆçš„é•¿åº¦æœŸæœ›æ˜¯å¤šå°‘
+  ä¸¾ä¸ªæœ€ç®€å•çš„ä¾‹å­ï¼Œå‡è®¾xåªä¸Žyæœ‰è¾¹ï¼Œè€ƒè™‘xè¢«é€‰åˆ°é›†åˆçš„æ€»æ¬¡æ•°æ˜¯å¤šå°‘ï¼Ÿ
+  å› æ­¤xè¢«é€‰ä¸­çš„ä¸åŒæƒ…å†µçš„æ€»æ•°æ˜¯
   C(n, 2) * 1! * (n-2)!
-  ¸üÒ»°ãµÄ£¬¼ÙÉèxµÄ¶ÈÊýÊÇd£¬Ôòx±»Ñ¡ÖÐµÄ²»Í¬Çé¿ö×ÜÊýÊÇ
+  æ›´ä¸€èˆ¬çš„ï¼Œå‡è®¾xçš„åº¦æ•°æ˜¯dï¼Œåˆ™xè¢«é€‰ä¸­çš„ä¸åŒæƒ…å†µæ€»æ•°æ˜¯
   C(n, d+1) * d! * (n-d-1)!
-  Ã»Ñ¡ÖÐÒ»´Î³¤¶È+1£¬Òò´Ë´Ó1µ½NÀÛ¼ÓÆðÀ´ÔÙ³ýÒÔn!
+  æ²¡é€‰ä¸­ä¸€æ¬¡é•¿åº¦+1ï¼Œå› æ­¤ä»Ž1åˆ°Nç´¯åŠ èµ·æ¥å†é™¤ä»¥n!
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -41,7 +41,7 @@ inline llt C(llt n, llt m){
 
 int main(){
     //freopen("1.txt","r",stdin);
-    /// Ô¤´¦Àí½×³ËºÍÄæ
+    /// Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½×³Ëºï¿½ï¿½ï¿½
     for(int i=2;i<=66;++i){
         Inv[i] = (MOD - MOD / i) * Inv[MOD%i] % MOD;
         //if(Inv[i]<0) Inv[i] += MOD;

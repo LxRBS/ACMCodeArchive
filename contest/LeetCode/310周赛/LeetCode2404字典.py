@@ -1,6 +1,6 @@
 """
-¸ø¶¨Êı×é£¬ÕÒ³öÏÖ´ÎÊı×î¶àµÄÇÒÊıÖµ×îĞ¡µÄÅ¼Êı
-×Öµä
+ç»™å®šæ•°ç»„ï¼Œæ‰¾å‡ºç°æ¬¡æ•°æœ€å¤šçš„ä¸”æ•°å€¼æœ€å°çš„å¶æ•°
+å­—å…¸ï¼Œä¹Ÿå¯ä»¥ç›´æ¥ä½¿ç”¨Counterç±»
 """
 
 class Solution(object):
@@ -9,7 +9,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        cnt = {}  # ×Öµä
+        cnt = {}  # ï¿½Öµï¿½
         for ai in nums:
             if ai % 2 == 0:
                 if ai in cnt: cnt[ai] += 1
