@@ -1,6 +1,6 @@
 /**
-    Î§Æå£¬³õÊ¼¾ÖÃæÖ»ÓĞºÚÆå¡£ÎÊÖ»×ß°×Æå£¬×î¶àÄÜ³Ôµô¶àÉÙºÚÆå
-    Ê×ÏÈÇó³öºÚÆåÁ¬Í¨¿éÓë±ß½ç£¬È»ºó½«ÆäÌîÂú
+    å›´æ£‹ï¼Œåˆå§‹å±€é¢åªæœ‰é»‘æ£‹ã€‚é—®åªèµ°ç™½æ£‹ï¼Œæœ€å¤šèƒ½åƒæ‰å¤šå°‘é»‘æ£‹
+    é¦–å…ˆæ±‚å‡ºé»‘æ£‹è¿é€šå—ä¸è¾¹ç•Œï¼Œç„¶åå°†å…¶å¡«æ»¡
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -28,17 +28,17 @@ typedef unordered_set<pii, pair_hash> hashpii;
 int const DR[] = {0, 0, 1, -1};
 int const DC[] = {1, -1, 0, 0};
 
-int F[1010][1010];  // Fij±íÊ¾ijÎ»ÖÃÉÏµÄºÚÆåµÄÁ¬Í¨¿éĞòºÅ
+int F[1010][1010];  // Fijè¡¨ç¤ºijä½ç½®ä¸Šçš„é»‘æ£‹çš„è¿é€šå—åºå·
 char A[1010][1010];
-vector<int> Qi2Hei[1010][1010]; // Ê×ÏÈijÊÇÆø£¬È»ºóQi2Hei[i][j]±íÊ¾¸ÃÆøÓ°ÏìÄÄ¼¸¿éºÚÆå£¬×î¶à4¿é
+vector<int> Qi2Hei[1010][1010]; // é¦–å…ˆijæ˜¯æ°”ï¼Œç„¶åQi2Hei[i][j]è¡¨ç¤ºè¯¥æ°”å½±å“å“ªå‡ å—é»‘æ£‹ï¼Œæœ€å¤š4å—
 int N, HCnt;
 
-vector<vpii> Heiqi; // Heiqi[i]±íÊ¾µÚi¸öºÚÆåµÄÁ¬Í¨¿é
-vector<hashpii> Qi; // Qi[i]±íÊ¾µÚ¸öºÚÆåÁ¬Í¨¿éÖÜÎ§µÄÆøµÄÎ»ÖÃ
+vector<vpii> Heiqi; // Heiqi[i]è¡¨ç¤ºç¬¬iä¸ªé»‘æ£‹çš„è¿é€šå—
+vector<hashpii> Qi; // Qi[i]è¡¨ç¤ºç¬¬ä¸ªé»‘æ£‹è¿é€šå—å‘¨å›´çš„æ°”çš„ä½ç½®
 
-/// ´Ór¡¢cÎ»ÖÃËÑË÷ºÚÆåµÄÁ¬Í¨¿é£¬¼ÇÂ¼ÔÚheiqiÀïÃæ
+/// ä»rã€cä½ç½®æœç´¢é»‘æ£‹çš„è¿é€šå—ï¼Œè®°å½•åœ¨heiqié‡Œé¢
 void dfs(int r, int c, vpii&heiqi, hashpii&qi, const int index){
-    /// ¸ÃÎ»ÖÃ¿Ï¶¨ÊÇºÚÆå
+    /// è¯¥ä½ç½®è‚¯å®šæ˜¯é»‘æ£‹
     //cout<<r<<" "<<c<<endl;
     heiqi.pb(mp(r, c));
     F[r][c] = index;
@@ -60,12 +60,12 @@ void dfs(int r, int c, vpii&heiqi, hashpii&qi, const int index){
 }
 
 bool Flag[1010][1010];
-/// Bai[i]±íÊ¾µÚi¸öºÚÆåÁ¬Í¨¿éµÄÆø¿é
-/// Bai[i][j]±íÊ¾µÚi¸öºÚÆåÁ¬Í¨¿éµÄµÚj¸öÆø¿é
-/// Bai[i][i][k]±íÊ¾µÚi¸öºÚÆåÁ¬Í¨¿éµÄµÚj¸öÆø¿éÖĞµÄµÚk¸öÎ»ÖÃ
+/// Bai[i]è¡¨ç¤ºç¬¬iä¸ªé»‘æ£‹è¿é€šå—çš„æ°”å—
+/// Bai[i][j]è¡¨ç¤ºç¬¬iä¸ªé»‘æ£‹è¿é€šå—çš„ç¬¬jä¸ªæ°”å—
+/// Bai[i][i][k]è¡¨ç¤ºç¬¬iä¸ªé»‘æ£‹è¿é€šå—çš„ç¬¬jä¸ªæ°”å—ä¸­çš„ç¬¬kä¸ªä½ç½®
 vector<vector<vpii> >Bai;
 
-/// ÉîËÑÓërcÎ»ÖÃÁ¬Í¨µÄÍ¬ÊôÓÚindexºÚ¿éµÄÆø
+/// æ·±æœä¸rcä½ç½®è¿é€šçš„åŒå±äºindexé»‘å—çš„æ°”
 void dfsQi(int r, int c, vpii&bai, hashpii&flag){
     for(int nr, nc, i=0;i<4;++i){
         nr = r + DR[i];
@@ -80,18 +80,18 @@ void dfsQi(int r, int c, vpii&bai, hashpii&flag){
     }
 }
 
-/// ÕûÀíµÚindex¿éºÚÆåÁ¬Í¨¿éµÄÆø
+/// æ•´ç†ç¬¬indexå—é»‘æ£‹è¿é€šå—çš„æ°”
 void zhengli(int index){
-    /// ³õÊ¼»¯
+    /// åˆå§‹åŒ–
     const vpii &hei = Heiqi[index];
     const hashpii &qi = Qi[index];
     vector<vpii> &bai = Bai[index];
     hashpii flag(qi);
 
-    for(auto pp: qi){  // ¶ÔÆøÀïÃæµÄÃ¿Ò»¸öÎ»ÖÃ
+    for(auto pp: qi){  // å¯¹æ°”é‡Œé¢çš„æ¯ä¸€ä¸ªä½ç½®
         if(flag.find(pp)==flag.end()) continue;
 
-        /// ÕÒµ½Ò»¸öĞÂµÄÁ¬Í¨µÄÆø
+        /// æ‰¾åˆ°ä¸€ä¸ªæ–°çš„è¿é€šçš„æ°”
         bai.pb(vpii());
         flag.erase(pp);
         bai[bai.size()-1].pb(pp);
@@ -114,13 +114,13 @@ void disp(){
             cout<<"("<<pp.first<<", "<<pp.se<<")";
         }
         cout<<endl;
-        /// Æø
+        /// æ°”
         cout<<"qi: "<<endl;
         for(auto pp: Qi[i]){
             cout<<"("<<pp.first<<", "<<pp.se<<")";
         }
         cout<<endl;
-        /// ÕûÀíÍê±ÏµÄÆø
+        /// æ•´ç†å®Œæ¯•çš„æ°”
         cout<<"after zhengli: "<<Bai[i].size()<<endl;
         int k = 0;
         for(auto vec: Bai[i]){
@@ -132,7 +132,7 @@ void disp(){
             cout<<endl;
         }
     }
-    /// µ¥¶ÀÊä³öÆø
+    /// å•ç‹¬è¾“å‡ºæ°”
     cout<<"Qi2Hei:"<<endl;
     for(int i=1;i<=N;++i)for(int j=1;j<=N;++j)if('.'==A[i][j]&&!Qi2Hei[i][j].empty()){
         cout<<"("<<i<<", "<<j<<"):";
@@ -143,7 +143,7 @@ void disp(){
     }
 }
 
-/// ÅĞ¶ÏrcÎ»ÖÃÊÇÒ»¸öÏà¶ÔÓÚindexºÚ¿éµÄÆøÊÇÒ»¸ö»îµã
+/// åˆ¤æ–­rcä½ç½®æ˜¯ä¸€ä¸ªç›¸å¯¹äºindexé»‘å—çš„æ°”æ˜¯ä¸€ä¸ªæ´»ç‚¹
 inline bool isOKLive(int nr, int nc, int index){
     if(1<=nr&&nr<=N&&1<=nc&&nc<=N&&'.'==A[nr][nc]){
         for(auto id: Qi2Hei[nr][nc]){
@@ -156,13 +156,13 @@ inline bool isOKLive(int nr, int nc, int index){
     return false;
 }
 
-/// ÅĞ¶ÏÕû¸öÆø¿éÏà¶ÔÓÚindexºÚÆåÊÇÒ»¸ö»îµÄ
+/// åˆ¤æ–­æ•´ä¸ªæ°”å—ç›¸å¯¹äºindexé»‘æ£‹æ˜¯ä¸€ä¸ªæ´»çš„
 inline bool isOKLive(const vpii&qikuai, int index){
-    for(auto pp: qikuai){ // ¶ÔÃ¿Ò»¸öÎ»ÖÃ
+    for(auto pp: qikuai){ // å¯¹æ¯ä¸€ä¸ªä½ç½®
         for(int nr, nc, i=0;i<4;++i){
             nr = pp.fi + DR[i];
             nc = pp.se + DC[i];
-            if(isOKLive(nr, nc, index)){ // Õû¸öÆø¿é¶¼ÊÇ»îµÄ
+            if(isOKLive(nr, nc, index)){ // æ•´ä¸ªæ°”å—éƒ½æ˜¯æ´»çš„
                 return true;
             }
         }
@@ -170,12 +170,12 @@ inline bool isOKLive(const vpii&qikuai, int index){
     return false;
 }
 
-/// ÅĞ¶ÏµÚindex¸öºÚÆåÊÇ·ñ±»³Ôµô
-/// Èç¹û¸ÃºÚÆå¿éµÄËùÓĞÆø¿é²»»á±»³Ôµô£¬¸ÃºÚÆå¾ÍÄÜ±»Î§É±
+/// åˆ¤æ–­ç¬¬indexä¸ªé»‘æ£‹æ˜¯å¦è¢«åƒæ‰
+/// å¦‚æœè¯¥é»‘æ£‹å—çš„æ‰€æœ‰æ°”å—ä¸ä¼šè¢«åƒæ‰ï¼Œè¯¥é»‘æ£‹å°±èƒ½è¢«å›´æ€
 bool isOK(int index){
     vector<vpii> const&qikuais = Bai[index];
     int cnt = 0;
-    for(auto qikuai: qikuais){ // ¶ÔÃ¿Ò»¸öÆø¿é¼ì²âÓĞÃ»ÓĞ×Ô¼ºµÄÆø
+    for(auto qikuai: qikuais){ // å¯¹æ¯ä¸€ä¸ªæ°”å—æ£€æµ‹æœ‰æ²¡æœ‰è‡ªå·±çš„æ°”
         if(!isOKLive(qikuai, index)){
             if(++cnt>1) return false;
         }
@@ -187,7 +187,7 @@ bool QFlag[700010];
 int bfs(){
     queue<int> q;
     for(int i=1;i<=HCnt;++i){
-        if(isOK(i)){  // Ê×ÏÈ½«ËÀ¶¨ÁËµÄºÚÆå¼Ó½øÈ¥
+        if(isOK(i)){  // é¦–å…ˆå°†æ­»å®šäº†çš„é»‘æ£‹åŠ è¿›å»
             q.push(i);
             QFlag[i] = true;
         }
@@ -198,12 +198,12 @@ int bfs(){
         int h = q.front();q.pop();
         ans += Heiqi[h].size();
 
-        /// Ê×ÏÈ½«µÚh¿éºÚÆåÈ«²¿±ä³ÉÆø
+        /// é¦–å…ˆå°†ç¬¬hå—é»‘æ£‹å…¨éƒ¨å˜æˆæ°”
         for(auto pp: Heiqi[h]){
             A[pp.fi][pp.se] = '.';
         }
 
-        /// ÔÙ¶ÔµÚh¿éºÚÆåµÄÃ¿¸öÆøµÄ¹²Í¬µÄºÚÆå¿é½øĞĞÅĞ¶ÏÈë¶Ó
+        /// å†å¯¹ç¬¬hå—é»‘æ£‹çš„æ¯ä¸ªæ°”çš„å…±åŒçš„é»‘æ£‹å—è¿›è¡Œåˆ¤æ–­å…¥é˜Ÿ
         for(auto pp: Qi[h]){
             for(auto index: Qi2Hei[pp.fi][pp.se]){
                 if(!QFlag[index]&&isOK(index)){
@@ -217,9 +217,9 @@ int bfs(){
     return ans;
 }
 
-/// ÔÚCFGYMÉÏĞèÒªÊÖ¶¯À©Õ»£¬·ñÔò¹ı²»ÁË
-/// Í¬Ê±ÔÚC++11ÏÂÓĞÊ±ÄÜ¹ıÓĞÊ±²»ÄÜ¹ı£¬ÔÚC++17ÏÂ¿ÉÒÔ¹ı
-/// Å£¿ÍÍø²»ĞèÒª£¬¿ÉÒÔÖ±½Ó¹ı
+/// åœ¨CFGYMä¸Šéœ€è¦æ‰‹åŠ¨æ‰©æ ˆï¼Œå¦åˆ™è¿‡ä¸äº†
+/// åŒæ—¶åœ¨C++11ä¸‹æœ‰æ—¶èƒ½è¿‡æœ‰æ—¶ä¸èƒ½è¿‡ï¼Œåœ¨C++17ä¸‹å¯ä»¥è¿‡
+/// ç‰›å®¢ç½‘ä¸éœ€è¦ï¼Œå¯ä»¥ç›´æ¥è¿‡
 #define __STACK__
 //#undef __STACK__
 
@@ -238,20 +238,20 @@ int main(){
     scanf("%d", &N);
     for(int i=1;i<=N;++i)scanf("%s", A[i]+1);
 
-    Heiqi.pb(vpii()); // ½¨Ò»¸ö¿ÕµÄ
+    Heiqi.pb(vpii()); // å»ºä¸€ä¸ªç©ºçš„
     Qi.pb(hashpii());
 
-    /// ÕÒ³öËùÓĞµÄºÚÆåÁ¬Í¨¿éºÍÆø
+    /// æ‰¾å‡ºæ‰€æœ‰çš„é»‘æ£‹è¿é€šå—å’Œæ°”
     for(int i=1;i<=N;++i)for(int j=1;j<=N;++j){
         if('.'==A[i][j]||F[i][j]) continue;
-        /// ÕÒµ½Ò»¸öĞÂµÄÁ¬Í¨¿é
+        /// æ‰¾åˆ°ä¸€ä¸ªæ–°çš„è¿é€šå—
         Heiqi.pb(vpii());
         Qi.pb(hashpii());
         dfs(i, j, *--Heiqi.end(), *--Qi.end(), Heiqi.size()-1);
     }
     //disp();
 
-    /// ÔÙ°ÑÃ¿¸öºÚ¿éµÄÆåÕûÀíºÃ
+    /// å†æŠŠæ¯ä¸ªé»‘å—çš„æ£‹æ•´ç†å¥½
     HCnt = Heiqi.size() - 1;
     Bai.assign(HCnt+1, vector<vpii>());
     if(HCnt>=N*N/2){

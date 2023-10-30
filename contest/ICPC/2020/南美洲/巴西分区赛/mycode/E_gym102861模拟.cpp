@@ -1,6 +1,6 @@
 /**
-    ¸ø¶¨Ò»¸ö×Ö·û´®£¬±íÊ¾Ò»¸öÓğÃ«ÇòµÄ±ÈÈü
-    ¶ÔÃ¿Ò»¸öQ£¬ÒªÇóÊä³öµ±Ê±µÄ±È·ÖÇé¿ö
+    ç»™å®šä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œè¡¨ç¤ºä¸€ä¸ªç¾½æ¯›çƒçš„æ¯”èµ›
+    å¯¹æ¯ä¸€ä¸ªQï¼Œè¦æ±‚è¾“å‡ºå½“æ—¶çš„æ¯”åˆ†æƒ…å†µ
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -18,12 +18,12 @@ int main(){
     //freopen("1.txt","r",stdin);
     scanf("%s", A);
 
-    int game[2] = {0};  // ¾ÖÊı
-    int score[2] = {0}; // ·ÖÊı
-    int cur = LEFT; // µ±Ç°·¢ÇòÕß
+    int game[2] = {0};  // å±€æ•°
+    int score[2] = {0}; // åˆ†æ•°
+    int cur = LEFT; // å½“å‰å‘çƒè€…
     for(char *p=A;*p;++p){
         if('Q'==*p){
-            if(game[0]<2&&game[1]<2){//Î´½áÊø£¬±¨±Ø·Ö
+            if(game[0]<2&&game[1]<2){//æœªç»“æŸï¼ŒæŠ¥å¿…åˆ†
                 sprintf(B, "%d (%d) - %d (%d)", game[LEFT], score[LEFT], game[RIGHT],score[RIGHT]);
                 if(LEFT==cur){
                     char *p=B;
@@ -43,17 +43,17 @@ int main(){
                 throw runtime_error("YYYY");
             }
         }else{
-            if('S'==*p){ //·¢ÇòÕßµÃ·Ö
+            if('S'==*p){ //å‘çƒè€…å¾—åˆ†
                 ++score[cur];
-            }else if('R'==*p){ //½ÓÇòÕßµÃ·Ö£¬½»»»·¢ÇòÈ¨
+            }else if('R'==*p){ //æ¥çƒè€…å¾—åˆ†ï¼Œäº¤æ¢å‘çƒæƒ
                 cur ^= 1;
                 ++score[cur];
             }
             int osn = cur ^ 1;
-            if(10==score[cur]||(score[cur]>=5&&score[cur]>=2+score[osn])){ //Ò»¾Ö½áÊø
+            if(10==score[cur]||(score[cur]>=5&&score[cur]>=2+score[osn])){ //ä¸€å±€ç»“æŸ
                 ++game[cur];
                 score[0] = score[1] = 0;
-                /// Òª²»Òª¶Ô¾ÖÊı½øĞĞÅĞ¶Ï?
+                /// è¦ä¸è¦å¯¹å±€æ•°è¿›è¡Œåˆ¤æ–­?
             }
         }
     }

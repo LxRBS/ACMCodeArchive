@@ -34,13 +34,13 @@ bool operator < (const pii&lhs,const pii&rhs){
 int const SIZE = 550;
 int N,T;
 
-//×ø±ê
+//åæ ‡
 int BX[SIZE], BY[SIZE], EX[SIZE], EY[SIZE];
-int VH[SIZE]; //1±íÊ¾ºáÏß£¬2±íÊ¾ÊúÏß
+int VH[SIZE]; //1è¡¨ç¤ºæ¨ªçº¿ï¼Œ2è¡¨ç¤ºç«–çº¿
 
-vi Coor[SIZE]; // Coor[i]±íÊ¾µÚiÌõÏß¶ÎÉÏµÄËùÓĞ½»²æµã£¬°üÀ¨¶Ëµã
+vi Coor[SIZE]; // Coor[i]è¡¨ç¤ºç¬¬iæ¡çº¿æ®µä¸Šçš„æ‰€æœ‰äº¤å‰ç‚¹ï¼ŒåŒ…æ‹¬ç«¯ç‚¹
 
-//½»µãµ½Ïß¶ÎµÄÓ³Éä£¬Ã¿¸ö½»µã×î¶àÊôÓÚÁ½ÌõÏß¶Î
+//äº¤ç‚¹åˆ°çº¿æ®µçš„æ˜ å°„ï¼Œæ¯ä¸ªäº¤ç‚¹æœ€å¤šå±äºä¸¤æ¡çº¿æ®µ
 unordered_map<pii, pii, pair_hash> Jiao2Xian;
 unordered_map<pii, pii, pair_hash>::iterator It;
 
@@ -56,7 +56,7 @@ void read(){
     }
 }
 
-// idxºÍjdxÊÇ·ñÏà½»
+// idxå’Œjdxæ˜¯å¦ç›¸äº¤
 inline bool inter(int idx, int jdx){
     return VH[idx] ^ VH[jdx]
         && min(BX[idx], EX[idx]) <= max(BX[jdx], EX[jdx])
@@ -65,31 +65,31 @@ inline bool inter(int idx, int jdx){
         && min(BY[jdx], EY[jdx]) <= max(BY[idx], EY[idx]) ;
 }
 
-//ÇóidxºÍjdxµÄ½»µã
+//æ±‚idxå’Œjdxçš„äº¤ç‚¹
 bool inter(int idx,int jdx,int ans[]){
     if(!inter(idx, jdx)) return false;
 
-    // idxÊÇÊúÏß
+    // idxæ˜¯ç«–çº¿
     if(VH[idx]&2){
         ans[1] = BX[idx], ans[2] = BY[jdx];
         return true;
     }
 
-    // idxÊÇºáÏß
+    // idxæ˜¯æ¨ªçº¿
     ans[1] = BX[jdx], ans[2] = BY[idx];
     return true;
 }
 
 void preProc(){
-    // Ê×ÏÈ°Ñ¶ËµãÈû½øÈ¥
+    // é¦–å…ˆæŠŠç«¯ç‚¹å¡è¿›å»
     for(int i=1;i<=N;++i){
         Jiao2Xian.insert(mp(mp(BX[i], BY[i]), mp(i, i)));
         Jiao2Xian.insert(mp(mp(EX[i], EY[i]), mp(i, i)));
 
-        if(VH[i]&1){//ºáÏß
+        if(VH[i]&1){//æ¨ªçº¿
             Coor[i].pb(BX[i]);
             Coor[i].pb(EX[i]);
-        }else if(VH[i]&2){//ÊúÏß
+        }else if(VH[i]&2){//ç«–çº¿
             Coor[i].pb(BY[i]);
             Coor[i].pb(EY[i]);
         }else{
@@ -97,22 +97,22 @@ void preProc(){
         }
     }
 
-    // ¶ÔÃ¿ÌõÏß¶ÎÇó½»µã
+    // å¯¹æ¯æ¡çº¿æ®µæ±‚äº¤ç‚¹
     for(int i=1;i<N;++i)for(int j=i+1;j<=N;++j){
         int ans[5];
         if(!inter(i, j, ans)) continue;
 
-        //ºáÏßÈûx×ø±ê£¬ÊúÏßÈûy
+        //æ¨ªçº¿å¡xåæ ‡ï¼Œç«–çº¿å¡y
         Coor[i].pb(ans[VH[i]]);
         Coor[j].pb(ans[VH[j]]);
 
         Jiao2Xian.insert(mp(mp(ans[1], ans[2]), mp(i, j)));
     }
 
-    //×îºóÅÅ¸öĞò
+    //æœ€åæ’ä¸ªåº
     for(int i=1;i<=N;++i){
         sort(Coor[i].begin(), Coor[i].end());
-        /*²âÊÔÊä³ö
+        /*æµ‹è¯•è¾“å‡º
         cout<<i<<": ";
         for(auto c: Coor[i]){
             cout<<c<<" ";
@@ -122,8 +122,8 @@ void preProc(){
 }
 
 
-//0123·Ö±ğ±íÊ¾ÉÏÏÂ×óÓÒ
-//Ïò×ó×ª
+//0123åˆ†åˆ«è¡¨ç¤ºä¸Šä¸‹å·¦å³
+//å‘å·¦è½¬
 inline int turnLeft(int t){
     if(0==t) return 2;
     if(1==t) return 3;
@@ -131,7 +131,7 @@ inline int turnLeft(int t){
     if(3==t) return 0;
     throw runtime_error("XXX1257");
 }
-//µ÷Í·
+//è°ƒå¤´
 inline int turnBack(int t){
     if(0==t) return 1;
     if(1==t) return 0;
@@ -140,79 +140,79 @@ inline int turnBack(int t){
     throw runtime_error("XXX2341");
 }
 
-//sx,syÊÇÆğµã, ex¡¢eyÊÇÖÕµã£¬oriÊÇĞÂ·½Ïò, vecÊÇÒª×ßµÄÄÇÌõÁ´
+//sx,syæ˜¯èµ·ç‚¹, exã€eyæ˜¯ç»ˆç‚¹ï¼Œoriæ˜¯æ–°æ–¹å‘, vecæ˜¯è¦èµ°çš„é‚£æ¡é“¾
 int moveUp(int sx, int sy, int& ori, int& ex, int& ey, vi const& v){
-    //ÕÒµ½ÆğµãÔÚÁ´ÉÏµÄÎ»ÖÃ
+    //æ‰¾åˆ°èµ·ç‚¹åœ¨é“¾ä¸Šçš„ä½ç½®
     auto p = equal_range(v.begin(), v.end(), sy);
     if(p.fi+1!=p.se||v.end()==p.se) throw runtime_error("XXXX2356");
 
-    //±£´æ½á¹û
+    //ä¿å­˜ç»“æœ
     ex = sx;
     ey = *p.se;
 
-    //È·¶¨·½Ïò£¬ÒªÃ´×ó×ªÒªÃ´µ÷Í·
+    //ç¡®å®šæ–¹å‘ï¼Œè¦ä¹ˆå·¦è½¬è¦ä¹ˆè°ƒå¤´
     ori = (p.se+1!=v.end()) ? 2 : 1;
     return ey - sy;
 }
 
 int moveDown(int sx, int sy, int& ori, int& ex, int& ey, vi const& v){
-    //ÕÒµ½ÆğµãÔÚÁ´ÉÏµÄÎ»ÖÃ
+    //æ‰¾åˆ°èµ·ç‚¹åœ¨é“¾ä¸Šçš„ä½ç½®
     auto p = equal_range(v.begin(), v.end(), sy);
     if(p.fi+1!=p.se||v.begin()==p.fi) throw runtime_error("XXXX down");
 
-    //±£´æ½á¹û
+    //ä¿å­˜ç»“æœ
     ex = sx;
     ey = *--p.fi;
 
-    //È·¶¨·½Ïò£¬ÒªÃ´×ó×ªÒªÃ´µ÷Í·
+    //ç¡®å®šæ–¹å‘ï¼Œè¦ä¹ˆå·¦è½¬è¦ä¹ˆè°ƒå¤´
     ori = (p.fi!=v.begin()) ? 3 : 0;
     return sy - ey;
 }
 
 
 int moveRight(int sx, int sy, int& ori, int& ex, int& ey, vi const& v){
-    //ÕÒµ½ÆğµãÔÚÁ´ÉÏµÄÎ»ÖÃ
+    //æ‰¾åˆ°èµ·ç‚¹åœ¨é“¾ä¸Šçš„ä½ç½®
     auto p = equal_range(v.begin(), v.end(), sx);
     if(p.fi+1!=p.se||v.end()==p.se) throw runtime_error("XXXX right");
 
-    //±£´æ½á¹û
+    //ä¿å­˜ç»“æœ
     ex = *p.se;
     ey = sy;
 
-    //È·¶¨·½Ïò£¬ÒªÃ´×ó×ªÒªÃ´µ÷Í·
+    //ç¡®å®šæ–¹å‘ï¼Œè¦ä¹ˆå·¦è½¬è¦ä¹ˆè°ƒå¤´
     ori = (p.se+1!=v.end()) ? 0 : 2;
     return ex - sx;
 }
 
 
 int moveLeft(int sx, int sy, int& ori, int& ex, int& ey, vi const& v){
-    //ÕÒµ½ÆğµãÔÚÁ´ÉÏµÄÎ»ÖÃ
+    //æ‰¾åˆ°èµ·ç‚¹åœ¨é“¾ä¸Šçš„ä½ç½®
     auto p = equal_range(v.begin(), v.end(), sx);
     if(p.fi+1!=p.se||v.begin()==p.fi){
         int x=3;
         throw runtime_error("XXXX left");
     }
 
-    //±£´æ½á¹û
+    //ä¿å­˜ç»“æœ
     ex = *--p.fi;
     ey = sy;
 
-    //È·¶¨·½Ïò£¬ÒªÃ´×ó×ªÒªÃ´µ÷Í·
+    //ç¡®å®šæ–¹å‘ï¼Œè¦ä¹ˆå·¦è½¬è¦ä¹ˆè°ƒå¤´
     ori = (p.fi!=v.begin()) ? 1 : 3;
     return sx - ex;
 }
 
 
 //*
-//Æğµã£¬oriÊÇÊäÈëÊä³ö²ÎÊı£¬·µ»Ø±¾²½Ëù»¨µÄÊ±¼ä
+//èµ·ç‚¹ï¼Œoriæ˜¯è¾“å…¥è¾“å‡ºå‚æ•°ï¼Œè¿”å›æœ¬æ­¥æ‰€èŠ±çš„æ—¶é—´
 int move(int sx,int sy,int&ori, int&ex,int&ey){
     //printf("%d %d\n", sx, sy);
 
-    //Ê×ÏÈÕÒµ½ÆğµãÊôÓÚÄÄÌõÏß¶Î
+    //é¦–å…ˆæ‰¾åˆ°èµ·ç‚¹å±äºå“ªæ¡çº¿æ®µ
     It = Jiao2Xian.find(mp(sx, sy));
     if(Jiao2Xian.end()==It) throw runtime_error("XXX12789");
 
-    //ÕÒµ½Òª×ßÄÄÌõÏß¶Î
+    //æ‰¾åˆ°è¦èµ°å“ªæ¡çº¿æ®µ
     int t = It->se.fi;
     if(0==ori||1==ori){
         if((VH[t]^2)) t = It->se.se;
@@ -236,7 +236,7 @@ int move(int sx,int sy,int&ori, int&ex,int&ey){
 }
 //*/
 
-//×ßÒ»ÂÖ£¬·µ»ØÆğµã·µ»Øtrue£¬·ñÔò·µ»Øfalse
+//èµ°ä¸€è½®ï¼Œè¿”å›èµ·ç‚¹è¿”å›trueï¼Œå¦åˆ™è¿”å›false
 bool go(int sx, int sy, int&ori, int&ex, int&ey, int &time){
     time = 0;
 
@@ -248,9 +248,9 @@ bool go(int sx, int sy, int&ori, int&ex, int&ey, int &time){
     }
 }
 
-//ºóÍËnÃë
+//åé€€nç§’
 void backMove(int sx, int sy, int ori, int n, int&ex, int&ey){
-    //È·¶¨»ØÍËµÄ·½Ïò£¬Èç¹ûÊÇ¶ËµãÔò²»¶¯£¬·ñÔòÒª×ó×ª
+    //ç¡®å®šå›é€€çš„æ–¹å‘ï¼Œå¦‚æœæ˜¯ç«¯ç‚¹åˆ™ä¸åŠ¨ï¼Œå¦åˆ™è¦å·¦è½¬
     It = Jiao2Xian.find(mp(ex, ey));
     if(Jiao2Xian.end()==It) throw runtime_error("YYYY");
     if(It->se.fi!=It->se.se) ori = turnLeft(ori);
@@ -266,14 +266,14 @@ void backMove(int sx, int sy, int ori, int n, int&ex, int&ey){
 
 int main(){
     //freopen("1.txt","r",stdin);
-    read(); // ¶ÁÈë
-    preProc(); // È·¶¨Ã¿¸ö½»µã
+    read(); // è¯»å…¥
+    preProc(); // ç¡®å®šæ¯ä¸ªäº¤ç‚¹
 
-    // È·¶¨µÚÒ»¸ö¶ËµãµÄÇ°½øµÄ·½Ïò
+    // ç¡®å®šç¬¬ä¸€ä¸ªç«¯ç‚¹çš„å‰è¿›çš„æ–¹å‘
     int ori = 0;
-    if(VH[1]&1){//ºáÏß
-        if(BX[1]<EX[1]) ori = 3; //ÏòÓÒ
-        else ori = 2; //×ó
+    if(VH[1]&1){//æ¨ªçº¿
+        if(BX[1]<EX[1]) ori = 3; //å‘å³
+        else ori = 2; //å·¦
     }else if(VH[1]&2){
         ori = (BY[1]<EY[1])?0:1;
     }else{
@@ -282,7 +282,7 @@ int main(){
 
     int ex, ey, time;
 
-    //Èç¹û·µ»ØÁËÆğµã£¬»¹ÒªÔÙ×ßÒ»ÂÖ
+    //å¦‚æœè¿”å›äº†èµ·ç‚¹ï¼Œè¿˜è¦å†èµ°ä¸€è½®
     if(go(BX[1], BY[1], ori, ex, ey, time)){
         T %= time;
         //printf("time = %d\n", time);

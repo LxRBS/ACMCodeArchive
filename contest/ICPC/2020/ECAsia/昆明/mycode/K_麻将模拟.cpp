@@ -1,6 +1,6 @@
 /**
-    Ä£ÄâÌâ£¬¸ø¶¨Âé½«14ÕÅÅÆ£¬Òª½øĞĞÒ»¶¨µÄÅĞ¶Ï
-    Ã¿ÕÅÅÆ¿ÉÄÜÓĞÎŞÏŞÕÅ
+    æ¨¡æ‹Ÿé¢˜ï¼Œç»™å®šéº»å°†14å¼ ç‰Œï¼Œè¦è¿›è¡Œä¸€å®šçš„åˆ¤æ–­
+    æ¯å¼ ç‰Œå¯èƒ½æœ‰æ— é™å¼ 
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -18,20 +18,20 @@ int BIANLI[40];
 int L2I[256];
 
 int Pai2Cnt[0x100];
-vi Ans[0x100]; // ¼ÇÂ¼´ğ°¸
+vi Ans[0x100]; // è®°å½•ç­”æ¡ˆ
 vi AnsPai;
 
-/// ÕÒ3ÕÅÅÆ£¬n±íÊ¾ÒÑ¾­ÕÒµ½ÁË¶àÉÙ
+/// æ‰¾3å¼ ç‰Œï¼Œnè¡¨ç¤ºå·²ç»æ‰¾åˆ°äº†å¤šå°‘
 bool dfs3(int n){
-    if(4==n) { // ÒÑ¾­ÕÒµ½ÁË4Ì×
+    if(4==n) { // å·²ç»æ‰¾åˆ°äº†4å¥—
         return true;
     }
 
-    /// ¶ÔÊ£ÏÂµÄÃ¿Ò»ÕÅÅÆ
+    /// å¯¹å‰©ä¸‹çš„æ¯ä¸€å¼ ç‰Œ
     for(int type,sn,cnt,pai,i=1;i<=TOTAL;++i){
         if(0==(cnt=Pai2Cnt[pai = BIANLI[i]])) continue;
 
-        /// Èç¹ûÓĞ3ÕÅÅÆÒÔÉÏ
+        /// å¦‚æœæœ‰3å¼ ç‰Œä»¥ä¸Š
         if(cnt>=3){
             Pai2Cnt[pai] -= 3;
             bool b = dfs3(n+1);
@@ -39,7 +39,7 @@ bool dfs3(int n){
             if(b) return true;
         }
 
-        /// ·ñÔòÖ»ÄÜË³×Ó
+        /// å¦åˆ™åªèƒ½é¡ºå­
         type = pai & 0xF0;
         sn = pai & 0xF;
         if(type!=ZII&&sn<=7&&Pai2Cnt[pai+1]&&Pai2Cnt[pai+2]){
@@ -53,30 +53,30 @@ bool dfs3(int n){
             if(b) return true;
         }
 
-        /// Èç¹ûµ±Ç°ÅÆ°²ÅÅ²»ÏÂÈ¥
+        /// å¦‚æœå½“å‰ç‰Œå®‰æ’ä¸ä¸‹å»
         return false;
     }
     return false;
 }
 
-/// ÅĞ¶ÏÊÇ·ñºÍÅÆ
+/// åˆ¤æ–­æ˜¯å¦å’Œç‰Œ
 bool isOK(){
-    /// ÕÒÒ»¶ÔÅÆ
+    /// æ‰¾ä¸€å¯¹ç‰Œ
     for(int cnt,pai,i=1;i<=TOTAL;++i){
         if((cnt=Pai2Cnt[pai=BIANLI[i]])<2) continue;
         Pai2Cnt[pai] -= 2;
-        bool b = dfs3(0);  //ÉîËÑ
-        Pai2Cnt[pai] += 2; //»¹Ô­
+        bool b = dfs3(0);  //æ·±æœ
+        Pai2Cnt[pai] += 2; //è¿˜åŸ
         if(b) return true;
     }
     return false;
 }
 
-/// ¶ªµôµ±Ç°ÅÆ£¬ÊÇ·ñÄÜ¹»ÌıÅÆ£¬ÒÔ¼°ÌıÄÄÒ»ÕÅ
+/// ä¸¢æ‰å½“å‰ç‰Œï¼Œæ˜¯å¦èƒ½å¤Ÿå¬ç‰Œï¼Œä»¥åŠå¬å“ªä¸€å¼ 
 void proc(int cur){
     vi& vec = Ans[cur];
     --Pai2Cnt[cur];
-    /// ¼ÓÒ»ÕÅÅÆ£¬ÊÇ·ñÄÜ¹»ºÍÅÆ
+    /// åŠ ä¸€å¼ ç‰Œï¼Œæ˜¯å¦èƒ½å¤Ÿå’Œç‰Œ
     for(int cnt,pai,i=1;i<=TOTAL;++i){
         if(cur==(pai=BIANLI[i])) continue;
         //if(4==(cnt=Pai2Cnt[pai])) continue;
@@ -113,25 +113,25 @@ int main(){
         //printf("case %d:\n", kase);
         char a[110];
         scanf("%s", a);
-        /// ³õÊ¼»¯
+        /// åˆå§‹åŒ–
         AnsPai.clear();
         memset(Pai2Cnt,0,sizeof(Pai2Cnt));
         for(int i=1;i<=TOTAL;++i)Ans[BIANLI[i]].clear();
-        /// Ô¤´¦Àí
+        /// é¢„å¤„ç†
         for(char const*p=a;*p;p+=2){
             ++Pai2Cnt[L2I[*(p+1)]|(*p-'0')];
         }
-        /// Ê×ÏÈÅĞ¶ÏÊÇ·ñÖ±½ÓºÍÅÆ
+        /// é¦–å…ˆåˆ¤æ–­æ˜¯å¦ç›´æ¥å’Œç‰Œ
         if(isOK()){
             printf("Tsumo!\n");
             continue;
         }
-        /// ·ñÔò¶ÔÃ¿Ò»ÕÅÅÆ
+        /// å¦åˆ™å¯¹æ¯ä¸€å¼ ç‰Œ
         for(int cnt,pai,i=1;i<=TOTAL;++i){
             if(0==(cnt=Pai2Cnt[pai=BIANLI[i]])) continue;
             proc(pai);
         }
-        /// ´òÓ¡´ğ°¸
+        /// æ‰“å°ç­”æ¡ˆ
         printf("%d\n",AnsPai.size());
         for(auto pai: AnsPai){
             printf("%s ", PaiMian[pai]);
