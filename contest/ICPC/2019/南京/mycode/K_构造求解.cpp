@@ -1,7 +1,7 @@
 /**
-    ¸ø¶¨Èı½ÇĞÎÒÔ¼°Ò»¸öµãP
-    Èç¹ûµãPÔÚÈı½ÇĞÎµÄ±ßÉÏ£¬»¹ÒªÔÙÕÒÒ»¸öÔÚ±ßÉÏµÄµãQ
-    Ê¹µÃPQÆ½·ÖÈı½ÇĞÎµÄÃæ»ı
+    ç»™å®šä¸‰è§’å½¢ä»¥åŠä¸€ä¸ªç‚¹P
+    å¦‚æœç‚¹Påœ¨ä¸‰è§’å½¢çš„è¾¹ä¸Šï¼Œè¿˜è¦å†æ‰¾ä¸€ä¸ªåœ¨è¾¹ä¸Šçš„ç‚¹Q
+    ä½¿å¾—PQå¹³åˆ†ä¸‰è§’å½¢çš„é¢ç§¯
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -32,7 +32,7 @@ struct point64f_t{
     double x,y;
 };
 
-//²æ»ı
+//å‰ç§¯
 double cross(point64f_t const&O,point64f_t const&A,point64f_t const&B){
     double xoa = A.x - O.x;
     double yoa = A.y - O.y;
@@ -41,21 +41,21 @@ double cross(point64f_t const&O,point64f_t const&A,point64f_t const&B){
     return xoa * yob - xob * yoa;
 }
 
-//ÅĞ¶ÏµãÔÚÏß¶ÎÉÏ
+//åˆ¤æ–­ç‚¹åœ¨çº¿æ®µä¸Š
 bool isIn(point64f_t const&p, point64f_t const&A, point64f_t const&B){
     return 0==sgn(cross(p,A,B))
         && min(A.x,B.x)<=p.x && p.x<=max(A.x,B.x)
         && min(A.y,B.y)<=p.y && p.y<=max(A.y,B.y);
 }
 
-//ÇóÁ½µã¾àÀëµÄÆ½·½
+//æ±‚ä¸¤ç‚¹è·ç¦»çš„å¹³æ–¹
 double dist2(point64f_t const&A,point64f_t const&B){
     double x = A.x - B.x;
     double y = A.y - B.y;
     return x*x+y*y;
 }
 
-//ÅĞ¶ÏÁ½µãÊÇ·ñÖØºÏ
+//åˆ¤æ–­ä¸¤ç‚¹æ˜¯å¦é‡åˆ
 inline bool isEqual(point64f_t const&A,point64f_t const&B){
     return 0 == sgn(dist2(A,B));
 }
@@ -64,19 +64,19 @@ point64f_t A,B,C,P;
 point64f_t T[4],Ans;
 
 void proc(){
-    //ÅĞ¶ÏPÊÇ·ñÔÚÏß¶ÎÉÏ£¬Èç¹ûÔÚ£¬×ÜÔÚ01ÉÏ
+    //åˆ¤æ–­Pæ˜¯å¦åœ¨çº¿æ®µä¸Šï¼Œå¦‚æœåœ¨ï¼Œæ€»åœ¨01ä¸Š
     if(isIn(P,A,B)){
         T[0]=T[3]=A,T[1]=B,T[2]=C;
     }else if(isIn(P,B,C)){
         T[0]=T[3]=B,T[1]=C,T[2]=A;
     }else if(isIn(P,C,A)){
         T[0]=T[3]=C,T[1]=A,T[2]=B;
-    }else{//²»ÔÚ±ßÉÏ
+    }else{//ä¸åœ¨è¾¹ä¸Š
         printf("-1\n");
         return;
     }
 
-    //Èç¹ûµãPÓëT0ÖØºÏ
+    //å¦‚æœç‚¹Pä¸T0é‡åˆ
     if(isEqual(P,T[0])){
         printf("%.8lf %.8lf\n",(T[1].x+T[2].x)*0.5,(T[1].y+T[2].y)*0.5);
         return;
@@ -86,30 +86,30 @@ void proc(){
         return;
     }
 
-    //¼ÆËãÈı½ÇĞÎµÄÃæ»ı
+    //è®¡ç®—ä¸‰è§’å½¢çš„é¢ç§¯
     double area = fabs(0.5*cross(A,B,C));
 
-    //Ê×ÏÈ¼ÆËã½Ç201
+    //é¦–å…ˆè®¡ç®—è§’201
     double a01 = dist2(T[0],T[1]);
     double a02 = dist2(T[0],T[2]);
     double a12 = dist2(T[1],T[2]);
     double theta = myacos((a01+a02-a12)/(2.0*sqrt(a01)*sqrt(a02)));
 
-    //¼ÆËãPµãÓë0µãµÄ¾àÀë
+    //è®¡ç®—Pç‚¹ä¸0ç‚¹çš„è·ç¦»
     double p0 = sqrt(dist2(P,T[0]));
 
-    //¼ÆËãÈı½ÇĞÎP02µÄÃæ»ı
+    //è®¡ç®—ä¸‰è§’å½¢P02çš„é¢ç§¯
     double tmp = 0.5 * p0 * sqrt(a02) * sin(theta);
     int s = sgn(0.5*area-tmp);
     if(0==s){
         printf("%.12lf %.12lf\n",T[2].x,T[2].y);
         return;
-    }else if(s>0){//ËµÃ÷´ğ°¸ÔÚ12ÉÏ
+    }else if(s>0){//è¯´æ˜ç­”æ¡ˆåœ¨12ä¸Š
         swap(T[0],T[1]);
         p0 = sqrt(dist2(P,T[0]));
     }
 
-    //ÔÚ02ÉÏÑ°ÕÒ´ğ°¸
+    //åœ¨02ä¸Šå¯»æ‰¾ç­”æ¡ˆ
     double t = area / ( p0 * sin(theta) );
     t = t / sqrt(a02);
     double x = T[0].x*(1-t) + T[2].x*t;
